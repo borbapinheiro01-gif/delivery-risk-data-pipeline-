@@ -1,0 +1,11 @@
+grain,metric,available,denominator,coverage_pct
+ORDER_SELLER,has_prior_purchase_history,94912,97811,97.03612068172292
+ORDER_SELLER,has_prior_outcome_history,92498,97811,94.56809561296787
+ORDER_SELLER,has_prior_outcome_30d,88305,97811,90.28125670936807
+ORDER_SELLER,has_prior_outcome_90d,91727,97811,93.77984071321221
+ORDER,any_seller_purchase_history,93658,96470,97.0851041774645
+ORDER,all_sellers_purchase_history,93571,96470,96.99492070073597
+ORDER,any_seller_outcome_history,91296,96470,94.6366746138696
+ORDER,all_sellers_outcome_history,91164,96470,94.49984451124702
+ORDER,any_seller_outcome_30d,87220,96470,90.41152689955426
+ORDER,any_seller_outcome_90d,90544,96470,93.85715766559552

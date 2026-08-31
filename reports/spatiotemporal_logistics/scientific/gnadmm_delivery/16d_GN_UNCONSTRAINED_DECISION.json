@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "method": "REGULARIZED_GAUSS_NEWTON",
+  "objective": "HALF_MEAN_BRIER_NLLS",
+  "selected_start": 0,
+  "iterations": 19,
+  "objective_final": 0.031779852525856495,
+  "brier_in_sample": 0.06355970505171299,
+  "beta_z2": -0.14117607108258445,
+  "constraint_enforced": false,
+  "raw_modified": false
+}

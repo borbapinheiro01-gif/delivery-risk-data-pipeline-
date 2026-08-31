@@ -1,0 +1,40 @@
+{
+    "step": "MODEL_01_0_C3_3D1_ROUGHNESS_PENALTY_SENSITIVITY",
+    "status": "PASS",
+    "created_at_utc": "2026-08-30T20:29:01.187709+00:00",
+    "method": "SECOND_DIFFERENCE_PENALIZED_LEAST_SQUARES",
+    "formula": "H_lambda = H (I + lambda D2^T D2)^(-1)",
+    "lambda_parameterization": "EFFECTIVE_DEGREES_OF_FREEDOM",
+    "edf_ratios": [
+        1.0,
+        0.75,
+        0.5,
+        0.25
+    ],
+    "windows": [
+        30,
+        60,
+        90
+    ],
+    "channels": [
+        "purchase_volume",
+        "purchase_freight"
+    ],
+    "operator_configurations": 12,
+    "sensitivity_runs": 24,
+    "configurations_with_negative_values": 18,
+    "target_used": false,
+    "lambda_selected": false,
+    "window_selected": false,
+    "component_count_selected": false,
+    "smoothing_committed": false,
+    "fpca_applied": false,
+    "model_feature_created": false,
+    "functional_module_unlocked": false,
+    "folds_frozen": false,
+    "classifier_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 0,
+    "runtime_seconds": 14.459772146999967
+}

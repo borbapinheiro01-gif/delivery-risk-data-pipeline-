@@ -1,0 +1,61 @@
+================================================================================================================
+MODEL 01.0-C3.3-D2 — RAW 30D vs SMOOTH 30D EDF=0.75
+================================================================================================================
+
+STATUS                         : FAIL
+WINDOW                         : 30 days
+SMOOTH EDF RATIO               : 0.75
+SMOOTH EFFECTIVE DF            : 22.5
+LAMBDA                         : 0.0840662845049
+
+DESIGN
+----------------------------------------------------------------------------------------------------------------
+Paired expanding-history temporal comparison.
+Same orders in RAW and SMOOTH routes.
+PCA learned only from past curves.
+K90 learned only from past curves.
+Target not used.
+
+KEY FAIRNESS METRIC
+----------------------------------------------------------------------------------------------------------------
+RAW route is reconstructed against RAW future curves.
+SMOOTH route is ALSO evaluated against RAW future curves.
+Therefore smoothing distortion is not hidden by evaluating only in smoothed space.
+
+purchase_freight
+  temporal tests              : 17
+  RAW K90 median              : 13.00
+  SMOOTH K90 median           : 7.00
+  mean K90 reduction          : 4.1765
+  RAW future error mean       : 0.310004
+  SMOOTH internal error mean  : 0.301347
+  SMOOTH end-to-end RAW mean  : 0.375267
+  paired delta mean           : 0.065263
+  smooth lower error folds    : 0/17
+
+purchase_volume
+  temporal tests              : 17
+  RAW K90 median              : 10.00
+  SMOOTH K90 median           : 6.00
+  mean K90 reduction          : 3.4706
+  RAW future error mean       : 0.305543
+  SMOOTH internal error mean  : 0.299885
+  SMOOTH end-to-end RAW mean  : 0.365076
+  paired delta mean           : 0.059533
+  smooth lower error folds    : 0/17
+
+IMPORTANT
+----------------------------------------------------------------------------------------------------------------
+No automatic winner is declared.
+No smoothing configuration is promoted.
+No clipping is applied.
+No target is used.
+No final K is selected.
+No fold is frozen.
+No model is trained.
+No Silver is created.
+RAW is not modified.
+
+VALIDATION FAILURES            : 1
+RUNTIME                        : 5.390s
+================================================================================================================

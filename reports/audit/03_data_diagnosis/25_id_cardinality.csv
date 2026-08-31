@@ -1,0 +1,7 @@
+source,variable,rows,unique,unique_ratio_pct,direct_model_feature_recommendation
+orders,order_id,99441,99441,100.0,NO_RAW_ID
+orders,customer_id,99441,99441,100.0,NO_RAW_ID
+customers,customer_unique_id,99441,96096,96.63619633752677,NO_RAW_ID
+order_items,product_id,112650,32951,29.250776742121616,NO_RAW_ID
+order_items,seller_id,112650,3095,2.7474478473146915,NO_RAW_ID
+reviews,review_id,99224,98410,99.17963395952592,NO_RAW_ID

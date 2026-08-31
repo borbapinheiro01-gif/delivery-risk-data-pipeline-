@@ -1,0 +1,6 @@
+metric,source_denominator,source_affected,source_affected_pct,task_denominator,task_affected,task_affected_pct,difference_task_minus_source_pp
+orders_without_items,99441,775,0.7793566034130791,96470,0,0.0,-0.7793566034130791
+orders_without_payments,99441,1,0.0010056214237588118,96470,1,0.001036591686534674,3.0970262775862224e-05
+orders_without_customer_resolution,99441,0,0.0,96470,0,0.0,0.0
+item_product_orphans,112650,0,0.0,110189,0,0.0,0.0
+item_seller_orphans,112650,0,0.0,110189,0,0.0,0.0

@@ -1,0 +1,22 @@
+{
+  "step": "MODEL_01_0_C1_TEMPORAL_DIAGNOSTIC",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "matrix_rows": 96470,
+  "features": 13,
+  "months": 23,
+  "first_month": "2016-09",
+  "last_month": "2018-08",
+  "comparison_type": "ADJACENT_MONTH",
+  "metrics": [
+    "KS_STATISTIC",
+    "PSI",
+    "JENSEN_SHANNON_DISTANCE",
+    "ROBUST_MEDIAN_SHIFT",
+    "TARGET_PREVALENCE_DELTA_PP"
+  ],
+  "drift_threshold_frozen": false,
+  "folds_frozen": false,
+  "model_trained": false,
+  "silver_created": false,
+  "raw_modified": false
+}

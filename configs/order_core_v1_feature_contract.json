@@ -1,0 +1,170 @@
+{
+  "contract_id": "ORDER_CORE_V1",
+  "version": "1.0.0",
+
+  "purpose": "Minimal point-in-time-safe feature set for MODEL_01_ORDER_LOGISTIC",
+
+  "unit_of_analysis": "order_id",
+
+  "prediction_time": "order_purchase_timestamp",
+
+  "model": {
+    "model_id": "MODEL_01_ORDER_LOGISTIC",
+    "algorithm": "LogisticRegression",
+    "status": "LOCKED_PENDING_GATE_05"
+  },
+
+  "principles": [
+    "ONE_MODEL_AT_A_TIME",
+    "ONE_ROW_PER_ORDER",
+    "NO_FUTURE_INFORMATION",
+    "NO_TARGET_DERIVED_PREDICTORS",
+    "NO_PAYMENT_UNTIL_PROVENANCE_RESOLVED",
+    "NO_SHIPPING_LIMIT_UNTIL_PROVENANCE_RESOLVED",
+    "NO_GEO_COORDINATES_UNTIL_GEO_CONSOLIDATION",
+    "NO_SELLER_HISTORY_IN_MODEL_01"
+  ],
+
+  "allowed_source_statuses": [
+    "AGGREGATE_SAFE_AT_T0",
+    "JOIN_KEY_ONLY"
+  ],
+
+  "features": [
+    {
+      "feature_name": "item_count",
+      "sources": [
+        "order_items.order_item_id"
+      ],
+      "formula": "COUNT(order_item_id)",
+      "aggregation": "COUNT_BY_ORDER"
+    },
+
+    {
+      "feature_name": "unique_product_count",
+      "sources": [
+        "order_items.product_id"
+      ],
+      "formula": "COUNT_DISTINCT(product_id)",
+      "aggregation": "COUNT_DISTINCT_BY_ORDER"
+    },
+
+    {
+      "feature_name": "unique_seller_count",
+      "sources": [
+        "order_items.seller_id"
+      ],
+      "formula": "COUNT_DISTINCT(seller_id)",
+      "aggregation": "COUNT_DISTINCT_BY_ORDER"
+    },
+
+    {
+      "feature_name": "total_price",
+      "sources": [
+        "order_items.price"
+      ],
+      "formula": "SUM(price)",
+      "aggregation": "SUM_BY_ORDER"
+    },
+
+    {
+      "feature_name": "mean_price",
+      "sources": [
+        "order_items.price"
+      ],
+      "formula": "MEAN(price)",
+      "aggregation": "MEAN_BY_ORDER"
+    },
+
+    {
+      "feature_name": "max_price",
+      "sources": [
+        "order_items.price"
+      ],
+      "formula": "MAX(price)",
+      "aggregation": "MAX_BY_ORDER"
+    },
+
+    {
+      "feature_name": "min_price",
+      "sources": [
+        "order_items.price"
+      ],
+      "formula": "MIN(price)",
+      "aggregation": "MIN_BY_ORDER"
+    },
+
+    {
+      "feature_name": "price_range",
+      "sources": [
+        "order_items.price"
+      ],
+      "formula": "MAX(price) - MIN(price)",
+      "aggregation": "DERIVE_AFTER_ORDER_AGGREGATION"
+    },
+
+    {
+      "feature_name": "total_freight",
+      "sources": [
+        "order_items.freight_value"
+      ],
+      "formula": "SUM(freight_value)",
+      "aggregation": "SUM_BY_ORDER"
+    },
+
+    {
+      "feature_name": "mean_freight",
+      "sources": [
+        "order_items.freight_value"
+      ],
+      "formula": "MEAN(freight_value)",
+      "aggregation": "MEAN_BY_ORDER"
+    },
+
+    {
+      "feature_name": "max_freight",
+      "sources": [
+        "order_items.freight_value"
+      ],
+      "formula": "MAX(freight_value)",
+      "aggregation": "MAX_BY_ORDER"
+    },
+
+    {
+      "feature_name": "merchandise_plus_freight",
+      "sources": [
+        "order_items.price",
+        "order_items.freight_value"
+      ],
+      "formula": "SUM(price) + SUM(freight_value)",
+      "aggregation": "DERIVE_AFTER_ORDER_AGGREGATION"
+    },
+
+    {
+      "feature_name": "freight_price_ratio",
+      "sources": [
+        "order_items.price",
+        "order_items.freight_value"
+      ],
+      "formula": "SUM(freight_value) / SUM(price)",
+      "aggregation": "DERIVE_AFTER_ORDER_AGGREGATION"
+    }
+  ],
+
+  "explicitly_excluded_from_model_01": [
+    "payments.*",
+    "order_items.shipping_limit_date",
+    "reviews.*",
+    "orders.order_status",
+    "orders.order_approved_at",
+    "orders.order_delivered_carrier_date",
+    "orders.order_delivered_customer_date",
+    "geolocation.*",
+    "seller_history.*",
+    "product_static_catalog_enrichment"
+  ],
+
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

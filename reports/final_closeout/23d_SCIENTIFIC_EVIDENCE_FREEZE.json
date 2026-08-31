@@ -1,0 +1,13 @@
+{
+  "status": "SCIENTIFIC_EVIDENCE_FREEZE_COMPLETE",
+  "scope": "DELIVERY_RISK_INTELLIGENCE",
+  "context_core_n": 96211,
+  "expected_freight_n": 96211,
+  "nonlinear_predictive_gain": "NOT_SUPPORTED",
+  "gnadmm_temporal_AP": "PARTIALLY_SUPPORTED",
+  "positive_quadratic_curvature": "NOT_SUPPORTED",
+  "gnadmm_calibration_superiority": "NOT_SUPPORTED",
+  "causal_claim": false,
+  "universal_model_superiority": false,
+  "raw_modified": false
+}

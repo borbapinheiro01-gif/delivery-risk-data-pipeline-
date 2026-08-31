@@ -1,0 +1,47 @@
+====================================================================================================================
+MODEL 01.0-C3.4-A.1 — RANK CRITERION IDENTIFIABILITY
+====================================================================================================================
+
+STATUS
+--------------------------------------------------------------------------------------------------------------------
+Validation                         : PASS
+Criterion                          : NON_IDENTIFYING_FOR_INTRINSIC_RANK_SELECTION
+
+EMPIRICAL RESULT
+--------------------------------------------------------------------------------------------------------------------
+Channel-month groups               : 34
+K monotonic failures               : 0
+Error monotonic failures           : 0
+Original 1-SE candidate             : 0.99
+q=.99 mean dimension retained       : 87.25% .. 89.61%
+
+MATHEMATICAL LIMIT
+--------------------------------------------------------------------------------------------------------------------
+For nested PCA subspaces:
+
+    E_(K+1) <= E_K
+
+and for the complete 30-dimensional basis:
+
+    E_30 = 0.
+
+INTERPRETATION
+--------------------------------------------------------------------------------------------------------------------
+q=.99 is valid as the best candidate among the tested policies for full-vector reconstruction.
+It is NOT identified as the intrinsic or optimal dimension of the functional representation.
+
+NEXT METHOD
+--------------------------------------------------------------------------------------------------------------------
+Temporal bi-cross-validation of SVD/PCA rank.
+Hold out both future rows and lag columns.
+
+GOVERNANCE
+--------------------------------------------------------------------------------------------------------------------
+Target used                         : NO
+New PCA/SVD executed                : NO
+Final K selected                    : NO
+Folds frozen                        : NO
+Classifier trained                  : NO
+Silver created                      : NO
+RAW modified                        : NO
+====================================================================================================================

@@ -1,0 +1,14 @@
+{
+  "created_at_utc": "2026-08-30T10:09:49.068116+00:00",
+  "canonical_file": "/home/runner/workspace/Delivery_Risk_Intelligence/metadata/registry_v1_1/croissant_1_1_FIXED.json",
+  "compat_file": "/home/runner/workspace/Delivery_Risk_Intelligence/metadata/registry_v1_1/croissant_1_1_MLCROISSANT_COMPAT.json",
+  "croissant_spec": "1.1",
+  "mlcroissant_version_target": "1.1.0",
+  "canonical_reference_syntax": "references: {\"@id\": \"recordset/field\"}",
+  "compat_reference_syntax": "references: {\"field\": {\"@id\": \"recordset/field\"}}",
+  "references_converted": 7,
+  "expected_references": 7,
+  "canonical_preserved": true,
+  "raw_modified": false,
+  "interpretation": "Compatibility representation for current mlcroissant parser; canonical Croissant metadata remains unchanged."
+}

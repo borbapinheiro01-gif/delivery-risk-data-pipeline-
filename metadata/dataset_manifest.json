@@ -1,0 +1,104 @@
+{
+  "project": "Delivery Risk Intelligence Platform",
+  "dataset": {
+    "name": "Brazilian E-Commerce Public Dataset by Olist",
+    "identifier": "olistbr/brazilian-ecommerce",
+    "publisher": "Olist",
+    "distribution": "Kaggle",
+    "data_nature": "real commercial data, anonymized according to dataset description",
+    "time_coverage_description": "2016-2018",
+    "files_expected": 9,
+    "columns_observed": 52,
+    "dataset_sha256_composite": "3a2d46493a1d746f1840068264755660a30705a7ff80475eaee89b470387a7e3",
+    "file_fingerprints": [
+      {
+        "table": "customers",
+        "file": "olist_customers_dataset.csv",
+        "size_bytes": 9033957,
+        "sha256": "983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2"
+      },
+      {
+        "table": "geolocation",
+        "file": "olist_geolocation_dataset.csv",
+        "size_bytes": 61273883,
+        "sha256": "b514f6fc991b9566aeba02aa5d67e2c3630f034b60a0e05aa0d082a3b66d88d6"
+      },
+      {
+        "table": "order_items",
+        "file": "olist_order_items_dataset.csv",
+        "size_bytes": 15438671,
+        "sha256": "0bc4d068c4fe38cbb01bd90e8746e3c613fe7b4baef75fab7b0e329701c3e279"
+      },
+      {
+        "table": "payments",
+        "file": "olist_order_payments_dataset.csv",
+        "size_bytes": 5777138,
+        "sha256": "4f713964f2815dbbaa40b9488268c55aac3627bfce5aa96cf58d1f3616de3cc0"
+      },
+      {
+        "table": "reviews",
+        "file": "olist_order_reviews_dataset.csv",
+        "size_bytes": 14451670,
+        "sha256": "012b61c7593e34f51fa614efdf802b9c7056ce6aae5307ddb93236e7cfc797d7"
+      },
+      {
+        "table": "orders",
+        "file": "olist_orders_dataset.csv",
+        "size_bytes": 17654914,
+        "sha256": "8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf"
+      },
+      {
+        "table": "products",
+        "file": "olist_products_dataset.csv",
+        "size_bytes": 2379446,
+        "sha256": "3e6569628a17fbc75fd206ee357b59e20364b9afa90f5b6cd5b4d624c58aa9cc"
+      },
+      {
+        "table": "sellers",
+        "file": "olist_sellers_dataset.csv",
+        "size_bytes": 174703,
+        "sha256": "1f643d2b950373b85735e7794b20986f528d7a000432e7c6f9bcbb44d0846a0e"
+      },
+      {
+        "table": "translation",
+        "file": "product_category_name_translation.csv",
+        "size_bytes": 2613,
+        "sha256": "a81f0d1f27b27e7293f761bc79e3ce8f348ee39c4b3ed3e49bde38f478586278"
+      }
+    ]
+  },
+  "intended_project_use": {
+    "primary_problem": "early warning of violation of delivery promise",
+    "prediction_time": "order_purchase_timestamp",
+    "unit_of_analysis_target": "order_id",
+    "main_model_grain": "one row per order",
+    "future_modules": [
+      "ETA prediction",
+      "uncertainty / quantile prediction",
+      "NLP customer impact analysis",
+      "decision engine",
+      "MLOps monitoring"
+    ]
+  },
+  "ground_truth_statement": {
+    "source_truth": "Values are observed in the public Olist dataset.",
+    "internal_validation": "Structural, semantic and statistical gates available.",
+    "external_truth": "Original Olist operational systems are not available for independent verification.",
+    "important_distinction": "Internal consistency does not prove external ground-truth accuracy."
+  },
+  "quality_gate_status": {
+    "gate_01_structural": "PASS",
+    "gate_02_semantic": "PASS",
+    "gate_03_statistical": "PASS"
+  },
+  "known_constraints": [
+    "orders may contain multiple items",
+    "items may be associated with different sellers",
+    "reviews are post-purchase/post-delivery information",
+    "geolocation contains multiple observations per ZIP prefix",
+    "some lifecycle timestamps have ordering anomalies",
+    "late-label semantics require explicit contract",
+    "late observation window is not mature in final raw months",
+    "availability time is not explicitly provided for every field"
+  ]
+}

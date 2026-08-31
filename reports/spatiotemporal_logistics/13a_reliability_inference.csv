@@ -1,0 +1,3 @@
+model,status,nobs,pseudo_r2_in_sample
+R_A_Observed,PASS,90783,0.014729780548802252
+R_B_Promise_Adjusted,PASS,90783,0.034827744031259655

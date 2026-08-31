@@ -1,0 +1,53 @@
+table,column,source_grain,target_ml_grain,aggregation_required,aggregation_policy,direct_feature_allowed,feature_form,grain_compatibility
+customers,customer_id,1 row per order-specific customer_id,1 row per order_id,NO,NONE_DIRECT,NO,KEY_OR_HISTORY_ONLY,ORDER_SPECIFIC_REFERENCE_JOIN
+customers,customer_unique_id,1 row per order-specific customer_id,1 row per order_id,NO,NONE_DIRECT,NO,KEY_OR_HISTORY_ONLY,ORDER_SPECIFIC_REFERENCE_JOIN
+customers,customer_zip_code_prefix,1 row per order-specific customer_id,1 row per order_id,NO,DIRECT_REFERENCE_JOIN,YES_CANDIDATE,CUSTOMER_LOCATION,ORDER_SPECIFIC_REFERENCE_JOIN
+customers,customer_city,1 row per order-specific customer_id,1 row per order_id,NO,DIRECT_REFERENCE_JOIN,YES_CANDIDATE,CUSTOMER_LOCATION,ORDER_SPECIFIC_REFERENCE_JOIN
+customers,customer_state,1 row per order-specific customer_id,1 row per order_id,NO,DIRECT_REFERENCE_JOIN,YES_CANDIDATE,CUSTOMER_LOCATION,ORDER_SPECIFIC_REFERENCE_JOIN
+geolocation,geolocation_zip_code_prefix,1 row per geolocation observation for ZIP prefix,1 row per order_id,YES,CONSOLIDATE_BY_ZIP_PREFIX before customer/seller join,NO_RAW,ZIP_LEVEL_REFERENCE,REFERENCE_OBSERVATION_REQUIRES_CONSOLIDATION
+geolocation,geolocation_lat,1 row per geolocation observation for ZIP prefix,1 row per order_id,YES,CONSOLIDATE_BY_ZIP_PREFIX before customer/seller join,NO_RAW,ZIP_LEVEL_REFERENCE,REFERENCE_OBSERVATION_REQUIRES_CONSOLIDATION
+geolocation,geolocation_lng,1 row per geolocation observation for ZIP prefix,1 row per order_id,YES,CONSOLIDATE_BY_ZIP_PREFIX before customer/seller join,NO_RAW,ZIP_LEVEL_REFERENCE,REFERENCE_OBSERVATION_REQUIRES_CONSOLIDATION
+geolocation,geolocation_city,1 row per geolocation observation for ZIP prefix,1 row per order_id,YES,CONSOLIDATE_BY_ZIP_PREFIX before customer/seller join,NO_RAW,ZIP_LEVEL_REFERENCE,REFERENCE_OBSERVATION_REQUIRES_CONSOLIDATION
+geolocation,geolocation_state,1 row per geolocation observation for ZIP prefix,1 row per order_id,YES,CONSOLIDATE_BY_ZIP_PREFIX before customer/seller join,NO_RAW,ZIP_LEVEL_REFERENCE,REFERENCE_OBSERVATION_REQUIRES_CONSOLIDATION
+order_items,order_id,1 row per item position inside an order,1 row per order_id,YES,GROUP_BY_ORDER_ID,NO,JOIN_KEY,CHILD_GRAIN_REQUIRES_AGGREGATION
+order_items,order_item_id,1 row per item position inside an order,1 row per order_id,YES,COUNT,NO,ORDER_ITEM_COUNT,CHILD_GRAIN_REQUIRES_AGGREGATION
+order_items,product_id,1 row per item position inside an order,1 row per order_id,YES,COUNT_DISTINCT + JOIN_PRODUCT_ATTRIBUTES,NO,PRODUCT_AGGREGATES,CHILD_GRAIN_REQUIRES_AGGREGATION
+order_items,seller_id,1 row per item position inside an order,1 row per order_id,YES,COUNT_DISTINCT + POINT_IN_TIME_HISTORY,NO,SELLER_COUNT_AND_HISTORICAL_FEATURES,CHILD_GRAIN_REQUIRES_AGGREGATION
+order_items,shipping_limit_date,1 row per item position inside an order,1 row per order_id,YES,HOLD — availability at t0 not proven,HOLD,NONE_UNTIL_PROVENANCE_CONFIRMED,CHILD_GRAIN_REQUIRES_AGGREGATION
+order_items,price,1 row per item position inside an order,1 row per order_id,YES,"SUM, MEAN, MAX, MIN",AGGREGATE_ONLY,ORDER_PRICE_AGGREGATES,CHILD_GRAIN_REQUIRES_AGGREGATION
+order_items,freight_value,1 row per item position inside an order,1 row per order_id,YES,"SUM, MEAN, MAX, freight/item_ratio",AGGREGATE_ONLY,ORDER_FREIGHT_AGGREGATES,CHILD_GRAIN_REQUIRES_AGGREGATION
+payments,order_id,1 row per payment sequence,1 row per order_id,YES,GROUP_BY_ORDER_ID,NO,JOIN_KEY,CHILD_GRAIN_REQUIRES_AGGREGATION
+payments,payment_sequential,1 row per payment sequence,1 row per order_id,YES,COUNT,NO,PAYMENT_RECORD_COUNT,CHILD_GRAIN_REQUIRES_AGGREGATION
+payments,payment_type,1 row per payment sequence,1 row per order_id,YES,SET/FLAGS + COUNT_DISTINCT + PRIMARY_TYPE,AGGREGATE_ONLY,MULTI_PAYMENT_TYPE,CHILD_GRAIN_REQUIRES_AGGREGATION
+payments,payment_installments,1 row per payment sequence,1 row per order_id,YES,"MAX, MEAN",AGGREGATE_ONLY,INSTALLMENT_AGGREGATES,CHILD_GRAIN_REQUIRES_AGGREGATION
+payments,payment_value,1 row per payment sequence,1 row per order_id,YES,SUM,AGGREGATE_ONLY,TOTAL_PAYMENT,CHILD_GRAIN_REQUIRES_AGGREGATION
+reviews,review_id,1 row per review record,1 row per order_id,NOT_APPLICABLE_FOR_BASELINE,KEEP_OUTSIDE_DELIVERY_RISK_BASELINE,NO,POST_DELIVERY_NLP_ONLY,POST_OUTCOME_DATA
+reviews,order_id,1 row per review record,1 row per order_id,NOT_APPLICABLE_FOR_BASELINE,KEEP_OUTSIDE_DELIVERY_RISK_BASELINE,NO,POST_DELIVERY_NLP_ONLY,POST_OUTCOME_DATA
+reviews,review_score,1 row per review record,1 row per order_id,NOT_APPLICABLE_FOR_BASELINE,KEEP_OUTSIDE_DELIVERY_RISK_BASELINE,NO,POST_DELIVERY_NLP_ONLY,POST_OUTCOME_DATA
+reviews,review_comment_title,1 row per review record,1 row per order_id,NOT_APPLICABLE_FOR_BASELINE,KEEP_OUTSIDE_DELIVERY_RISK_BASELINE,NO,POST_DELIVERY_NLP_ONLY,POST_OUTCOME_DATA
+reviews,review_comment_message,1 row per review record,1 row per order_id,NOT_APPLICABLE_FOR_BASELINE,KEEP_OUTSIDE_DELIVERY_RISK_BASELINE,NO,POST_DELIVERY_NLP_ONLY,POST_OUTCOME_DATA
+reviews,review_creation_date,1 row per review record,1 row per order_id,NOT_APPLICABLE_FOR_BASELINE,KEEP_OUTSIDE_DELIVERY_RISK_BASELINE,NO,POST_DELIVERY_NLP_ONLY,POST_OUTCOME_DATA
+reviews,review_answer_timestamp,1 row per review record,1 row per order_id,NOT_APPLICABLE_FOR_BASELINE,KEEP_OUTSIDE_DELIVERY_RISK_BASELINE,NO,POST_DELIVERY_NLP_ONLY,POST_OUTCOME_DATA
+orders,order_id,1 row per order,1 row per order_id,NO,NONE,NO,KEY_ONLY,DIRECT_GRAIN_MATCH
+orders,customer_id,1 row per order,1 row per order_id,NO,NONE,NO,KEY_ONLY,DIRECT_GRAIN_MATCH
+orders,order_status,1 row per order,1 row per order_id,NO,NONE,NO,FORBIDDEN_T0,DIRECT_GRAIN_MATCH
+orders,order_purchase_timestamp,1 row per order,1 row per order_id,NO,derive weekday/hour/month/seasonality,NO_RAW_TIMESTAMP,DERIVED_CALENDAR,DIRECT_GRAIN_MATCH
+orders,order_approved_at,1 row per order,1 row per order_id,NO,NONE,NO,FORBIDDEN_T0,DIRECT_GRAIN_MATCH
+orders,order_delivered_carrier_date,1 row per order,1 row per order_id,NO,NONE,NO,FORBIDDEN_T0,DIRECT_GRAIN_MATCH
+orders,order_delivered_customer_date,1 row per order,1 row per order_id,NO,NONE,NO,FORBIDDEN_T0,DIRECT_GRAIN_MATCH
+orders,order_estimated_delivery_date,1 row per order,1 row per order_id,NO,estimated_delivery_date - purchase_timestamp,DERIVE_ONLY,PROMISED_LEAD_TIME,DIRECT_GRAIN_MATCH
+products,product_id,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,NONE_DIRECT,NO,JOIN_KEY,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+products,product_category_name,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,MODE/SET/N_DISTINCT,AGGREGATE_ONLY,CATEGORY_SET_OR_DOMINANT_CATEGORY,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+products,product_name_lenght,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,ORDER_LEVEL MIN/MEAN/MAX/SUM as semantically appropriate,AGGREGATE_ONLY,PRODUCT_ATTRIBUTE_AGGREGATES,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+products,product_description_lenght,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,ORDER_LEVEL MIN/MEAN/MAX/SUM as semantically appropriate,AGGREGATE_ONLY,PRODUCT_ATTRIBUTE_AGGREGATES,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+products,product_photos_qty,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,ORDER_LEVEL MIN/MEAN/MAX/SUM as semantically appropriate,AGGREGATE_ONLY,PRODUCT_ATTRIBUTE_AGGREGATES,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+products,product_weight_g,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,ORDER_LEVEL MIN/MEAN/MAX/SUM as semantically appropriate,AGGREGATE_ONLY,PRODUCT_ATTRIBUTE_AGGREGATES,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+products,product_length_cm,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,ORDER_LEVEL MIN/MEAN/MAX/SUM as semantically appropriate,AGGREGATE_ONLY,PRODUCT_ATTRIBUTE_AGGREGATES,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+products,product_height_cm,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,ORDER_LEVEL MIN/MEAN/MAX/SUM as semantically appropriate,AGGREGATE_ONLY,PRODUCT_ATTRIBUTE_AGGREGATES,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+products,product_width_cm,1 row per product_id,1 row per order_id,YES_VIA_ORDER_ITEMS,ORDER_LEVEL MIN/MEAN/MAX/SUM as semantically appropriate,AGGREGATE_ONLY,PRODUCT_ATTRIBUTE_AGGREGATES,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+sellers,seller_id,1 row per seller_id,1 row per order_id,YES_VIA_ORDER_ITEMS,COUNT_DISTINCT + POINT_IN_TIME_HISTORY,NO,JOIN_KEY,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+sellers,seller_zip_code_prefix,1 row per seller_id,1 row per order_id,YES_VIA_ORDER_ITEMS,SET / COUNT_DISTINCT / MULTI_SELLER_POLICY,AGGREGATE_ONLY,SELLER_ATTRIBUTE_AGGREGATE,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+sellers,seller_city,1 row per seller_id,1 row per order_id,YES_VIA_ORDER_ITEMS,SET / COUNT_DISTINCT / MULTI_SELLER_POLICY,AGGREGATE_ONLY,SELLER_ATTRIBUTE_AGGREGATE,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+sellers,seller_state,1 row per seller_id,1 row per order_id,YES_VIA_ORDER_ITEMS,SET / COUNT_DISTINCT / MULTI_SELLER_POLICY,AGGREGATE_ONLY,SELLER_ATTRIBUTE_AGGREGATE,REFERENCE_ENTITY_REQUIRES_ITEM_TO_ORDER_AGGREGATION
+translation,product_category_name,1 row per Portuguese product category,1 row per order_id,NO_MODEL_FEATURE,LEFT_JOIN_FOR_PRESENTATION,NO,DISPLAY_ONLY,PRESENTATION_REFERENCE
+translation,product_category_name_english,1 row per Portuguese product category,1 row per order_id,NO_MODEL_FEATURE,LEFT_JOIN_FOR_PRESENTATION,NO,DISPLAY_ONLY,PRESENTATION_REFERENCE

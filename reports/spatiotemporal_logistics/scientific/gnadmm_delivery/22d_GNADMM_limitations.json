@@ -1,0 +1,13 @@
+{
+  "limitations": [
+    "Observational e-commerce data; no causal identification.",
+    "Only 14 expanding-window OOT evaluation months are available for paired temporal inference.",
+    "The GN objective is Brier nonlinear least squares, whereas logistic regression optimizes binomial log-likelihood.",
+    "The beta_z2 sign constraint is externally imposed and cannot create structural information absent from the data.",
+    "GN–ADMM convergence of the external nonlinear sequence is not globally certified by these experiments.",
+    "The GN–ADMM multistart experiment showed sensitivity to initialization in at least one starting configuration.",
+    "Calibration decomposition based on prediction bins is an approximation.",
+    "Great-circle distance is a geographic proxy rather than road-network distance.",
+    "Expected freight is an OOT model-derived quantity and inherits uncertainty from that upstream model."
+  ]
+}

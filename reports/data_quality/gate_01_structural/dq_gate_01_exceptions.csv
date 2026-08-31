@@ -1,0 +1,2 @@
+gate,check_id,table,dimension,severity,status,observed,expected,details
+DQ_GATE_01_STRUCTURAL,geolocation-ROWDUP,geolocation,full_row_duplicates,WARNING,WARN,261831,informational / allowed at structural gate,

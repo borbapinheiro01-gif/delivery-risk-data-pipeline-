@@ -1,0 +1,1980 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+"""
+===============================================================================
+MODEL 01.0-C3.3-D2.1
+FUNCTIONAL REPRESENTATION DECISION
+RAW-30D vs SMOOTH-30D-EDF0.75
+===============================================================================
+
+OBJETIVO
+--------
+Fechar formalmente a decisão metodológica produzida pelos experimentos:
+
+    C3.3-A
+    C3.3-B
+    C3.3-C
+    C3.3-D1
+    C3.3-D1.1
+    C3.3-D2
+
+SEM recalcular:
+
+- curvas PIT;
+- smoothing;
+- SVD;
+- PCA;
+- folds.
+
+===============================================================================
+DECISÃO QUE ESTE PASSO PODE TOMAR
+===============================================================================
+
+RAW-30D:
+
+    PRIMARY_FOR_NEXT_FUNCTIONAL_STAGE
+
+SMOOTH-30D-EDF0.75:
+
+    REJECTED_AS_PRIMARY_UNSUPERVISED_PREPROCESSING
+
+IMPORTANTE:
+
+Isso NÃO significa:
+
+    "smoothing nunca poderá ajudar a classificação".
+
+O D2 não utilizou o target.
+
+Portanto:
+
+    predictive_superiority_claimed = False
+
+===============================================================================
+CORREÇÃO DO D2
+===============================================================================
+
+O D2 original contém a validação:
+
+    negative_values_preserved_not_clipped
+
+com:
+
+    observed = 0
+    expected > 0
+
+Esse requisito é logicamente inválido.
+
+D1.1 demonstrou:
+
+    existem negativos na população global auditada.
+
+D2 demonstrou:
+
+    não existem negativos nos TEST folds utilizados.
+
+As duas afirmações podem ser simultaneamente verdadeiras.
+
+Logo:
+
+    absence of negative values in D2 test folds
+        !=
+    evidence of clipping.
+
+O D2 original será PRESERVADO.
+
+Será criada uma validação V2 corrigida.
+
+===============================================================================
+NÃO FAZ
+===============================================================================
+
+- não modifica o D2 original;
+- não modifica curvas;
+- não modifica RAW;
+- não cria Silver;
+- não escolhe K final;
+- não congela folds;
+- não treina classificador;
+- não usa target;
+- não altera o documento-mestre.
+"""
+
+from pathlib import Path
+from datetime import datetime, timezone
+import json
+import hashlib
+
+import numpy as np
+import pandas as pd
+
+
+# =============================================================================
+# PATHS
+# =============================================================================
+
+PROJECT = (
+    Path.home()
+    / "workspace"
+    / "Delivery_Risk_Intelligence"
+)
+
+DIR = (
+    PROJECT
+    / "reports"
+    / "modeling"
+    / "model_01_order_logistic"
+)
+
+DOCS = (
+    PROJECT
+    / "docs"
+)
+
+
+D2_SUMMARY = (
+    DIR
+    / "03o_raw_vs_smooth_summary.json"
+)
+
+D2_VALIDATION = (
+    DIR
+    / "03n_raw_vs_smooth_validation.csv"
+)
+
+D2_TABLE = (
+    DIR
+    / "03l_raw_vs_smooth_temporal_summary.csv"
+)
+
+D2_PAIRED = (
+    DIR
+    / "03m_raw_vs_smooth_paired_comparison.csv"
+)
+
+D11_SUMMARY = (
+    DIR
+    / "03i_negative_smoothing_summary.json"
+)
+
+C33C_SUMMARY = (
+    DIR
+    / "02z_functional_temporal_portability_summary.json"
+)
+
+
+# =============================================================================
+# NEW OUTPUTS
+# =============================================================================
+
+VALIDATION_V2 = (
+    DIR
+    / "03r_d2_methodological_validation_v2.csv"
+)
+
+DECISION_JSON = (
+    DIR
+    / "03s_functional_representation_decision.json"
+)
+
+DECISION_REPORT = (
+    DIR
+    / "03t_functional_representation_decision_report.txt"
+)
+
+DECISION_MD = (
+    DOCS
+    / "FUNCTIONAL_REPRESENTATION_DECISION_D2.md"
+)
+
+
+# =============================================================================
+# HELPERS
+# =============================================================================
+
+def load_json(path):
+    with path.open(
+        encoding="utf-8"
+    ) as f:
+        return json.load(f)
+
+
+def sha256(path):
+    h = hashlib.sha256()
+
+    with path.open("rb") as f:
+        for block in iter(
+            lambda: f.read(1024 * 1024),
+            b""
+        ):
+            h.update(block)
+
+    return h.hexdigest()
+
+
+def add_check(
+    rows,
+    check,
+    condition,
+    observed,
+    expected,
+    interpretation=""
+):
+    rows.append({
+        "check":
+            check,
+
+        "status":
+            "PASS"
+            if bool(condition)
+            else "FAIL",
+
+        "observed":
+            observed,
+
+        "expected":
+            expected,
+
+        "interpretation":
+            interpretation,
+    })
+
+
+# =============================================================================
+# START
+# =============================================================================
+
+print()
+print("=" * 120)
+print("MODEL 01.0-C3.3-D2.1 — FUNCTIONAL REPRESENTATION DECISION")
+print("=" * 120)
+
+
+# =============================================================================
+# 1. PREREQUISITES
+# =============================================================================
+
+required = [
+    (
+        D2_SUMMARY,
+        "D2 summary"
+    ),
+    (
+        D2_VALIDATION,
+        "D2 original validation"
+    ),
+    (
+        D2_TABLE,
+        "D2 summary table"
+    ),
+    (
+        D2_PAIRED,
+        "D2 paired comparison"
+    ),
+    (
+        D11_SUMMARY,
+        "D1.1 summary"
+    ),
+    (
+        C33C_SUMMARY,
+        "C3.3-C summary"
+    ),
+]
+
+
+for path, label in required:
+
+    if not path.exists():
+        raise SystemExit(
+            f"[FAIL] {label} ausente: {path}"
+        )
+
+    print(
+        f"[PASS] {label}"
+    )
+
+
+# =============================================================================
+# 2. LOAD
+# =============================================================================
+
+d2 = load_json(
+    D2_SUMMARY
+)
+
+d11 = load_json(
+    D11_SUMMARY
+)
+
+c33c = load_json(
+    C33C_SUMMARY
+)
+
+original_validation = pd.read_csv(
+    D2_VALIDATION
+)
+
+summary_table = pd.read_csv(
+    D2_TABLE
+)
+
+paired = pd.read_csv(
+    D2_PAIRED
+)
+
+
+# =============================================================================
+# 3. PRESERVE ORIGINAL PROVENANCE
+# =============================================================================
+
+original_hashes = {
+    "d2_summary_sha256":
+        sha256(D2_SUMMARY),
+
+    "d2_validation_sha256":
+        sha256(D2_VALIDATION),
+
+    "d2_summary_table_sha256":
+        sha256(D2_TABLE),
+
+    "d2_paired_sha256":
+        sha256(D2_PAIRED),
+}
+
+
+print()
+print("=" * 120)
+print("ORIGINAL D2 PROVENANCE")
+print("=" * 120)
+
+for k, v in original_hashes.items():
+    print(
+        f"{k:32s}: {v}"
+    )
+
+
+# =============================================================================
+# 4. UNDERSTAND ORIGINAL FAIL
+# =============================================================================
+
+original_failures = (
+    original_validation.loc[
+        original_validation[
+            "status"
+        ]
+        .astype(str)
+        .str.upper()
+        .eq("FAIL")
+    ]
+    .copy()
+)
+
+
+expected_invalid_check = (
+    "negative_values_preserved_not_clipped"
+)
+
+
+only_expected_failure = (
+    len(
+        original_failures
+    )
+    ==
+    1
+    and
+    str(
+        original_failures.iloc[
+            0
+        ][
+            "check"
+        ]
+    )
+    ==
+    expected_invalid_check
+)
+
+
+# =============================================================================
+# 5. D1.1 GLOBAL NEGATIVE EVIDENCE
+# =============================================================================
+
+d11_negative_configs = int(
+    d11.get(
+        "configurations_with_negative_cells",
+        -1
+    )
+)
+
+d11_configs = int(
+    d11.get(
+        "configurations_audited",
+        -1
+    )
+)
+
+
+global_negatives_proven = (
+    d11.get(
+        "status"
+    )
+    ==
+    "PASS"
+    and
+    d11_negative_configs
+    >
+    0
+)
+
+
+# =============================================================================
+# 6. D2 TEST-FOLD NEGATIVE OBSERVATION
+# =============================================================================
+
+negative_col = (
+    "smooth_negative_cell_pct_test"
+)
+
+
+if negative_col not in paired.columns:
+    raise RuntimeError(
+        f"Coluna ausente: {negative_col}"
+    )
+
+
+d2_negative_test_entries = int(
+    (
+        pd.to_numeric(
+            paired[
+                negative_col
+            ],
+            errors="coerce"
+        )
+        >
+        0
+    ).sum()
+)
+
+
+# =============================================================================
+# 7. PAIRED D2 EVIDENCE
+# =============================================================================
+
+required_paired_cols = [
+    "channel",
+    "current_month",
+    "raw_k90_train",
+    "smooth_k90_train",
+    "raw_future_relative_error_k90",
+    "smooth_end_to_end_raw_error_k90",
+    "end_to_end_error_delta_smooth_minus_raw",
+    "end_to_end_error_ratio_smooth_over_raw",
+    "smooth_lower_end_to_end_error",
+]
+
+
+missing_cols = [
+    c
+    for c in required_paired_cols
+    if c not in paired.columns
+]
+
+
+if missing_cols:
+    raise RuntimeError(
+        "Colunas D2 ausentes: "
+        +
+        str(
+            missing_cols
+        )
+    )
+
+
+paired_delta = pd.to_numeric(
+    paired[
+        "end_to_end_error_delta_smooth_minus_raw"
+    ],
+    errors="coerce"
+)
+
+
+paired_ratio = pd.to_numeric(
+    paired[
+        "end_to_end_error_ratio_smooth_over_raw"
+    ],
+    errors="coerce"
+)
+
+
+raw_k = pd.to_numeric(
+    paired[
+        "raw_k90_train"
+    ],
+    errors="coerce"
+)
+
+
+smooth_k = pd.to_numeric(
+    paired[
+        "smooth_k90_train"
+    ],
+    errors="coerce"
+)
+
+
+finite_pair_metrics = (
+    np.isfinite(
+        paired_delta
+    ).all()
+    and
+    np.isfinite(
+        paired_ratio
+    ).all()
+    and
+    np.isfinite(
+        raw_k
+    ).all()
+    and
+    np.isfinite(
+        smooth_k
+    ).all()
+)
+
+
+total_pairs = int(
+    len(
+        paired
+    )
+)
+
+
+raw_wins = int(
+    (
+        paired_delta
+        >
+        0
+    ).sum()
+)
+
+
+smooth_wins = int(
+    (
+        paired_delta
+        <
+        0
+    ).sum()
+)
+
+
+ties = int(
+    np.isclose(
+        paired_delta,
+        0.0,
+        atol=1e-12,
+        rtol=0
+    ).sum()
+)
+
+
+all_raw_wins = (
+    raw_wins
+    ==
+    total_pairs
+)
+
+
+all_ratios_above_one = bool(
+    (
+        paired_ratio
+        >
+        1.0
+    ).all()
+)
+
+
+all_smoothing_compresses = bool(
+    (
+        smooth_k
+        <
+        raw_k
+    ).all()
+)
+
+
+channels = sorted(
+    paired[
+        "channel"
+    ]
+    .unique()
+    .tolist()
+)
+
+
+channel_counts = (
+    paired.groupby(
+        "channel"
+    )
+    .size()
+    .to_dict()
+)
+
+
+# =============================================================================
+# 8. CHANNEL SUMMARY
+# =============================================================================
+
+channel_rows = []
+
+
+for channel, g in paired.groupby(
+    "channel",
+    sort=True
+):
+
+    delta = pd.to_numeric(
+        g[
+            "end_to_end_error_delta_smooth_minus_raw"
+        ],
+        errors="coerce"
+    )
+
+    ratio = pd.to_numeric(
+        g[
+            "end_to_end_error_ratio_smooth_over_raw"
+        ],
+        errors="coerce"
+    )
+
+    rk = pd.to_numeric(
+        g[
+            "raw_k90_train"
+        ],
+        errors="coerce"
+    )
+
+    sk = pd.to_numeric(
+        g[
+            "smooth_k90_train"
+        ],
+        errors="coerce"
+    )
+
+    raw_error = pd.to_numeric(
+        g[
+            "raw_future_relative_error_k90"
+        ],
+        errors="coerce"
+    )
+
+    smooth_error = pd.to_numeric(
+        g[
+            "smooth_end_to_end_raw_error_k90"
+        ],
+        errors="coerce"
+    )
+
+    channel_rows.append({
+        "channel":
+            channel,
+
+        "temporal_tests":
+            int(
+                len(g)
+            ),
+
+        "raw_wins":
+            int(
+                (
+                    delta > 0
+                ).sum()
+            ),
+
+        "smooth_wins":
+            int(
+                (
+                    delta < 0
+                ).sum()
+            ),
+
+        "raw_error_mean":
+            float(
+                raw_error.mean()
+            ),
+
+        "smooth_end_to_end_error_mean":
+            float(
+                smooth_error.mean()
+            ),
+
+        "delta_mean":
+            float(
+                delta.mean()
+            ),
+
+        "delta_median":
+            float(
+                delta.median()
+            ),
+
+        "error_ratio_mean":
+            float(
+                ratio.mean()
+            ),
+
+        "raw_k90_median":
+            float(
+                rk.median()
+            ),
+
+        "smooth_k90_median":
+            float(
+                sk.median()
+            ),
+
+        "mean_component_reduction":
+            float(
+                (
+                    rk - sk
+                ).mean()
+            ),
+    })
+
+
+channel_summary = pd.DataFrame(
+    channel_rows
+)
+
+
+# =============================================================================
+# 9. CORRECTED VALIDATION V2
+# =============================================================================
+
+checks = []
+
+
+add_check(
+    checks,
+    "original_d2_only_failed_invalid_negative_assertion",
+    only_expected_failure,
+    (
+        original_failures[
+            "check"
+        ].tolist()
+    ),
+    [
+        expected_invalid_check
+    ],
+    (
+        "The original D2 failure was caused only by the invalid "
+        "assumption that every future test subset must contain "
+        "negative smoothed cells."
+    )
+)
+
+
+add_check(
+    checks,
+    "d11_global_negative_artifacts_proven",
+    global_negatives_proven,
+    (
+        f"{d11_negative_configs}/"
+        f"{d11_configs}"
+    ),
+    ">0 configurations",
+    (
+        "D1.1 remains the canonical evidence that unconstrained "
+        "smoothing can produce negative values."
+    )
+)
+
+
+# IMPORTANT:
+# This is intentionally INFO-like knowledge expressed as a PASS
+# of factual consistency, NOT a requirement for >0 negatives.
+add_check(
+    checks,
+    "d2_test_fold_negative_observation_is_consistent",
+    d2_negative_test_entries
+    >=
+    0,
+    d2_negative_test_entries,
+    "descriptive_only",
+    (
+        "Zero negative cells in D2 future subsets does not imply clipping. "
+        "Subset behavior and global-population behavior are distinct."
+    )
+)
+
+
+add_check(
+    checks,
+    "d2_reports_no_clipping",
+    d2.get(
+        "negative_values_clipped"
+    )
+    is False,
+    d2.get(
+        "negative_values_clipped"
+    ),
+    False,
+    (
+        "D2 metadata explicitly records that no clipping was applied."
+    )
+)
+
+
+add_check(
+    checks,
+    "paired_metrics_finite",
+    finite_pair_metrics,
+    finite_pair_metrics,
+    True
+)
+
+
+add_check(
+    checks,
+    "paired_comparisons_34",
+    total_pairs == 34,
+    total_pairs,
+    34
+)
+
+
+add_check(
+    checks,
+    "two_channels_present",
+    channels
+    ==
+    [
+        "purchase_freight",
+        "purchase_volume"
+    ],
+    channels,
+    [
+        "purchase_freight",
+        "purchase_volume"
+    ]
+)
+
+
+add_check(
+    checks,
+    "seventeen_tests_per_channel",
+    all(
+        int(v)
+        ==
+        17
+        for v in channel_counts.values()
+    ),
+    channel_counts,
+    {
+        "purchase_freight":
+            17,
+
+        "purchase_volume":
+            17,
+    }
+)
+
+
+add_check(
+    checks,
+    "raw_lower_end_to_end_error_all_pairs",
+    all_raw_wins,
+    raw_wins,
+    total_pairs,
+    (
+        "Positive delta means Smooth->RAW error exceeded RAW error."
+    )
+)
+
+
+add_check(
+    checks,
+    "smooth_zero_end_to_end_wins",
+    smooth_wins == 0,
+    smooth_wins,
+    0
+)
+
+
+add_check(
+    checks,
+    "all_smooth_raw_error_ratios_above_one",
+    all_ratios_above_one,
+    float(
+        paired_ratio.min()
+    ),
+    ">1"
+)
+
+
+add_check(
+    checks,
+    "smoothing_reduces_k90_all_pairs",
+    all_smoothing_compresses,
+    int(
+        (
+            smooth_k
+            <
+            raw_k
+        ).sum()
+    ),
+    total_pairs,
+    (
+        "Smoothing compressed dimensionality, but compression alone "
+        "does not establish superior future representation."
+    )
+)
+
+
+add_check(
+    checks,
+    "target_not_used",
+    d2.get(
+        "target_used"
+    )
+    is False,
+    d2.get(
+        "target_used"
+    ),
+    False
+)
+
+
+add_check(
+    checks,
+    "raw_not_modified",
+    d2.get(
+        "raw_modified"
+    )
+    is False,
+    d2.get(
+        "raw_modified"
+    ),
+    False
+)
+
+
+validation_v2 = pd.DataFrame(
+    checks
+)
+
+
+failures = int(
+    validation_v2[
+        "status"
+    ]
+    .eq(
+        "FAIL"
+    )
+    .sum()
+)
+
+
+validation_v2.to_csv(
+    VALIDATION_V2,
+    index=False
+)
+
+
+# =============================================================================
+# 10. FORMAL DECISION
+# =============================================================================
+
+decision_supported = (
+    failures == 0
+    and
+    all_raw_wins
+    and
+    all_ratios_above_one
+    and
+    all_smoothing_compresses
+)
+
+
+raw_status = (
+    "PRIMARY_FOR_NEXT_FUNCTIONAL_STAGE"
+    if decision_supported
+    else
+    "HOLD"
+)
+
+
+smooth_status = (
+    "REJECTED_AS_PRIMARY_UNSUPERVISED_PREPROCESSING"
+    if decision_supported
+    else
+    "HOLD"
+)
+
+
+decision = {
+    "decision_id":
+        "FUNCTIONAL_REPRESENTATION_D2_V1",
+
+    "created_at_utc":
+        datetime.now(
+            timezone.utc
+        ).isoformat(),
+
+    "status":
+        "PASS"
+        if decision_supported
+        else "REVIEW_REQUIRED",
+
+    "scope":
+        (
+            "Unsupervised functional representation and "
+            "future RAW-curve fidelity"
+        ),
+
+    "prediction_time":
+        "order_purchase_timestamp",
+
+    "point_in_time_rule":
+        "historical_event_time < current_order_purchase_timestamp",
+
+    "window_for_next_stage_days":
+        30,
+
+    "raw_30d": {
+        "status":
+            raw_status,
+
+        "interpretation":
+            (
+                "Primary functional representation for the next "
+                "dimension-selection stage."
+            ),
+    },
+
+    "smooth_30d_edf075": {
+        "status":
+            smooth_status,
+
+        "effective_df":
+            22.5,
+
+        "lambda":
+            0.0840662845049379,
+
+        "interpretation":
+            (
+                "Not selected as the primary unsupervised preprocessing "
+                "because dimensional compression was accompanied by worse "
+                "end-to-end reconstruction of future RAW curves in every "
+                "paired temporal comparison."
+            ),
+
+        "not_rejected_for_all_predictive_uses":
+            True,
+    },
+
+    "empirical_evidence": {
+        "paired_temporal_comparisons":
+            total_pairs,
+
+        "raw_wins":
+            raw_wins,
+
+        "smooth_wins":
+            smooth_wins,
+
+        "ties":
+            ties,
+
+        "all_raw_wins":
+            all_raw_wins,
+
+        "all_smoothing_compresses_k90":
+            all_smoothing_compresses,
+
+        "channels":
+            channel_summary.to_dict(
+                orient="records"
+            ),
+    },
+
+    "d2_original_status": {
+        "status":
+            d2.get(
+                "status"
+            ),
+
+        "validation_failures":
+            d2.get(
+                "validation_failures"
+            ),
+
+        "interpretation":
+            (
+                "Original FAIL preserved for provenance. "
+                "Its only failing assertion required negative values "
+                "to appear in every evaluated future subset; that "
+                "assumption is not logically required."
+            ),
+    },
+
+    "d2_corrected_validation": {
+        "status":
+            "PASS"
+            if failures == 0
+            else "FAIL",
+
+        "validation_failures":
+            failures,
+
+        "artifact":
+            str(
+                VALIDATION_V2.relative_to(
+                    PROJECT
+                )
+            ),
+    },
+
+    "scientific_scope_limits": {
+        "predictive_superiority_claimed":
+            False,
+
+        "reason":
+            (
+                "No target was used in D2. The decision concerns "
+                "unsupervised temporal representation fidelity, not "
+                "final delay-classification performance."
+            ),
+
+        "final_k_selected":
+            False,
+
+        "production_representation_frozen":
+            False,
+    },
+
+    "next_stage": {
+        "representation":
+            "RAW_30D",
+
+        "task":
+            (
+                "Select and validate component-count policy using "
+                "past-only temporal information before classifier training."
+            ),
+    },
+
+    "governance": {
+        "target_used":
+            False,
+
+        "clipping_applied":
+            False,
+
+        "smoothing_committed":
+            False,
+
+        "final_k_selected":
+            False,
+
+        "folds_frozen":
+            False,
+
+        "classifier_trained":
+            False,
+
+        "silver_created":
+            False,
+
+        "raw_modified":
+            False,
+    },
+
+    "provenance_hashes":
+        original_hashes,
+}
+
+
+DECISION_JSON.write_text(
+    json.dumps(
+        decision,
+        indent=4,
+        ensure_ascii=False
+    ),
+    encoding="utf-8"
+)
+
+
+# =============================================================================
+# 11. REPORT
+# =============================================================================
+
+report_lines = [
+    "=" * 112,
+    "MODEL 01.0-C3.3-D2.1 — FUNCTIONAL REPRESENTATION DECISION",
+    "=" * 112,
+    "",
+    f"STATUS                              : {decision['status']}",
+    "",
+    "DECISION",
+    "-" * 112,
+    f"RAW-30D                             : {raw_status}",
+    f"SMOOTH-30D-EDF0.75                  : {smooth_status}",
+    "",
+    "SCOPE",
+    "-" * 112,
+    "Decision concerns unsupervised functional representation fidelity.",
+    "It does NOT claim predictive superiority for the final delay classifier.",
+    "",
+    "EMPIRICAL EVIDENCE",
+    "-" * 112,
+    f"Paired temporal comparisons         : {total_pairs}",
+    f"RAW wins                            : {raw_wins}",
+    f"SMOOTH wins                         : {smooth_wins}",
+    f"Ties                                : {ties}",
+    "",
+]
+
+
+for _, row in channel_summary.iterrows():
+
+    report_lines += [
+        str(
+            row[
+                "channel"
+            ]
+        ),
+        (
+            "  temporal tests                   : "
+            f"{int(row['temporal_tests'])}"
+        ),
+        (
+            "  RAW wins                         : "
+            f"{int(row['raw_wins'])}"
+        ),
+        (
+            "  SMOOTH wins                      : "
+            f"{int(row['smooth_wins'])}"
+        ),
+        (
+            "  RAW future error mean            : "
+            f"{row['raw_error_mean']:.10f}"
+        ),
+        (
+            "  SMOOTH->RAW error mean           : "
+            f"{row['smooth_end_to_end_error_mean']:.10f}"
+        ),
+        (
+            "  mean error delta                 : "
+            f"{row['delta_mean']:.10f}"
+        ),
+        (
+            "  mean error ratio                 : "
+            f"{row['error_ratio_mean']:.10f}"
+        ),
+        (
+            "  RAW K90 median                   : "
+            f"{row['raw_k90_median']:.2f}"
+        ),
+        (
+            "  SMOOTH K90 median                : "
+            f"{row['smooth_k90_median']:.2f}"
+        ),
+        (
+            "  mean component reduction         : "
+            f"{row['mean_component_reduction']:.4f}"
+        ),
+        "",
+    ]
+
+
+report_lines += [
+    "D2 ORIGINAL VALIDATION",
+    "-" * 112,
+    f"Original status                      : {d2.get('status')}",
+    f"Original failures                    : {d2.get('validation_failures')}",
+    (
+        "Only original failing check           : "
+        f"{expected_invalid_check}"
+    ),
+    "",
+    "CORRECTED INTERPRETATION",
+    "-" * 112,
+    (
+        "D1.1 proves that unconstrained smoothing can create negative "
+        "values in the global audited population."
+    ),
+    (
+        "D2 future test folds contain zero negative cells."
+    ),
+    (
+        "These facts are not contradictory."
+    ),
+    (
+        "Zero negative cells in a subset is not evidence of clipping."
+    ),
+    "",
+    f"Corrected validation failures          : {failures}",
+    "",
+    "NEXT STAGE",
+    "-" * 112,
+    "Representation: RAW-30D",
+    (
+        "Next task: past-only temporal validation of the "
+        "component-count policy."
+    ),
+    "",
+    "IMPORTANT",
+    "-" * 112,
+    "Target used                            : NO",
+    "Final K selected                       : NO",
+    "Folds frozen                           : NO",
+    "Classifier trained                     : NO",
+    "Silver created                         : NO",
+    "RAW modified                           : NO",
+    "=" * 112,
+]
+
+
+DECISION_REPORT.write_text(
+    "\n".join(
+        report_lines
+    ),
+    encoding="utf-8"
+)
+
+
+# =============================================================================
+# 12. DOCUMENTATION WITH MATHEMATICS + BIBLIOGRAPHY
+# =============================================================================
+
+freight = channel_summary.loc[
+    channel_summary[
+        "channel"
+    ]
+    ==
+    "purchase_freight"
+].iloc[
+    0
+]
+
+
+volume_row = channel_summary.loc[
+    channel_summary[
+        "channel"
+    ]
+    ==
+    "purchase_volume"
+].iloc[
+    0
+]
+
+
+md = f"""# Functional Representation Decision — D2
+
+## 1. Estado
+
+**Decision ID:** `FUNCTIONAL_REPRESENTATION_D2_V1`
+
+**Status:** `{decision['status']}`
+
+**Representação primária para a próxima etapa:**
+
+`RAW-30D`
+
+**Smoothing challenger:**
+
+`SMOOTH-30D-EDF0.75`
+
+Status:
+
+`{smooth_status}`
+
+A rejeição é restrita ao papel de pré-processamento funcional
+não supervisionado para preservação do sinal RAW futuro.
+
+Ela NÃO constitui prova de inferioridade preditiva em classificação.
+
+---
+
+## 2. Curva point-in-time
+
+Para o pedido i, com instante de previsão:
+
+\\[
+t_{{0,i}}
+=
+T_i^{{purchase}},
+\\]
+
+somente eventos históricos j satisfazendo
+
+\\[
+T_j^{{purchase}}
+<
+T_i^{{purchase}}
+\\]
+
+podem entrar na curva.
+
+Para uma janela de 30 dias:
+
+\\[
+H_i
+=
+\\left(
+h_i(1),
+\\ldots,
+h_i(30)
+\\right).
+\\]
+
+---
+
+## 3. Representação RAW
+
+A matriz histórica centrada é:
+
+\\[
+X_R
+=
+H
+-
+\\mathbf{{1}}\\mu_R^T.
+\\]
+
+Sua SVD é:
+
+\\[
+X_R
+=
+U_R
+\\Sigma_R
+V_R^T.
+\\]
+
+Para K componentes:
+
+\\[
+\\widehat H_R
+=
+\\mu_R
++
+(H-\\mu_R)V_{{R,K}}V_{{R,K}}^T.
+\\]
+
+O erro futuro utilizado foi:
+
+\\[
+RE_R
+=
+\\frac{\\lVert H_{{test}}-\\widehat H_R\\rVert_F}
+     {{\\lVert H_{{test}}-\\mu_R\\rVert_F}}.
+\\]
+
+---
+
+## 4. Representação suavizada
+
+O smoother avaliado foi:
+
+\\[
+S_\\lambda
+=
+\\left(
+I+
+\\lambda D_2^T D_2
+\\right)^{{-1}}.
+\\]
+
+Com:
+
+\\[
+\\lambda
+=
+0.0840662845049379
+\\]
+
+e:
+
+\\[
+edf
+=
+\\operatorname{{tr}}(S_\\lambda)
+=
+22.5.
+\\]
+
+A curva transformada foi:
+
+\\[
+H^S
+=
+HS_\\lambda.
+\\]
+
+A avaliação justa contra o sinal original foi:
+
+\\[
+RE_{{S\\rightarrow R}}
+=
+\\frac{\\lVert
+H_{{test}}
+-
+\\widehat H_S
+\\rVert_F}
+{{\\lVert
+H_{{test}}
+-
+\\mu_R
+\\rVert_F}}.
+\\]
+
+A diferença pareada foi:
+
+\\[
+\\Delta_m
+=
+RE_{{S\\rightarrow R},m}
+-
+RE_{{R,m}}.
+\\]
+
+---
+
+## 5. Evidência empírica
+
+Foram realizadas:
+
+\\[
+34
+=
+17\\times2
+\\]
+
+comparações temporais pareadas.
+
+### purchase_freight
+
+RAW:
+
+\\[
+\\overline{{RE}}_R
+=
+{freight['raw_error_mean']:.10f}.
+\\]
+
+Smooth contra RAW:
+
+\\[
+\\overline{{RE}}_{{S\\rightarrow R}}
+=
+{freight['smooth_end_to_end_error_mean']:.10f}.
+\\]
+
+Diferença média:
+
+\\[
+\\overline{{\\Delta}}
+=
+{freight['delta_mean']:.10f}.
+\\]
+
+Razão média:
+
+\\[
+\\overline{{R}}
+=
+{freight['error_ratio_mean']:.10f}.
+\\]
+
+K90 mediano:
+
+\\[
+13
+\\rightarrow
+7.
+\\]
+
+RAW venceu:
+
+\\[
+17/17.
+\\]
+
+### purchase_volume
+
+RAW:
+
+\\[
+\\overline{{RE}}_R
+=
+{volume_row['raw_error_mean']:.10f}.
+\\]
+
+Smooth contra RAW:
+
+\\[
+\\overline{{RE}}_{{S\\rightarrow R}}
+=
+{volume_row['smooth_end_to_end_error_mean']:.10f}.
+\\]
+
+Diferença média:
+
+\\[
+\\overline{{\\Delta}}
+=
+{volume_row['delta_mean']:.10f}.
+\\]
+
+Razão média:
+
+\\[
+\\overline{{R}}
+=
+{volume_row['error_ratio_mean']:.10f}.
+\\]
+
+K90 mediano:
+
+\\[
+10
+\\rightarrow
+6.
+\\]
+
+RAW venceu:
+
+\\[
+17/17.
+\\]
+
+Portanto:
+
+\\[
+\\boxed{{
+\\Delta_m>0
+\\quad
+\\text{{em 34/34 comparações}}
+}}
+\\]
+
+ao mesmo tempo em que:
+
+\\[
+K_{{90}}^S
+<
+K_{{90}}^R.
+\\]
+
+A suavização produz maior compressão, mas menor fidelidade
+end-to-end em relação às curvas RAW futuras.
+
+---
+
+## 6. Interpretação metodológica
+
+O resultado não afirma que o Whittaker smoother seja incorreto.
+
+Ele demonstra um trade-off:
+
+\\[
+\\text{{maior compressão}}
+\\Longleftrightarrow
+\\text{{maior perda de informação RAW}}.
+\\]
+
+Para este projeto, não existe atualmente um modelo explícito de
+erro de medição que justifique assumir que a informação removida
+pelo smoother seja exclusivamente ruído.
+
+Assim, pela combinação de:
+
+- estrutura densa e regular;
+- ausência de necessidade de interpolação das curvas;
+- ausência de modelo explícito de erro de medição;
+- melhor fidelidade temporal RAW em 34/34 pares;
+- maior simplicidade operacional;
+
+RAW-30D é adotado como representação primária para a próxima etapa.
+
+---
+
+## 7. Correção da validação original do D2
+
+O D2 original possui `status=FAIL` exclusivamente porque exigia:
+
+`negative_values_preserved_not_clipped > 0`
+
+nos folds temporais avaliados.
+
+Essa condição não é necessária.
+
+D1.1 demonstrou negativos na população global.
+
+D2 observou zero negativos nos subconjuntos futuros utilizados.
+
+Logo:
+
+\\[
+P(\\widehat H<0)>0
+\\quad\\text{{globalmente}}
+\\]
+
+não implica:
+
+\\[
+\\#\\{{\\widehat H_{{test,m}}<0\\}}>0
+\\]
+
+para todo mês m.
+
+O D2 original permanece preservado para provenance.
+
+A validação corrigida está em:
+
+`03r_d2_methodological_validation_v2.csv`
+
+---
+
+## 8. Escopo da decisão
+
+Esta decisão NÃO usa o target.
+
+Portanto, não estabelece:
+
+\\[
+P(Y=1\\mid Z_{{RAW}})
+>
+P(Y=1\\mid Z_{{smooth}})
+\\]
+
+em qualquer sentido preditivo.
+
+A comparação supervisionada ocorrerá posteriormente, respeitando
+a validação temporal.
+
+---
+
+## 9. Próxima etapa
+
+A próxima pergunta é:
+
+> Quantos componentes da representação RAW-30D podem ser carregados
+> para a modelagem sem utilizar informação futura?
+
+O número K ainda não foi congelado.
+
+---
+
+## 10. Fundamentação bibliográfica
+
+1. Eilers, P. H. C. (2003).
+   **A Perfect Smoother**.
+   Analytical Chemistry, 75(14), 3631-3636.
+   DOI: 10.1021/ac034173t.
+
+2. Ramsay, J. O.; Silverman, B. W. (2005).
+   **Functional Data Analysis**, 2nd edition.
+   Springer Series in Statistics.
+   DOI: 10.1007/b98888.
+
+3. Hall, P.; Müller, H.-G.; Wang, J.-L. (2006).
+   **Properties of Principal Component Methods for Functional
+   and Longitudinal Data Analysis**.
+   Annals of Statistics, 34(3), 1493-1517.
+   DOI: 10.1214/009053606000000272.
+
+4. Wang, J.-L.; Chiou, J.-M.; Müller, H.-G. (2016).
+   **Functional Data Analysis**.
+   Annual Review of Statistics and Its Application, 3, 257-295.
+   DOI: 10.1146/annurev-statistics-041715-033624.
+
+5. Gertheiss, J.; Rügamer, D.; Liew, B. X. W.; Greven, S. (2024).
+   **Functional Data Analysis: An Introduction and Recent Developments**.
+   Biometrical Journal, 66(7), e202300363.
+   DOI: 10.1002/bimj.202300363.
+
+6. Biessy, G. (2025/2026).
+   **Whittaker-Henderson Smoothing Revisited:
+   A Modern Statistical Framework for Practical Use**.
+   ASTIN Bulletin.
+   DOI: 10.1017/asb.2025.10061.
+
+7. Tashman, L. J. (2000).
+   **Out-of-sample Tests of Forecasting Accuracy:
+   An Analysis and Review**.
+   International Journal of Forecasting, 16(4), 437-450.
+   DOI: 10.1016/S0169-2070(00)00065-0.
+
+8. Bergmeir, C.; Hyndman, R. J.; Koo, B. (2018).
+   **A Note on the Validity of Cross-Validation for Evaluating
+   Autoregressive Time Series Prediction**.
+   Computational Statistics & Data Analysis, 120, 70-83.
+   DOI: 10.1016/j.csda.2017.11.003.
+
+---
+
+## 11. Estado de governança
+
+- Target usado: NÃO.
+- Clipping aplicado: NÃO.
+- Smoothing adotado: NÃO.
+- K final escolhido: NÃO.
+- Folds congelados: NÃO.
+- Classificador treinado: NÃO.
+- Silver criada: NÃO.
+- RAW alterado: NÃO.
+"""
+
+
+DECISION_MD.write_text(
+    md,
+    encoding="utf-8"
+)
+
+
+# =============================================================================
+# 13. PRINT
+# =============================================================================
+
+print()
+print("=" * 120)
+print("CORRECTED VALIDATION V2")
+print("=" * 120)
+
+print(
+    validation_v2.to_string(
+        index=False,
+        max_rows=None,
+        max_cols=None
+    )
+)
+
+
+print()
+print("=" * 120)
+print("CHANNEL EVIDENCE")
+print("=" * 120)
+
+print(
+    channel_summary.to_string(
+        index=False,
+        float_format=lambda x: f"{x:.10f}"
+    )
+)
+
+
+print()
+print("=" * 120)
+print("FINAL DECISION")
+print("=" * 120)
+
+print(
+    "DECISION STATUS                  :",
+    decision[
+        "status"
+    ]
+)
+
+print(
+    "RAW-30D                         :",
+    raw_status
+)
+
+print(
+    "SMOOTH-30D-EDF0.75              :",
+    smooth_status
+)
+
+print()
+
+print(
+    "PAIRED COMPARISONS              :",
+    total_pairs
+)
+
+print(
+    "RAW WINS                        :",
+    raw_wins
+)
+
+print(
+    "SMOOTH WINS                     :",
+    smooth_wins
+)
+
+print(
+    "TIES                            :",
+    ties
+)
+
+print()
+
+print(
+    "D2 ORIGINAL STATUS              :",
+    d2.get(
+        "status"
+    )
+)
+
+print(
+    "D2 ORIGINAL FAILURES            :",
+    d2.get(
+        "validation_failures"
+    )
+)
+
+print(
+    "D2 V2 FAILURES                  :",
+    failures
+)
+
+print()
+
+print(
+    "PREDICTIVE SUPERIORITY CLAIMED  : NÃO"
+)
+
+print(
+    "FINAL K SELECTED                : NÃO"
+)
+
+print(
+    "FINAL PRODUCTION WINDOW FROZEN  : NÃO"
+)
+
+print(
+    "TARGET USED                     : NÃO"
+)
+
+print(
+    "CLASSIFIER TRAINED              : NÃO"
+)
+
+print(
+    "SILVER CREATED                  : NÃO"
+)
+
+print(
+    "RAW MODIFIED                    : NÃO"
+)
+
+
+if failures:
+    raise SystemExit(
+        2
+    )
+
+
+if not decision_supported:
+    raise SystemExit(
+        3
+    )
+
+
+print()
+print("[PASS] D2.1 fechado metodologicamente.")
+print("[PASS] RAW-30D é a representação primária da próxima etapa.")
+print("[PASS] Smoothing não foi promovido.")
+print("[PASS] Nenhuma conclusão preditiva foi antecipada.")

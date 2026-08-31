@@ -1,0 +1,51 @@
+gate,check_id,table,variable,dimension,severity,status,affected_rows,affected_pct,observed,expected,details
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-001,orders,order_purchase_timestamp,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,prediction_time
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-002,orders,order_estimated_delivery_date,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,delivery_promise
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-003,order_items,order_id,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,join_key
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-004,order_items,product_id,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,join_key
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-005,order_items,seller_id,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,join_key
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-006,order_items,price,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-007,order_items,freight_value,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-008,payments,payment_type,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-009,payments,payment_value,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-010,payments,payment_installments,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-011,customers,customer_zip_code_prefix,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,geographic_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-012,customers,customer_state,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,geographic_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-013,sellers,seller_zip_code_prefix,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,geographic_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-014,sellers,seller_state,completeness,CRITICAL,PASS,0,0.0,0.0000% missing,<= 0.0000% missing,geographic_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-015,products,product_category_name,completeness,WARNING,PASS,610,1.8512336499650996,1.8512% missing,<= 2.5000% missing,optional_model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-016,products,product_weight_g,completeness,WARNING,PASS,2,0.006069618524475737,0.0061% missing,<= 0.1000% missing,optional_model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-017,products,product_length_cm,completeness,WARNING,PASS,2,0.006069618524475737,0.0061% missing,<= 0.1000% missing,optional_model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-018,products,product_height_cm,completeness,WARNING,PASS,2,0.006069618524475737,0.0061% missing,<= 0.1000% missing,optional_model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-019,products,product_width_cm,completeness,WARNING,PASS,2,0.006069618524475737,0.0061% missing,<= 0.1000% missing,optional_model_input
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-020,orders,order_approved_at,completeness,WARNING,PASS,160,0.1608994278014099,0.1609% missing,<= 0.5000% missing,post_purchase_event
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-021,orders,order_delivered_carrier_date,completeness,WARNING,PASS,1783,1.7930229985619615,1.7930% missing,<= 3.0000% missing,post_purchase_event
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-022,orders,order_delivered_customer_date,completeness,WARNING,PASS,2965,2.981667521444877,2.9817% missing,<= 5.0000% missing,future_label_source
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-023,reviews,review_comment_title,completeness,INFO,PASS,87656,88.34153027493349,88.3415% missing,<= 100.0000% missing,optional_nlp
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COMP-024,reviews,review_comment_message,completeness,INFO,PASS,58247,58.70253164556962,58.7025% missing,<= 100.0000% missing,optional_nlp
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COV-001,orders,order_items_coverage,source_coverage,WARNING,PASS,775,0.7793566034130791,0.7794% uncovered,<= 2.0000%,Orders without order_items
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COV-002,orders,payment_coverage,source_coverage,WARNING,PASS,1,0.0010056214237588118,0.0010% uncovered,<= 0.1000%,Orders without payment
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COV-003,customers,geolocation_coverage,source_coverage,WARNING,PASS,278,0.27956275580494966,0.2796% uncovered,<= 1.0000%,Customers whose ZIP is absent from geolocation
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-COV-004,sellers,geolocation_coverage,source_coverage,WARNING,PASS,7,0.22617124394184168,0.2262% uncovered,<= 1.0000%,Sellers whose ZIP is absent from geolocation
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-VAR-001,order_items,price,statistical_variability,WARNING,PASS,0,0.0,unique=5968; dominant=2.2024%,non-constant / non-degenerate,adequate variability
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-VAR-002,order_items,freight_value,statistical_variability,WARNING,PASS,0,0.0,unique=6999; dominant=3.2907%,non-constant / non-degenerate,adequate variability
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-VAR-003,payments,payment_value,statistical_variability,WARNING,PASS,0,0.0,unique=29077; dominant=0.3119%,non-constant / non-degenerate,adequate variability
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-VAR-004,payments,payment_installments,statistical_variability,WARNING,PASS,0,0.0,unique=24; dominant=50.5804%,non-constant / non-degenerate,adequate variability
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-VAR-005,products,product_weight_g,statistical_variability,WARNING,PASS,0,0.0,unique=2204; dominant=6.3249%,non-constant / non-degenerate,adequate variability
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-VAR-006,products,product_length_cm,statistical_variability,WARNING,PASS,0,0.0,unique=99; dominant=16.7532%,non-constant / non-degenerate,adequate variability
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-VAR-007,products,product_height_cm,statistical_variability,WARNING,PASS,0,0.0,unique=102; dominant=7.7332%,non-constant / non-degenerate,adequate variability
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-VAR-008,products,product_width_cm,statistical_variability,WARNING,PASS,0,0.0,unique=95; dominant=11.2841%,non-constant / non-degenerate,adequate variability
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-MISS-001,__order_level__,item_missing,missingness_temporal_profile,INFO,INFO,0,0.0,min=0.0721%; max=4.9383%; range=4.8662 pp,diagnostic only; formal drift evaluated later,Months with at least 100 orders.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-MISS-002,__order_level__,payment_missing,missingness_temporal_profile,INFO,INFO,0,0.0,min=0.0000%; max=0.0000%; range=0.0000 pp,diagnostic only; formal drift evaluated later,Months with at least 100 orders.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-MISS-003,__order_level__,product_category_missing,missingness_temporal_profile,INFO,INFO,0,0.0,min=0.4702%; max=5.5618%; range=5.0916 pp,diagnostic only; formal drift evaluated later,Months with at least 100 orders.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-MISS-004,__order_level__,product_physical_missing,missingness_temporal_profile,INFO,INFO,0,0.0,min=0.0721%; max=4.9383%; range=4.8662 pp,diagnostic only; formal drift evaluated later,Months with at least 100 orders.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-MISS-005,__order_level__,customer_geo_missing,missingness_temporal_profile,INFO,INFO,0,0.0,min=0.0000%; max=0.4006%; range=0.4006 pp,diagnostic only; formal drift evaluated later,Months with at least 100 orders.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-MISS-006,__order_level__,seller_geo_missing,missingness_temporal_profile,INFO,INFO,0,0.0,min=0.2738%; max=4.9383%; range=4.6645 pp,diagnostic only; formal drift evaluated later,Months with at least 100 orders.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-TAIL-043,order_items,price,tail_behavior,INFO,INFO,8427,7.480692410119841,"IQR flags=8,427 (7.4807%); MAD flags=7,714 (6.8478%)",diagnostic only,Extremo não implica erro; nenhuma remoção aplicada.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-TAIL-044,order_items,freight_value,tail_behavior,INFO,INFO,12134,10.771415889924546,"IQR flags=12,134 (10.7714%); MAD flags=10,284 (9.1292%)",diagnostic only,Extremo não implica erro; nenhuma remoção aplicada.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-TAIL-045,payments,payment_value,tail_behavior,INFO,INFO,7981,7.682459619197967,"IQR flags=7,981 (7.6825%); MAD flags=7,088 (6.8229%)",diagnostic only,Extremo não implica erro; nenhuma remoção aplicada.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-TAIL-046,payments,payment_installments,tail_behavior,INFO,INFO,6313,6.076853474000346,"IQR flags=6,313 (6.0769%); MAD flags=0 (0.0000%)",diagnostic only,Extremo não implica erro; nenhuma remoção aplicada.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-TAIL-047,products,product_weight_g,tail_behavior,INFO,INFO,4551,13.812255303651098,"IQR flags=4,551 (13.8123%); MAD flags=5,469 (16.5984%)",diagnostic only,Extremo não implica erro; nenhuma remoção aplicada.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-TAIL-048,products,product_length_cm,tail_behavior,INFO,INFO,1380,4.18829099517436,"IQR flags=1,380 (4.1883%); MAD flags=1,503 (4.5616%)",diagnostic only,Extremo não implica erro; nenhuma remoção aplicada.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-TAIL-049,products,product_height_cm,tail_behavior,INFO,INFO,1892,5.742207654253543,"IQR flags=1,892 (5.7422%); MAD flags=1,599 (4.8530%)",diagnostic only,Extremo não implica erro; nenhuma remoção aplicada.
+DQ_GATE_03_STATISTICAL_COMPLETENESS,STA-TAIL-050,products,product_width_cm,tail_behavior,INFO,INFO,912,2.7679140489847947,IQR flags=912 (2.7679%); MAD flags=994 (3.0168%),diagnostic only,Extremo não implica erro; nenhuma remoção aplicada.

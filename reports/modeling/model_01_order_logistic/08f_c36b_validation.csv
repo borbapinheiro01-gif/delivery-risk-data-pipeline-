@@ -1,0 +1,16 @@
+check,status,observed,expected
+c36a_pass,PASS,PASS,PASS
+c36a_model_fits,PASS,238,238
+baseline_highest_mean_ap,PASS,0,0
+months_17,PASS,17,17
+alternative_k_13,PASS,13,13
+paired_rows,PASS,221,221
+delta_recomputation_match,PASS,9.985502008591496e-17,<=1e-12
+all_delta_values_finite,PASS,0,0
+bootstrap_rows,PASS,39,39
+all_bootstrap_metrics_finite,PASS,0,0
+bootstrap_pvalues_valid,PASS,checked,"[0,1]"
+no_model_training,PASS,False,False
+k_not_formally_frozen,PASS,False,False
+threshold_not_selected,PASS,False,False
+raw_not_modified,PASS,False,False

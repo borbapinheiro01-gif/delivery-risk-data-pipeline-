@@ -1,0 +1,32 @@
+{
+    "step": "MODEL_01_0_C3_3C_TEMPORAL_FUNCTIONAL_BASIS_PORTABILITY",
+    "status": "PASS",
+    "created_at_utc": "2026-08-30T20:22:10.680466+00:00",
+    "method": "EXPANDING_HISTORY_PCA_BASIS_OUT_OF_TIME_RECONSTRUCTION",
+    "target_used": false,
+    "minimum_train_rows": 5000,
+    "minimum_test_rows": 500,
+    "windows_days": [
+        30,
+        60,
+        90
+    ],
+    "channels": [
+        "purchase_volume",
+        "purchase_freight"
+    ],
+    "temporal_fold_rows": 98,
+    "channel_window_groups": 6,
+    "k_learned_from_past_only": true,
+    "window_selected": false,
+    "component_count_selected": false,
+    "smoothing_applied": false,
+    "fpca_model_feature_created": false,
+    "functional_module_unlocked": false,
+    "folds_frozen": false,
+    "classifier_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 0,
+    "runtime_seconds": 20.142147644000943
+}

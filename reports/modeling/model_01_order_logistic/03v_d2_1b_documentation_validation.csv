@@ -1,0 +1,25 @@
+check,status,observed,expected
+decision_pass,PASS,PASS,PASS
+validation_v2_zero_failures,PASS,0,0
+raw_30d_primary,PASS,"{'representation': 'RAW_30D', 'status': 'PRIMARY_FOR_NEXT_FUNCTIONAL_STAGE'}",RAW_30D / PRIMARY_FOR_NEXT_FUNCTIONAL_STAGE
+smooth_not_primary,PASS,REJECTED_AS_PRIMARY_UNSUPERVISED_PREPROCESSING,REJECTED_AS_PRIMARY_UNSUPERVISED_PREPROCESSING
+paired_comparisons,PASS,34,34
+raw_wins,PASS,34,34
+smooth_wins,PASS,0,0
+no_predictive_superiority_claim,PASS,False,False
+final_k_not_selected,PASS,False,False
+document_contains_RAW-30D,PASS,True,True
+document_contains_PRIMARY FOR NEXT FUNCTIONAL ST,PASS,True,True
+document_contains_34/34,PASS,True,True
+document_contains_SMOOTH-30D-EDF0.75,PASS,True,True
+document_contains_10.1021/ac034173t,PASS,True,True
+document_contains_10.1007/b98888,PASS,True,True
+document_contains_10.1214/009053606000000272,PASS,True,True
+document_contains_10.1146/annurev-statistics-041,PASS,True,True
+document_contains_10.1016/S0169-2070(00)00065-0,PASS,True,True
+document_contains_10.1016/j.csda.2017.11.003,PASS,True,True
+document_contains_Superioridade preditiva afirma,PASS,True,True
+document_contains_K final selecionado: NÃO,PASS,True,True
+decision_json_preserved,PASS,71756f0a69306b02ad8724fad3a425971986d492d2b7e9e5830344000dae64a2,71756f0a69306b02ad8724fad3a425971986d492d2b7e9e5830344000dae64a2
+validation_v2_preserved,PASS,392969e46dd10bc6460c52b8e7bce3d6ca05c2fb03bf616ad9cf2312f7235363,392969e46dd10bc6460c52b8e7bce3d6ca05c2fb03bf616ad9cf2312f7235363
+decision_report_preserved,PASS,5b3c923f2d78134ecc362921395f2cf5a52a8bf34d58750510d87ab7579b0afc,5b3c923f2d78134ecc362921395f2cf5a52a8bf34d58750510d87ab7579b0afc

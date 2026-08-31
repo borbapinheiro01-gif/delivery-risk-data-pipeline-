@@ -1,0 +1,8 @@
+check,status,observed,expected
+c33b_pass,PASS,PASS,PASS
+folds_exist,PASS,98,>0
+all_train_before_test,PASS,0,0
+all_diagnostics_finite,PASS,0,0
+reconstruction_errors_between_0_1,PASS,0,0
+k_order_valid,PASS,0,0
+six_channel_window_groups,PASS,6,6

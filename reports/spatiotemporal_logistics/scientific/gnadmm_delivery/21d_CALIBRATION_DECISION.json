@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "best_pooled_OOT_Brier": "GN_EQ0",
+  "best_pooled_OOT_ECE": "LOGIT_MLE",
+  "best_calibration_intercept_slope_proximity": "GN_EQ0",
+  "interpretation": "Brier is not interpreted as calibration alone. Reliability diagrams/bins, ECE, calibration intercept/slope and a binned Murphy-style decomposition are reported jointly.",
+  "murphy_decomposition_note": "Reliability and resolution are computed after quantile binning and should be interpreted as binned approximations."
+}

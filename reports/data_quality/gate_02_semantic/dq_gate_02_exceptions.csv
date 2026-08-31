@@ -1,0 +1,8 @@
+gate,check_id,table,variable,dimension,severity,status,affected_rows,affected_pct,observed,expected,details
+DQ_GATE_02_SEMANTIC,SEM-030,payments,payment_value,semantic_suspicion,WARNING,WARN,9,0.008663342510059104,9 zero value(s),> 0 preferred,payment_value == 0
+DQ_GATE_02_SEMANTIC,SEM-031,payments,payment_installments,semantic_suspicion,WARNING,WARN,2,0.0019251872244575785,2 zero value(s),> 0 preferred,payment_installments == 0
+DQ_GATE_02_SEMANTIC,SEM-032,products,product_weight_g,semantic_suspicion,WARNING,WARN,4,0.012139237048951474,4 zero value(s),> 0 preferred,product_weight_g == 0
+DQ_GATE_02_SEMANTIC,SEM-051,orders,approval_after_carrier,cross_field_temporal_consistency,WARNING,WARN,1359,1.3917905862111344,1359 violation(s),approval <= carrier,
+DQ_GATE_02_SEMANTIC,SEM-052,orders,carrier_after_customer_delivery,cross_field_temporal_consistency,WARNING,WARN,23,0.023840373153666754,23 violation(s),carrier <= customer_delivery,
+DQ_GATE_02_SEMANTIC,SEM-060,products,product_category_name,cross_table_semantic_consistency,WARNING,WARN,13,0.04019665440153366,"['pc_gamer', 'portateis_cozinha_e_preparadores_de_alimentos']",category available in translation table,Tradução é apenas apoio/apresentação; produto não será removido.
+DQ_GATE_02_SEMANTIC,SEM-061,geolocation,geolocation_zip_code_prefix,geographic_consistency,WARNING,WARN,8,0.04207204838285564,8 prefixes associated with more than one state,1 state per zip prefix,Será investigado antes da consolidação definitiva da geolocalização.

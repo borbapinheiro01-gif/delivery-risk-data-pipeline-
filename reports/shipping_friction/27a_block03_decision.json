@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "generated_utc": "2026-08-31T06:35:56.235106+00:00",
+  "module": "27A_BLOCK03_SERVICE_PERFORMANCE",
+  "population": {
+    "n_orders": 96211,
+    "n_service_observed": 96203,
+    "service_coverage_pct": 99.9916849424702,
+    "n_official_late": 6531,
+    "official_late_rate": 0.06788205090893973,
+    "n_calendar_late_recomputed": 6531,
+    "n_continuous_timestamp_late": 7822,
+    "continuous_after_estimate_but_same_calendar_day": 1291
+  },
+  "service_summary": {
+    "actual_delivery_days_mean": 12.538460850026429,
+    "actual_delivery_days_median": 10.209988425925927,
+    "promised_delivery_days_mean": 23.648391074852903,
+    "promised_delivery_days_median": 23.215428240740742,
+    "delivery_gap_days_mean": -11.109930224826478,
+    "delivery_gap_days_median": -11.817523148148148,
+    "positive_tardiness_days_mean": 0.7764315109523419,
+    "positive_tardiness_days_median": 0.0
+  },
+  "definition_audit": {
+    "actual_duration_max_abs_error": 5.684341886080802e-14,
+    "promised_duration_max_abs_error": 1.4210854715202004e-14,
+    "delivery_gap_identity_max_abs_error": 2.842170943040401e-14,
+    "official_vs_calendar_mismatch": 0,
+    "official_vs_continuous_mismatch": 1291
+  },
+  "primary_service_definitions": {
+    "speed": "actual delivery elapsed days",
+    "promise": "estimated delivery timestamp minus purchase timestamp",
+    "continuous_delivery_gap": "delivered timestamp minus estimated delivery timestamp",
+    "positive_tardiness": "max(continuous delivery gap, 0)",
+    "official_reliability_failure": "LATE_DELIVERY_CALENDAR_DAY",
+    "calendar_gap": "delivered calendar date minus estimated calendar date"
+  },
+  "interpretation_guardrails": {
+    "actual_speed_equals_reliability": false,
+    "continuous_gap_positive_equals_official_late_by_definition": false,
+    "official_target_is_calendar_day_definition": true,
+    "post_outcome_service_fields_valid_as_purchase_time_predictors": false,
+    "service_audit_is_causal": false,
+    "final_predictive_model_refit": false,
+    "raw_modified": false
+  },
+  "gates": {
+    "B03_G01_input_exists": true,
+    "B03_G02_order_id_unique": true,
+    "B03_G03_population_preserved": true,
+    "B03_G04_service_population_nontrivial": true,
+    "B03_G05_actual_duration_recomputation_consistent": true,
+    "B03_G06_promised_duration_recomputation_consistent": true,
+    "B03_G07_gap_identity_valid": true,
+    "B03_G08_official_target_matches_calendar_definition": true,
+    "B03_G09_positive_tardiness_nonnegative": true,
+    "B03_G10_late_target_binary": true,
+    "B03_G11_final_predictive_model_not_refit": true,
+    "B03_G12_raw_untouched": true
+  },
+  "failed_gates": [],
+  "outputs": [
+    "artifacts/shipping_friction/27a_03_service_performance_core.csv",
+    "reports/shipping_friction/27a_03_service_coverage.csv",
+    "reports/shipping_friction/27a_03_service_quantiles.csv",
+    "reports/shipping_friction/27a_03_service_monthly.csv",
+    "reports/shipping_friction/27a_03_target_consistency.csv"
+  ]
+}

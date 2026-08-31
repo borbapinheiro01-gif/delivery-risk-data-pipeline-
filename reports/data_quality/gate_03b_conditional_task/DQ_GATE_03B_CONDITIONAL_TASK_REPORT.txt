@@ -1,0 +1,41 @@
+========================================================================================================
+DQ GATE 03B — CONDITIONAL & TASK COMPLETENESS
+========================================================================================================
+
+STATUS                    : PASS
+SOURCE ORDERS             : 99,441
+TASK CANDIDATE ORDERS     : 96,470
+TASK / SOURCE             : 97.0123%
+PASS                      : 7
+WARNINGS                  : 8
+CRITICAL FAILURES         : 0
+
+PRINCIPAL DISTINÇÃO METODOLÓGICA
+--------------------------------------------------------------------------------------------------------
+RELATION_MISSING != ATTRIBUTE_MISSING
+SOURCE_QUALITY    != TASK_QUALITY
+NOT_APPLICABLE    != MISSING
+NOT_YET_OBSERVED  != NEGATIVE LABEL
+
+CHECKS NÃO-PASS
+--------------------------------------------------------------------------------------------------------
+[WARN] TASK-REL-005 | task_orders_without_payment | scope=TASK | condition=entity/relation is applicable to candidate ML order | affected=1/96470 (0.001037%)
+[WARN] TASK-ATTR-001 | product.product_category_name | scope=TASK_ITEM_EXPOSURE | condition=order has item AND product_id resolves | affected=1537/110189 (1.394876%)
+[WARN] TASK-ATTR-002 | product.physical_dimensions_or_weight | scope=TASK_ITEM_EXPOSURE | condition=order has item AND product_id resolves | affected=18/110189 (0.016336%)
+[WARN] TASK-ATTR-003 | product.product_category_name | scope=TASK_UNIQUE_PRODUCT | condition=product is referenced by at least one task item | affected=584/32214 (1.812876%)
+[WARN] TASK-ATTR-004 | product.physical_dimensions_or_weight | scope=TASK_UNIQUE_PRODUCT | condition=product is referenced by at least one task item | affected=2/32214 (0.006208%)
+[WARN] TASK-ATTR-006 | customer.geolocation_reference | scope=TASK_ORDER | condition=customer_id resolves to customers | affected=264/96470 (0.273660%)
+[WARN] TASK-ATTR-007 | seller.geolocation_reference | scope=TASK_ITEM_EXPOSURE | condition=seller_id resolves to sellers | affected=249/110189 (0.225975%)
+[WARN] TASK-ATTR-008 | seller.geolocation_reference | scope=TASK_UNIQUE_SELLER | condition=seller referenced by at least one task item | affected=7/2970 (0.235690%)
+
+IMPORTANTE
+--------------------------------------------------------------------------------------------------------
+Nenhum dado foi imputado.
+Nenhum registro foi removido.
+Nenhuma decisão final sobre target foi tomada.
+Nenhuma Silver foi criada.
+RAW permaneceu imutável.
+
+Próxima etapa após revisão:
+DQ Gate 04 — Label / Construct Validity.
+========================================================================================================

@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "model_refit": false,
+  "raw_modified": false,
+  "primary_metric": "AP",
+  "interpretation": "Positive oriented delta means GN_EQ0 performed better than the comparison model.",
+  "GN_EQ0_vs_LOGIT_MLE": {
+    "comparison": "GN_EQ0_vs_LOGIT_MLE",
+    "mean_AP_oriented_delta": 0.0024107907467564847,
+    "median_AP_oriented_delta": 0.003286028047266548,
+    "months_GN_EQ0_better": 8,
+    "months_other_better": 6,
+    "wilcoxon_p": 0.267578125,
+    "exact_signflip_p": 0.2568359375,
+    "block2_CI95": [
+      -0.001471379439624339,
+      0.0060481993240263645
+    ],
+    "block3_CI95": [
+      -0.0012458800313162365,
+      0.005709452412753517
+    ],
+    "LOMO_mean_range": [
+      0.0014796022851999142,
+      0.003550722563320621
+    ],
+    "classification": "FAVORABLE_NOT_DECISIVE"
+  },
+  "GN_EQ0_vs_GNADMM_GE0": {
+    "comparison": "GN_EQ0_vs_GNADMM_GE0",
+    "mean_AP_oriented_delta": 0.00023148457760215662,
+    "median_AP_oriented_delta": 0.0,
+    "months_GN_EQ0_better": 4,
+    "months_other_better": 3,
+    "wilcoxon_p": 0.9375,
+    "exact_signflip_p": 0.78125,
+    "block2_CI95": [
+      -0.0006653489834568929,
+      0.0013336825635831575
+    ],
+    "block3_CI95": [
+      -0.0004994131134724916,
+      0.0012281064291996694
+    ],
+    "LOMO_mean_range": [
+      -0.0003858967322176854,
+      0.000610601149170599
+    ],
+    "classification": "FAVORABLE_NOT_DECISIVE"
+  }
+}

@@ -1,0 +1,3 @@
+channel,best_error_policy,best_mean_future_error,best_error_standard_error,one_se_error_threshold,one_se_candidate_policy,candidate_mean_k,candidate_median_k,candidate_min_k,candidate_max_k,candidate_mean_future_error,candidate_only_not_final,joint_candidate_policy
+purchase_volume,0.99,0.11247659287759149,0.012051852746550646,0.12452844562414213,0.99,26.176470588235293,27.0,22,27,0.11247659287759149,True,0.99
+purchase_freight,0.99,0.11027992515478188,0.00998165789240473,0.12026158304718661,0.99,26.88235294117647,27.0,24,28,0.11027992515478188,True,0.99

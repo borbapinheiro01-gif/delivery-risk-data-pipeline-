@@ -1,0 +1,33 @@
+{
+  "gate": "DQ_GATE_05_POINT_IN_TIME_AVAILABILITY_AND_LEAKAGE",
+  "status": "PASS",
+  "created_at_utc": "2026-08-30T12:11:05.374467+00:00",
+  "prediction_time": "order_purchase_timestamp",
+  "steps": {
+    "05.1": "PASS",
+    "05.2-A": "PASS",
+    "05.2-B": "PASS",
+    "05.3": "PASS"
+  },
+  "raw_columns_audited": 52,
+  "hold_columns": 10,
+  "future_target_columns": 11,
+  "model_01_feature_set": "ORDER_CORE_V1",
+  "model_01_features": 13,
+  "seller_history_order_seller_rows": 97811,
+  "seller_history_unique_sellers": 2970,
+  "seller_history_purchase_leakage": 0,
+  "seller_history_outcome_leakage": 0,
+  "bruteforce_mismatches": 0,
+  "critical_failures": 0,
+  "model_01_unlocked": true,
+  "model_01_unlock_scope": "FEATURE_MATRIX_BUILD_AND_TEMPORAL_VALIDATION_ONLY",
+  "model_02_unlocked": false,
+  "seller_expert_unlocked": false,
+  "payment_features_allowed": false,
+  "shipping_limit_allowed": false,
+  "geo_coordinates_allowed": false,
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

@@ -1,0 +1,9 @@
+hypothesis,status,evidence
+H1_OPERATOR_AND_JACOBIAN_VALIDITY,SUPPORTED,"Sigmoid operator remained within (0,1), and the analytic Jacobian achieved best max absolute finite-difference error of 1.5684148424455202e-11."
+H2_UNCONSTRAINED_GN_MULTISTART_STABILITY,SUPPORTED,Objective range across the tested GN starts was 0.000e+00.
+H3_GNADMM_INDEPENDENT_SOLVER_AGREEMENT,SUPPORTED,Independent constrained solver distance to GN–ADMM = 5.702e-08.
+H4_GNADMM_OOT_AP_ADVANTAGE,PARTIALLY_SUPPORTED,"Mean paired AP improvement = 0.001672883764737321; better in 8 months; block-bootstrap 95% CI = [-0.001869653050370023, 0.005666736812889149]."
+H5_POSITIVE_QUADRATIC_CURVATURE,NOT_SUPPORTED,"The unconstrained Brier-NLS solution preferred beta_z2=-0.141176, while the beta_z2>=0 constrained solution collapsed to the boundary near zero. This does not support positive convex curvature as an empirical conclusion."
+H6_CONSTRAINT_AS_STRUCTURAL_REGULARIZATION,PARTIALLY_SUPPORTED,"The nonnegative-curvature constrained model improved mean AP relative to the free Brier-GN model despite the unconstrained coefficient preferring negative curvature. This is compatible with a regularization effect, but does not prove that mechanism."
+H7_GNADMM_CALIBRATION_SUPERIORITY,NOT_SUPPORTED,Best pooled Brier: GN_EQ0; best quantile-ECE: LOGIT_MLE; best intercept/slope proximity: GN_EQ0.
+H8_GNADMM_COMPUTATIONAL_APPLICABILITY_REAL_DATA,SUPPORTED,"The complete experiment ran on 90783 real-world e-commerce observations with 8 model parameters, including OOT validation and an independent constrained solver."

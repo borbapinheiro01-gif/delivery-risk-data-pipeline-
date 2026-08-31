@@ -1,0 +1,250 @@
+
+================================================================================================
+AUDITORIA 03 — DIAGNÓSTICO ESTATÍSTICO, SEMÂNTICO E PLANO DE TRATAMENTO
+================================================================================================
+Projeto : /home/runner/workspace/Delivery_Risk_Intelligence
+RAW     : /home/runner/workspace/Delivery_Risk_Intelligence/data/raw/olist
+Saídas  : /home/runner/workspace/Delivery_Risk_Intelligence/reports/audit/03_data_diagnosis
+
+================================================================================================
+1. CARREGAMENTO
+================================================================================================
+[OK] customers           99,441 linhas x  5 colunas
+[OK] geolocation      1,000,163 linhas x  5 colunas
+[OK] order_items        112,650 linhas x  7 colunas
+[OK] payments           103,886 linhas x  5 colunas
+[OK] reviews             99,224 linhas x  7 colunas
+[OK] orders              99,441 linhas x  8 colunas
+[OK] products            32,951 linhas x  9 colunas
+[OK] sellers              3,095 linhas x  4 colunas
+[OK] translation             71 linhas x  2 colunas
+
+================================================================================================
+2. DEFINIÇÃO DO TARGET — AUDITORIA DE SEMÂNTICA TEMPORAL
+================================================================================================
+      definition  eligible_orders  late_orders late_rate_pct
+timestamp_strict            96470         7826        8.1124
+   calendar_date            96470         6534        6.7731
+Entregues no mesmo DIA da promessa   : 1,292
+Discordâncias timestamp x calendário : 1,292
+[DECISÃO PENDENTE] Não congelar o target antes de revisar essa comparação.
+
+================================================================================================
+3. AGREGAÇÃO TRANSACIONAL PARA DIAGNÓSTICO — SEM CRIAR SILVER
+================================================================================================
+Coorte supervisionada          : 96,470
+Sem item agregado              : 0
+Sem pagamento agregado         : 1
+
+================================================================================================
+4. ESTATÍSTICAS NUMÉRICAS E CANDIDATOS A EXTREMOS
+================================================================================================
+          source               variable  n_missing  n_zero  n_negative         min      median         mean          p99           max  iqr_candidate_count  modified_z_candidate_count
+     order_items                  price          0       0           0    0.850000   74.990000   120.653739 8.900000e+02   6735.000000                 8427                        7714
+     order_items          freight_value          0     383           0    0.000000   16.260000    19.990320 8.452000e+01    409.680000                12134                       10284
+        payments          payment_value          0       9           0    0.000000  100.000000   154.100380 1.039916e+03  13664.080000                 7981                        7088
+        payments   payment_installments          0       2           0    0.000000    1.000000     2.853349 1.000000e+01     24.000000                 6313                           0
+        products       product_weight_g          2       4           0    0.000000  700.000000  2276.472488 2.253800e+04  40425.000000                 4551                        5469
+        products      product_length_cm          2       0           0    7.000000   25.000000    30.815078 1.000000e+02    105.000000                 1380                        1503
+        products      product_height_cm          2       0           0    2.000000   13.000000    16.937661 6.900000e+01    105.000000                 1892                        1599
+        products       product_width_cm          2       0           0    6.000000   20.000000    23.196728 6.300000e+01    118.000000                  912                         994
+          cohort     promised_lead_days          0       0           0    2.008009   23.230880    23.736343 5.021147e+01    155.135463                 2427                        1049
+          cohort       actual_lead_days          0       0           0    0.533414   10.217477    12.558217 4.605026e+01    209.628611                 4896                        3863
+          cohort    delay_calendar_days          0    1292       88644 -147.000000  -12.000000   -11.875889 1.800000e+01    188.000000                 4297                        2302
+          cohort       delay_exact_days          0       0       88644 -146.016123  -11.948102   -11.178126 1.893955e+01    188.975081                 4871                        2462
+       order_agg              item_rows          0       0           0    1.000000    1.000000     1.142210 3.000000e+00     21.000000                 9635                           0
+       order_agg             n_products          0       0           0    1.000000    1.000000     1.038540 2.000000e+00      8.000000                 3197                           0
+       order_agg              n_sellers          0       0           0    1.000000    1.000000     1.013901 2.000000e+00      5.000000                 1275                           0
+       order_agg       total_item_value          0       0           0    0.850000   86.500000   137.040001 9.900000e+02  13440.000000                 7658                        6717
+       order_agg    total_freight_value          0     336           0    0.000000   17.170000    22.785798 1.042462e+02   1794.960000                 9694                        9443
+       order_agg    total_payment_value          1       0           0    9.590000  105.280000   159.855320 1.052402e+03  13664.080000                 7575                        6604
+       order_agg          payment_delta          1   77293        9492  -51.620000    0.000000     0.029351 5.684342e-14    182.810000                19176                           0
+       order_agg  freight_to_item_value          0     336           0    0.000000    0.224374     0.308386 1.458584e+00     21.447059                 6390                        5398
+products_derived             volume_cm3          2       0           0  168.000000 6840.000000 16564.096695 1.359174e+05 296208.000000                 3262                        4469
+products_derived apparent_density_g_cm3          2       4           0    0.000000    0.116550     0.203690 1.218785e+00     85.227273                 2637                        2314
+[NOTA] IQR/MAD apenas SINALIZAM candidatos a extremos; nenhum valor será removido automaticamente.
+
+================================================================================================
+5. REGRAS DE VALIDADE / QUALIDADE SEMÂNTICA
+================================================================================================
+      table             variable                      rule  count    pct           severity
+order_items                price                 price < 0      0 0.0000 INVALID_IF_PRESENT
+order_items                price                price == 0      0 0.0000             REVIEW
+order_items        freight_value         freight_value < 0      0 0.0000 INVALID_IF_PRESENT
+order_items        freight_value        freight_value == 0    383 0.3400   PLAUSIBLE_REVIEW
+   payments        payment_value         payment_value < 0      0 0.0000 INVALID_IF_PRESENT
+   payments        payment_value        payment_value == 0      9 0.0087             REVIEW
+   payments payment_installments  payment_installments < 0      0 0.0000 INVALID_IF_PRESENT
+   payments payment_installments payment_installments == 0      2 0.0019             REVIEW
+   products     product_weight_g      product_weight_g < 0      0 0.0000 INVALID_IF_PRESENT
+   products     product_weight_g     product_weight_g == 0      4 0.0121             REVIEW
+   products    product_length_cm     product_length_cm < 0      0 0.0000 INVALID_IF_PRESENT
+   products    product_length_cm    product_length_cm == 0      0 0.0000             REVIEW
+   products    product_height_cm     product_height_cm < 0      0 0.0000 INVALID_IF_PRESENT
+   products    product_height_cm    product_height_cm == 0      0 0.0000             REVIEW
+   products     product_width_cm      product_width_cm < 0      0 0.0000 INVALID_IF_PRESENT
+   products     product_width_cm     product_width_cm == 0      0 0.0000             REVIEW
+     cohort   promised_lead_days   promised_lead_days <= 0      0 0.0000             REVIEW
+     cohort     actual_lead_days      actual_lead_days < 0      0 0.0000 INVALID_IF_PRESENT
+
+================================================================================================
+6. CONSISTÊNCIA FINANCEIRA POR PEDIDO
+================================================================================================
+ orders  missing_payment  within_1_cent  within_1_cent_pct  within_1_real  within_1_real_pct  over_10_reais  payment_delta_median  payment_delta_p01  payment_delta_p99  payment_delta_min  payment_delta_max
+  96470                1          96094          99.611274          96223          99.744996             97                   0.0      -5.684342e-14       5.684342e-14             -51.62             182.81
+[NOTA] Diferença financeira é diagnóstico; não será corrigida sem evidência da semântica do registro.
+
+================================================================================================
+7. MISSINGNESS — GLOBAL, POR TARGET E POR TEMPO
+================================================================================================
+[OK] Missingness auditada globalmente, por target candidato e por mês.
+
+================================================================================================
+8. GEOLOCALIZAÇÃO — VALIDADE, DUPLICIDADE E COBERTURA
+================================================================================================
+ geo_rows  exact_duplicate_rows  unique_zip_prefixes  invalid_lat_rows  invalid_lng_rows  zip_with_multiple_states  zip_with_multiple_cities  customers_without_geo  sellers_without_geo
+  1000163                261831                19015                 0                 0                         8                      8556                    278                    7
+Pedidos sem distância calculável : 476
+
+================================================================================================
+9. ANÁLISE BIVARIADA NUMÉRICA — TARGET CALENDÁRIO CANDIDATO
+================================================================================================
+[OK] Comparações numéricas por classe salvas.
+
+================================================================================================
+10. CATEGÓRICAS — CARDINALIDADE, FREQUÊNCIA E TAXA DE ATRASO
+================================================================================================
+             variable  raw_cardinality  groups_in_rate_table
+       customer_state               27                    27
+         payment_type                5                     4
+product_category_name               73                    73
+         seller_state               23                    22
+[NOTA] Payment/category/seller-state podem ter múltiplos valores no mesmo pedido; os grupos não são necessariamente aditivos.
+
+================================================================================================
+11. TEMPORALIDADE DO TARGET CANDIDATO
+================================================================================================
+purchase_month  orders late_timestamp_rate_pct late_calendar_rate_pct promised_lead_median_days promised_lead_mean_days
+       2016-09       1                  100.00                 100.00                     18.49                   18.49
+       2016-10     265                    1.13                   0.75                     54.15                   55.68
+       2016-12       1                    0.00                   0.00                     26.03                   26.03
+       2017-01     750                    3.07                   2.93                     38.98                   39.51
+       2017-02    1653                    3.21                   2.96                     30.18                   31.85
+       2017-03    2546                    5.58                   4.56                     22.59                   24.73
+       2017-04    2303                    7.86                   6.56                     25.47                   27.35
+       2017-05    3545                    3.61                   2.99                     23.34                   24.28
+       2017-06    3135                    3.86                   3.03                     23.42                   24.02
+       2017-07    3872                    3.43                   2.79                     23.01                   23.32
+       2017-08    4193                    3.32                   2.91                     22.55                   23.48
+       2017-09    4150                    5.20                   4.39                     22.14                   22.44
+       2017-10    4478                    5.29                   4.18                     22.40                   23.02
+       2017-11    7288                   14.31                  12.40                     22.27                   22.56
+       2017-12    5513                    8.38                   7.46                     27.44                   27.68
+       2018-01    7069                    6.56                   5.70                     25.57                   26.30
+       2018-02    6555                   15.99                  14.13                     24.26                   24.53
+       2018-03    7003                   21.36                  18.96                     21.32                   22.03
+       2018-04    6798                    5.31                   4.50                     23.42                   23.68
+       2018-05    6749                    8.24                   6.56                     21.46                   22.89
+       2018-06    6096                    1.36                   1.16                     27.28                   27.77
+       2018-07    6156                    4.48                   3.38                     19.33                   19.69
+       2018-08    6351                   10.39                   6.19                     13.44                   15.19
+
+================================================================================================
+12. SELLERS — ESTABILIDADE AMOSTRAL (SOMENTE EDA)
+================================================================================================
+volume_band  sellers  orders_median  late_rate_median_pct
+          1      536            1.0              0.000000
+        2-5      806            3.0              0.000000
+       6-20      843           10.0              0.000000
+     21-100      577           41.0              4.878049
+       >100      208          171.5              5.702671
+[LEAKAGE] O late_rate acima é SOMENTE EDA usando o período completo. Não poderá virar feature dessa forma.
+
+================================================================================================
+13. IDs E ALTA CARDINALIDADE
+================================================================================================
+     source           variable   rows  unique unique_ratio_pct direct_model_feature_recommendation
+     orders           order_id  99441   99441           100.00                           NO_RAW_ID
+     orders        customer_id  99441   99441           100.00                           NO_RAW_ID
+  customers customer_unique_id  99441   96096            96.64                           NO_RAW_ID
+order_items         product_id 112650   32951            29.25                           NO_RAW_ID
+order_items          seller_id 112650    3095             2.75                           NO_RAW_ID
+    reviews          review_id  99224   98410            99.18                           NO_RAW_ID
+
+================================================================================================
+14. PLANO DE TRATAMENTO — RASCUNHO PARA REVISÃO, NÃO APLICADO
+================================================================================================
+      table                      variable              issue_type                       proposed_action                                                   rationale
+     orders                      order_id              identifier                      KEEP_AS_KEY_ONLY                     Chave técnica; nunca como feature bruta
+     orders                   customer_id     high_cardinality_id                         KEY_JOIN_ONLY                                 Não usar ID bruto no modelo
+  customers            customer_unique_id     high_cardinality_id                   EDA_OR_HISTORY_ONLY Somente se houver hipótese clara e construção point-in-time
+order_items                    product_id     high_cardinality_id                       NO_RAW_MODEL_ID                               Preferir atributos do produto
+order_items                     seller_id     high_cardinality_id             HISTORICAL_FEATURES_LATER  Histórico deverá usar apenas informação anterior ao pedido
+     orders      order_purchase_timestamp         prediction_time                  KEEP_DERIVE_CALENDAR             t0 candidato; derivar calendário e sazonalidade
+     orders order_estimated_delivery_date                 promise             KEEP_DERIVE_PROMISED_LEAD          Revisar semântica de data antes de congelar target
+     orders order_delivered_customer_date            future_label                           TARGET_ONLY                    Informação futura; proibida como feature
+     orders  order_delivered_carrier_date            future_event                       EXCLUDE_FEATURE                  Informação posterior ao instante da compra
+     orders             order_approved_at     post_purchase_event              EXCLUDE_BASELINE_FEATURE             Posterior ao t0 e apresenta anomalias temporais
+order_items           shipping_limit_date    provenance_uncertain                 HOLD_PROVENANCE_CHECK       Somente liberar se confirmarmos disponibilidade no t0
+order_items                         price                 numeric                    KEEP_DIAGNOSE_TAIL                        Não remover extremos automaticamente
+order_items                 freight_value                 numeric                    KEEP_DIAGNOSE_TAIL   Frete zero pode ser plausível; negativos seriam inválidos
+   payments                 payment_value     numeric_multirecord                    AGGREGATE_BY_ORDER                        Somar por pedido antes do join final
+   payments                  payment_type categorical_multirecord               AGGREGATE_MULTI_PAYMENT                   Um pedido pode ter vários registros/tipos
+   payments          payment_installments     numeric_multirecord                    AGGREGATE_BY_ORDER                     Revisar zeros antes da regra definitiva
+   products         product_category_name     categorical_missing          MISSING_AS_UNKNOWN_CANDIDATE        Decisão final somente após revisar padrão de missing
+   products              product_weight_g         numeric_missing IMPUTE_TRAIN_ONLY_PLUS_FLAG_CANDIDATE               Não aprender imputação usando validation/test
+   products             product_length_cm         numeric_missing IMPUTE_TRAIN_ONLY_PLUS_FLAG_CANDIDATE               Não aprender imputação usando validation/test
+   products             product_height_cm         numeric_missing IMPUTE_TRAIN_ONLY_PLUS_FLAG_CANDIDATE               Não aprender imputação usando validation/test
+   products              product_width_cm         numeric_missing IMPUTE_TRAIN_ONLY_PLUS_FLAG_CANDIDATE               Não aprender imputação usando validation/test
+geolocation   geolocation_zip_code_prefix       many_rows_per_zip               AGGREGATE_MEDIAN_BY_ZIP                      Nunca fazer join direto das ~1M linhas
+geolocation                       lat/lng              geospatial                VALIDATE_THEN_DISTANCE           Consolidar coordenada antes de calcular Haversine
+  customers                customer_state             categorical                                  KEEP                  Informação geográfica disponível no pedido
+    sellers                  seller_state             categorical                AGGREGATE_MULTI_SELLER                        Pedido pode conter mais de um seller
+    reviews         review_score/comments           post_delivery                    EXCLUDE_MAIN_MODEL                        Reservar para módulo NLP pós-entrega
+translation product_category_name_english            presentation                     PRESENTATION_ONLY                  Não excluir produtos por falta de tradução
+
+================================================================================================
+15. CHECKLIST DE DECISÕES QUE AINDA NÃO PODEM SER AUTOMATIZADAS
+================================================================================================
+- target_definition: Comparar timestamp_strict versus calendar_date e decidir a semântica correta da promessa.
+- outliers: Investigar extremos plausíveis e suspeitos. Nenhuma exclusão automática.
+- numeric_transformations: Log, clipping ou winsorization somente após EDA. Se adotados, parâmetros serão ajustados somente no treino.
+- numeric_imputation: Método e estatísticas somente depois do split. Fit apenas no conjunto de treino.
+- shipping_limit_date: Confirmar se a informação existia no instante t0 antes de liberar como feature.
+- seller_history: Definir janela, smoothing e construção point-in-time sem utilizar o futuro.
+- multi_seller_orders: Definir regra definitiva para sellers e distâncias quando um pedido possui vários sellers.
+- payment_inconsistencies: Revisar a distribuição de payment_delta antes de qualquer correção ou exclusão.
+- geolocation_spread: Inspecionar CEPs com vários estados/cidades ou grande dispersão antes da consolidação definitiva.
+
+================================================================================================
+16. RESULTADO
+================================================================================================
+[OK] Auditoria somente leitura: nenhum CSV em data/raw foi modificado.
+Arquivos gerados em: /home/runner/workspace/Delivery_Risk_Intelligence/reports/audit/03_data_diagnosis
+  - 01_estimated_delivery_time_distribution.csv
+  - 02_target_definition_comparison.csv
+  - 03_delay_distribution_calendar_days.csv
+  - 04_numeric_statistical_profile.csv
+  - 05_semantic_quality_checks.csv
+  - 06_financial_consistency_by_order.csv
+  - 07_financial_consistency_summary.csv
+  - 08_missingness_global.csv
+  - 09_missingness_by_target_calendar.csv
+  - 10_missingness_by_month.csv
+  - 11_geolocation_zip_profile.csv
+  - 12_geolocation_quality_summary.csv
+  - 13_distance_statistical_profile.csv
+  - 14_numeric_by_target_calendar.csv
+  - 15_customer_state_late_rate.csv
+  - 16_payment_type_late_rate.csv
+  - 17_product_category_late_rate.csv
+  - 18_seller_state_late_rate.csv
+  - 19_categorical_cardinality_summary.csv
+  - 20_target_by_month.csv
+  - 21_target_by_purchase_weekday.csv
+  - 22_target_by_purchase_hour.csv
+  - 23_seller_full_period_eda.csv
+  - 24_seller_volume_stability.csv
+  - 25_id_cardinality.csv
+  - 26_data_treatment_plan_DRAFT.csv
+  - 27_pending_data_decisions.json

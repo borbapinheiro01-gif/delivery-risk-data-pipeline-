@@ -1,0 +1,107 @@
+
+====================================================================================================
+GN–ADMM DELIVERY — FINAL SCIENTIFIC FREEZE
+====================================================================================================
+
+SCOPE
+----------------------------------------------------------------------------------------------------
+GN_ADMM_DELIVERY_BRIER_NLLS_V1
+
+DATA
+----------------------------------------------------------------------------------------------------
+N observations : 90783
+N parameters   : 8
+
+MODEL
+----------------------------------------------------------------------------------------------------
+p_i(beta) = sigmoid(x_i^T beta)
+
+D_i(beta) = y_i - p_i(beta)
+
+J(beta) = 0.5 * mean(D_i(beta)^2)
+
+Primary audited restriction:
+beta_z_freight_sq >= 0
+
+HYPOTHESIS MATRIX
+----------------------------------------------------------------------------------------------------
+                                     hypothesis              status                                                                                                                                                                                                                                                  evidence
+              H1_OPERATOR_AND_JACOBIAN_VALIDITY           SUPPORTED                                                                                                           Sigmoid operator remained within (0,1), and the analytic Jacobian achieved best max absolute finite-difference error of 1.5684148424455202e-11.
+       H2_UNCONSTRAINED_GN_MULTISTART_STABILITY           SUPPORTED                                                                                                                                                                                                Objective range across the tested GN starts was 0.000e+00.
+         H3_GNADMM_INDEPENDENT_SOLVER_AGREEMENT           SUPPORTED                                                                                                                                                                                           Independent constrained solver distance to GN–ADMM = 5.702e-08.
+                     H4_GNADMM_OOT_AP_ADVANTAGE PARTIALLY_SUPPORTED                                                                                                            Mean paired AP improvement = 0.001672883764737321; better in 8 months; block-bootstrap 95% CI = [-0.001869653050370023, 0.005666736812889149].
+                H5_POSITIVE_QUADRATIC_CURVATURE       NOT_SUPPORTED                              The unconstrained Brier-NLS solution preferred beta_z2=-0.141176, while the beta_z2>=0 constrained solution collapsed to the boundary near zero. This does not support positive convex curvature as an empirical conclusion.
+     H6_CONSTRAINT_AS_STRUCTURAL_REGULARIZATION PARTIALLY_SUPPORTED The nonnegative-curvature constrained model improved mean AP relative to the free Brier-GN model despite the unconstrained coefficient preferring negative curvature. This is compatible with a regularization effect, but does not prove that mechanism.
+              H7_GNADMM_CALIBRATION_SUPERIORITY       NOT_SUPPORTED                                                                                                                                                          Best pooled Brier: GN_EQ0; best quantile-ECE: LOGIT_MLE; best intercept/slope proximity: GN_EQ0.
+H8_GNADMM_COMPUTATIONAL_APPLICABILITY_REAL_DATA           SUPPORTED                                                                                          The complete experiment ran on 90783 real-world e-commerce observations with 8 model parameters, including OOT validation and an independent constrained solver.
+
+PRIMARY TEMPORAL AP EVIDENCE
+----------------------------------------------------------------------------------------------------
+Classification : PARTIALLY_SUPPORTED
+Mean delta AP  : 0.001672883764737321
+Months better  : 8
+Block CI 95%   : [-0.001869653050370023, 0.005666736812889149]
+Wilcoxon p     : 0.463134765625
+
+CURVATURE
+----------------------------------------------------------------------------------------------------
+Unconstrained beta_z2 : -0.14117607108258445
+Restricted beta_z2    : -9.940248169196926e-11
+Shape conclusion       : NOT_SUPPORTED
+
+CONSTRAINT ABLATION
+----------------------------------------------------------------------------------------------------
+Best AP       : GN_EQ0
+Best Brier    : GN_EQ0
+Best LogLoss  : GN_EQ0
+Best AUC      : LOGIT_MLE
+
+CALIBRATION
+----------------------------------------------------------------------------------------------------
+Best pooled Brier          : GN_EQ0
+Best pooled quantile-ECE    : LOGIT_MLE
+Best intercept/slope match  : GN_EQ0
+
+ALLOWED CLAIMS
+----------------------------------------------------------------------------------------------------
+- The GN–ADMM Brier-NLS formulation was implemented and numerically validated on the logistics reliability dataset.
+- The analytic probability Jacobian showed high numerical agreement with finite differences.
+- The constrained GN–ADMM solution showed close agreement with an independent constrained numerical optimizer.
+- Predictive performance differed by metric; therefore no model is described as universally superior.
+- GN–ADMM showed a small favorable mean Average Precision difference OOT, but the paired temporal evidence was not strong enough to establish decisive superiority.
+- The nonnegative quadratic restriction must not be interpreted as evidence of an underlying U-shaped relationship: the unrestricted Brier-NLS fit preferred negative quadratic curvature and the restricted solution was located at the constraint boundary.
+
+PROHIBITED CLAIMS
+----------------------------------------------------------------------------------------------------
+- GN–ADMM proves that freight deviations cause delivery delays.
+- GN–ADMM is universally superior to logistic regression.
+- The imposed beta_z2 >= 0 restriction proves that the true relationship is U-shaped.
+- Agreement with the independent optimizer proves global convergence of the external Gauss–Newton sequence.
+- A lower Brier score alone proves superior probability calibration.
+
+LIMITATIONS
+----------------------------------------------------------------------------------------------------
+- Observational e-commerce data; no causal identification.
+- Only 14 expanding-window OOT evaluation months are available for paired temporal inference.
+- The GN objective is Brier nonlinear least squares, whereas logistic regression optimizes binomial log-likelihood.
+- The beta_z2 sign constraint is externally imposed and cannot create structural information absent from the data.
+- GN–ADMM convergence of the external nonlinear sequence is not globally certified by these experiments.
+- The GN–ADMM multistart experiment showed sensitivity to initialization in at least one starting configuration.
+- Calibration decomposition based on prediction bins is an approximation.
+- Great-circle distance is a geographic proxy rather than road-network distance.
+- Expected freight is an OOT model-derived quantity and inherits uncertainty from that upstream model.
+
+FINAL GUARDRAIL
+----------------------------------------------------------------------------------------------------
+The experiments validate the numerical implementation and characterize its empirical
+behavior under the evaluated data, starts, constraints and temporal folds.
+
+They do NOT establish:
+- causal effects,
+- universal model superiority,
+- global convergence of the nonlinear external sequence,
+- or truth of an externally imposed curvature constraint.
+
+====================================================================================================
+END
+====================================================================================================

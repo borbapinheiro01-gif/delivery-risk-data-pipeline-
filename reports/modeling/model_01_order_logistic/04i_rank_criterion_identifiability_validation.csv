@@ -1,0 +1,9 @@
+check,status,observed,expected
+c34a_pass,PASS,PASS,PASS
+channel_month_groups_34,PASS,34,34
+k_monotonic_failures_zero,PASS,0,0
+error_monotonic_failures_zero,PASS,0,0
+original_one_se_candidate_099,PASS,0.99,0.99
+q099_retains_most_dimensions,PASS,"(87.25490196078431, 89.6078431372549)",>80% mean dimensions retained
+full_rank_dimension_30,PASS,30,30
+full_rank_theoretical_reconstruction_error_zero,PASS,0.0,0.0

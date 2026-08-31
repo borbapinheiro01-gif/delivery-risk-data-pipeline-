@@ -1,0 +1,76 @@
+================================================================================
+27A — BLOCK 01 — SHIPPING FRICTION CORE METRICS
+================================================================================
+
+STATUS
+------
+PASS
+
+POPULATION
+----------
+Orders in analytical input     : 96,211
+Duplicate order_id             : 0
+
+Expected freight available     : 91,262
+Log cost anomaly available     : 91,262
+Monthly robust anomaly         : 91,262
+
+CORE DEFINITIONS
+----------------
+Freight Burden:
+    B = Freight / (Price + Freight)
+
+Freight / Price:
+    R = Freight / Price
+
+Absolute Freight Residual:
+    e = Freight - Expected Freight
+
+Freight Cost Ratio:
+    Q = Freight / Expected Freight
+
+Freight Log Ratio:
+    Z = log((Freight + eps) / (Expected Freight + eps))
+
+Monthly Robust Cost Anomaly:
+    Z* = (Z - monthly median) / (1.4826 * monthly MAD)
+
+INTERPRETATION
+--------------
+Freight Burden measures customer-side shipping burden.
+
+Freight Log Ratio measures how far observed freight lies above or below
+the previously estimated OOT expected-freight benchmark.
+
+Z > 0:
+    observed freight above expected.
+
+Z = 0:
+    observed freight approximately equal to expected.
+
+Z < 0:
+    observed freight below expected.
+
+The residual is NOT interpreted as proven logistics inefficiency.
+Carrier identity is unavailable.
+No causal claim is made.
+
+VALIDATION
+----------
+Burden/ratio identity max error:
+    2.220446049250313e-16
+
+Maximum absolute monthly median of Z*:
+    3.144186300207963e-18
+
+FAILED GATES
+------------
+NONE
+
+NEXT BLOCK
+----------
+27A BLOCK 02 — BURDEN DECOMPOSITION
+
+Do not interpret seller, region, service or subsidy opportunity yet.
+Those analyses belong to later blocks.
+================================================================================

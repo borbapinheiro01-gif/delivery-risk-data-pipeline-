@@ -1,0 +1,14 @@
+check,status,observed,expected
+c35a_pass,PASS,PASS,PASS
+c34d_pass,PASS,PASS,PASS
+temporal_months_17,PASS,17,17
+k_grid_unique,PASS,0,0
+k_grid_within_0_30,PASS,"[0, 30]","[0, 30]"
+baseline_k0_present,PASS,True,True
+structural_modes_present,PASS,"[1, 3, 6]","[1, 3, 6]"
+full_rank_control_present,PASS,True,True
+primary_metric_average_precision,PASS,['average_precision'],['average_precision']
+pca_train_only,PASS,True,True
+scaler_train_only,PASS,True,True
+threshold_not_selected,PASS,False,False
+classifier_not_trained,PASS,False,False

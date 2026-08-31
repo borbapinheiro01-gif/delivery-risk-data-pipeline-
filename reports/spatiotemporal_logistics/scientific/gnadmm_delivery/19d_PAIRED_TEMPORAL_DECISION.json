@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "primary_comparison": "GNADMM_BRIER_CONSTRAINED vs LOGIT_MLE",
+  "primary_metric": "average_precision",
+  "mean_AP_improvement": 0.001672883764737321,
+  "months_AP_better": 8,
+  "block_bootstrap_AP_CI95": [
+    -0.001869653050370023,
+    0.005666736812889149
+  ],
+  "wilcoxon_AP_p_two_sided": 0.463134765625,
+  "sign_test_AP_p_two_sided": 0.79052734375,
+  "all_leave_one_month_out_AP_means_positive": true,
+  "AP_evidence_classification": "FAVORABLE_NOT_DECISIVE",
+  "important_guardrail": "Months are the paired evaluation units. With only 14 OOT months, uncertainty intervals and sensitivity analyses are reported rather than treating a small mean delta as definitive."
+}

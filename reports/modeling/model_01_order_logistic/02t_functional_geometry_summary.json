@@ -1,0 +1,40 @@
+{
+    "step": "MODEL_01_0_C3_3B_SUPPORT_AWARE_FUNCTIONAL_GEOMETRY",
+    "status": "PASS",
+    "created_at_utc": "2026-08-30T20:16:53.328156+00:00",
+    "dataset_purchase_start": "2016-09-04 21:15:19",
+    "dataset_purchase_end": "2018-10-17 17:30:18",
+    "task_orders": 96470,
+    "windows_days": [
+        30,
+        60,
+        90
+    ],
+    "full_support_orders": {
+        "30": 96421,
+        "60": 96204,
+        "90": 96204
+    },
+    "incomplete_left_history_orders": {
+        "30": 49,
+        "60": 266,
+        "90": 266
+    },
+    "geometry_runs": 6,
+    "geometry_method": "CENTERED_SVD_FULL_SUPPORT_ONLY",
+    "pointwise_scaling": false,
+    "left_history_policy": "DO_NOT_INTERPRET_PRE_DATASET_BINS_AS_OBSERVED_ZERO",
+    "smoothing_applied": false,
+    "basis_applied": false,
+    "fpca_applied": false,
+    "window_selected": false,
+    "component_count_selected": false,
+    "functional_module_unlocked": false,
+    "feature_added_to_model": false,
+    "folds_frozen": false,
+    "model_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 0,
+    "runtime_seconds": 3.2900528440004564
+}

@@ -1,0 +1,29 @@
+{
+  "module_06_status": "PASS",
+  "module_07_relative_evidence": {
+    "f2_beats_f0_mae": true,
+    "mae_f0": 9.744184795523775,
+    "mae_f1": 6.891095084674556,
+    "mae_f2": 4.787304670376985,
+    "mae_gain_f2_vs_f0": 0.5087013669346514,
+    "mae_difference_f2_minus_f1": -2.1037904142975714,
+    "max_abs_residual_pearson": 0.3010787276525999,
+    "max_abs_residual_spearman": 0.1225683703330233,
+    "residual_monthly_median_range": 1.7499529217246526
+  },
+  "module_08_mixedlm_status": "CONVERGED",
+  "module_08_freight_residual": {
+    "coef": -0.007631822472971414,
+    "se": 0.001976087232706268,
+    "ci95_lower": -0.011504953449075699,
+    "ci95_upper": -0.0037586914968671284
+  },
+  "module_09_beta_binomial": {
+    "P_p_low_gt_p_normal": 0.96082,
+    "P_p_high_gt_p_normal": 0.99987
+  },
+  "module_09_odds_ratio_residual": {
+    "R_A": 1.002831979741229,
+    "R_B_promise_adjusted": 1.009746015460047
+  }
+}

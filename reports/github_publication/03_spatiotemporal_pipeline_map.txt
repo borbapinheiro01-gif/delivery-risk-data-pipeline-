@@ -1,0 +1,6 @@
+1 | src/spatiotemporal_logistics/00_environment_and_registry.py
+2 | src/spatiotemporal_logistics/01_build_route_checkpoint.py
+3 | src/spatiotemporal_logistics/02_build_external_context_checkpoint.py
+4 | src/spatiotemporal_logistics/03_build_master_checkpoint.py
+5 | src/spatiotemporal_logistics/04_run_four_analyses.py
+6 | src/spatiotemporal_logistics/05_integrated_validation_report.py

@@ -1,0 +1,16 @@
+================================================================================
+SYSTEM TOOLS
+================================================================================
+python3         FOUND      /home/runner/workspace/.pythonlibs/bin/python3
+pip             FOUND      /home/runner/workspace/.pythonlibs/bin/pip
+git             FOUND      /repl/ctls/bin/git
+bash            FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/bash
+curl            FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/curl
+wget            FOUND      /nix/store/rsk2dgsij8hrfg9fk2a2667nljw3sxch-wget-1.25.0/bin/wget
+unzip           FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/unzip
+zip             FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/zip
+tar             FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/tar
+sha256sum       FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/sha256sum
+gcc             FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/gcc
+g++             FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/g++
+make            FOUND      /nix/store/wwvr51yh62fyswqa9c4193dc03mf62dq-replit-runtime-path/bin/make

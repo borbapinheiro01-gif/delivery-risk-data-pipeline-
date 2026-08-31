@@ -1,0 +1,37 @@
+{
+    "step": "MODEL_01_0_C3_4A_1_RANK_CRITERION_IDENTIFIABILITY",
+    "status": "PASS",
+    "created_at_utc": "2026-08-30T21:18:09.139456+00:00",
+    "source_step": "MODEL_01_0_C3_4A_TEMPORAL_K_POLICY",
+    "representation": "RAW_30D",
+    "feature_dimension": 30,
+    "channel_month_groups": 34,
+    "monotonic_k_failures": 0,
+    "monotonic_error_failures": 0,
+    "original_one_se_candidate": 0.99,
+    "q099_mean_dimension_retained_pct_range": [
+        87.25490196078431,
+        89.6078431372549
+    ],
+    "full_rank_k": 30,
+    "full_rank_theoretical_error": 0.0,
+    "criterion_status": "NON_IDENTIFYING_FOR_INTRINSIC_RANK_SELECTION",
+    "criterion_reason": "Full-vector PCA reconstruction error is nested and nonincreasing in K; at K=30 the complete orthonormal basis reconstructs any centered 30-dimensional test vector exactly. Therefore minimizing this criterion alone structurally favors maximal rank.",
+    "interpretation": {
+        "q099_valid_as_reconstruction_candidate": true,
+        "q099_valid_as_intrinsic_rank_estimate": false,
+        "final_k_selected": false,
+        "next_method": "TEMPORAL_BI_CROSS_VALIDATION_RANK_SELECTION"
+    },
+    "governance": {
+        "target_used": false,
+        "pca_executed": false,
+        "svd_executed": false,
+        "final_k_selected": false,
+        "folds_frozen": false,
+        "classifier_trained": false,
+        "silver_created": false,
+        "raw_modified": false
+    },
+    "validation_failures": 0
+}

@@ -1,0 +1,13 @@
+check,status,observed,expected
+rows,PASS,96470,96470
+order_id_unique,PASS,0,0
+volume_shape,PASS,"(96470, 90)","(96470, 90)"
+freight_shape,PASS,"(96470, 90)","(96470, 90)"
+volume_nonnegative,PASS,0,0
+freight_nonnegative,PASS,0,0
+volume_finite,PASS,0,0
+freight_finite,PASS,0,0
+volume_window_nesting,PASS,0,0
+freight_window_nesting,PASS,0,0
+bruteforce_volume,PASS,0,0
+bruteforce_freight,PASS,0,0

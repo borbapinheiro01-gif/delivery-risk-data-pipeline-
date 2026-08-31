@@ -1,0 +1,45 @@
+========================================================================================================
+DQ GATE 05.1 — POINT-IN-TIME FEATURE REGISTRY
+========================================================================================================
+
+STEP STATUS                     : PASS
+GATE 05 STATUS                  : IN_PROGRESS
+
+PREDICTION TIME                 : order_purchase_timestamp
+
+RAW TABLES                      : 9
+RAW COLUMNS AUDITED             : 52
+REVIEW REQUIRED                 : 0
+FORBIDDEN / TARGET              : 11
+HOLD                            : 10
+
+STEP VALIDATION FAILURES        : 0
+
+RULE
+--------------------------------------------------------------------------------------------------------
+A feature X_ij is eligible only if:
+
+    t_available(X_ij) <= t0_i
+
+with:
+
+    t0_i = order_purchase_timestamp_i
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------
+This step classifies RAW fields only.
+
+It does NOT:
+- train any model;
+- create Silver;
+- resolve payment provenance;
+- resolve shipping_limit_date provenance;
+- consolidate geolocation;
+- construct historical seller features;
+- create Registry 1.3.
+
+RAW modified                    : NO
+Silver created                  : NO
+Model trained                   : NO
+
+========================================================================================================

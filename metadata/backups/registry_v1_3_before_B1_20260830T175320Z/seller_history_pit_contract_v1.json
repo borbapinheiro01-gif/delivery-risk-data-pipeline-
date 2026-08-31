@@ -1,0 +1,48 @@
+{
+  "contract_id": "SELLER_HISTORY_PIT_V1",
+  "version": "1.0.0",
+
+  "prediction_time": "order_purchase_timestamp",
+  "entity": "seller_id",
+  "current_grain": "order_id + seller_id",
+
+  "event_semantics": {
+    "purchase_history": {
+      "available_time": "order_purchase_timestamp",
+      "strict_rule": "purchase_j < purchase_i"
+    },
+
+    "outcome_history": {
+      "available_time": "order_delivered_customer_date",
+      "strict_rule": "delivery_j < purchase_i"
+    }
+  },
+
+  "windows": {
+    "purchase_volume_days": [30],
+    "outcome_days": [30, 90]
+  },
+
+  "label": {
+    "contract_id": "DELIVERY_RISK_LABEL_V1",
+    "formula": "date(delivered_customer) > date(estimated_delivery)"
+  },
+
+  "smoothing": {
+    "applied_in_gate_05_3": false,
+    "reason": "Global target prevalence must not be used across future observations. Smoothing will be estimated inside training folds or from historical point-in-time outcomes only."
+  },
+
+  "principles": [
+    "STRICTLY_BEFORE_PREDICTION_TIME",
+    "NO_CURRENT_ORDER_OUTCOME",
+    "NO_EQUAL_TIMESTAMP_EVENT",
+    "OUTCOME_MUST_ALREADY_BE_OBSERVED",
+    "NO_FULL_DATASET_TARGET_STATISTIC",
+    "AUDIT_ONLY_NOT_MODEL_FEATURE_MATRIX"
+  ],
+
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

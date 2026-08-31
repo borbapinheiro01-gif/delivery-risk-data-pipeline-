@@ -1,0 +1,78 @@
+{
+    "step": "MODEL_01_0_C3_4D_ROBUST_RANK_EVIDENCE",
+    "status": "PASS",
+    "method": "WORST_CASE_CUMULATIVE_BOOTSTRAP_SELECTION_EVIDENCE",
+    "bootstrap_groups": 18,
+    "scheme_channel_groups": 6,
+    "scheme_conditioned_modal_ranks": [
+        1,
+        3,
+        6
+    ],
+    "exact_rank_assessment": "EXACT_K_NOT_IDENTIFIED_ACROSS_HOLDOUT_SCHEMES",
+    "exact_k_global_consensus": false,
+    "best_bcv_k_range": [
+        2,
+        6
+    ],
+    "one_se_bcv_candidate_range": [
+        1,
+        6
+    ],
+    "worst_case_probability_k_le_6": 0.6625,
+    "worst_case_probability_k_le_10": 0.6755,
+    "threshold_sensitivity": [
+        {
+            "required_worst_case_probability": 0.5,
+            "required_worst_case_pct": 50.0,
+            "smallest_k_cap_meeting_requirement": 6,
+            "candidate_only_not_final": true
+        },
+        {
+            "required_worst_case_probability": 0.6,
+            "required_worst_case_pct": 60.0,
+            "smallest_k_cap_meeting_requirement": 6,
+            "candidate_only_not_final": true
+        },
+        {
+            "required_worst_case_probability": 0.65,
+            "required_worst_case_pct": 65.0,
+            "smallest_k_cap_meeting_requirement": 6,
+            "candidate_only_not_final": true
+        },
+        {
+            "required_worst_case_probability": 0.7,
+            "required_worst_case_pct": 70.0,
+            "smallest_k_cap_meeting_requirement": 23,
+            "candidate_only_not_final": true
+        },
+        {
+            "required_worst_case_probability": 0.75,
+            "required_worst_case_pct": 75.0,
+            "smallest_k_cap_meeting_requirement": 25,
+            "candidate_only_not_final": true
+        },
+        {
+            "required_worst_case_probability": 0.8,
+            "required_worst_case_pct": 80.0,
+            "smallest_k_cap_meeting_requirement": 25,
+            "candidate_only_not_final": true
+        },
+        {
+            "required_worst_case_probability": 0.9,
+            "required_worst_case_pct": 90.0,
+            "smallest_k_cap_meeting_requirement": 27,
+            "candidate_only_not_final": true
+        }
+    ],
+    "important_interpretation": "Evidence supports low-rank structure, but does not identify one exact global K.",
+    "adaptive_softmax_used": false,
+    "arbitrary_evidence_weights_used": false,
+    "target_used": false,
+    "final_k_selected": false,
+    "supervised_stage_unlocked": false,
+    "classifier_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 0
+}

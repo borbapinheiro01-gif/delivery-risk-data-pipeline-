@@ -1,0 +1,15 @@
+check,status,observed,expected
+frozen_contract_hash,PASS,c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b,c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b
+fold_metric_rows,PASS,238,238
+seventeen_months,PASS,17,17
+fourteen_k_values,PASS,14,14
+each_month_has_14_k,PASS,0,0
+each_k_has_17_months,PASS,0,0
+all_metrics_finite,PASS,0,0
+probability_failures,PASS,0,0
+fold_guard_failures,PASS,0,0
+all_coefficients_finite,PASS,0,0
+zero_convergence_warnings,PASS,0,0
+prediction_month_files,PASS,17,17
+k_final_not_selected,PASS,False,False
+threshold_not_selected,PASS,False,False

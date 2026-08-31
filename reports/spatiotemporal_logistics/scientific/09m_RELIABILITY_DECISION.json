@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "P_p_low_gt_p_normal": 0.96082,
+  "P_p_high_gt_p_normal": 0.99987,
+  "odds_ratio_residual_observed_R_A": 1.002831979741229,
+  "odds_ratio_residual_promise_adjusted_R_B": 1.009746015460047
+}

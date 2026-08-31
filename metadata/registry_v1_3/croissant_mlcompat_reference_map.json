@@ -1,0 +1,86 @@
+[
+  {
+    "recordset": "order_items",
+    "source_field": "order_items/order_id",
+    "canonical_reference": {
+      "@id": "orders/order_id"
+    },
+    "mlcroissant_compat_reference": {
+      "field": {
+        "@id": "orders/order_id"
+      }
+    }
+  },
+  {
+    "recordset": "order_items",
+    "source_field": "order_items/product_id",
+    "canonical_reference": {
+      "@id": "products/product_id"
+    },
+    "mlcroissant_compat_reference": {
+      "field": {
+        "@id": "products/product_id"
+      }
+    }
+  },
+  {
+    "recordset": "order_items",
+    "source_field": "order_items/seller_id",
+    "canonical_reference": {
+      "@id": "sellers/seller_id"
+    },
+    "mlcroissant_compat_reference": {
+      "field": {
+        "@id": "sellers/seller_id"
+      }
+    }
+  },
+  {
+    "recordset": "payments",
+    "source_field": "payments/order_id",
+    "canonical_reference": {
+      "@id": "orders/order_id"
+    },
+    "mlcroissant_compat_reference": {
+      "field": {
+        "@id": "orders/order_id"
+      }
+    }
+  },
+  {
+    "recordset": "reviews",
+    "source_field": "reviews/order_id",
+    "canonical_reference": {
+      "@id": "orders/order_id"
+    },
+    "mlcroissant_compat_reference": {
+      "field": {
+        "@id": "orders/order_id"
+      }
+    }
+  },
+  {
+    "recordset": "orders",
+    "source_field": "orders/customer_id",
+    "canonical_reference": {
+      "@id": "customers/customer_id"
+    },
+    "mlcroissant_compat_reference": {
+      "field": {
+        "@id": "customers/customer_id"
+      }
+    }
+  },
+  {
+    "recordset": "products",
+    "source_field": "products/product_category_name",
+    "canonical_reference": {
+      "@id": "translation/product_category_name"
+    },
+    "mlcroissant_compat_reference": {
+      "field": {
+        "@id": "translation/product_category_name"
+      }
+    }
+  }
+]

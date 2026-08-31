@@ -1,0 +1,45 @@
+====================================================================================================
+MODEL 01.0-C3.3-A — FUNCTIONAL POINT-IN-TIME CURVES
+====================================================================================================
+
+STATUS                         : PASS
+STAGE ASSESSMENT               : FUNCTIONAL_CURVE_CONSTRUCTION_VIABLE
+
+TASK ORDERS                    : 96,470
+PURCHASE EVENTS                : 99,441
+FREIGHT EVENTS                 : 98,666
+
+CURVE SHAPE                    : (96470, 90)
+VOLUME DTYPE                   : int32
+FREIGHT DTYPE                  : float64
+
+POINT-IN-TIME RULE
+----------------------------------------------------------------------------------------------------
+event_time < prediction_time
+
+lag_01 = [t0 - 1 day,  t0)
+lag_90 = [t0 - 90 days, t0 - 89 days)
+
+INDEPENDENT VALIDATION
+----------------------------------------------------------------------------------------------------
+Sample orders                  : 60
+Volume bin mismatches          : 0
+Freight bin mismatches         : 0
+
+VALIDATION FAILURES            : 0
+
+IMPORTANT
+----------------------------------------------------------------------------------------------------
+No smoothing applied.
+No basis expansion applied.
+No FPCA applied.
+No window selected.
+No component count selected.
+No feature added to MODEL_01.
+No fold frozen.
+No model trained.
+No Silver created.
+RAW not modified.
+
+RUNTIME                        : 2.880 s
+====================================================================================================

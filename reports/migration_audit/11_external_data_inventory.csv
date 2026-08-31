@@ -1,0 +1,10 @@
+path,size_bytes,suffix
+data/external/landing/anp_fuel/monthly_municipality_2016_2018/mensal_municipios_2016_2018.xlsx,10578255,.xlsx
+data/external/landing/ibge_gdp/retrospective/base_de_dados_2010_2018_xls.zip,8921384,.zip
+data/external/landing/ibge_population/2017/POP2017_20220905.xls,684032,.xls
+data/external/landing/ibge_population/2017/estimativa_dou_2017.xls,672768,.xls
+data/external/landing/ibge_population/2018/POP2018_20220905.xls,683520,.xls
+data/external/landing/ibge_population/2018/estimativa_dou_2018_20181019.xls,769024,.xls
+data/external/registry/download_manifest.tsv,1666,.tsv
+data/external/registry/external_source_registry.csv,1008,.csv
+data/external/registry/temporal_eligibility.csv,932,.csv

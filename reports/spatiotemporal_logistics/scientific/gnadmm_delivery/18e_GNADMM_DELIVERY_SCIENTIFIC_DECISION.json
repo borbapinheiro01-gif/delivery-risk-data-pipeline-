@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "scope": "GN_ADMM_DELIVERY_EXPERIMENT_V1",
+  "objective_gn": "HALF_MEAN_BRIER_NLLS",
+  "constraint": "beta_z_freight_sq >= 0",
+  "independent_reference": {
+    "success": true,
+    "message": "Optimization terminated successfully",
+    "objective": 0.03178421265782655,
+    "brier": 0.0635684253156531,
+    "beta_z2": -1.6987071532268474e-20,
+    "distance_to_gnadmm": 5.701630402292818e-08
+  },
+  "best_mean_AP_model": "GNADMM_BRIER_CONSTRAINED",
+  "best_mean_Brier_model": "LOGIT_MLE",
+  "important_guardrail": "GN–ADMM is evaluated as a constrained Brier-NLLS benchmark. It does not replace logistic likelihood merely because it is nonlinear or constrained.",
+  "causal_claim": false,
+  "global_optimum_certified": false,
+  "raw_modified": false
+}

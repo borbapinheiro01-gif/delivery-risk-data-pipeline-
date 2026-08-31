@@ -1,0 +1,21 @@
+{
+  "gate": "DQ_GATE_04B_LABEL_CONTRACT_FREEZE",
+  "status": "PASS",
+  "created_at_utc": "2026-08-30T10:58:09.704512+00:00",
+  "primary_label": "CALENDAR_DAY",
+  "label_contract_status": "FROZEN_FOR_MODELING",
+  "external_olist_sla_status": "NOT_VERIFIED",
+  "supervised_orders": 96470,
+  "late_orders": 6534,
+  "late_rate_pct": 6.7730900798175595,
+  "no_skill_pr_auc": 0.06773090079817559,
+  "registry_before": "1.1.0",
+  "registry_after": "1.2.0",
+  "resolved_issues": [
+    "ISSUE-MISSINGNESS-001",
+    "ISSUE-OBSERVATION-WINDOW-001",
+    "ISSUE-TARGET-001"
+  ],
+  "raw_modified": false,
+  "silver_created": false
+}

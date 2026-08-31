@@ -1,0 +1,23 @@
+{
+    "step": "MODEL_01_0_C3_3D1_1_NEGATIVE_SMOOTHING_AUDIT",
+    "status": "PASS",
+    "created_at_utc": "2026-08-30T20:34:22.494020+00:00",
+    "configurations_audited": 18,
+    "configurations_with_negative_cells": 18,
+    "max_negative_cell_pct": 0.9620066617696654,
+    "max_affected_row_pct": 5.301234875888737,
+    "most_negative_value": -60.98213441652922,
+    "max_negative_mass_pct_raw_mass": 0.0004508292336581467,
+    "target_used": false,
+    "negative_values_clipped": false,
+    "smoothing_selected": false,
+    "lambda_selected": false,
+    "window_selected": false,
+    "fpca_applied": false,
+    "model_feature_created": false,
+    "model_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 0,
+    "runtime_seconds": 5.433888023999316
+}

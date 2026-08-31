@@ -1,0 +1,26 @@
+{
+  "gate": "DQ_GATE_04B_LABEL_CONTRACT_FREEZE",
+  "version": "1.0",
+
+  "modeling_contract": {
+    "unit_of_analysis": "order_id",
+    "prediction_time": "order_purchase_timestamp",
+    "primary_label": "CALENDAR_DAY",
+    "formula": "1[date(order_delivered_customer_date) > date(order_estimated_delivery_date)]",
+    "status": "FROZEN_FOR_MODELING"
+  },
+
+  "external_truth": {
+    "olist_historical_sla_verified": false,
+    "status": "NOT_VERIFIED",
+    "interpretation": "The modeling contract is frozen for this case, but the original private Olist SLA semantics are not independently verified."
+  },
+
+  "issues_to_resolve": {
+    "ISSUE-MISSINGNESS-001": "RESOLVED_ASSESSMENT",
+    "ISSUE-OBSERVATION-WINDOW-001": "RESOLVED_POLICY",
+    "ISSUE-TARGET-001": "RESOLVED_MODELING_CONTRACT"
+  },
+
+  "raw_immutable": true
+}

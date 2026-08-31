@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "gates": {
+    "C06_G01_master_unique_order_id": true,
+    "C06_G02_no_impossible_freight": true,
+    "C06_G03_sample_sizes_documented": true,
+    "C06_G04_correlation_finite": true,
+    "C06_G05_deciles_valid": true,
+    "C06_G06_directional_stability_single_seller": true
+  }
+}

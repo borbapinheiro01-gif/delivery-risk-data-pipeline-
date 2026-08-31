@@ -1,0 +1,39 @@
+====================================================================================================
+DATASET KNOWLEDGE & TRUTH REGISTRY — VERSION 1.1
+====================================================================================================
+
+Status interno          : PASS
+Tabelas                 : 9
+Colunas                 : 52
+Relacionamentos         : 7
+Questões RAW            : 18
+Questões canônicas      : 13
+Search records          : 181
+
+NOVOS CONCEITOS
+----------------------------------------------------------------------------------------------------
+1. semantic_cardinality != observed_cardinality
+2. source_grain != target_ml_grain
+3. direct_feature_allowed != field_exists
+4. child table feature -> aggregation required
+5. canonical issue != individual audit observation
+6. future information remains forbidden at t0
+7. geolocation must be consolidated before use
+8. reviews remain outside the preventive model
+
+ARTEFATOS
+----------------------------------------------------------------------------------------------------
+- canonical_issue_registry.csv
+- column_catalog_v1_1.csv
+- croissant_1_1.json
+- grain_compatibility_summary.csv
+- issue_evidence_map.csv
+- ml_grain_policy_registry.csv
+- registry_v1_1_manifest.json
+- registry_v1_1_validation.csv
+- relationship_registry_v1_1.csv
+- search_knowledge_v1_1.jsonl
+
+PRÓXIMA ETAPA:
+DQ Gate 03B — Conditional & Task Completeness
+====================================================================================================

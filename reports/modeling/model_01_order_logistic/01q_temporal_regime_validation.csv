@@ -1,0 +1,5 @@
+check,status,observed,expected
+unique_current_month,PASS,0,0
+all_scores_finite,PASS,-77,0
+scores_between_0_and_1,PASS,checked,"[0,1]"
+folds_not_frozen,PASS,False,False

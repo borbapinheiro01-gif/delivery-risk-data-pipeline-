@@ -1,0 +1,7 @@
+check,status,observed,expected
+raw_column_count,PASS,52,52
+column_key_unique,PASS,0,0
+all_columns_classified,PASS,0,0
+future_target_not_direct_feature,PASS,0,0
+shipping_limit_remains_hold,PASS,HOLD_PROVENANCE,HOLD_PROVENANCE
+payment_features_remain_hold,PASS,4,4

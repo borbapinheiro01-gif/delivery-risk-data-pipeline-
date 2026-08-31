@@ -1,0 +1,40 @@
+====================================================================================================
+SPATIOTEMPORAL LOGISTICS AUDIT V2.1
+====================================================================================================
+
+STATUS                    : PASS
+ORDERS                    : 96,211
+ORDER × SELLER            : 97,549
+OOT FREIGHT ORDERS        : 91,262
+
+GATES
+----------------------------------------------------------------------------------------------------
+G01_order_id_unique                           : PASS
+G02_year_2017_2018_only                       : PASS
+G03_order_seller_unique                       : PASS
+G04_nonnegative_distance                      : PASS
+G05_coordinates_valid_if_observed             : PASS
+G06_nonnegative_freight                       : PASS
+G07_population_positive                       : PASS
+G08_ibge_2017_exact_5570                      : PASS
+G09_ibge_2018_exact_5570                      : PASS
+G10_municipality_year_unique                  : PASS
+G11_anp_missing_preserved                     : PASS
+G12_gdp_retrospective_registry                : PASS
+G13_residual_oot_integrity                    : PASS
+G14_raw_sha256_unchanged                      : PASS
+G15_analysis_outputs_exist                    : PASS
+
+IMPORTANT INTERPRETATION
+----------------------------------------------------------------------------------------------------
+Great-circle distance is a geographic proxy, not road-network distance.
+GDP 2017/2018 is retrospective context, not point-in-time predictive information.
+Municipal ANP missing values were not replaced by state values.
+State diesel context is retained as a separate variable.
+Freight residual used downstream is generated out-of-time only.
+Speed predictive metrics are out-of-time; full-sample R² is descriptive/inferential.
+Reliability AP/AUC/Brier metrics are out-of-time.
+
+====================================================================================================
+FINAL STATUS = PASS
+====================================================================================================

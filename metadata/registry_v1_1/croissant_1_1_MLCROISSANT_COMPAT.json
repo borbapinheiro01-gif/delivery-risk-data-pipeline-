@@ -1,0 +1,1079 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "sc": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "dct": "http://purl.org/dc/terms/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "data": {
+      "@id": "cr:data",
+      "@type": "@json"
+    },
+    "dataType": {
+      "@id": "cr:dataType",
+      "@type": "@vocab"
+    },
+    "equivalentProperty": "cr:equivalentProperty",
+    "examples": {
+      "@id": "cr:examples",
+      "@type": "@json"
+    },
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileObject": "cr:fileObject",
+    "fileProperty": "cr:fileProperty",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "samplingRate": "cr:samplingRate",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "olist_brazilian_ecommerce_delivery_risk",
+  "description": "Brazilian E-Commerce Public Dataset by Olist, described for the Delivery Risk Intelligence Platform with relational schema metadata.",
+  "url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "version": "2",
+  "conformsTo": "http://mlcommons.org/croissant/1.1",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "olist_customers_dataset.csv",
+      "name": "olist_customers_dataset.csv",
+      "description": "Identificação do cliente associada ao pedido e localização de destino.",
+      "contentUrl": "../../data/raw/olist/olist_customers_dataset.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "983a422239e1712ded753b3bf9ecf47dc73f144d306029dcfa99e70a226883d2"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "olist_geolocation_dataset.csv",
+      "name": "olist_geolocation_dataset.csv",
+      "description": "Observações geográficas associadas a prefixos de CEP brasileiros.",
+      "contentUrl": "../../data/raw/olist/olist_geolocation_dataset.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "b514f6fc991b9566aeba02aa5d67e2c3630f034b60a0e05aa0d082a3b66d88d6"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "olist_order_items_dataset.csv",
+      "name": "olist_order_items_dataset.csv",
+      "description": "Itens de pedidos, produtos, sellers, preço, frete e limite de postagem.",
+      "contentUrl": "../../data/raw/olist/olist_order_items_dataset.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "0bc4d068c4fe38cbb01bd90e8746e3c613fe7b4baef75fab7b0e329701c3e279"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "olist_order_payments_dataset.csv",
+      "name": "olist_order_payments_dataset.csv",
+      "description": "Registros de pagamentos associados aos pedidos.",
+      "contentUrl": "../../data/raw/olist/olist_order_payments_dataset.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "4f713964f2815dbbaa40b9488268c55aac3627bfce5aa96cf58d1f3616de3cc0"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "olist_order_reviews_dataset.csv",
+      "name": "olist_order_reviews_dataset.csv",
+      "description": "Avaliações e comentários fornecidos após a experiência de compra.",
+      "contentUrl": "../../data/raw/olist/olist_order_reviews_dataset.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "012b61c7593e34f51fa614efdf802b9c7056ce6aae5307ddb93236e7cfc797d7"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "olist_orders_dataset.csv",
+      "name": "olist_orders_dataset.csv",
+      "description": "Tabela central do ciclo de vida do pedido.",
+      "contentUrl": "../../data/raw/olist/olist_orders_dataset.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "8df58ef3d2d7e9944010f7beecd9b75367f5588ec6e3c91cec19ae3345ef9ecf"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "olist_products_dataset.csv",
+      "name": "olist_products_dataset.csv",
+      "description": "Metadados, categoria e características físicas do produto.",
+      "contentUrl": "../../data/raw/olist/olist_products_dataset.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "3e6569628a17fbc75fd206ee357b59e20364b9afa90f5b6cd5b4d624c58aa9cc"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "olist_sellers_dataset.csv",
+      "name": "olist_sellers_dataset.csv",
+      "description": "Cadastro e localização dos vendedores.",
+      "contentUrl": "../../data/raw/olist/olist_sellers_dataset.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "1f643d2b950373b85735e7794b20986f528d7a000432e7c6f9bcbb44d0846a0e"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "product_category_name_translation.csv",
+      "name": "product_category_name_translation.csv",
+      "description": "Tradução das categorias de produto do português para inglês.",
+      "contentUrl": "../../data/raw/olist/product_category_name_translation.csv",
+      "encodingFormat": "text/csv",
+      "sha256": "a81f0d1f27b27e7293f761bc79e3ce8f348ee39c4b3ed3e49bde38f478586278"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "customers",
+      "name": "customers",
+      "description": "Identificação do cliente associada ao pedido e localização de destino.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "customers/customer_id",
+          "name": "customer_id",
+          "description": "Identificador de cliente específico do pedido.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_customers_dataset.csv"
+            },
+            "extract": {
+              "column": "customer_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "customers/customer_unique_id",
+          "name": "customer_unique_id",
+          "description": "Identificador utilizado para reconhecer o mesmo cliente em compras diferentes.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_customers_dataset.csv"
+            },
+            "extract": {
+              "column": "customer_unique_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "customers/customer_zip_code_prefix",
+          "name": "customer_zip_code_prefix",
+          "description": "Prefixo do CEP do endereço do cliente.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "olist_customers_dataset.csv"
+            },
+            "extract": {
+              "column": "customer_zip_code_prefix"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "customers/customer_city",
+          "name": "customer_city",
+          "description": "Cidade associada ao endereço do cliente.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_customers_dataset.csv"
+            },
+            "extract": {
+              "column": "customer_city"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "customers/customer_state",
+          "name": "customer_state",
+          "description": "UF associada ao endereço do cliente.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_customers_dataset.csv"
+            },
+            "extract": {
+              "column": "customer_state"
+            }
+          }
+        }
+      ],
+      "key": [
+        {
+          "@id": "customers/customer_id"
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "geolocation",
+      "name": "geolocation",
+      "description": "Observações geográficas associadas a prefixos de CEP brasileiros.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "geolocation/geolocation_zip_code_prefix",
+          "name": "geolocation_zip_code_prefix",
+          "description": "Prefixo de CEP associado à observação geográfica.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "olist_geolocation_dataset.csv"
+            },
+            "extract": {
+              "column": "geolocation_zip_code_prefix"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "geolocation/geolocation_lat",
+          "name": "geolocation_lat",
+          "description": "Latitude associada à observação geográfica.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_geolocation_dataset.csv"
+            },
+            "extract": {
+              "column": "geolocation_lat"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "geolocation/geolocation_lng",
+          "name": "geolocation_lng",
+          "description": "Longitude associada à observação geográfica.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_geolocation_dataset.csv"
+            },
+            "extract": {
+              "column": "geolocation_lng"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "geolocation/geolocation_city",
+          "name": "geolocation_city",
+          "description": "Cidade associada à observação geográfica.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_geolocation_dataset.csv"
+            },
+            "extract": {
+              "column": "geolocation_city"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "geolocation/geolocation_state",
+          "name": "geolocation_state",
+          "description": "UF associada à observação geográfica.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_geolocation_dataset.csv"
+            },
+            "extract": {
+              "column": "geolocation_state"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "order_items",
+      "name": "order_items",
+      "description": "Itens de pedidos, produtos, sellers, preço, frete e limite de postagem.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "order_items/order_id",
+          "name": "order_id",
+          "description": "Identificador do pedido ao qual o item pertence.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_items_dataset.csv"
+            },
+            "extract": {
+              "column": "order_id"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "orders/order_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "order_items/order_item_id",
+          "name": "order_item_id",
+          "description": "Posição/sequência do item dentro do pedido.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_items_dataset.csv"
+            },
+            "extract": {
+              "column": "order_item_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "order_items/product_id",
+          "name": "product_id",
+          "description": "Identificador do produto comprado.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_items_dataset.csv"
+            },
+            "extract": {
+              "column": "product_id"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "products/product_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "order_items/seller_id",
+          "name": "seller_id",
+          "description": "Identificador do vendedor responsável pelo item.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_items_dataset.csv"
+            },
+            "extract": {
+              "column": "seller_id"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "sellers/seller_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "order_items/shipping_limit_date",
+          "name": "shipping_limit_date",
+          "description": "Data limite relacionada ao envio do item pelo seller.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_items_dataset.csv"
+            },
+            "extract": {
+              "column": "shipping_limit_date"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "order_items/price",
+          "name": "price",
+          "description": "Preço do item.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_items_dataset.csv"
+            },
+            "extract": {
+              "column": "price"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "order_items/freight_value",
+          "name": "freight_value",
+          "description": "Valor de frete associado ao item.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_items_dataset.csv"
+            },
+            "extract": {
+              "column": "freight_value"
+            }
+          }
+        }
+      ],
+      "key": [
+        {
+          "@id": "order_items/order_id"
+        },
+        {
+          "@id": "order_items/order_item_id"
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "payments",
+      "name": "payments",
+      "description": "Registros de pagamentos associados aos pedidos.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "payments/order_id",
+          "name": "order_id",
+          "description": "Identificador do pedido associado ao pagamento.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_payments_dataset.csv"
+            },
+            "extract": {
+              "column": "order_id"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "orders/order_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "payments/payment_sequential",
+          "name": "payment_sequential",
+          "description": "Número sequencial do registro de pagamento dentro do pedido.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_payments_dataset.csv"
+            },
+            "extract": {
+              "column": "payment_sequential"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "payments/payment_type",
+          "name": "payment_type",
+          "description": "Tipo/meio de pagamento.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_payments_dataset.csv"
+            },
+            "extract": {
+              "column": "payment_type"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "payments/payment_installments",
+          "name": "payment_installments",
+          "description": "Número de parcelas registrado para o pagamento.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_payments_dataset.csv"
+            },
+            "extract": {
+              "column": "payment_installments"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "payments/payment_value",
+          "name": "payment_value",
+          "description": "Valor registrado no pagamento.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_payments_dataset.csv"
+            },
+            "extract": {
+              "column": "payment_value"
+            }
+          }
+        }
+      ],
+      "key": [
+        {
+          "@id": "payments/order_id"
+        },
+        {
+          "@id": "payments/payment_sequential"
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "reviews",
+      "name": "reviews",
+      "description": "Avaliações e comentários fornecidos após a experiência de compra.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "reviews/review_id",
+          "name": "review_id",
+          "description": "Identificador do registro de avaliação.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_reviews_dataset.csv"
+            },
+            "extract": {
+              "column": "review_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "reviews/order_id",
+          "name": "order_id",
+          "description": "Identificador do pedido avaliado.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_reviews_dataset.csv"
+            },
+            "extract": {
+              "column": "order_id"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "orders/order_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "reviews/review_score",
+          "name": "review_score",
+          "description": "Nota atribuída pelo cliente à experiência da compra.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_reviews_dataset.csv"
+            },
+            "extract": {
+              "column": "review_score"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "reviews/review_comment_title",
+          "name": "review_comment_title",
+          "description": "Título opcional do comentário da avaliação.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_reviews_dataset.csv"
+            },
+            "extract": {
+              "column": "review_comment_title"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "reviews/review_comment_message",
+          "name": "review_comment_message",
+          "description": "Texto opcional do comentário da avaliação.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_reviews_dataset.csv"
+            },
+            "extract": {
+              "column": "review_comment_message"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "reviews/review_creation_date",
+          "name": "review_creation_date",
+          "description": "Data de criação/solicitação associada à avaliação.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_reviews_dataset.csv"
+            },
+            "extract": {
+              "column": "review_creation_date"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "reviews/review_answer_timestamp",
+          "name": "review_answer_timestamp",
+          "description": "Timestamp da resposta à avaliação.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_order_reviews_dataset.csv"
+            },
+            "extract": {
+              "column": "review_answer_timestamp"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "orders",
+      "name": "orders",
+      "description": "Tabela central do ciclo de vida do pedido.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "orders/order_id",
+          "name": "order_id",
+          "description": "Identificador único do pedido.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_orders_dataset.csv"
+            },
+            "extract": {
+              "column": "order_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "orders/customer_id",
+          "name": "customer_id",
+          "description": "Identificador do cliente específico associado ao pedido.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_orders_dataset.csv"
+            },
+            "extract": {
+              "column": "customer_id"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "customers/customer_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "orders/order_status",
+          "name": "order_status",
+          "description": "Estado registrado do ciclo de vida do pedido.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_orders_dataset.csv"
+            },
+            "extract": {
+              "column": "order_status"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "orders/order_purchase_timestamp",
+          "name": "order_purchase_timestamp",
+          "description": "Timestamp da realização da compra.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_orders_dataset.csv"
+            },
+            "extract": {
+              "column": "order_purchase_timestamp"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "orders/order_approved_at",
+          "name": "order_approved_at",
+          "description": "Timestamp registrado de aprovação do pedido/pagamento.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_orders_dataset.csv"
+            },
+            "extract": {
+              "column": "order_approved_at"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "orders/order_delivered_carrier_date",
+          "name": "order_delivered_carrier_date",
+          "description": "Timestamp registrado da entrega do pedido ao parceiro logístico.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_orders_dataset.csv"
+            },
+            "extract": {
+              "column": "order_delivered_carrier_date"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "orders/order_delivered_customer_date",
+          "name": "order_delivered_customer_date",
+          "description": "Timestamp registrado da entrega efetiva ao cliente.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_orders_dataset.csv"
+            },
+            "extract": {
+              "column": "order_delivered_customer_date"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "orders/order_estimated_delivery_date",
+          "name": "order_estimated_delivery_date",
+          "description": "Data estimada/prometida de entrega associada ao pedido.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_orders_dataset.csv"
+            },
+            "extract": {
+              "column": "order_estimated_delivery_date"
+            }
+          }
+        }
+      ],
+      "key": [
+        {
+          "@id": "orders/order_id"
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "products",
+      "name": "products",
+      "description": "Metadados, categoria e características físicas do produto.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_id",
+          "name": "product_id",
+          "description": "Identificador do produto.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_category_name",
+          "name": "product_category_name",
+          "description": "Categoria do produto em português.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_category_name"
+            }
+          },
+          "references": {
+            "field": {
+              "@id": "translation/product_category_name"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_name_lenght",
+          "name": "product_name_lenght",
+          "description": "Comprimento registrado do nome do produto.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_name_lenght"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_description_lenght",
+          "name": "product_description_lenght",
+          "description": "Comprimento registrado da descrição do produto.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_description_lenght"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_photos_qty",
+          "name": "product_photos_qty",
+          "description": "Quantidade de fotos associadas ao produto.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_photos_qty"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_weight_g",
+          "name": "product_weight_g",
+          "description": "Peso do produto em gramas.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_weight_g"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_length_cm",
+          "name": "product_length_cm",
+          "description": "Comprimento físico do produto em centímetros.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_length_cm"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_height_cm",
+          "name": "product_height_cm",
+          "description": "Altura física do produto em centímetros.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_height_cm"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "products/product_width_cm",
+          "name": "product_width_cm",
+          "description": "Largura física do produto em centímetros.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": {
+              "@id": "olist_products_dataset.csv"
+            },
+            "extract": {
+              "column": "product_width_cm"
+            }
+          }
+        }
+      ],
+      "key": [
+        {
+          "@id": "products/product_id"
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "sellers",
+      "name": "sellers",
+      "description": "Cadastro e localização dos vendedores.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "sellers/seller_id",
+          "name": "seller_id",
+          "description": "Identificador do seller.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_sellers_dataset.csv"
+            },
+            "extract": {
+              "column": "seller_id"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sellers/seller_zip_code_prefix",
+          "name": "seller_zip_code_prefix",
+          "description": "Prefixo do CEP cadastrado do seller.",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": {
+              "@id": "olist_sellers_dataset.csv"
+            },
+            "extract": {
+              "column": "seller_zip_code_prefix"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sellers/seller_city",
+          "name": "seller_city",
+          "description": "Cidade cadastrada do seller.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_sellers_dataset.csv"
+            },
+            "extract": {
+              "column": "seller_city"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "sellers/seller_state",
+          "name": "seller_state",
+          "description": "UF cadastrada do seller.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "olist_sellers_dataset.csv"
+            },
+            "extract": {
+              "column": "seller_state"
+            }
+          }
+        }
+      ],
+      "key": [
+        {
+          "@id": "sellers/seller_id"
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "translation",
+      "name": "translation",
+      "description": "Tradução das categorias de produto do português para inglês.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "@id": "translation/product_category_name",
+          "name": "product_category_name",
+          "description": "Categoria do produto em português.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "product_category_name_translation.csv"
+            },
+            "extract": {
+              "column": "product_category_name"
+            }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "translation/product_category_name_english",
+          "name": "product_category_name_english",
+          "description": "Tradução da categoria do produto para inglês.",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": {
+              "@id": "product_category_name_translation.csv"
+            },
+            "extract": {
+              "column": "product_category_name_english"
+            }
+          }
+        }
+      ],
+      "key": [
+        {
+          "@id": "translation/product_category_name"
+        }
+      ]
+    }
+  ],
+  "creator": {
+    "@type": "sc:Organization",
+    "name": "Olist"
+  },
+  "publisher": {
+    "@type": "sc:Organization",
+    "name": "Kaggle"
+  },
+  "citeAs": "@misc{olist_brazilian_ecommerce, author={Olist}, title={Brazilian E-Commerce Public Dataset by Olist}, publisher={Kaggle}, url={https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce}}",
+  "sdVersion": "registry-1.1.0"
+}

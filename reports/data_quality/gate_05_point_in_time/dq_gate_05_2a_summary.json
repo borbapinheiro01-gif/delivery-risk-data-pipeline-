@@ -1,0 +1,17 @@
+{
+  "step": "DQ_GATE_05_2A_ORDER_CORE_CONTRACT",
+  "step_status": "PASS",
+  "gate_05_status": "IN_PROGRESS",
+  "feature_set": "ORDER_CORE_V1",
+  "model": "MODEL_01_ORDER_LOGISTIC",
+  "features_defined": 13,
+  "dependency_rows": 15,
+  "missing_sources": 0,
+  "unsafe_dependencies": 0,
+  "forbidden_target_or_hold_dependencies": 0,
+  "validation_failures": 0,
+  "model_01_unlocked": false,
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

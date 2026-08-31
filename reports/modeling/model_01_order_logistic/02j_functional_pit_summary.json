@@ -1,0 +1,40 @@
+{
+    "step": "MODEL_01_0_C3_3A_FUNCTIONAL_PIT_CURVES",
+    "status": "PASS",
+    "stage_assessment": "FUNCTIONAL_CURVE_CONSTRUCTION_VIABLE",
+    "created_at_utc": "2026-08-30T20:14:54.736155+00:00",
+    "task_orders": 96470,
+    "purchase_event_rows": 99441,
+    "freight_event_rows": 98666,
+    "curve_channels": [
+        "purchase_volume",
+        "purchase_freight"
+    ],
+    "curve_shape_each": [
+        96470,
+        90
+    ],
+    "candidate_windows_days": [
+        30,
+        60,
+        90
+    ],
+    "point_in_time_rule": "event_time < prediction_time",
+    "volume_dtype": "int32",
+    "freight_dtype": "float64",
+    "bruteforce_sample_orders": 60,
+    "volume_bruteforce_bin_mismatches": 0,
+    "freight_bruteforce_bin_mismatches": 0,
+    "runtime_seconds": 2.879761617999975,
+    "smoothing_applied": false,
+    "basis_applied": false,
+    "fpca_applied": false,
+    "functional_module_unlocked": false,
+    "window_selected": false,
+    "component_count_selected": false,
+    "folds_frozen": false,
+    "model_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 0
+}

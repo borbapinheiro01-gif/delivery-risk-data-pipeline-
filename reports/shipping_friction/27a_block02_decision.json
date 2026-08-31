@@ -1,0 +1,72 @@
+{
+  "status": "PASS",
+  "generated_utc": "2026-08-31T06:31:52.777154+00:00",
+  "module": "27A_BLOCK02_BURDEN_DECOMPOSITION",
+  "population": {
+    "n_orders": 96211,
+    "n_complete_case_fractional_model": 95718,
+    "complete_case_pct": 99.4875845797258
+  },
+  "burden_thresholds": {
+    "q75": 0.27566358758814213,
+    "q80": 0.3031173092698933,
+    "q90": 0.383629191321499
+  },
+  "preferred_model": {
+    "name": "M2_PHYSICAL_TIME",
+    "family": "Fractional Logit / Binomial GLM",
+    "robust_covariance": "HC1",
+    "formula": "freight_burden ~ log_price + log_distance + log_weight + log_volume + route_sellers_total + any_interstate_route + C(year_month)",
+    "converged": true
+  },
+  "focal_coefficients": {
+    "log_price": -0.9053226170042322,
+    "log_distance": 0.14455571606434411,
+    "log_weight": 0.13064058831650902,
+    "log_volume": 0.04476697891860379,
+    "route_sellers_total": 0.4416568058806894,
+    "any_interstate_route": 0.21741333678479804
+  },
+  "plus_10pct_average_predicted_burden_change": {
+    "total_price": -0.012644294972415893,
+    "distance_freight_weighted_km": 0.002095022337445713,
+    "total_weight_g": 0.0019051563970794519,
+    "product_volume_sum_proxy_cm3": 0.0006529584909793162,
+    "any_interstate_route": 0.032745331900863636
+  },
+  "interpretation_guardrails": {
+    "price_effect_partly_definitional": true,
+    "fractional_model_is_causal": false,
+    "scenario_effects_are_causal_elasticities": false,
+    "high_burden_equals_operational_inefficiency": false,
+    "high_burden_equals_subsidy_candidate": false,
+    "final_predictive_model_refit": false,
+    "raw_modified": false,
+    "carrier_identity_available": false
+  },
+  "gates": {
+    "B02_G01_block01_core_exists": true,
+    "B02_G02_population_preserved_after_merge": true,
+    "B02_G03_order_id_unique": true,
+    "B02_G04_complete_analysis_sample_nontrivial": true,
+    "B02_G05_burden_bounded": true,
+    "B02_G06_threshold_order_valid": true,
+    "B02_G07_fractional_M0_converged": true,
+    "B02_G08_fractional_M1_converged": true,
+    "B02_G09_fractional_M2_converged": true,
+    "B02_G10_focal_coefficients_finite": true,
+    "B02_G11_scenario_effects_finite": true,
+    "B02_G12_final_predictive_model_not_refit": true,
+    "B02_G13_raw_untouched": true
+  },
+  "failed_gates": [],
+  "outputs": [
+    "artifacts/shipping_friction/27a_02_burden_segments.csv",
+    "reports/shipping_friction/27a_02_burden_associations.csv",
+    "reports/shipping_friction/27a_02_burden_decile_curves.csv",
+    "reports/shipping_friction/27a_02_route_structure_groups.csv",
+    "reports/shipping_friction/27a_02_fractional_logit_coefficients.csv",
+    "reports/shipping_friction/27a_02_scenario_effects.csv",
+    "reports/shipping_friction/27a_02_burden_thresholds.csv"
+  ]
+}

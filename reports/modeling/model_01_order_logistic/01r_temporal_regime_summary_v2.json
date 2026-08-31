@@ -1,0 +1,19 @@
+{
+  "step": "MODEL_01_0_C3_1_TEMPORAL_REGIME_VALIDATION_PATCH",
+  "status": "PASS",
+  "source_evidence": "01o_temporal_regime_evidence_matrix.csv",
+  "original_validation_preserved": true,
+  "original_audit_bug": "bitwise NOT was applied after finite-count sum, producing -77 instead of non-finite count",
+  "months_compared": 19,
+  "score_values_checked": 76,
+  "nonfinite_score_values": 0,
+  "below_zero_score_values": 0,
+  "above_one_score_values": 0,
+  "consensus_rank_complete": true,
+  "threshold_frozen": false,
+  "regime_boundaries_frozen": false,
+  "folds_frozen": false,
+  "model_trained": false,
+  "raw_modified": false,
+  "silver_created": false
+}

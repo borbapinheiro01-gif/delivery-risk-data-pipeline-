@@ -1,0 +1,5 @@
+check,status,observed
+gate04_pass,PASS,PASS
+estimated_time_is_calendar_semantic,PASS,100.000000% midnight
+all_label_disagreements_are_same_day,PASS,1292/1292
+no_calendar_late_strict_ontime_cases,PASS,0

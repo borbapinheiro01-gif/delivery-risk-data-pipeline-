@@ -1,0 +1,53 @@
+table,column,column_key,point_in_time_status,feature_module,direct_model_feature,aggregation_policy,rationale,unresolved_issue
+customers,customer_id,customers.customer_id,JOIN_KEY_ONLY,GEOGRAPHY,False,JOIN_ONLY,Order-specific customer lookup key.,
+customers,customer_unique_id,customers.customer_unique_id,IDENTIFIER_ONLY,NONE,False,NONE,Stable customer identity is preserved for lineage but not admitted as raw high-cardinality model feature.,
+customers,customer_zip_code_prefix,customers.customer_zip_code_prefix,SAFE_CONTEXT_AT_T0,GEOGRAPHY,True,ORDER_REFERENCE_JOIN,Customer destination context associated with the current order.,
+customers,customer_city,customers.customer_city,SAFE_CONTEXT_AT_T0,GEOGRAPHY,True,ORDER_REFERENCE_JOIN,Customer destination context associated with the current order.,
+customers,customer_state,customers.customer_state,SAFE_CONTEXT_AT_T0,GEOGRAPHY,True,ORDER_REFERENCE_JOIN,Customer destination context associated with the current order.,
+geolocation,geolocation_zip_code_prefix,geolocation.geolocation_zip_code_prefix,HOLD_DATA_QUALITY,GEOGRAPHY,False,ZIP_LEVEL_CONSOLIDATION_REQUIRED,"Geographic reference is static, but duplicated/dispersed ZIP observations require a documented consolidation rule first.",ISSUE-GEO-001
+geolocation,geolocation_lat,geolocation.geolocation_lat,HOLD_DATA_QUALITY,GEOGRAPHY,False,ZIP_LEVEL_CONSOLIDATION_REQUIRED,"Geographic reference is static, but duplicated/dispersed ZIP observations require a documented consolidation rule first.",ISSUE-GEO-001
+geolocation,geolocation_lng,geolocation.geolocation_lng,HOLD_DATA_QUALITY,GEOGRAPHY,False,ZIP_LEVEL_CONSOLIDATION_REQUIRED,"Geographic reference is static, but duplicated/dispersed ZIP observations require a documented consolidation rule first.",ISSUE-GEO-001
+geolocation,geolocation_city,geolocation.geolocation_city,HOLD_DATA_QUALITY,GEOGRAPHY,False,ZIP_LEVEL_CONSOLIDATION_REQUIRED,"Geographic reference is static, but duplicated/dispersed ZIP observations require a documented consolidation rule first.",ISSUE-GEO-001
+geolocation,geolocation_state,geolocation.geolocation_state,HOLD_DATA_QUALITY,GEOGRAPHY,False,ZIP_LEVEL_CONSOLIDATION_REQUIRED,"Geographic reference is static, but duplicated/dispersed ZIP observations require a documented consolidation rule first.",ISSUE-GEO-001
+order_items,order_id,order_items.order_id,JOIN_KEY_ONLY,ORDER,False,JOIN_ONLY,Child-table key used to aggregate order_items to order grain.,
+order_items,order_item_id,order_items.order_item_id,AGGREGATE_SAFE_AT_T0,ORDER,False,COUNT,Use to derive item_count at order level.,
+order_items,product_id,order_items.product_id,JOIN_KEY_ONLY,ORDER,False,COUNT_DISTINCT_AND_JOIN,Raw product ID is not a direct predictor. Use for product joins and unique product counts.,
+order_items,seller_id,order_items.seller_id,JOIN_KEY_ONLY,SELLER_HISTORY,False,COUNT_DISTINCT_AND_JOIN,Raw seller ID is not used directly. Use for seller aggregation and future point-in-time seller history.,
+order_items,shipping_limit_date,order_items.shipping_limit_date,HOLD_PROVENANCE,GEO_PROMISE,False,BLOCKED,Presence in final CSV does not prove operational availability at exact purchase time.,ISSUE-SHIPPING-LIMIT-001
+order_items,price,order_items.price,AGGREGATE_SAFE_AT_T0,ORDER,False,SUM_MEAN_MAX_MIN,Current-order commercial value; aggregate to one row per order.,
+order_items,freight_value,order_items.freight_value,AGGREGATE_SAFE_AT_T0,ORDER,False,SUM_MEAN_MAX_RATIO,Current-order freight value; aggregate to one row per order.,
+payments,order_id,payments.order_id,JOIN_KEY_ONLY,PAYMENT,False,JOIN_ONLY,Payment child-table key.,
+payments,payment_sequential,payments.payment_sequential,HOLD_PROVENANCE,PAYMENT,False,BLOCKED,Exact availability at order_purchase_timestamp has not yet been independently established.,ISSUE-PAYMENT-AVAILABILITY-001
+payments,payment_type,payments.payment_type,HOLD_PROVENANCE,PAYMENT,False,BLOCKED,Exact availability at order_purchase_timestamp has not yet been independently established.,ISSUE-PAYMENT-AVAILABILITY-001
+payments,payment_installments,payments.payment_installments,HOLD_PROVENANCE,PAYMENT,False,BLOCKED,Exact availability at order_purchase_timestamp has not yet been independently established.,ISSUE-PAYMENT-AVAILABILITY-001
+payments,payment_value,payments.payment_value,HOLD_PROVENANCE,PAYMENT,False,BLOCKED,Exact availability at order_purchase_timestamp has not yet been independently established.,ISSUE-PAYMENT-AVAILABILITY-001
+reviews,review_id,reviews.review_id,FORBIDDEN_FUTURE,POST_DELIVERY_NLP,False,IDENTIFIER_OR_JOIN_ONLY,Review data belongs to post-purchase/post-delivery context and is forbidden in the preventive t0 model.,
+reviews,order_id,reviews.order_id,FORBIDDEN_FUTURE,POST_DELIVERY_NLP,False,IDENTIFIER_OR_JOIN_ONLY,Review data belongs to post-purchase/post-delivery context and is forbidden in the preventive t0 model.,
+reviews,review_score,reviews.review_score,FORBIDDEN_FUTURE,POST_DELIVERY_NLP,False,NONE,Review data belongs to post-purchase/post-delivery context and is forbidden in the preventive t0 model.,
+reviews,review_comment_title,reviews.review_comment_title,FORBIDDEN_FUTURE,POST_DELIVERY_NLP,False,NONE,Review data belongs to post-purchase/post-delivery context and is forbidden in the preventive t0 model.,
+reviews,review_comment_message,reviews.review_comment_message,FORBIDDEN_FUTURE,POST_DELIVERY_NLP,False,NONE,Review data belongs to post-purchase/post-delivery context and is forbidden in the preventive t0 model.,
+reviews,review_creation_date,reviews.review_creation_date,FORBIDDEN_FUTURE,POST_DELIVERY_NLP,False,NONE,Review data belongs to post-purchase/post-delivery context and is forbidden in the preventive t0 model.,
+reviews,review_answer_timestamp,reviews.review_answer_timestamp,FORBIDDEN_FUTURE,POST_DELIVERY_NLP,False,NONE,Review data belongs to post-purchase/post-delivery context and is forbidden in the preventive t0 model.,
+orders,order_id,orders.order_id,IDENTIFIER_ONLY,NONE,False,NONE,Primary order identifier. Preserve for lineage; never use as predictor.,
+orders,customer_id,orders.customer_id,JOIN_KEY_ONLY,GEOGRAPHY,False,JOIN_ONLY,Order-specific customer foreign key.,
+orders,order_status,orders.order_status,FORBIDDEN_FUTURE,FORBIDDEN,False,NONE,Raw dataset contains final/later order state. Using it at purchase time would leak post-t0 information.,
+orders,order_purchase_timestamp,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,TEMPORAL,False,DERIVE_CALENDAR_FEATURES,Defines prediction time t0. Use derived hour/weekday/month features instead of raw absolute timestamp.,
+orders,order_approved_at,orders.order_approved_at,FORBIDDEN_FUTURE,FORBIDDEN,False,NONE,Approval is a post-purchase process event.,
+orders,order_delivered_carrier_date,orders.order_delivered_carrier_date,FORBIDDEN_FUTURE,FORBIDDEN,False,NONE,Carrier handoff occurs after purchase.,
+orders,order_delivered_customer_date,orders.order_delivered_customer_date,TARGET_ONLY,TARGET,False,LABEL_ONLY,Observed customer delivery is part of target construction.,
+orders,order_estimated_delivery_date,orders.order_estimated_delivery_date,DERIVED_SAFE_AT_T0,GEO_PROMISE,False,DERIVE_PROMISED_LEAD_TIME,Delivery promise associated with the purchase. Primary derived feature: promised_lead_days.,
+products,product_id,products.product_id,JOIN_KEY_ONLY,ORDER,False,JOIN_ONLY,Product catalog lookup key.,
+products,product_category_name,products.product_category_name,STATIC_REFERENCE_ASSUMPTION,ORDER,False,AGGREGATE_TO_ORDER,"Product catalog attribute can support order features. Historical catalog snapshots are unavailable, so static-reference assumption must remain documented.",
+products,product_name_lenght,products.product_name_lenght,STATIC_REFERENCE_ASSUMPTION,ORDER,False,AGGREGATE_TO_ORDER,"Product catalog attribute can support order features. Historical catalog snapshots are unavailable, so static-reference assumption must remain documented.",
+products,product_description_lenght,products.product_description_lenght,STATIC_REFERENCE_ASSUMPTION,ORDER,False,AGGREGATE_TO_ORDER,"Product catalog attribute can support order features. Historical catalog snapshots are unavailable, so static-reference assumption must remain documented.",
+products,product_photos_qty,products.product_photos_qty,STATIC_REFERENCE_ASSUMPTION,ORDER,False,AGGREGATE_TO_ORDER,"Product catalog attribute can support order features. Historical catalog snapshots are unavailable, so static-reference assumption must remain documented.",
+products,product_weight_g,products.product_weight_g,STATIC_REFERENCE_ASSUMPTION,ORDER,False,AGGREGATE_TO_ORDER,"Product catalog attribute can support order features. Historical catalog snapshots are unavailable, so static-reference assumption must remain documented.",
+products,product_length_cm,products.product_length_cm,STATIC_REFERENCE_ASSUMPTION,ORDER,False,AGGREGATE_TO_ORDER,"Product catalog attribute can support order features. Historical catalog snapshots are unavailable, so static-reference assumption must remain documented.",
+products,product_height_cm,products.product_height_cm,STATIC_REFERENCE_ASSUMPTION,ORDER,False,AGGREGATE_TO_ORDER,"Product catalog attribute can support order features. Historical catalog snapshots are unavailable, so static-reference assumption must remain documented.",
+products,product_width_cm,products.product_width_cm,STATIC_REFERENCE_ASSUMPTION,ORDER,False,AGGREGATE_TO_ORDER,"Product catalog attribute can support order features. Historical catalog snapshots are unavailable, so static-reference assumption must remain documented.",
+sellers,seller_id,sellers.seller_id,JOIN_KEY_ONLY,SELLER_HISTORY,False,JOIN_ONLY,Seller lookup/entity key.,
+sellers,seller_zip_code_prefix,sellers.seller_zip_code_prefix,STATIC_REFERENCE_ASSUMPTION,GEOGRAPHY,False,AGGREGATE_TO_ORDER,Seller location reference is useful for geography. Historical seller-address snapshots are unavailable.,
+sellers,seller_city,sellers.seller_city,STATIC_REFERENCE_ASSUMPTION,GEOGRAPHY,False,AGGREGATE_TO_ORDER,Seller location reference is useful for geography. Historical seller-address snapshots are unavailable.,
+sellers,seller_state,sellers.seller_state,STATIC_REFERENCE_ASSUMPTION,GEOGRAPHY,False,AGGREGATE_TO_ORDER,Seller location reference is useful for geography. Historical seller-address snapshots are unavailable.,
+translation,product_category_name,translation.product_category_name,JOIN_KEY_ONLY,ORDER,False,JOIN_ONLY,Category translation lookup key.,
+translation,product_category_name_english,translation.product_category_name_english,STATIC_REFERENCE_ASSUMPTION,ORDER,False,DISPLAY_OR_CATEGORY_MAPPING,Human-readable category translation.,

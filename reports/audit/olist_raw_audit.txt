@@ -1,0 +1,230 @@
+
+==============================================================================
+AUDITORIA 01 — OLIST RAW DATA
+==============================================================================
+Projeto : /home/runner/workspace/Delivery_Risk_Intelligence
+RAW     : /home/runner/workspace/Delivery_Risk_Intelligence/data/raw/olist
+Relatório: /home/runner/workspace/Delivery_Risk_Intelligence/reports/audit
+
+[OK] Todos os 9 arquivos foram encontrados.
+
+==============================================================================
+2. CARREGAMENTO DOS CSVs
+==============================================================================
+Lendo olist_customers_dataset.csv ...
+  [OK] customers                  99,441 linhas x   5 colunas
+Lendo olist_geolocation_dataset.csv ...
+  [OK] geolocation             1,000,163 linhas x   5 colunas
+Lendo olist_order_items_dataset.csv ...
+  [OK] order_items               112,650 linhas x   7 colunas
+Lendo olist_order_payments_dataset.csv ...
+  [OK] payments                  103,886 linhas x   5 colunas
+Lendo olist_order_reviews_dataset.csv ...
+  [OK] reviews                    99,224 linhas x   7 colunas
+Lendo olist_orders_dataset.csv ...
+  [OK] orders                     99,441 linhas x   8 colunas
+Lendo olist_products_dataset.csv ...
+  [OK] products                   32,951 linhas x   9 colunas
+Lendo olist_sellers_dataset.csv ...
+  [OK] sellers                     3,095 linhas x   4 colunas
+Lendo product_category_name_translation.csv ...
+  [OK] category_translation           71 linhas x   2 colunas
+
+==============================================================================
+3. DIMENSÕES E DUPLICATAS
+==============================================================================
+customers              rows=   99,441 | cols= 5 | duplicadas=      0
+geolocation            rows=1,000,163 | cols= 5 | duplicadas=261,831
+order_items            rows=  112,650 | cols= 7 | duplicadas=      0
+payments               rows=  103,886 | cols= 5 | duplicadas=      0
+reviews                rows=   99,224 | cols= 7 | duplicadas=      0
+orders                 rows=   99,441 | cols= 8 | duplicadas=      0
+products               rows=   32,951 | cols= 9 | duplicadas=      0
+sellers                rows=    3,095 | cols= 4 | duplicadas=      0
+category_translation   rows=       71 | cols= 2 | duplicadas=      0
+
+==============================================================================
+4. SCHEMA — COLUNAS E TIPOS
+==============================================================================
+
+[customers]
+  customer_id                              dtype=object     unique=  99,441
+  customer_unique_id                       dtype=object     unique=  96,096
+  customer_zip_code_prefix                 dtype=int64      unique=  14,994
+  customer_city                            dtype=object     unique=   4,119
+  customer_state                           dtype=object     unique=      27
+
+[geolocation]
+  geolocation_zip_code_prefix              dtype=int64      unique=  19,015
+  geolocation_lat                          dtype=float64    unique= 717,360
+  geolocation_lng                          dtype=float64    unique= 717,613
+  geolocation_city                         dtype=object     unique=   8,011
+  geolocation_state                        dtype=object     unique=      27
+
+[order_items]
+  order_id                                 dtype=object     unique=  98,666
+  order_item_id                            dtype=int64      unique=      21
+  product_id                               dtype=object     unique=  32,951
+  seller_id                                dtype=object     unique=   3,095
+  shipping_limit_date                      dtype=object     unique=  93,318
+  price                                    dtype=float64    unique=   5,968
+  freight_value                            dtype=float64    unique=   6,999
+
+[payments]
+  order_id                                 dtype=object     unique=  99,440
+  payment_sequential                       dtype=int64      unique=      29
+  payment_type                             dtype=object     unique=       5
+  payment_installments                     dtype=int64      unique=      24
+  payment_value                            dtype=float64    unique=  29,077
+
+[reviews]
+  review_id                                dtype=object     unique=  98,410
+  order_id                                 dtype=object     unique=  98,673
+  review_score                             dtype=int64      unique=       5
+  review_comment_title                     dtype=object     unique=   4,527
+  review_comment_message                   dtype=object     unique=  36,159
+  review_creation_date                     dtype=object     unique=     636
+  review_answer_timestamp                  dtype=object     unique=  98,248
+
+[orders]
+  order_id                                 dtype=object     unique=  99,441
+  customer_id                              dtype=object     unique=  99,441
+  order_status                             dtype=object     unique=       8
+  order_purchase_timestamp                 dtype=object     unique=  98,875
+  order_approved_at                        dtype=object     unique=  90,733
+  order_delivered_carrier_date             dtype=object     unique=  81,018
+  order_delivered_customer_date            dtype=object     unique=  95,664
+  order_estimated_delivery_date            dtype=object     unique=     459
+
+[products]
+  product_id                               dtype=object     unique=  32,951
+  product_category_name                    dtype=object     unique=      73
+  product_name_lenght                      dtype=float64    unique=      66
+  product_description_lenght               dtype=float64    unique=   2,960
+  product_photos_qty                       dtype=float64    unique=      19
+  product_weight_g                         dtype=float64    unique=   2,204
+  product_length_cm                        dtype=float64    unique=      99
+  product_height_cm                        dtype=float64    unique=     102
+  product_width_cm                         dtype=float64    unique=      95
+
+[sellers]
+  seller_id                                dtype=object     unique=   3,095
+  seller_zip_code_prefix                   dtype=int64      unique=   2,246
+  seller_city                              dtype=object     unique=     611
+  seller_state                             dtype=object     unique=      23
+
+[category_translation]
+  product_category_name                    dtype=object     unique=      71
+  product_category_name_english            dtype=object     unique=      71
+
+==============================================================================
+5. MISSING VALUES
+==============================================================================
+reviews                review_comment_title                        87,656 (88.34%)
+reviews                review_comment_message                      58,247 (58.70%)
+orders                 order_delivered_customer_date                2,965 (2.98%)
+products               product_name_lenght                            610 (1.85%)
+products               product_category_name                          610 (1.85%)
+products               product_description_lenght                     610 (1.85%)
+products               product_photos_qty                             610 (1.85%)
+orders                 order_delivered_carrier_date                 1,783 (1.79%)
+orders                 order_approved_at                              160 (0.16%)
+products               product_weight_g                                 2 (0.01%)
+products               product_length_cm                                2 (0.01%)
+products               product_height_cm                                2 (0.01%)
+products               product_width_cm                                 2 (0.01%)
+
+==============================================================================
+6. CHAVES PRIMÁRIAS / COMPOSTAS
+==============================================================================
+[PASS] orders                 key=order_id                       null=0      duplicated=0
+[PASS] customers              key=customer_id                    null=0      duplicated=0
+[PASS] products               key=product_id                     null=0      duplicated=0
+[PASS] sellers                key=seller_id                      null=0      duplicated=0
+[PASS] category_translation   key=product_category_name          null=0      duplicated=0
+[PASS] order_items            key=order_id+order_item_id         null=0      duplicated=0
+[PASS] payments               key=order_id+payment_sequential    null=0      duplicated=0
+
+==============================================================================
+7. INTEGRIDADE REFERENCIAL
+==============================================================================
+[PASS] orders.customer_id -> customers.customer_id | órfãos=0
+[PASS] order_items.order_id -> orders.order_id | órfãos=0
+[PASS] order_items.product_id -> products.product_id | órfãos=0
+[PASS] order_items.seller_id -> sellers.seller_id | órfãos=0
+[PASS] payments.order_id -> orders.order_id | órfãos=0
+[PASS] reviews.order_id -> orders.order_id | órfãos=0
+
+==============================================================================
+8. ORDERS — PERÍODO TEMPORAL
+==============================================================================
+Primeira compra : 2016-09-04 21:15:19
+Última compra   : 2018-10-17 17:30:18
+Pedidos         : 99,441
+
+==============================================================================
+9. DISTRIBUIÇÃO DOS STATUS
+==============================================================================
+delivered              96,478  97.020%
+shipped                 1,107   1.113%
+canceled                  625   0.629%
+unavailable               609   0.612%
+invoiced                  314   0.316%
+processing                301   0.303%
+created                     5   0.005%
+approved                    2   0.002%
+
+==============================================================================
+10. TARGET PRELIMINAR — ATRASO
+==============================================================================
+Pedidos totais               : 99,441
+Pedidos com target observável : 96,476
+Não atrasados                 : 88,649
+Atrasados                     : 7,827
+Taxa de atraso                : 8.1129%
+
+==============================================================================
+11. CONSISTÊNCIA TEMPORAL
+==============================================================================
+[PASS] purchase_after_approval             comparáveis=  99,281 violações=     0
+[CHECK] approval_after_carrier              comparáveis=  97,644 violações= 1,359
+[CHECK] carrier_after_customer_delivery     comparáveis=  96,475 violações=    23
+
+==============================================================================
+12. CARDINALIDADE DAS TABELAS TRANSACIONAIS
+==============================================================================
+orders             rows=   99,441 | orders=  99,441 | rows/order=  1.000 | máximo/order=1
+order_items        rows=  112,650 | orders=  98,666 | rows/order=  1.142 | máximo/order=21
+payments           rows=  103,886 | orders=  99,440 | rows/order=  1.045 | máximo/order=29
+reviews            rows=   99,224 | orders=  98,673 | rows/order=  1.006 | máximo/order=3
+
+==============================================================================
+13. SELLERS E ITENS POR PEDIDO
+==============================================================================
+Pedidos em order_items       : 98,666
+Pedidos com >1 item          : 9,803 (9.936%)
+Pedidos com >1 seller        : 1,278 (1.295%)
+Pedidos com >1 produto       : 3,236 (3.280%)
+
+==============================================================================
+14. GEOLOCALIZAÇÃO
+==============================================================================
+Linhas geolocation          : 1,000,163
+CEPs-prefixo únicos         : 19,015
+Linhas além da 1ª por CEP   : 981,148
+
+[INFO] geolocation NÃO deve ser ligada diretamente a customers/sellers antes de agregarmos o CEP.
+
+==============================================================================
+15. RESULTADO DA AUDITORIA
+==============================================================================
+[OK] RAW não foi alterado.
+
+Relatórios gerados:
+  - reports/audit/01_raw_tables_summary.csv
+  - reports/audit/02_missing_values.csv
+  - reports/audit/03_key_audit.csv
+  - reports/audit/04_relationship_audit.csv
+  - reports/audit/05_order_status.csv
+  - reports/audit/06_delivery_target_summary.csv
+  - reports/audit/07_temporal_consistency.csv

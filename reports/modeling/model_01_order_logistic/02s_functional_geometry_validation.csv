@@ -1,0 +1,18 @@
+check,status,observed,expected
+c33a_pass,PASS,PASS,PASS
+volume_shape,PASS,"(96470, 90)","(96470, 90)"
+freight_shape,PASS,"(96470, 90)","(96470, 90)"
+order_index_unique,PASS,0,0
+support_nesting_90_in_60,PASS,0,0
+support_nesting_60_in_30,PASS,0,0
+support_30d_nonempty,PASS,96421,>0
+support_60d_nonempty,PASS,96204,>0
+support_90d_nonempty,PASS,96204,>0
+six_geometry_runs,PASS,6,6
+all_svd_ranks_positive,PASS,0,0
+all_svd_rank_within_window,PASS,0,0
+all_energy_finite,PASS,0,0
+energy_sums_to_one,PASS,2.220446049250313e-16,<1e-10
+k_energy_order,PASS,True,True
+lag_profile_rows,PASS,180,180
+adjacent_correlation_rows,PASS,178,178

@@ -1,0 +1,16 @@
+check,status,observed,expected,interpretation
+original_d2_only_failed_invalid_negative_assertion,PASS,['negative_values_preserved_not_clipped'],['negative_values_preserved_not_clipped'],D2 original is preserved. Its only failure was the invalid requirement that future subsets must contain negative cells.
+d11_status_pass,PASS,"('PASS', 0)","('PASS', 0)",
+d11_global_negative_artifacts_exist,PASS,18/18,>0,D1.1 remains the canonical evidence that unconstrained smoothing may generate negatives.
+d2_target_not_used,PASS,False,False,
+d2_no_clipping,PASS,False,False,
+d2_raw_not_modified,PASS,False,False,
+paired_required_columns,PASS,[],[],
+paired_comparisons_34,PASS,34,34,
+expected_channels,PASS,"['purchase_freight', 'purchase_volume']","['purchase_freight', 'purchase_volume']",
+seventeen_tests_per_channel,PASS,"{'purchase_freight': 17, 'purchase_volume': 17}","{'purchase_freight': 17, 'purchase_volume': 17}",
+raw_lower_end_to_end_error_all_pairs,PASS,34,34,Positive delta = smooth reconstruction has higher error against future RAW curve.
+smooth_zero_end_to_end_wins,PASS,0,0,
+all_end_to_end_ratios_above_one,PASS,1.0034195091330058,>1,
+smoothing_compresses_k90_all_pairs,PASS,34,34,"Smoothing gives dimensional compression, but that alone is not evidence of superior fidelity."
+d2_test_negative_observation_is_descriptive,PASS,0,DESCRIPTIVE_ONLY,Zero negatives in D2 subsets does not imply clipping. D1.1 and D2 concern different evaluated populations.

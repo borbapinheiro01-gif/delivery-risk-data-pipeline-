@@ -1,0 +1,4 @@
+candidate,formula,recommended_role,construct_status
+TIMESTAMP_STRICT,1[actual_timestamp > estimated_timestamp],sensitivity / comparison,NOT_PRIMARY_RECOMMENDATION
+CALENDAR_DAY,1[date(actual) > date(estimated)],primary candidate,CALENDAR_DAY_RECOMMENDED_PENDING_BUSINESS_CONFIRMATION
+CALENDAR_DAY_PLUS_1_GRACE,1[date(actual) > date(estimated) + 1 day],sensitivity only,NO BUSINESS JUSTIFICATION FOR PRIMARY USE

@@ -1,0 +1,46 @@
+=========================================================================================================
+FINAL PREDICTIVE MODEL AUDIT
+=========================================================================================================
+
+METRIC WINNERS
+---------------------------------------------------------------------------------------------------------
+           metric direction    winner    value
+Average Precision       MAX    GN_EQ0 0.121083
+            Brier       MIN    GN_EQ0 0.063050
+          LogLoss       MIN    GN_EQ0 0.245592
+          ROC-AUC       MAX LOGIT_MLE 0.621761
+
+CALIBRATION
+---------------------------------------------------------------------------------------------------------
+{
+  "best_pooled_Brier": "GN_EQ0",
+  "best_ECE": "LOGIT_MLE",
+  "best_intercept_slope_proximity": "GN_EQ0",
+  "important_guardrail": "Brier is an overall proper probabilistic score and is not interpreted as calibration alone."
+}
+
+NONLINEAR AUDIT
+---------------------------------------------------------------------------------------------------------
+{
+  "status": "NO_ROBUST_OOT_GAIN",
+  "linear_mean_AP": 0.12056569872496804,
+  "best_flexible_mean_AP": 0.11977525270467902,
+  "linear_mean_Brier": 0.06288059262392,
+  "best_flexible_mean_Brier": 0.06310062042557084
+}
+
+GNADMM TEMPORAL EVIDENCE
+---------------------------------------------------------------------------------------------------------
+classification=FAVORABLE_NOT_DECISIVE
+mean_delta_AP=0.001672883764737321
+block_bootstrap_CI=[-0.001869653050370023, 0.005666736812889149]
+
+UNIVERSAL WINNER
+---------------------------------------------------------------------------------------------------------
+None
+
+A universal winner is not declared when different metrics or calibration diagnostics favor different models.
+
+=========================================================================================================
+END
+=========================================================================================================

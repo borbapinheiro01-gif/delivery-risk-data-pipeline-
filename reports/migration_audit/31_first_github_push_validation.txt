@@ -1,0 +1,42 @@
+================================================================================
+DELIVERY RISK INTELLIGENCE — FIRST GITHUB PUBLICATION
+================================================================================
+
+Repository:
+https://github.com/borbapinheiro01-gif/delivery-risk-data-pipeline-.git
+
+Branch:
+main
+
+Publication staging:
+/home/runner/workspace/Delivery_Risk_GitHub_Staging
+
+Scientific Python source:
+120
+
+Historical source preserved:
+5
+
+Indexed RAW/external data:
+0
+
+Secret scan:
+PASS
+
+Files over 95 MB:
+0
+
+Migration readiness:
+SOURCE_TREE_READY_FOR_PLATFORM_MIGRATION
+
+Scientific RAW modified:
+NO
+
+Scientific models retrained:
+NO
+
+Scientific artifacts recalculated:
+NO
+
+Original scientific project modified by Git publication:
+NO

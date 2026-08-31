@@ -1,0 +1,102 @@
+====================================================================================================
+27A — BLOCK 02 — FREIGHT BURDEN DECOMPOSITION
+====================================================================================================
+
+STATUS
+------
+PASS
+
+POPULATION
+----------
+Total orders:
+    96,211
+
+Complete-case burden decomposition sample:
+    95,718
+
+Coverage:
+    99.49%
+
+BURDEN THRESHOLDS
+-----------------
+Q75:
+    0.27566359
+
+Q80:
+    0.30311731
+
+Q90:
+    0.38362919
+
+PREFERRED DIAGNOSTIC MODEL
+--------------------------
+Fractional Logit / Binomial GLM
+HC1 robust covariance
+Month fixed effects included.
+
+Formula:
+    freight_burden ~ log_price + log_distance + log_weight + log_volume + route_sellers_total + any_interstate_route + C(year_month)
+
+Converged:
+    True
+
+FOCAL COEFFICIENTS
+------------------
+                term      coef  std_err_HC1       p_value  p_value_fdr_bh  fdr_reject_005
+           log_price -0.905323     0.001734  0.000000e+00    0.000000e+00             1.0
+        log_distance  0.144556     0.001397  0.000000e+00    0.000000e+00             1.0
+          log_weight  0.130641     0.001657  0.000000e+00    0.000000e+00             1.0
+          log_volume  0.044767     0.001485 1.011955e-199   1.011955e-199             1.0
+ route_sellers_total  0.441657     0.011002  0.000000e+00    0.000000e+00             1.0
+any_interstate_route  0.217413     0.003368  0.000000e+00    0.000000e+00             1.0
+
+BUSINESS-READABLE MODEL CONTRASTS
+---------------------------------
+Average predicted change in Freight Burden under +10% covariate contrasts.
+
+IMPORTANT:
+These are model-based ASSOCIATIONAL contrasts.
+They are NOT causal elasticities.
+
+                               scenario                     variable  change  mean_predicted_burden_delta  median_predicted_burden_delta  p10_delta  p90_delta
+                 total_price_PLUS_10PCT                  total_price     0.1                    -0.012644                      -0.012859  -0.018989  -0.006075
+distance_freight_weighted_km_PLUS_10PCT distance_freight_weighted_km     0.1                     0.002095                       0.002125   0.000993   0.003174
+              total_weight_g_PLUS_10PCT               total_weight_g     0.1                     0.001905                       0.001933   0.000916   0.002870
+product_volume_sum_proxy_cm3_PLUS_10PCT product_volume_sum_proxy_cm3     0.1                     0.000653                       0.000662   0.000313   0.000986
+                      INTERSTATE_0_TO_1         any_interstate_route     1.0                     0.032745                       0.032991   0.015909   0.049480
+
+INTERPRETATION GUARDRAILS
+-------------------------
+1. Freight Burden measures consumer-side shipping burden.
+
+2. A high Freight Burden does NOT, by itself, imply logistics inefficiency.
+
+3. Price is present in the denominator of Freight Burden.
+   Therefore the Price/Burden association is partly mathematical by construction.
+
+4. Distance, weight, volume and route structure are interpreted associationally.
+
+5. No abandonment or conversion effect is estimated.
+
+6. No subsidy opportunity is declared in Block 02.
+
+7. Seller, regional and service-performance interpretation belongs to later blocks.
+
+FAILED GATES
+------------
+NONE
+
+NEXT BLOCK
+----------
+27A BLOCK 03 — SERVICE PERFORMANCE
+
+The next block will construct and audit:
+
+    Actual Delivery Time
+    Promised Delivery Time
+    Delivery Gap
+    Positive Tardiness
+    Late Delivery / reliability
+
+PARAR AQUI
+====================================================================================================

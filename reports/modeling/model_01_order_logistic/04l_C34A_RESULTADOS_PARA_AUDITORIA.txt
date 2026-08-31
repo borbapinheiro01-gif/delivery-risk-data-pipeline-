@@ -1,0 +1,300 @@
+
+================================================================================================
+C3.4-A — RECUPERAÇÃO DOS RESULTADOS JÁ CALCULADOS
+================================================================================================
+
+IMPORTANTE:
+- NÃO executa PCA.
+- NÃO executa SVD.
+- NÃO abre as matrizes .npy.
+- NÃO recalcula curvas.
+- NÃO usa target.
+- NÃO escolhe K.
+- NÃO treina modelo.
+- NÃO altera RAW.
+- Apenas lê os artefatos existentes do C3.4-A.
+
+================================================================================================
+1. VERIFICANDO ARTEFATOS
+================================================================================================
+[OK] 04a_raw30_k_policy_folds.csv
+[OK] 04b_raw30_k_policy_summary.csv
+[OK] 04c_raw30_k_policy_one_se.csv
+[OK] 04d_raw30_k_policy_validation.csv
+[OK] 04e_raw30_k_policy_summary.json
+[OK] 04f_raw30_k_policy_report.txt
+
+Arquivos ausentes: 0
+
+================================================================================================
+2. ESTADO FORMAL DO C3.4-A
+================================================================================================
+{
+    "step": "MODEL_01_0_C3_4A_TEMPORAL_K_POLICY",
+    "status": "PASS",
+    "created_at_utc": "2026-08-30T21:15:26.979827+00:00",
+    "representation": "RAW_30D",
+    "method": "EXPANDING_HISTORY_PCA_PVE_POLICY_OUT_OF_TIME_RECONSTRUCTION",
+    "window_days": 30,
+    "pve_policies": [
+        0.8,
+        0.85,
+        0.9,
+        0.95,
+        0.99
+    ],
+    "minimum_train_rows": 5000,
+    "minimum_test_rows": 500,
+    "temporal_test_months": 17,
+    "first_test_month": "2017-04",
+    "last_test_month": "2018-08",
+    "fold_policy_rows": 170,
+    "one_se_candidates": [
+        {
+            "channel": "purchase_volume",
+            "best_error_policy": 0.99,
+            "best_mean_future_error": 0.11247659287759149,
+            "best_error_standard_error": 0.012051852746550646,
+            "one_se_error_threshold": 0.12452844562414213,
+            "one_se_candidate_policy": 0.99,
+            "candidate_mean_k": 26.176470588235293,
+            "candidate_median_k": 27.0,
+            "candidate_min_k": 22,
+            "candidate_max_k": 27,
+            "candidate_mean_future_error": 0.11247659287759149,
+            "candidate_only_not_final": true,
+            "joint_candidate_policy": 0.99
+        },
+        {
+            "channel": "purchase_freight",
+            "best_error_policy": 0.99,
+            "best_mean_future_error": 0.11027992515478188,
+            "best_error_standard_error": 0.00998165789240473,
+            "one_se_error_threshold": 0.12026158304718661,
+            "one_se_candidate_policy": 0.99,
+            "candidate_mean_k": 26.88235294117647,
+            "candidate_median_k": 27.0,
+            "candidate_min_k": 24,
+            "candidate_max_k": 28,
+            "candidate_mean_future_error": 0.11027992515478188,
+            "candidate_only_not_final": true,
+            "joint_candidate_policy": 0.99
+        }
+    ],
+    "joint_candidate_policy": 0.99,
+    "joint_candidate_status": "CANDIDATE_ONLY_NOT_FROZEN",
+    "target_used": false,
+    "final_pve_policy_selected": false,
+    "final_k_selected": false,
+    "folds_frozen": false,
+    "classifier_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 0,
+    "runtime_seconds": 2.9813567269993655
+}
+
+================================================================================================
+3. POLÍTICAS PVE — K versus ERRO FUTURO
+================================================================================================
+         channel  pve_policy  temporal_tests  mean_future_error  median_future_error  p95_future_error  se_future_error      mean_k    median_k  min_k  max_k       sd_k  mean_future_variance_captured
+purchase_freight  0.80000000              17         0.41504832           0.40045518        0.67997743       0.02926198  6.05882353  5.00000000      4      9 2.10566463                     0.81403468
+purchase_freight  0.85000000              17         0.36510592           0.32795774        0.59825418       0.03007928  8.41176471  8.00000000      5     12 2.45099020                     0.85222146
+purchase_freight  0.90000000              17         0.31000396           0.27950223        0.52711187       0.02975597 12.05882353 13.00000000      8     15 2.04543969                     0.88973086
+purchase_freight  0.95000000              17         0.23903699           0.22344045        0.37041001       0.02526805 17.94117647 19.00000000     11     20 2.16421430                     0.93264573
+purchase_freight  0.99000000              17         0.11027993           0.09709796        0.19733409       0.00998166 26.88235294 27.00000000     24     28 0.99261983                     0.98624420
+ purchase_volume  0.80000000              17         0.41592084           0.39169409        0.72400984       0.03567572  5.76470588  5.00000000      3      9 2.30568351                     0.80664574
+ purchase_volume  0.85000000              17         0.35947767           0.31945348        0.64875103       0.03198375  7.70588235  6.00000000      5     12 2.77859465                     0.85440844
+ purchase_volume  0.90000000              17         0.30554323           0.26795836        0.59250057       0.03379506 10.88235294 10.00000000      7     15 2.80362161                     0.88836964
+ purchase_volume  0.95000000              17         0.23239175           0.21014020        0.42906058       0.02946158 16.76470588 17.00000000     10     20 2.35927456                     0.93210632
+ purchase_volume  0.99000000              17         0.11247659           0.10052278        0.19939557       0.01205185 26.17647059 27.00000000     22     27 1.33394594                     0.98502506
+
+================================================================================================
+4. REGRA 1-SE — APENAS CANDIDATA
+================================================================================================
+         channel  best_error_policy  best_mean_future_error  best_error_standard_error  one_se_error_threshold  one_se_candidate_policy  candidate_mean_k  candidate_median_k  candidate_min_k  candidate_max_k  candidate_mean_future_error  candidate_only_not_final  joint_candidate_policy
+ purchase_volume         0.99000000              0.11247659                 0.01205185              0.12452845               0.99000000       26.17647059         27.00000000               22               27                   0.11247659                      True              0.99000000
+purchase_freight         0.99000000              0.11027993                 0.00998166              0.12026158               0.99000000       26.88235294         27.00000000               24               28                   0.11027993                      True              0.99000000
+
+================================================================================================
+5. VALIDAÇÃO DO C3.4-A
+================================================================================================
+                             check status observed expected
+                     decision_pass   PASS     PASS     PASS
+                  raw30_authorized   PASS  RAW_30D  RAW_30D
+                         task_rows   PASS    96470    96470
+                  full_support_30d   PASS    96421    96421
+                eligible_months_17   PASS       17       17
+               first_month_2017_04   PASS  2017-04  2017-04
+                last_month_2018_08   PASS  2018-08  2018-08
+                  fold_policy_rows   PASS      170      170
+                all_metrics_finite   PASS        0        0
+                     k_within_1_30   PASS        0        0
+              k_monotonic_with_pve   PASS        0        0
+      error_nonincreasing_with_pve   PASS        0        0
+ d2_k90_reproduced_purchase_volume   PASS     10.0     10.0
+d2_k90_reproduced_purchase_freight   PASS     13.0     13.0
+
+FAILURES = 0
+
+================================================================================================
+6. COMPARAÇÃO DIRETA — q=.90 vs .95 vs .99
+================================================================================================
+         channel  pve_policy      mean_k    median_k  min_k  max_k  mean_future_error  p95_future_error  mean_future_variance_captured
+purchase_freight  0.90000000 12.05882353 13.00000000      8     15         0.31000396        0.52711187                     0.88973086
+purchase_freight  0.95000000 17.94117647 19.00000000     11     20         0.23903699        0.37041001                     0.93264573
+purchase_freight  0.99000000 26.88235294 27.00000000     24     28         0.11027993        0.19733409                     0.98624420
+ purchase_volume  0.90000000 10.88235294 10.00000000      7     15         0.30554323        0.59250057                     0.88836964
+ purchase_volume  0.95000000 16.76470588 17.00000000     10     20         0.23239175        0.42906058                     0.93210632
+ purchase_volume  0.99000000 26.17647059 27.00000000     22     27         0.11247659        0.19939557                     0.98502506
+
+================================================================================================
+7. QUANTO DA DIMENSÃO ORIGINAL ESTÁ SENDO MANTIDA
+================================================================================================
+         channel  pve_policy    mean_k  mean_dimension_retained_pct  mean_dimension_removed_pct  mean_future_error
+purchase_freight    0.800000  6.058824                    20.196078                   79.803922           0.415048
+purchase_freight    0.850000  8.411765                    28.039216                   71.960784           0.365106
+purchase_freight    0.900000 12.058824                    40.196078                   59.803922           0.310004
+purchase_freight    0.950000 17.941176                    59.803922                   40.196078           0.239037
+purchase_freight    0.990000 26.882353                    89.607843                   10.392157           0.110280
+ purchase_volume    0.800000  5.764706                    19.215686                   80.784314           0.415921
+ purchase_volume    0.850000  7.705882                    25.686275                   74.313725           0.359478
+ purchase_volume    0.900000 10.882353                    36.274510                   63.725490           0.305543
+ purchase_volume    0.950000 16.764706                    55.882353                   44.117647           0.232392
+ purchase_volume    0.990000 26.176471                    87.254902                   12.745098           0.112477
+
+================================================================================================
+8. O QUE q=.99 SIGNIFICA NA PRÁTICA
+================================================================================================
+
+purchase_freight
+--------------------------------------------------------------------------------
+K médio                  : 26.8824 / 30
+K mediano                : 27
+Intervalo K              : 24 .. 28
+Dimensão média mantida   : 89.61%
+Dimensão média removida   : 10.39%
+Erro futuro médio        : 0.1102799252
+Variância futura capturada: 98.6244%
+
+purchase_volume
+--------------------------------------------------------------------------------
+K médio                  : 26.1765 / 30
+K mediano                : 27
+Intervalo K              : 22 .. 27
+Dimensão média mantida   : 87.25%
+Dimensão média removida   : 12.75%
+Erro futuro médio        : 0.1124765929
+Variância futura capturada: 98.5025%
+
+================================================================================================
+9. q=.99 — COMPORTAMENTO MÊS A MÊS
+================================================================================================
+         channel current_month  train_orders  test_orders  k_train  train_cumulative_pve  future_relative_error  future_variance_captured
+ purchase_volume       2017-04          5167         2303       24            0.99104840             0.15279766                0.97665288
+ purchase_volume       2017-05          7470         3545       26            0.99176782             0.11820136                0.98602844
+ purchase_volume       2017-06         11015         3135       26            0.99063739             0.11411389                0.98697802
+ purchase_volume       2017-07         14150         3872       26            0.99053324             0.14552787                0.97882164
+ purchase_volume       2017-08         18022         4193       27            0.99243258             0.06748301                0.99544604
+ purchase_volume       2017-09         22215         4150       26            0.99035382             0.09450796                0.99106825
+ purchase_volume       2017-10         26365         4478       26            0.99069245             0.10052278                0.98989517
+ purchase_volume       2017-11         30843         7288       26            0.99050835             0.18521194                0.96569654
+ purchase_volume       2017-12         38131         5513       22            0.99029611             0.25613008                0.93439738
+ purchase_volume       2018-01         43644         7069       27            0.99194628             0.09941765                0.99011613
+ purchase_volume       2018-02         50713         6555       27            0.99176842             0.06763992                0.99542484
+ purchase_volume       2018-03         57268         7003       27            0.99211961             0.06734023                0.99546529
+ purchase_volume       2018-04         64271         6798       27            0.99241601             0.07914990                0.99373529
+ purchase_volume       2018-05         71069         6749       27            0.99248691             0.07215815                0.99479320
+ purchase_volume       2018-06         77818         6096       27            0.99269750             0.11369225                0.98707407
+ purchase_volume       2018-07         83914         6156       27            0.99250986             0.10110776                0.98977722
+ purchase_volume       2018-08         90070         6351       27            0.99244794             0.07709968                0.99405564
+purchase_freight       2017-04          5167         2303       25            0.99101208             0.15985317                0.97444696
+purchase_freight       2017-05          7470         3545       27            0.99250720             0.09361359                0.99123650
+purchase_freight       2017-06         11015         3135       27            0.99290174             0.11637839                0.98645607
+purchase_freight       2017-07         14150         3872       27            0.99126355             0.19645466                0.96140557
+purchase_freight       2017-08         18022         4193       28            0.99266818             0.07627015                0.99418286
+purchase_freight       2017-09         22215         4150       28            0.99330452             0.07548361                0.99430222
+purchase_freight       2017-10         26365         4478       28            0.99365814             0.07715777                0.99404668
+purchase_freight       2017-11         30843         7288       27            0.99024851             0.12661952                0.98396750
+purchase_freight       2017-12         38131         5513       24            0.99087757             0.20085180                0.95965855
+purchase_freight       2018-01         43644         7069       27            0.99132771             0.10388695                0.98920750
+purchase_freight       2018-02         50713         6555       27            0.99115382             0.07189218                0.99483151
+purchase_freight       2018-03         57268         7003       27            0.99147780             0.07656196                0.99413827
+purchase_freight       2018-04         64271         6798       27            0.99175607             0.09709796                0.99057199
+purchase_freight       2018-05         71069         6749       27            0.99163139             0.08010086                0.99358385
+purchase_freight       2018-06         77818         6096       27            0.99182884             0.11487262                0.98680428
+purchase_freight       2018-07         83914         6156       27            0.99159607             0.12756791                0.98372643
+purchase_freight       2018-08         90070         6351       27            0.99126523             0.08009565                0.99358469
+
+================================================================================================
+10. RELATÓRIO FORMAL DO C3.4-A
+================================================================================================
+====================================================================================================================
+MODEL 01.0-C3.4-A — RAW-30D TEMPORAL COMPONENT-COUNT POLICY
+====================================================================================================================
+
+STATUS                         : PASS
+REPRESENTATION                 : RAW-30D
+
+DESIGN
+--------------------------------------------------------------------------------------------------------------------
+PCA fit                        : PAST ONLY
+K(q) fit                       : PAST ONLY
+Test                           : FUTURE MONTH
+Target                         : NOT USED
+
+PVE POLICIES
+--------------------------------------------------------------------------------------------------------------------
+[0.8, 0.85, 0.9, 0.95, 0.99]
+
+ONE-SE CANDIDATES
+--------------------------------------------------------------------------------------------------------------------
+         channel  best_error_policy  best_mean_future_error  best_error_standard_error  one_se_error_threshold  one_se_candidate_policy  candidate_mean_k  candidate_median_k  candidate_min_k  candidate_max_k  candidate_mean_future_error  candidate_only_not_final  joint_candidate_policy
+ purchase_volume               0.99                0.112477                   0.012052                0.124528                     0.99         26.176471                27.0               22               27                     0.112477                      True                    0.99
+purchase_freight               0.99                0.110280                   0.009982                0.120262                     0.99         26.882353                27.0               24               28                     0.110280                      True                    0.99
+
+Joint candidate policy         : 0.99
+Joint candidate status         : CANDIDATE ONLY
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------------------
+Final PVE policy selected          : NO
+Final K selected                   : NO
+Folds frozen                       : NO
+Classifier trained                 : NO
+Silver created                     : NO
+RAW modified                       : NO
+
+Validation failures             : 0
+====================================================================================================================
+================================================================================================
+11. ESTADO APÓS C3.4-A
+================================================================================================
+C3.4-A status              : PASS
+Representação              : RAW_30D
+Meses temporais            : 17
+Primeiro mês               : 2017-04
+Último mês                 : 2018-08
+PVE candidate              : 0.99
+Status candidate           : CANDIDATE_ONLY_NOT_FROZEN
+Target usado               : False
+PVE final escolhida        : False
+K final escolhido          : False
+Folds congelados           : False
+Modelo treinado            : False
+Silver criada              : False
+RAW alterado               : False
+Validation failures        : 0
+
+================================================================================================
+FIM DOS RESULTADOS C3.4-A
+================================================================================================
+
+Nenhum experimento foi reexecutado.
+PCA executada      : NÃO
+SVD executada      : NÃO
+Target usado       : NÃO
+K escolhido        : NÃO
+Modelo treinado    : NÃO
+Silver criada      : NÃO
+RAW alterado       : NÃO

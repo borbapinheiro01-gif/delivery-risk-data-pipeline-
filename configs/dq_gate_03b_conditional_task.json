@@ -1,0 +1,51 @@
+{
+  "gate": "DQ_GATE_03B_CONDITIONAL_TASK_COMPLETENESS",
+  "version": "1.0",
+
+  "prediction_unit": "order_id",
+  "prediction_time": "order_purchase_timestamp",
+
+  "task_candidate_cohort": {
+    "description": "Pedidos entregues cujo outcome de entrega é observável.",
+    "conditions": [
+      "order_status == delivered",
+      "order_purchase_timestamp IS NOT NULL",
+      "order_estimated_delivery_date IS NOT NULL",
+      "order_delivered_customer_date IS NOT NULL"
+    ]
+  },
+
+  "principles": {
+    "relationship_missing_is_not_attribute_missing": true,
+    "not_applicable_is_not_missing": true,
+    "not_yet_observed_is_not_negative_label": true,
+    "source_quality_is_not_task_quality": true,
+    "child_grain_requires_order_aggregation": true,
+    "no_arbitrary_percentage_thresholds": true,
+    "raw_is_immutable": true
+  },
+
+  "critical_zero_tolerance": [
+    "task orders without order_items",
+    "task orders without customer resolution",
+    "task item product orphan",
+    "task item seller orphan",
+    "missing price/freight conditional on item existence"
+  ],
+
+  "warning_if_present": [
+    "task order without payment",
+    "product category missing conditional on product resolution",
+    "product physical attribute missing conditional on product resolution",
+    "customer geolocation missing conditional on customer resolution",
+    "seller geolocation missing conditional on seller resolution"
+  ],
+
+  "informational_only": [
+    "post-purchase approval missing",
+    "carrier timestamp missing",
+    "multi-item structure",
+    "multi-seller structure",
+    "multi-payment structure"
+  ]
+}

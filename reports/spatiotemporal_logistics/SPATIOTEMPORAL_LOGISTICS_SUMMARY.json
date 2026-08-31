@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "scope": "SPATIOTEMPORAL_LOGISTICS_AUDIT_V2_1_STAGED",
+  "total_orders": 96211,
+  "order_seller_rows": 97549,
+  "freight_oot_orders": 91262,
+  "gates": {
+    "G01_order_id_unique": true,
+    "G02_year_2017_2018_only": true,
+    "G03_order_seller_unique": true,
+    "G04_nonnegative_distance": true,
+    "G05_coordinates_valid_if_observed": true,
+    "G06_nonnegative_freight": true,
+    "G07_population_positive": true,
+    "G08_ibge_2017_exact_5570": true,
+    "G09_ibge_2018_exact_5570": true,
+    "G10_municipality_year_unique": true,
+    "G11_anp_missing_preserved": true,
+    "G12_gdp_retrospective_registry": true,
+    "G13_residual_oot_integrity": true,
+    "G14_raw_sha256_unchanged": true,
+    "G15_analysis_outputs_exist": true
+  },
+  "coverage": [
+    {
+      "field": "distance_freight_weighted_km",
+      "n_non_null": 95734,
+      "n_orders": 96211,
+      "coverage_pct": 99.50421469478542
+    },
+    {
+      "field": "total_weight_g",
+      "n_non_null": 96195,
+      "n_orders": 96211,
+      "coverage_pct": 99.9833698849404
+    },
+    {
+      "field": "product_volume_sum_proxy_cm3",
+      "n_non_null": 96195,
+      "n_orders": 96211,
+      "coverage_pct": 99.9833698849404
+    },
+    {
+      "field": "customer_population",
+      "n_non_null": 95628,
+      "n_orders": 96211,
+      "coverage_pct": 99.39404018251552
+    },
+    {
+      "field": "customer_gdp_per_capita",
+      "n_non_null": 95628,
+      "n_orders": 96211,
+      "coverage_pct": 99.39404018251552
+    },
+    {
+      "field": "customer_diesel_common_municipal",
+      "n_non_null": 74270,
+      "n_orders": 96211,
+      "coverage_pct": 77.19491534232053
+    },
+    {
+      "field": "customer_diesel_common_state",
+      "n_non_null": 96211,
+      "n_orders": 96211,
+      "coverage_pct": 100.0
+    },
+    {
+      "field": "actual_delivery_days",
+      "n_non_null": 96203,
+      "n_orders": 96211,
+      "coverage_pct": 99.9916849424702
+    }
+  ]
+}

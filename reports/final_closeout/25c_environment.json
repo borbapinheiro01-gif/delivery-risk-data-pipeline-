@@ -1,0 +1,13 @@
+{
+  "python": "3.12.12 (main, Oct  9 2025, 11:07:00) [GCC 15.2.0]",
+  "platform": "Linux-6.18.48-x86_64-with-glibc2.40",
+  "packages": {
+    "numpy": "2.5.0",
+    "pandas": "2.3.3",
+    "scipy": "1.18.0",
+    "scikit-learn": "1.9.0",
+    "statsmodels": "0.14.6",
+    "matplotlib": "3.11.0",
+    "patsy": "1.0.2"
+  }
+}

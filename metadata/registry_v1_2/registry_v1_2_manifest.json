@@ -1,0 +1,26 @@
+{
+  "registry_version": "1.2.0",
+  "created_at_utc": "2026-08-30T10:58:09.703653+00:00",
+  "project": "Delivery Risk Intelligence Platform",
+  "dataset": "olistbr/brazilian-ecommerce",
+  "raw_modified": false,
+  "tables": 9,
+  "columns": 52,
+  "relationships": 7,
+  "raw_open_issues": 18,
+  "canonical_open_issues": 13,
+  "search_records": 181,
+  "croissant_version": "1.1",
+  "internal_registry_status": "PASS",
+  "parent_registry_version": "1.1.0",
+  "label_contract": "contracts/DELIVERY_RISK_LABEL_CONTRACT_V1.json",
+  "resolved_canonical_issues": 3,
+  "non_resolved_canonical_issues": 10,
+  "updates": [
+    "Label contract frozen for modeling",
+    "ISSUE-MISSINGNESS-001 synchronized",
+    "ISSUE-OBSERVATION-WINDOW-001 synchronized",
+    "ISSUE-TARGET-001 synchronized",
+    "External Olist SLA truth explicitly remains unverified"
+  ]
+}

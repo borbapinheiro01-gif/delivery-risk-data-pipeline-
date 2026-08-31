@@ -1,0 +1,4 @@
+W0830 09:52:06.033994 140193583017152 datasets.py:41] Found the following 2 warning(s) during the validation:
+  -  [Metadata(olist_brazilian_ecommerce_delivery_risk)] Property "http://mlcommons.org/croissant/citeAs" is recommended, but does not exist.
+  -  [Metadata(olist_brazilian_ecommerce_delivery_risk)] Property "https://schema.org/datePublished" is recommended, but does not exist.
+I0830 09:52:06.034169 140193583017152 validate.py:53] Done.

@@ -1,0 +1,46 @@
+========================================================================================================
+DQ GATE 05.3 — SELLER HISTORY POINT-IN-TIME
+========================================================================================================
+
+STEP STATUS                         : PASS
+GATE 05 STATUS                      : IN_PROGRESS
+
+SUPERVISED ORDERS                   : 96,470
+ORDER-SELLER ROWS                   : 97,811
+UNIQUE CURRENT SELLERS              : 2,970
+
+PURCHASE EVENT ROWS                 : 100,010
+OUTCOME EVENT ROWS                  : 97,811
+
+PURCHASE-TIME LEAKAGE               : 0
+OUTCOME-TIME LEAKAGE                : 0
+
+BRUTE-FORCE SAMPLE                  : 300
+BRUTE-FORCE MISMATCHES              : 0
+
+VALIDATION FAILURES                 : 0
+
+SMOOTHING APPLIED                   : NO
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------
+Purchase-history rule:
+
+    purchase_j < purchase_i
+
+Outcome-history rule:
+
+    delivery_j < purchase_i
+
+The label/outcome of the current order is never used as a predictor.
+
+No global full-dataset target prevalence was used to smooth historical rates.
+
+This matrix is an AUDIT MATRIX only.
+It is not Silver and it is not a training matrix.
+
+RAW modified                        : NO
+Silver created                      : NO
+Model trained                       : NO
+
+========================================================================================================

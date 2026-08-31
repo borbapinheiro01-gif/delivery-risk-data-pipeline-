@@ -1,0 +1,182 @@
+{
+  "gate": "DQ_GATE_03_STATISTICAL_COMPLETENESS",
+  "version": "1.0",
+
+  "completeness_rules": {
+
+    "orders.order_purchase_timestamp": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "prediction_time"
+    },
+
+    "orders.order_estimated_delivery_date": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "delivery_promise"
+    },
+
+    "order_items.order_id": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "join_key"
+    },
+
+    "order_items.product_id": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "join_key"
+    },
+
+    "order_items.seller_id": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "join_key"
+    },
+
+    "order_items.price": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "model_input"
+    },
+
+    "order_items.freight_value": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "model_input"
+    },
+
+    "payments.payment_type": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "model_input"
+    },
+
+    "payments.payment_value": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "model_input"
+    },
+
+    "payments.payment_installments": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "model_input"
+    },
+
+    "customers.customer_zip_code_prefix": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "geographic_input"
+    },
+
+    "customers.customer_state": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "geographic_input"
+    },
+
+    "sellers.seller_zip_code_prefix": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "geographic_input"
+    },
+
+    "sellers.seller_state": {
+      "max_missing_pct": 0.0,
+      "severity": "CRITICAL",
+      "role": "geographic_input"
+    },
+
+    "products.product_category_name": {
+      "max_missing_pct": 2.5,
+      "severity": "WARNING",
+      "role": "optional_model_input"
+    },
+
+    "products.product_weight_g": {
+      "max_missing_pct": 0.1,
+      "severity": "WARNING",
+      "role": "optional_model_input"
+    },
+
+    "products.product_length_cm": {
+      "max_missing_pct": 0.1,
+      "severity": "WARNING",
+      "role": "optional_model_input"
+    },
+
+    "products.product_height_cm": {
+      "max_missing_pct": 0.1,
+      "severity": "WARNING",
+      "role": "optional_model_input"
+    },
+
+    "products.product_width_cm": {
+      "max_missing_pct": 0.1,
+      "severity": "WARNING",
+      "role": "optional_model_input"
+    },
+
+    "orders.order_approved_at": {
+      "max_missing_pct": 0.5,
+      "severity": "WARNING",
+      "role": "post_purchase_event"
+    },
+
+    "orders.order_delivered_carrier_date": {
+      "max_missing_pct": 3.0,
+      "severity": "WARNING",
+      "role": "post_purchase_event"
+    },
+
+    "orders.order_delivered_customer_date": {
+      "max_missing_pct": 5.0,
+      "severity": "WARNING",
+      "role": "future_label_source"
+    },
+
+    "reviews.review_comment_title": {
+      "max_missing_pct": 100.0,
+      "severity": "INFO",
+      "role": "optional_nlp"
+    },
+
+    "reviews.review_comment_message": {
+      "max_missing_pct": 100.0,
+      "severity": "INFO",
+      "role": "optional_nlp"
+    }
+  },
+
+  "numeric_profile": [
+    "order_items.price",
+    "order_items.freight_value",
+    "payments.payment_value",
+    "payments.payment_installments",
+    "products.product_weight_g",
+    "products.product_length_cm",
+    "products.product_height_cm",
+    "products.product_width_cm"
+  ],
+
+  "categorical_profile": [
+    "orders.order_status",
+    "payments.payment_type",
+    "customers.customer_state",
+    "sellers.seller_state",
+    "products.product_category_name"
+  ],
+
+  "coverage_warning_thresholds": {
+    "orders_without_items_pct": 2.0,
+    "orders_without_payments_pct": 0.1,
+    "customers_without_geolocation_pct": 1.0,
+    "sellers_without_geolocation_pct": 1.0
+  },
+
+  "statistical_rules": {
+    "constant_column_unique_values_max": 1,
+    "near_constant_dominant_share_pct": 99.9
+  }
+}

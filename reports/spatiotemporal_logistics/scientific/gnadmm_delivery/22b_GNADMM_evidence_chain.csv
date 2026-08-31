@@ -1,0 +1,8 @@
+module,topic,artifact,status
+15,operator_jacobian,15a_jacobian_finite_difference_audit.csv,PASS
+16,unconstrained_GN,16a_gn_multistart_summary.csv,PASS
+17,constrained_GNADMM,17a_gnadmm_multistart_summary.csv,PASS
+18,OOT_benchmark,18c_gnadmm_oot_model_summary.csv,PASS
+19,paired_temporal_inference,19a_paired_temporal_inference.csv,PASS
+20,constraint_ablation,20c_constraint_ablation_summary.csv,PASS
+21,calibration_resolution,21a_oot_calibration_summary.csv,PASS

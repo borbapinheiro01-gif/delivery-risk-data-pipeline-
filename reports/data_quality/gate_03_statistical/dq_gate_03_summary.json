@@ -1,0 +1,14 @@
+{
+  "gate": "DQ_GATE_03_STATISTICAL_COMPLETENESS",
+  "status": "PASS",
+  "prerequisite_gate_01": "PASS",
+  "prerequisite_gate_02": "PASS",
+  "total_checks": 50,
+  "passes": 36,
+  "warnings": 0,
+  "informational": 14,
+  "critical_failures": 0,
+  "raw_directory": "/home/runner/workspace/Delivery_Risk_Intelligence/data/raw/olist",
+  "contract": "/home/runner/workspace/Delivery_Risk_Intelligence/configs/dq_gate_03_statistical.json",
+  "raw_modified": false
+}

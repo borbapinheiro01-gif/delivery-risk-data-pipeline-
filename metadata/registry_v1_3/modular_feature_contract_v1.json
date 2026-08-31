@@ -1,0 +1,213 @@
+{
+  "contract_id": "DELIVERY_RISK_MODULAR_FEATURES_V1",
+  "version": "1.0.0",
+
+  "prediction_time": "order_purchase_timestamp",
+  "unit_of_analysis": "order_id",
+
+  "principle": "DEFINE_NOW_BUILD_LATER",
+
+  "modules": [
+
+    {
+      "module": "TEMPORAL",
+      "model_id": "MODEL_05_TEMPORAL_EXPERT",
+      "status": "LOCKED",
+      "features": [
+        {
+          "feature_name": "purchase_hour",
+          "sources": ["orders.order_purchase_timestamp"],
+          "availability_class": "SAFE_AT_T0",
+          "rule": "hour(t0)"
+        },
+        {
+          "feature_name": "purchase_weekday",
+          "sources": ["orders.order_purchase_timestamp"],
+          "availability_class": "SAFE_AT_T0",
+          "rule": "weekday(t0)"
+        },
+        {
+          "feature_name": "purchase_month",
+          "sources": ["orders.order_purchase_timestamp"],
+          "availability_class": "SAFE_AT_T0",
+          "rule": "month(t0)"
+        },
+        {
+          "feature_name": "purchase_quarter",
+          "sources": ["orders.order_purchase_timestamp"],
+          "availability_class": "SAFE_AT_T0",
+          "rule": "quarter(t0)"
+        },
+        {
+          "feature_name": "is_weekend",
+          "sources": ["orders.order_purchase_timestamp"],
+          "availability_class": "SAFE_AT_T0",
+          "rule": "1[weekday(t0) in {Saturday, Sunday}]"
+        }
+      ]
+    },
+
+    {
+      "module": "GEO_PROMISE",
+      "model_id": "MODEL_04_GEO_PROMISE_EXPERT",
+      "status": "LOCKED",
+      "features": [
+        {
+          "feature_name": "promised_lead_days",
+          "sources": [
+            "orders.order_purchase_timestamp",
+            "orders.order_estimated_delivery_date"
+          ],
+          "availability_class": "SAFE_AT_T0",
+          "rule": "date(estimated_delivery) - date(purchase)"
+        },
+        {
+          "feature_name": "customer_state",
+          "sources": ["customers.customer_state"],
+          "availability_class": "SAFE_AT_T0",
+          "rule": "current order destination state"
+        },
+        {
+          "feature_name": "seller_customer_distance_km",
+          "sources": [
+            "customers.customer_zip_code_prefix",
+            "sellers.seller_zip_code_prefix",
+            "geolocation.geolocation_lat",
+            "geolocation.geolocation_lng"
+          ],
+          "availability_class": "HOLD_DATA_QUALITY",
+          "rule": "Haversine after ZIP consolidation",
+          "blocked_by": "ISSUE-GEO-001"
+        },
+        {
+          "feature_name": "shipping_limit_days",
+          "sources": [
+            "order_items.shipping_limit_date",
+            "orders.order_purchase_timestamp"
+          ],
+          "availability_class": "HOLD_PROVENANCE",
+          "rule": "shipping_limit_date - purchase_timestamp",
+          "blocked_by": "ISSUE-SHIPPING-LIMIT-001"
+        }
+      ]
+    },
+
+    {
+      "module": "SELLER_HISTORY",
+      "model_id": "MODEL_03_SELLER_EXPERT",
+      "status": "LOCKED",
+      "features": [
+        {
+          "feature_name": "seller_prior_order_count",
+          "sources": [
+            "order_items.seller_id",
+            "orders.order_purchase_timestamp"
+          ],
+          "availability_class": "POINT_IN_TIME_REQUIRED",
+          "history_type": "PURCHASE_EVENT_HISTORY",
+          "rule": "purchase_j < purchase_i"
+        },
+        {
+          "feature_name": "seller_order_volume_30d",
+          "sources": [
+            "order_items.seller_id",
+            "orders.order_purchase_timestamp"
+          ],
+          "availability_class": "POINT_IN_TIME_REQUIRED",
+          "history_type": "PURCHASE_EVENT_HISTORY",
+          "rule": "purchase_i - 30d <= purchase_j < purchase_i"
+        },
+        {
+          "feature_name": "seller_prior_observed_delivery_count",
+          "sources": [
+            "order_items.seller_id",
+            "orders.order_delivered_customer_date"
+          ],
+          "availability_class": "POINT_IN_TIME_REQUIRED",
+          "history_type": "HISTORICAL_OUTCOME_ONLY",
+          "rule": "delivery_j < purchase_i"
+        },
+        {
+          "feature_name": "seller_prior_late_count",
+          "sources": [
+            "order_items.seller_id",
+            "orders.order_delivered_customer_date",
+            "orders.order_estimated_delivery_date"
+          ],
+          "availability_class": "POINT_IN_TIME_REQUIRED",
+          "history_type": "HISTORICAL_OUTCOME_ONLY",
+          "rule": "delivery_j < purchase_i AND late_j = 1"
+        },
+        {
+          "feature_name": "seller_late_rate_prior",
+          "sources": [
+            "order_items.seller_id",
+            "orders.order_delivered_customer_date",
+            "orders.order_estimated_delivery_date"
+          ],
+          "availability_class": "POINT_IN_TIME_REQUIRED",
+          "history_type": "HISTORICAL_OUTCOME_ONLY",
+          "rule": "use only j with delivery_j < purchase_i"
+        },
+        {
+          "feature_name": "seller_late_rate_30d",
+          "sources": [
+            "order_items.seller_id",
+            "orders.order_delivered_customer_date",
+            "orders.order_estimated_delivery_date"
+          ],
+          "availability_class": "POINT_IN_TIME_REQUIRED",
+          "history_type": "HISTORICAL_OUTCOME_ONLY",
+          "rule": "purchase_i - 30d <= delivery_j < purchase_i"
+        },
+        {
+          "feature_name": "seller_late_rate_90d",
+          "sources": [
+            "order_items.seller_id",
+            "orders.order_delivered_customer_date",
+            "orders.order_estimated_delivery_date"
+          ],
+          "availability_class": "POINT_IN_TIME_REQUIRED",
+          "history_type": "HISTORICAL_OUTCOME_ONLY",
+          "rule": "purchase_i - 90d <= delivery_j < purchase_i"
+        }
+      ]
+    },
+
+    {
+      "module": "PAYMENT",
+      "model_id": "PAYMENT_CANDIDATE_MODULE",
+      "status": "BLOCKED",
+      "features": [
+        {
+          "feature_name": "payment_record_count",
+          "sources": ["payments.payment_sequential"],
+          "availability_class": "HOLD_PROVENANCE",
+          "blocked_by": "ISSUE-PAYMENT-AVAILABILITY-001"
+        },
+        {
+          "feature_name": "payment_type_count",
+          "sources": ["payments.payment_type"],
+          "availability_class": "HOLD_PROVENANCE",
+          "blocked_by": "ISSUE-PAYMENT-AVAILABILITY-001"
+        },
+        {
+          "feature_name": "max_payment_installments",
+          "sources": ["payments.payment_installments"],
+          "availability_class": "HOLD_PROVENANCE",
+          "blocked_by": "ISSUE-PAYMENT-AVAILABILITY-001"
+        },
+        {
+          "feature_name": "total_payment_value",
+          "sources": ["payments.payment_value"],
+          "availability_class": "HOLD_PROVENANCE",
+          "blocked_by": "ISSUE-PAYMENT-AVAILABILITY-001"
+        }
+      ]
+    }
+  ],
+
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

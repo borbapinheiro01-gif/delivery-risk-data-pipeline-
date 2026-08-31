@@ -1,0 +1,11 @@
+{
+  "gate": "DQ_GATE_02_SEMANTIC",
+  "status": "PASS",
+  "prerequisite_gate_01": "PASS",
+  "total_checks": 45,
+  "passes": 38,
+  "warnings": 7,
+  "critical_failures": 0,
+  "raw_directory": "/home/runner/workspace/Delivery_Risk_Intelligence/data/raw/olist",
+  "contract": "/home/runner/workspace/Delivery_Risk_Intelligence/configs/dq_gate_02_semantic.json"
+}

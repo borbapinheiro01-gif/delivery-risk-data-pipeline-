@@ -1,0 +1,10 @@
+{
+  "gate": "DQ_GATE_01_STRUCTURAL",
+  "status": "PASS",
+  "total_checks": 135,
+  "passes": 134,
+  "warnings": 1,
+  "critical_failures": 0,
+  "raw_directory": "/home/runner/workspace/Delivery_Risk_Intelligence/data/raw/olist",
+  "contract": "/home/runner/workspace/Delivery_Risk_Intelligence/configs/dq_gate_01_structural.json"
+}

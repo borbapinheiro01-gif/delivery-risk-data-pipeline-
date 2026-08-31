@@ -1,0 +1,3 @@
+event,task_orders,missing,missing_pct,feature_policy,interpretation
+order_approved_at,96470,14,0.014512283611485436,FORBIDDEN_AT_T0,Informational process completeness; not baseline feature completeness.
+order_delivered_carrier_date,96470,1,0.001036591686534674,FORBIDDEN_AT_T0,Informational process completeness; not baseline feature completeness.

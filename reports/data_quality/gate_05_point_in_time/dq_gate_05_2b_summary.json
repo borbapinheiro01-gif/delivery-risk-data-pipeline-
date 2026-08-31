@@ -1,0 +1,18 @@
+{
+  "step": "DQ_GATE_05_2B_MODULAR_FEATURE_CONTRACT",
+  "step_status": "PASS",
+  "gate_05_status": "IN_PROGRESS",
+  "modules_defined": 4,
+  "features_defined": 20,
+  "missing_sources": 0,
+  "hold_marked_safe": 0,
+  "target_current_feature_misuse": 0,
+  "historical_without_availability_rule": 0,
+  "payment_not_hold": 0,
+  "unlocked_future_modules": 0,
+  "validation_failures": 0,
+  "model_01_unlocked": false,
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

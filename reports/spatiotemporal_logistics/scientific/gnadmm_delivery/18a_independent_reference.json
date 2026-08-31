@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "message": "Optimization terminated successfully",
+  "objective": 0.03178421265782655,
+  "brier": 0.0635684253156531,
+  "beta_z2": -1.6987071532268474e-20,
+  "distance_to_gnadmm": 5.701630402292818e-08
+}

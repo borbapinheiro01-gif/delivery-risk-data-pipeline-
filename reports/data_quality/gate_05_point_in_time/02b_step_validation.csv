@@ -1,0 +1,7 @@
+check,status,observed,expected
+all_sources_exist,PASS,0,0
+hold_sources_never_marked_safe,PASS,0,0
+target_only_not_used_as_current_feature,PASS,0,0
+historical_outcomes_have_availability_rule,PASS,0,0
+payment_remains_hold,PASS,0,0
+all_future_modules_remain_locked,PASS,0,0

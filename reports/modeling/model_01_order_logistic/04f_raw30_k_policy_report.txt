@@ -1,0 +1,38 @@
+====================================================================================================================
+MODEL 01.0-C3.4-A — RAW-30D TEMPORAL COMPONENT-COUNT POLICY
+====================================================================================================================
+
+STATUS                         : PASS
+REPRESENTATION                 : RAW-30D
+
+DESIGN
+--------------------------------------------------------------------------------------------------------------------
+PCA fit                        : PAST ONLY
+K(q) fit                       : PAST ONLY
+Test                           : FUTURE MONTH
+Target                         : NOT USED
+
+PVE POLICIES
+--------------------------------------------------------------------------------------------------------------------
+[0.8, 0.85, 0.9, 0.95, 0.99]
+
+ONE-SE CANDIDATES
+--------------------------------------------------------------------------------------------------------------------
+         channel  best_error_policy  best_mean_future_error  best_error_standard_error  one_se_error_threshold  one_se_candidate_policy  candidate_mean_k  candidate_median_k  candidate_min_k  candidate_max_k  candidate_mean_future_error  candidate_only_not_final  joint_candidate_policy
+ purchase_volume               0.99                0.112477                   0.012052                0.124528                     0.99         26.176471                27.0               22               27                     0.112477                      True                    0.99
+purchase_freight               0.99                0.110280                   0.009982                0.120262                     0.99         26.882353                27.0               24               28                     0.110280                      True                    0.99
+
+Joint candidate policy         : 0.99
+Joint candidate status         : CANDIDATE ONLY
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------------------
+Final PVE policy selected          : NO
+Final K selected                   : NO
+Folds frozen                       : NO
+Classifier trained                 : NO
+Silver created                     : NO
+RAW modified                       : NO
+
+Validation failures             : 0
+====================================================================================================================

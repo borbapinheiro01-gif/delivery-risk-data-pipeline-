@@ -1,0 +1,62 @@
+{
+  "contract_id": "DELIVERY_RISK_LABEL_V1",
+  "contract_version": "1.0.0",
+  "created_at_utc": "2026-08-30T10:58:09.663090+00:00",
+  "status": "FROZEN_FOR_MODELING",
+  "scope": "Delivery Risk Intelligence Platform using the public Olist dataset",
+  "unit_of_analysis": "order_id",
+  "prediction_time": "order_purchase_timestamp",
+  "target_concept": "delivery after the promised calendar date",
+  "primary_label": {
+    "name": "late_delivery_calendar_day",
+    "formula": "Y_i = 1[date(order_delivered_customer_date_i) > date(order_estimated_delivery_date_i)]",
+    "positive_value": 1,
+    "negative_value": 0
+  },
+  "eligible_supervised_population": {
+    "requirements": [
+      "order_status == delivered",
+      "order_purchase_timestamp observed",
+      "order_estimated_delivery_date observed",
+      "order_delivered_customer_date observed"
+    ],
+    "orders": 96470
+  },
+  "class_distribution": {
+    "positive_orders": 6534,
+    "negative_orders": 89936,
+    "positive_rate": 0.06773090079817559,
+    "positive_rate_pct": 6.7730900798175595,
+    "no_skill_pr_auc": 0.06773090079817559
+  },
+  "construct_evidence": {
+    "estimated_timestamp_midnight_pct": 100.0,
+    "timestamp_vs_calendar_disagreements": 1292,
+    "same_calendar_day_disagreements": 1292,
+    "same_day_share_pct": 100.0,
+    "calendar_late_strict_ontime": 0
+  },
+  "sensitivity_labels": [
+    {
+      "name": "timestamp_strict",
+      "role": "sensitivity_only",
+      "late_orders": 7826,
+      "late_rate_pct": 8.112366538820359
+    },
+    {
+      "name": "calendar_day_plus_1_grace",
+      "role": "sensitivity_only",
+      "late_orders": 5709
+    }
+  ],
+  "unobserved_outcome_policy": {
+    "rule": "DO_NOT_CONVERT_TO_ON_TIME",
+    "interpretation": "Orders without an observed delivery outcome are excluded from the supervised label population unless a separate modeling framework is defined."
+  },
+  "external_business_truth": {
+    "olist_private_historical_sla_verified": false,
+    "status": "NOT_VERIFIED",
+    "interpretation": "The calendar-day label is frozen as the modeling contract for this case. This does not claim independent verification of Olist's private historical SLA semantics."
+  },
+  "raw_modified": false
+}

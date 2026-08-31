@@ -1,0 +1,6 @@
+table,variable,rows,missing,missing_pct,cardinality,dominant_value,dominant_count,dominant_pct,singleton_levels
+orders,order_status,99441,0,0.0,8,delivered,96478,97.02034372140264,0
+payments,payment_type,103886,0,0.0,5,credit_card,76795,73.92237645110987,0
+customers,customer_state,99441,0,0.0,27,SP,41746,41.980671956235355,0
+sellers,seller_state,3095,0,0.0,23,SP,1849,59.74151857835218,5
+products,product_category_name,32951,610,1.8512336499650996,73,cama_mesa_banho,3029,9.365820475557342,1

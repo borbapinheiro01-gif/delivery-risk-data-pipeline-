@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+.pythonlibs/
+.env
+.env.*
+!.env.example
+
+# Secrets / credentials
+*.pem
+*.key
+credentials.json
+secrets.json
+service-account*.json
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+
+# Logs
+*.log
+
+# Raw / external datasets
+data/raw/*
+!data/raw/.gitkeep
+
+data/external/*
+!data/external/.gitkeep
+
+# Large generated binary artifacts
+*.npy
+*.npz
+*.pkl
+*.joblib
+*.parquet
+
+# Local caches
+.cache/
+.ipynb_checkpoints/
+
+# Project historical source intentionally excluded
+src/modeling/model_01_c3_3d2_1_close_representation_decision_BROKEN.py
+src/spatiotemporal_logistics/01_build_fast_spatiotemporal_core.py
+src/spatiotemporal_logistics/01_build_fast_spatiotemporal_core.before_syntax_repair_*.py
+src/spatiotemporal_logistics/v2_before_v21_*/

@@ -1,0 +1,3 @@
+592:- `MODEL_01_ORDER_LOGISTIC`: **UNLOCKED_FOR_TEMPORAL_VALIDATION**
+429:O Registry 1.2 preserva as questões históricas, mas distingue explicitamente questões abertas de avaliações já resolvidas.
+443:| ISSUE-SELLER-HISTORY-001 | seller_point_in_time_history | HIGH | OPEN |  |  |  |

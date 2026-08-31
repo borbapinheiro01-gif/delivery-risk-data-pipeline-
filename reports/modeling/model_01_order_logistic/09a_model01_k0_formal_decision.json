@@ -1,0 +1,69 @@
+{
+  "decision_id": "MODEL01_C36C_FUNCTIONAL_K_FREEZE_V1",
+  "created_at_utc": "2026-08-31T00:39:31.674193+00:00",
+  "status": "FROZEN",
+  "model": "MODEL_01_ORDER_LOGISTIC",
+  "prediction_time": "ORDER_PURCHASE_TIMESTAMP",
+  "target": "LATE_DELIVERY_CALENDAR_DAY",
+  "primary_metric": "AVERAGE_PRECISION",
+  "protocol": "FROZEN_EXPANDING_HISTORY_MONTHLY_OUT_OF_TIME",
+  "contract_sha256": "c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b",
+  "temporal_months": 17,
+  "model_fits_audited": 238,
+  "selected_k": 0,
+  "selected_input": "ORDER_CORE_V1_ONLY",
+  "functional_dimensions_added": 0,
+  "baseline_mean_average_precision": 0.08184095536011984,
+  "descriptive_best_k": 0,
+  "decision": "REJECT_FUNCTIONAL_COMPONENTS_FOR_PRIMARY_MODEL_01",
+  "scientific_language": {
+    "supported": "No robust evidence of predictive gain from RAW-30D functional principal components was found relative to K=0 under the frozen temporal MODEL 01 logistic-regression protocol.",
+    "not_supported": "K=0 is universally or statistically superior to every K under all possible conditions.",
+    "important_scope": "The decision applies to MODEL_01_ORDER_LOGISTIC and does not establish that temporal information, regional interactions or nonlinear representations are universally non-predictive."
+  },
+  "inference_guardrail": {
+    "robust_functional_superiority_k": [],
+    "robust_k0_superiority_k": [],
+    "interpretation": "Model-selection evidence supports not adding functional PCs to MODEL 01, while simultaneous inference does not justify a universal superiority claim for K=0."
+  },
+  "governance": {
+    "k_final_frozen": true,
+    "threshold_selected": false,
+    "classifier_refit": false,
+    "pca_refit": false,
+    "bootstrap_rerun": false,
+    "raw_modified": false,
+    "silver_created": false
+  },
+  "next_branch": {
+    "name": "SPATIOTEMPORAL_LOGISTICS_AUDIT",
+    "status": "READY_TO_START",
+    "initial_axes": [
+      "product_price",
+      "freight_absolute",
+      "freight_to_price_ratio",
+      "delivery_delay",
+      "delivery_speed",
+      "origin_destination",
+      "region",
+      "distance",
+      "weight_and_volume",
+      "calendar_period",
+      "external_events",
+      "regional_context"
+    ]
+  },
+  "provenance_sha256": {
+    "model_01_supervised_temporal_contract_v1.json": "c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b",
+    "07a_supervised_k_fold_metrics.csv": "f40170bcfbce912612287c05c1dcc9c9abe1d9a962fd312b580a239ca7021608",
+    "07d_supervised_k_validation.csv": "cfc0d54373ffa93cf2d7f2dbd3b25024273e162a278e819600cb7fe12122d5c5",
+    "07e_supervised_k_summary.json": "a2447abae784b4299e5452a84c1e158f01740c4afe6455e7d99aff7b623eb69f",
+    "08b_ap_paired_summary.csv": "c3185a75591255265b414177ecf44e0c384996a8cd3291821f0971f05d7e621a",
+    "08c_contiguous_deletion_sensitivity.csv": "ee73c03e252a8244aba347e8df303325720fc8482a3ffc099ae4183506e3c2d7",
+    "08d_block_bootstrap_inference.csv": "8491a3ab3992b35c03b50389247d38da47b79e597787a5470641286380d4475e",
+    "08e_secondary_metric_concordance.csv": "648de6be16cf13f95809afdaa9ac75d525215db99670889b21779a649847e460",
+    "08f_c36b_validation.csv": "638780abb1155e34d203db6a6400ef4a3c4ccc3a7ffac92ddf0b69d059d82e9e",
+    "08g_c36b_summary.json": "27c2abbe8ca0a82e6294fd45bff2d287f55a9d5c6bd64f4ccfcf7a004b36410b"
+  },
+  "validation_failures": 0
+}

@@ -1,0 +1,6 @@
+check,status,observed,expected
+feature_names_unique,PASS,0,0
+all_sources_exist_in_pit_registry,PASS,0,0
+all_dependencies_allowed_for_model01,PASS,0,0
+no_future_target_or_hold_dependency,PASS,0,0
+model01_feature_count,PASS,13,13

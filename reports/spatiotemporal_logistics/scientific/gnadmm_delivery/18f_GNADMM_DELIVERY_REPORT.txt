@@ -1,0 +1,67 @@
+
+====================================================================================================
+GN–ADMM DELIVERY EXPERIMENT — FINAL REPORT
+====================================================================================================
+
+OBJECTIVE
+----------------------------------------------------------------------------------------------------
+p_i(beta) = sigmoid(x_i^T beta)
+
+r_i(beta) = y_i - p_i(beta)
+
+J(beta) = 0.5 * mean(r_i(beta)^2)
+
+This is a nonlinear least-squares formulation whose unscaled
+mean squared residual is the Brier score.
+
+CONSTRAINT
+----------------------------------------------------------------------------------------------------
+beta_z_freight_sq >= 0
+
+MODELS
+----------------------------------------------------------------------------------------------------
+1. LOGIT_MLE
+2. GN_BRIER
+3. GNADMM_BRIER_CONSTRAINED
+
+INDEPENDENT REFERENCE
+----------------------------------------------------------------------------------------------------
+success                  : True
+objective                : 0.031784212658
+Brier                    : 0.063568425316
+beta_z2                  : -0.000000000000
+distance to GN–ADMM      : 5.701630402293e-08
+
+OOT SUMMARY
+----------------------------------------------------------------------------------------------------
+                   model  months  mean_ap  median_ap  mean_brier  mean_log_loss  mean_auc
+GNADMM_BRIER_CONSTRAINED      14 0.120345   0.096474    0.063183       0.246211  0.617313
+                GN_BRIER      14 0.119983   0.091349    0.063237       0.249884  0.617640
+               LOGIT_MLE      14 0.118672   0.095654    0.063153       0.248303  0.621761
+
+PAIRED OOT COMPARISON
+----------------------------------------------------------------------------------------------------
+               candidate  months  mean_delta_AP_vs_logit  median_delta_AP_vs_logit  months_AP_better  mean_delta_Brier_vs_logit  months_Brier_better
+                GN_BRIER      14                0.001311                  0.000852                 8                   0.000084                    6
+GNADMM_BRIER_CONSTRAINED      14                0.001673                  0.001269                 8                   0.000030                    6
+
+BEST MEAN AP
+----------------------------------------------------------------------------------------------------
+GNADMM_BRIER_CONSTRAINED
+
+BEST MEAN BRIER
+----------------------------------------------------------------------------------------------------
+LOGIT_MLE
+
+INTERPRETATION GUARDRAILS
+----------------------------------------------------------------------------------------------------
+- This experiment evaluates GN–ADMM as a constrained Brier-NLLS estimator.
+- It does not prove global convergence of the external GN sequence.
+- It does not establish causal effects of freight on delivery delay.
+- The inequality beta_z² >= 0 is an imposed scientific hypothesis, not information created by data.
+- Predictive conclusions must be based on OOT results, not only in-sample objective values.
+- Great-circle distance remains a geographic proxy, not road-network distance.
+
+====================================================================================================
+END
+====================================================================================================

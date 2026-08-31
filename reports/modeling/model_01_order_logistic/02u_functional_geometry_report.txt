@@ -1,0 +1,43 @@
+========================================================================================================
+MODEL 01.0-C3.3-B — SUPPORT-AWARE FUNCTIONAL GEOMETRY
+========================================================================================================
+
+STATUS                      : PASS
+TASK ORDERS                 : 96,470
+RAW PURCHASE START          : 2016-09-04 21:15:19
+RAW PURCHASE END            : 2018-10-17 17:30:18
+
+LEFT-HISTORY POLICY
+--------------------------------------------------------------------------------------------------------
+Pre-dataset history is NOT interpreted as observed zero.
+SVD uses only orders with full within-dataset support for each window.
+
+SUPPORT
+--------------------------------------------------------------------------------------------------------
+30d | full=96,421 | incomplete=49 | coverage=99.9492%
+60d | full=96,204 | incomplete=266 | coverage=99.7243%
+90d | full=96,204 | incomplete=266 | coverage=99.7243%
+
+FUNCTIONAL GEOMETRY
+--------------------------------------------------------------------------------------------------------
+purchase_volume | 30d | n=96,421 | rank=30 | K80=7 | K90=13 | K95=18 | K99=27 | PC1=47.6570%
+purchase_volume | 60d | n=96,204 | rank=60 | K80=12 | K90=23 | K95=34 | K99=52 | PC1=43.9791%
+purchase_volume | 90d | n=96,204 | rank=90 | K80=15 | K90=31 | K95=49 | K99=77 | PC1=45.1376%
+purchase_freight | 30d | n=96,421 | rank=30 | K80=7 | K90=13 | K95=18 | K99=27 | PC1=49.7295%
+purchase_freight | 60d | n=96,204 | rank=60 | K80=11 | K90=23 | K95=34 | K99=53 | PC1=46.1555%
+purchase_freight | 90d | n=96,204 | rank=90 | K80=14 | K90=32 | K95=50 | K99=78 | PC1=46.7557%
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------
+K is NOT selected.
+Window is NOT selected.
+Smoothing is NOT applied.
+FPCA is NOT applied.
+No predictor is added to MODEL_01.
+No fold is frozen.
+No model is trained.
+RAW is not modified.
+
+VALIDATION FAILURES          : 0
+RUNTIME                     : 3.290 s
+========================================================================================================

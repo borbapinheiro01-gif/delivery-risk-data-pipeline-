@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "purpose": "FINAL_MODEL_SELECTION_CHECK",
+  "model_refit": false,
+  "raw_modified": false,
+  "primary_comparison": "GN_EQ0_vs_LOGIT_MLE",
+  "primary_metric": "AP",
+  "n_months": 14,
+  "mean_AP_delta_GN_EQ0_minus_LOGIT": 0.0024107907467564847,
+  "median_AP_delta": 0.003286028047266548,
+  "months_GN_EQ0_better": 8,
+  "months_LOGIT_MLE_better": 6,
+  "wilcoxon_p": 0.267578125,
+  "LOMO_mean_min": 0.0014796022851999142,
+  "LOMO_mean_max": 0.003550722563320621,
+  "classification": "FAVORABLE_NOT_DECISIVE",
+  "final_modeling_interpretation": "GN_EQ0 has favorable average and monthly AP behavior, but temporal evidence is not decisive enough to claim universal superiority over LOGIT_MLE."
+}

@@ -1,0 +1,9 @@
+component,status,reason
+MODEL_01_ORDER_LOGISTIC,UNLOCKED_FOR_TEMPORAL_VALIDATION,ORDER_CORE_V1 passed Gate 05.
+MODEL_02_ORDER_CATBOOST,LOCKED,Wait for MODEL_01 PROMOTE/HOLD/REJECT.
+MODEL_03_SELLER_EXPERT,LOCKED,"PIT infrastructure validated, predictive utility not yet tested."
+MODEL_04_GEO_PROMISE_EXPERT,LOCKED,Geolocation treatment still unresolved.
+MODEL_05_TEMPORAL_EXPERT,LOCKED,Sequential validation protocol.
+PAYMENT_FEATURES,BLOCKED,Point-in-time provenance unresolved.
+SHIPPING_LIMIT_FEATURES,BLOCKED,shipping_limit_date provenance unresolved.
+GEO_COORDINATE_FEATURES,BLOCKED,ZIP/geolocation consolidation unresolved.

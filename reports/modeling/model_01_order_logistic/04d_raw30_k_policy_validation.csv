@@ -1,0 +1,15 @@
+check,status,observed,expected
+decision_pass,PASS,PASS,PASS
+raw30_authorized,PASS,RAW_30D,RAW_30D
+task_rows,PASS,96470,96470
+full_support_30d,PASS,96421,96421
+eligible_months_17,PASS,17,17
+first_month_2017_04,PASS,2017-04,2017-04
+last_month_2018_08,PASS,2018-08,2018-08
+fold_policy_rows,PASS,170,170
+all_metrics_finite,PASS,0,0
+k_within_1_30,PASS,0,0
+k_monotonic_with_pve,PASS,0,0
+error_nonincreasing_with_pve,PASS,0,0
+d2_k90_reproduced_purchase_volume,PASS,10.0,10.0
+d2_k90_reproduced_purchase_freight,PASS,13.0,13.0

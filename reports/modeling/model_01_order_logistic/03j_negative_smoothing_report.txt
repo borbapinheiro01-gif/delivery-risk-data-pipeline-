@@ -1,0 +1,25 @@
+==============================================================================================================
+MODEL 01.0-C3.3-D1.1 — NEGATIVE SMOOTHING ARTIFACT AUDIT
+==============================================================================================================
+
+STATUS                       : PASS
+CONFIGURATIONS               : 18
+WITH NEGATIVE CELLS          : 18
+MAX NEGATIVE CELL %          : 0.96200666
+MAX AFFECTED ROW %           : 5.30123488
+MOST NEGATIVE VALUE          : -60.9821344165
+MAX NEGATIVE MASS / RAW %    : 0.000450829233658
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------------
+No clipping was applied.
+No negative value was replaced.
+No smoothing configuration was selected.
+No target was used.
+No FPCA was applied.
+No model was trained.
+RAW and original curve arrays remain unchanged.
+
+VALIDATION FAILURES          : 0
+RUNTIME                      : 5.434s
+==============================================================================================================

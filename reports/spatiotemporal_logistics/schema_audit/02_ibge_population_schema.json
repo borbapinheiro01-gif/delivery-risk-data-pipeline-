@@ -1,0 +1,542 @@
+{
+  "2017": {
+    "file": "data/external/landing/ibge_population/2017/estimativa_dou_2017.xls",
+    "bytes": 672768,
+    "sheets": [
+      {
+        "sheet": "BRASIL E UFs",
+        "nrows": 40,
+        "ncols": 3,
+        "first_nonempty_rows": [
+          {
+            "row_index_zero_based": 0,
+            "values": [
+              "ESTIMATIVAS DA POPULAÇÃO RESIDENTE NO BRASIL E UNIDADES DA FEDERAÇÃO COM DATA DE REFERÊNCIA EM 1º DE JULHO DE 2017"
+            ]
+          },
+          {
+            "row_index_zero_based": 1,
+            "values": [
+              "BRASIL E UNIDADES DA FEDERAÇÃO",
+              "POPULAÇÃO ESTIMADA"
+            ]
+          },
+          {
+            "row_index_zero_based": 2,
+            "values": [
+              "Brasil",
+              "207660929.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 3,
+            "values": [
+              "Região Norte",
+              "17936201.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 4,
+            "values": [
+              "Rondônia",
+              "1805788.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 5,
+            "values": [
+              "Acre",
+              "829619.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 6,
+            "values": [
+              "Amazonas",
+              "4063614.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 7,
+            "values": [
+              "Roraima",
+              "522636.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 8,
+            "values": [
+              "Pará",
+              "8366628.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 9,
+            "values": [
+              "Amapá",
+              "797722.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 10,
+            "values": [
+              "Tocantins",
+              "1550194.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 11,
+            "values": [
+              "Região Nordeste",
+              "57254159.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 12,
+            "values": [
+              "Maranhão",
+              "7000229.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 13,
+            "values": [
+              "Piauí",
+              "3.219.257 (*)"
+            ]
+          },
+          {
+            "row_index_zero_based": 14,
+            "values": [
+              "Ceará",
+              "9.020.460 (*)"
+            ]
+          }
+        ]
+      },
+      {
+        "sheet": "Municípios",
+        "nrows": 5580,
+        "ncols": 5,
+        "first_nonempty_rows": [
+          {
+            "row_index_zero_based": 0,
+            "values": [
+              "ESTIMATIVAS DA POPULAÇÃO RESIDENTE NOS MUNICÍPIOS BRASILEIROS COM DATA DE REFERÊNCIA EM 1º DE JULHO DE 2017"
+            ]
+          },
+          {
+            "row_index_zero_based": 1,
+            "values": [
+              "UF",
+              "COD. UF",
+              "COD. MUNIC",
+              "NOME DO MUNICÍPIO",
+              "POPULAÇÃO ESTIMADA"
+            ]
+          },
+          {
+            "row_index_zero_based": 2,
+            "values": [
+              "RO",
+              "11.0",
+              "00015",
+              "Alta Floresta D'Oeste",
+              "25437.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 3,
+            "values": [
+              "RO",
+              "11.0",
+              "00023",
+              "Ariquemes",
+              "107345.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 4,
+            "values": [
+              "RO",
+              "11.0",
+              "00031",
+              "Cabixi",
+              "6224.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 5,
+            "values": [
+              "RO",
+              "11.0",
+              "00049",
+              "Cacoal",
+              "88507.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 6,
+            "values": [
+              "RO",
+              "11.0",
+              "00056",
+              "Cerejeiras",
+              "17934.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 7,
+            "values": [
+              "RO",
+              "11.0",
+              "00064",
+              "Colorado do Oeste",
+              "18467.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 8,
+            "values": [
+              "RO",
+              "11.0",
+              "00072",
+              "Corumbiara",
+              "8659.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 9,
+            "values": [
+              "RO",
+              "11.0",
+              "00080",
+              "Costa Marques",
+              "17400.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 10,
+            "values": [
+              "RO",
+              "11.0",
+              "00098",
+              "Espigão D'Oeste",
+              "33030.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 11,
+            "values": [
+              "RO",
+              "11.0",
+              "00106",
+              "Guajará-Mirim",
+              "47451.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 12,
+            "values": [
+              "RO",
+              "11.0",
+              "00114",
+              "Jaru",
+              "55871.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 13,
+            "values": [
+              "RO",
+              "11.0",
+              "00122",
+              "Ji-Paraná",
+              "132667.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 14,
+            "values": [
+              "RO",
+              "11.0",
+              "00130",
+              "Machadinho D'Oeste",
+              "38609.0"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "2018": {
+    "file": "data/external/landing/ibge_population/2018/estimativa_dou_2018_20181019.xls",
+    "bytes": 769024,
+    "sheets": [
+      {
+        "sheet": "BRASIL E UFs",
+        "nrows": 41,
+        "ncols": 3,
+        "first_nonempty_rows": [
+          {
+            "row_index_zero_based": 0,
+            "values": [
+              "ESTIMATIVAS DA POPULAÇÃO RESIDENTE NO BRASIL E UNIDADES DA FEDERAÇÃO COM DATA DE REFERÊNCIA EM 1º DE JULHO DE 2018"
+            ]
+          },
+          {
+            "row_index_zero_based": 1,
+            "values": [
+              "BRASIL E UNIDADES DA FEDERAÇÃO",
+              "POPULAÇÃO ESTIMADA"
+            ]
+          },
+          {
+            "row_index_zero_based": 2,
+            "values": [
+              "Brasil",
+              "208494900.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 3,
+            "values": [
+              "Região Norte",
+              "18182253.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 4,
+            "values": [
+              "Rondônia",
+              "1757589.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 5,
+            "values": [
+              "Acre",
+              "869265.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 6,
+            "values": [
+              "Amazonas",
+              "4080611.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 7,
+            "values": [
+              "Roraima",
+              "576568.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 8,
+            "values": [
+              "Pará",
+              "8513497.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 9,
+            "values": [
+              "Amapá",
+              "829494.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 10,
+            "values": [
+              "Tocantins",
+              "1555229.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 11,
+            "values": [
+              "Região Nordeste",
+              "56760780.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 12,
+            "values": [
+              "Maranhão",
+              "7035055.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 13,
+            "values": [
+              "Piauí",
+              "3.264.531 (*)"
+            ]
+          },
+          {
+            "row_index_zero_based": 14,
+            "values": [
+              "Ceará",
+              "9.075.649 (*)"
+            ]
+          }
+        ]
+      },
+      {
+        "sheet": "Municípios",
+        "nrows": 5590,
+        "ncols": 5,
+        "first_nonempty_rows": [
+          {
+            "row_index_zero_based": 0,
+            "values": [
+              "ESTIMATIVAS DA POPULAÇÃO RESIDENTE NOS MUNICÍPIOS BRASILEIROS COM DATA DE REFERÊNCIA EM 1º DE JULHO DE 2018"
+            ]
+          },
+          {
+            "row_index_zero_based": 1,
+            "values": [
+              "UF",
+              "COD. UF",
+              "COD. MUNIC",
+              "NOME DO MUNICÍPIO",
+              "POPULAÇÃO ESTIMADA"
+            ]
+          },
+          {
+            "row_index_zero_based": 2,
+            "values": [
+              "RO",
+              "11.0",
+              "00015",
+              "Alta Floresta D'Oeste",
+              "23167.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 3,
+            "values": [
+              "RO",
+              "11.0",
+              "00023",
+              "Ariquemes",
+              "106168.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 4,
+            "values": [
+              "RO",
+              "11.0",
+              "00031",
+              "Cabixi",
+              "5438.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 5,
+            "values": [
+              "RO",
+              "11.0",
+              "00049",
+              "Cacoal",
+              "84813.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 6,
+            "values": [
+              "RO",
+              "11.0",
+              "00056",
+              "Cerejeiras",
+              "16444.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 7,
+            "values": [
+              "RO",
+              "11.0",
+              "00064",
+              "Colorado do Oeste",
+              "16227.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 8,
+            "values": [
+              "RO",
+              "11.0",
+              "00072",
+              "Corumbiara",
+              "7567.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 9,
+            "values": [
+              "RO",
+              "11.0",
+              "00080",
+              "Costa Marques",
+              "17855.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 10,
+            "values": [
+              "RO",
+              "11.0",
+              "00098",
+              "Espigão D'Oeste",
+              "32047.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 11,
+            "values": [
+              "RO",
+              "11.0",
+              "00106",
+              "Guajará-Mirim",
+              "45783.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 12,
+            "values": [
+              "RO",
+              "11.0",
+              "00114",
+              "Jaru",
+              "51933.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 13,
+            "values": [
+              "RO",
+              "11.0",
+              "00122",
+              "Ji-Paraná",
+              "127907.0"
+            ]
+          },
+          {
+            "row_index_zero_based": 14,
+            "values": [
+              "RO",
+              "11.0",
+              "00130",
+              "Machadinho D'Oeste",
+              "39097.0"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

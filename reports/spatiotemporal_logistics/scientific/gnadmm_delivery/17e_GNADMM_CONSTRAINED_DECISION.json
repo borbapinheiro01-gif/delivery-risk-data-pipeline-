@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "method": "GN_ADMM_BRIER_NLLS",
+  "constraint": "beta_z_freight_sq >= 0",
+  "selected_start": 2,
+  "gn_iterations": 29,
+  "total_admm_iterations": 4487,
+  "objective_final": 0.03178421265782315,
+  "brier_in_sample": 0.0635684253156463,
+  "beta_z2": -9.940248169196926e-11,
+  "constraint_violation": 9.940248169196926e-11,
+  "raw_modified": false
+}

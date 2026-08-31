@@ -1,0 +1,26 @@
+==============================================================================================================
+SCIENTIFIC CHECKPOINT — MODULES 06–09
+==============================================================================================================
+
+M06 COST STRUCTURE            : PASS
+
+M07 FREIGHT MODEL
+F2 beats F0 MAE              : True
+MAE gain F2 vs F0            : 0.508701
+Max |Pearson residual|        : 0.301079
+Max |Spearman residual|       : 0.122568
+
+M08 DELIVERY SPEED
+MixedLM status                : CONVERGED
+Residual standardized coef    : -0.007632
+Residual 95% CI               : [-0.011505, -0.003759]
+
+M09 DELIVERY RELIABILITY
+P(p_LOW > p_NORMAL | data)    : 0.960820
+P(p_HIGH > p_NORMAL | data)   : 0.999870
+Residual OR R-A               : 1.002832
+Residual OR R-B promise adj.  : 1.009746
+
+==============================================================================================================
+END
+==============================================================================================================

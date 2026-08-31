@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "raw_file_count": 10,
+  "raw_manifest_created": true,
+  "historical_hash_evidence_candidates": [
+    "reports/spatiotemporal_logistics/raw_before_v21.sha256",
+    "reports/spatiotemporal_logistics/raw_after_v21.sha256"
+  ],
+  "hash_guardrail": "The current SHA256 manifest is an integrity checkpoint. An unchanged-from-original claim requires comparison with an independent earlier machine-readable hash record.",
+  "context_core_n": 96211,
+  "expected_freight_n": 96211,
+  "gn_design_allow_pickle_false": true,
+  "temporal_oot_gate": "PASS",
+  "failed_gates": 0,
+  "caveat_gates": 0,
+  "raw_modified_by_module_25": false
+}

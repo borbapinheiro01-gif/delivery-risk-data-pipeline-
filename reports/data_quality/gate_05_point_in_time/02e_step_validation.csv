@@ -1,0 +1,8 @@
+check,status,observed,expected
+derived_feature_names_unique,PASS,0,0
+no_direct_future_target_dependencies,PASS,0,0
+model01_has_features,PASS,13,> 0
+model01_no_hold_static_future_target,PASS,0,0
+payment_remains_blocked,FAIL,4,4
+shipping_limit_derived_remains_blocked,PASS,BLOCKED,BLOCKED
+seller_history_requires_temporal_builder,PASS,8,8

@@ -1,0 +1,19 @@
+gate,status,detail
+FILE::01_ROUTE_SELLER_ORDER.csv,PASS,artifacts/spatiotemporal_logistics/01_ROUTE_SELLER_ORDER.csv
+FILE::02_ROUTE_ORDER_LEVEL.csv,PASS,artifacts/spatiotemporal_logistics/02_ROUTE_ORDER_LEVEL.csv
+FILE::03_MUNICIPAL_CONTEXT.csv,PASS,artifacts/spatiotemporal_logistics/03_MUNICIPAL_CONTEXT.csv
+FILE::04_ANP_CONTEXT.csv,PASS,artifacts/spatiotemporal_logistics/04_ANP_CONTEXT.csv
+FILE::04b_ANP_STATE_CONTEXT.csv,PASS,artifacts/spatiotemporal_logistics/04b_ANP_STATE_CONTEXT.csv
+FILE::05_SPATIOTEMPORAL_CONTEXT_CORE.csv,PASS,artifacts/spatiotemporal_logistics/05_SPATIOTEMPORAL_CONTEXT_CORE.csv
+FILE::06_EXPECTED_FREIGHT_OOT.csv,PASS,artifacts/spatiotemporal_logistics/06_EXPECTED_FREIGHT_OOT.csv
+FILE::19d_PAIRED_TEMPORAL_DECISION.json,PASS,reports/spatiotemporal_logistics/scientific/gnadmm_delivery/19d_PAIRED_TEMPORAL_DECISION.json
+FILE::20d_CONSTRAINT_ABLATION_DECISION.json,PASS,reports/spatiotemporal_logistics/scientific/gnadmm_delivery/20d_CONSTRAINT_ABLATION_DECISION.json
+FILE::21d_CALIBRATION_DECISION.json,PASS,reports/spatiotemporal_logistics/scientific/gnadmm_delivery/21d_CALIBRATION_DECISION.json
+FILE::22e_GNADMM_SCIENTIFIC_FREEZE.json,PASS,reports/spatiotemporal_logistics/scientific/gnadmm_delivery/22e_GNADMM_SCIENTIFIC_FREEZE.json
+FILE::23d_SCIENTIFIC_EVIDENCE_FREEZE.json,PASS,reports/final_closeout/23d_SCIENTIFIC_EVIDENCE_FREEZE.json
+FILE::24d_PREDICTIVE_MODEL_AUDIT.json,PASS,reports/final_closeout/24d_PREDICTIVE_MODEL_AUDIT.json
+ORDER_MASTER_ROW_CONSISTENCY,PASS,context_core_N=96211; expected_freight_N=96211
+GN_DESIGN_ALLOW_PICKLE_FALSE,PASS,"X=(90783, 8)/float64; y=(90783,)/float64; months=(90783,)/<U7"
+GN_FEATURE_GUARDRAIL,PASS,Frozen GN feature set matches expected specification.
+TEMPORAL_OOT_EVALUATION_PRESENT,PASS,OOT months=14; first=2017-07; last=2018-08
+PYTHON_COMPILE_15_25,PASS,compiled=11

@@ -1,0 +1,2 @@
+orders,missing_payment,within_1_cent,within_1_cent_pct,within_1_real,within_1_real_pct,over_10_reais,payment_delta_median,payment_delta_p01,payment_delta_p99,payment_delta_min,payment_delta_max
+96470,1,96094,99.61127408804902,96223,99.74499580176015,97,0.0,-5.684341886080802e-14,5.684341886080802e-14,-51.620000000000005,182.80999999999995

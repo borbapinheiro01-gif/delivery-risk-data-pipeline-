@@ -1,0 +1,9 @@
+check,status,observed,expected
+global_rank,PASS,11,11
+global_nullity,PASS,2,2
+theoretical_nullspace_dimension,PASS,2,2
+all_raw_relations_validate,PASS,0,0
+all_common_scale_relations_validate,PASS,0,0
+all_computable_months_rank_11,PASS,0,0
+all_computable_months_nullity_2,PASS,0,0
+all_angles_finite,PASS,0,0

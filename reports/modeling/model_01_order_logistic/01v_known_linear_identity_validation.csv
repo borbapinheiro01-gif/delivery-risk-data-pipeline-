@@ -1,0 +1,3 @@
+relation,formula,max_abs_residual,rms_residual,allclose_zero,standardized_max_abs_residual,projection_energy_in_nullspace_pct,angle_to_nullspace_deg
+PRICE_RANGE,+1*price_range + -1*max_price + +1*min_price = 0,5.684341886080802e-14,5.867297957299725e-16,True,4.731339179555823e-15,100.0,0.0
+MERCHANDISE_PLUS_FREIGHT,+1*merchandise_plus_freight + -1*total_price + -1*total_freight = 0,4.547473508864641e-13,1.2555441310763678e-14,True,7.105427357601002e-15,100.0,0.0

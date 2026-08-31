@@ -1,0 +1,17 @@
+{
+  "step": "MODEL_01_0_C3_TEMPORAL_REGIME_CONSENSUS",
+  "status": "PASS",
+  "months_compared": 19,
+  "method": "RANK_CONSENSUS_DIAGNOSTIC",
+  "dimensions": [
+    "LOCAL_COVARIATE_CHANGE",
+    "PERSISTENT_COVARIATE_CHANGE",
+    "TARGET_CHANGE"
+  ],
+  "threshold_frozen": false,
+  "regime_boundaries_frozen": false,
+  "folds_frozen": false,
+  "model_trained": false,
+  "raw_modified": false,
+  "silver_created": false
+}

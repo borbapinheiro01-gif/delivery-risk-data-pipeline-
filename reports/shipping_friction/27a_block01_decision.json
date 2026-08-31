@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "generated_utc": "2026-08-31T06:27:48.789702+00:00",
+  "module": "27A_BLOCK01_CORE_FRICTION",
+  "input": "artifacts/spatiotemporal_logistics/06_EXPECTED_FREIGHT_OOT.csv",
+  "population": {
+    "n_orders": 96211,
+    "duplicate_order_id": 0,
+    "n_expected_freight_available": 91262,
+    "n_log_cost_anomaly": 91262,
+    "n_month_standardized_anomaly": 91262
+  },
+  "definitions": {
+    "freight_burden": "total_freight / (total_price + total_freight)",
+    "freight_to_price_ratio": "total_freight / total_price",
+    "freight_residual_abs": "total_freight - expected_freight_oot",
+    "freight_expected_ratio": "total_freight / expected_freight_oot",
+    "freight_log_ratio": "log((total_freight + eps) / (expected_freight_oot + eps))",
+    "freight_log_ratio_month_z": "(freight_log_ratio - monthly_median) / (1.4826 * monthly_MAD)"
+  },
+  "interpretation": {
+    "freight_burden": "Customer-side shipping economic burden proxy.",
+    "freight_log_ratio": "Cost anomaly relative to the previously estimated OOT expected freight model.",
+    "freight_log_ratio_month_z": "Robust month-relative cost anomaly for cross-period comparison."
+  },
+  "guardrails": {
+    "freight_residual_is_true_operational_inefficiency": false,
+    "causal_claim": false,
+    "carrier_identity_available": false,
+    "model_refit": false,
+    "raw_modified": false,
+    "n_x_n_matrix_created": false
+  },
+  "checks": {
+    "max_burden_ratio_identity_error": 2.220446049250313e-16,
+    "max_abs_monthly_median_standardized_anomaly": 3.144186300207963e-18
+  },
+  "gates": {
+    "B01_G01_input_exists": true,
+    "B01_G02_order_id_unique": true,
+    "B01_G03_population_preserved": true,
+    "B01_G04_freight_burden_bounded": true,
+    "B01_G05_ratio_identity_valid": true,
+    "B01_G06_expected_freight_not_imputed": true,
+    "B01_G07_monthly_standardization_available": true,
+    "B01_G08_monthly_median_centering": true,
+    "B01_G09_no_model_refit": true,
+    "B01_G10_raw_untouched": true
+  },
+  "failed_gates": [],
+  "outputs": [
+    "artifacts/shipping_friction/27a_01_shipping_friction_core.csv",
+    "reports/shipping_friction/27a_01_coverage.csv",
+    "reports/shipping_friction/27a_01_monthly_robust_scale.csv",
+    "reports/shipping_friction/27a_01_core_quantiles.csv"
+  ]
+}

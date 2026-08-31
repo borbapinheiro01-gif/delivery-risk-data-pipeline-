@@ -1,0 +1,19 @@
+==========================================================================================
+DQ GATE 01 — STRUCTURAL
+==========================================================================================
+
+STATUS            : PASS
+TOTAL CHECKS      : 135
+PASS              : 134
+WARNINGS          : 1
+CRITICAL FAILURES : 0
+
+CHECKS NÃO-PASS:
+------------------------------------------------------------------------------------------
+[WARN] geolocation-ROWDUP | geolocation | full_row_duplicates | observado=261831 | esperado=informational / allowed at structural gate
+
+------------------------------------------------------------------------------------------
+REGRA DO GATE:
+FAIL crítico -> NÃO construir Silver.
+PASS com warnings -> pipeline pode avançar, mas warnings devem permanecer documentados.
+------------------------------------------------------------------------------------------

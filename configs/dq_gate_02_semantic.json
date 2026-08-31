@@ -1,0 +1,114 @@
+{
+  "gate": "DQ_GATE_02_SEMANTIC",
+  "version": "1.0",
+
+  "allowed_brazilian_states": [
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF",
+    "ES", "GO", "MA", "MT", "MS", "MG", "PA",
+    "PB", "PR", "PE", "PI", "RJ", "RN", "RS",
+    "RO", "RR", "SC", "SP", "SE", "TO"
+  ],
+
+  "allowed_order_status": [
+    "created",
+    "approved",
+    "invoiced",
+    "processing",
+    "shipped",
+    "delivered",
+    "unavailable",
+    "canceled"
+  ],
+
+  "allowed_payment_type": [
+    "credit_card",
+    "boleto",
+    "voucher",
+    "debit_card",
+    "not_defined"
+  ],
+
+  "numeric_rules": {
+    "order_items.price": {
+      "min": 0,
+      "min_inclusive": true,
+      "severity": "CRITICAL"
+    },
+
+    "order_items.freight_value": {
+      "min": 0,
+      "min_inclusive": true,
+      "severity": "CRITICAL"
+    },
+
+    "payments.payment_value": {
+      "min": 0,
+      "min_inclusive": true,
+      "severity": "CRITICAL"
+    },
+
+    "payments.payment_installments": {
+      "min": 0,
+      "min_inclusive": true,
+      "severity": "CRITICAL"
+    },
+
+    "reviews.review_score": {
+      "min": 1,
+      "max": 5,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "severity": "CRITICAL"
+    },
+
+    "products.product_weight_g": {
+      "min": 0,
+      "min_inclusive": true,
+      "severity": "CRITICAL"
+    },
+
+    "products.product_length_cm": {
+      "min": 0,
+      "min_inclusive": false,
+      "severity": "CRITICAL"
+    },
+
+    "products.product_height_cm": {
+      "min": 0,
+      "min_inclusive": false,
+      "severity": "CRITICAL"
+    },
+
+    "products.product_width_cm": {
+      "min": 0,
+      "min_inclusive": false,
+      "severity": "CRITICAL"
+    },
+
+    "geolocation.geolocation_lat": {
+      "min": -90,
+      "max": 90,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "severity": "CRITICAL"
+    },
+
+    "geolocation.geolocation_lng": {
+      "min": -180,
+      "max": 180,
+      "min_inclusive": true,
+      "max_inclusive": true,
+      "severity": "CRITICAL"
+    }
+  },
+
+  "warning_rules": {
+    "payment_value_zero": true,
+    "payment_installments_zero": true,
+    "product_weight_zero": true,
+    "approval_after_carrier": true,
+    "carrier_after_customer": true,
+    "geolocation_zip_multiple_states": true,
+    "category_without_translation": true
+  }
+}

@@ -1,0 +1,68 @@
+========================================================================================================
+DQ GATE 05 — POINT-IN-TIME AVAILABILITY & LEAKAGE
+========================================================================================================
+
+STATUS                                  : PASS
+
+PREDICTION TIME                         : order_purchase_timestamp
+
+STEPS
+--------------------------------------------------------------------------------------------------------
+05.1 Raw PIT Registry                   : PASS
+05.2-A ORDER_CORE_V1                    : PASS
+05.2-B Modular Contract                 : PASS
+05.3 Seller History PIT                 : PASS
+
+RAW COLUMNS AUDITED                     : 52
+FUTURE / TARGET COLUMNS                 : 11
+HOLD COLUMNS                            : 10
+
+MODEL 01
+--------------------------------------------------------------------------------------------------------
+FEATURE SET                             : ORDER_CORE_V1
+FEATURES                                : 13
+
+SELLER HISTORY
+--------------------------------------------------------------------------------------------------------
+ORDER-SELLER ROWS                       : 97811
+UNIQUE SELLERS                          : 2970
+PURCHASE-TIME LEAKAGE                   : 0
+OUTCOME-TIME LEAKAGE                    : 0
+BRUTE-FORCE MISMATCHES                  : 0
+
+FINAL VALIDATION
+--------------------------------------------------------------------------------------------------------
+CRITICAL FAILURES                       : 0
+
+MODEL STATUS
+--------------------------------------------------------------------------------------------------------
+MODEL_01_ORDER_LOGISTIC                 : UNLOCKED FOR TEMPORAL VALIDATION
+MODEL_02_ORDER_CATBOOST                 : LOCKED
+MODEL_03_SELLER_EXPERT                  : LOCKED
+MODEL_04_GEO_PROMISE_EXPERT             : LOCKED
+MODEL_05_TEMPORAL_EXPERT                : LOCKED
+
+PAYMENT                                 : BLOCKED
+SHIPPING_LIMIT_DATE                     : BLOCKED
+GEO COORDINATES                         : BLOCKED
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------
+Gate 05 PASS validates the point-in-time/leakage contract.
+
+It does NOT prove MODEL_01 is useful.
+
+MODEL_01 must next undergo temporal out-of-sample evaluation and receive:
+
+PROMOTE
+HOLD
+or
+REJECT
+
+before MODEL_02 can be released.
+
+RAW modified                            : NO
+Silver created                          : NO
+Model trained                           : NO
+
+========================================================================================================

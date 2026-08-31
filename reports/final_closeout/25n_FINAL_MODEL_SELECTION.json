@@ -1,0 +1,52 @@
+{
+  "status": "FINAL_MODEL_SELECTION_COMPLETE",
+  "generated_utc": "2026-08-31T05:09:49.814464+00:00",
+  "scope": "DELIVERY_RISK_INTELLIGENCE",
+  "recommended_model": "GN_EQ0",
+  "benchmark_model": "LOGIT_MLE",
+  "rejected_extension": "PREQUENTIAL_GN_EQ0_LOGIT_BLEND",
+  "primary_metric": "AP",
+  "model_refit": false,
+  "raw_modified": false,
+  "new_model_family": false,
+  "n_x_n_matrix_created": false,
+  "temporal_robustness": {
+    "n_months": 14,
+    "mean_AP_delta_GN_EQ0_minus_LOGIT": 0.0024107907467564847,
+    "median_AP_delta": 0.003286028047266548,
+    "months_GN_EQ0_better": 8,
+    "months_LOGIT_better": 6,
+    "wilcoxon_p": 0.267578125,
+    "sign_test_p": 0.79052734375,
+    "LOMO_mean_min": 0.0014796022851999142,
+    "LOMO_mean_max": 0.003550722563320621,
+    "LOMO_all_positive": true,
+    "classification": "FAVORABLE_AND_LOMO_ROBUST_NOT_DECISIVE"
+  },
+  "ensemble_audit": {
+    "classification": "ENSEMBLE_REJECTED_KEEP_BASE_MODEL",
+    "ensemble_AP_gain_vs_best_base": -0.00018010484854152908,
+    "ensemble_Brier_gap_vs_best_base": 0.00011173964176923457,
+    "ensemble_LogLoss_gap_vs_best_base": 0.0021910602721098016,
+    "guardrails_pass": false,
+    "ensemble_required": false
+  },
+  "claim_boundaries": {
+    "universal_model_superiority": false,
+    "statistically_decisive_temporal_superiority": false,
+    "causal_claim": false
+  },
+  "final_interpretation": "GN_EQ0 is the recommended final model for the evaluated case because it provides the best final compromise under the frozen primary metric and probability-quality guardrails. Its average AP advantage over LOGIT_MLE remains positive under every leave-one-month-out exclusion, but paired temporal inference is not statistically decisive. The prequential probability blend did not improve the best base model under the predefined guardrails and was therefore rejected.",
+  "evidence_files": {
+    "temporal_decision": "reports/final_closeout/25h_TEMPORAL_ROBUSTNESS_DECISION.json",
+    "blend_decision": "reports/final_closeout/25l_FINAL_BLEND_DECISION.json",
+    "blend_summary": "reports/final_closeout/25k_prequential_blend_summary.csv",
+    "alpha_history": "reports/final_closeout/25m_prequential_alpha_history.csv"
+  },
+  "evidence_sha256": {
+    "temporal_decision": "9a27f1e695e1cbf377ba334dbbbf1bcd16922b6a185f7a91b6b65b76092a8285",
+    "blend_decision": "9d3dc51c2fd347348ae823ed348754e3fe9b132d9973f8e2a8c1ad8f58fdde83",
+    "blend_summary": "ab055ca16486aab1a679f6b6ed1422d92cc30b0723e9899f0c759fe90bc24a98",
+    "alpha_history": "c885ad67bcfa3d8f294ad4afc704764e574112e90d4c6c9ab29fc5dd4a79c5d9"
+  }
+}

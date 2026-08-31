@@ -1,0 +1,75 @@
+======================================================================================================================
+MODEL 01.0-C3.4-B — TEMPORAL BLOCK BI-CROSS-VALIDATION
+======================================================================================================================
+
+STATUS
+----------------------------------------------------------------------------------------------------------------------
+Validation status                    : PASS
+
+REPRESENTATION
+----------------------------------------------------------------------------------------------------------------------
+RAW-30D
+
+TEMPORAL DESIGN
+----------------------------------------------------------------------------------------------------------------------
+Train                                : all eligible months before current month
+Test                                 : current future month
+
+First test month                     : 2017-04
+Last test month                      : 2018-08
+Temporal test months                 : 17
+
+BCV
+----------------------------------------------------------------------------------------------------------------------
+A_hat(K) = B D_K^+ C
+
+A = future rows / held-out lags
+B = future rows / retained lags
+C = past rows   / held-out lags
+D = past rows   / retained lags
+
+COLUMN SENSITIVITY
+----------------------------------------------------------------------------------------------------------------------
+Holdout widths                       : 3, 6, 15 consecutive lags
+
+CANDIDATES — DIAGNOSTIC ONLY
+----------------------------------------------------------------------------------------------------------------------
+         channel                scheme  holdout_width  max_tested_k  best_bcv_k  best_at_max_tested_rank  best_pooled_relative_error  one_se_candidate_k
+purchase_freight HOLDOUT_03_CONTIGUOUS              3            27           6                    False                    0.687104                   6
+purchase_freight HOLDOUT_06_CONTIGUOUS              6            24           4                    False                    0.770583                   3
+purchase_freight HOLDOUT_15_CONTIGUOUS             15            15           2                    False                    0.871200                   1
+ purchase_volume HOLDOUT_03_CONTIGUOUS              3            27           6                    False                    0.713204                   5
+ purchase_volume HOLDOUT_06_CONTIGUOUS              6            24           3                    False                    0.785449                   2
+ purchase_volume HOLDOUT_15_CONTIGUOUS             15            15           2                    False                    0.888911                   1
+
+TEMPORAL STABILITY
+----------------------------------------------------------------------------------------------------------------------
+         channel                scheme  months  best_k_median  best_k_min  best_k_max
+purchase_freight HOLDOUT_03_CONTIGUOUS      17           20.0           3          27
+purchase_freight HOLDOUT_06_CONTIGUOUS      17           16.0           3          24
+purchase_freight HOLDOUT_15_CONTIGUOUS      17            8.0           0          15
+ purchase_volume HOLDOUT_03_CONTIGUOUS      17           24.0           3          27
+ purchase_volume HOLDOUT_06_CONTIGUOUS      17           19.0           3          24
+ purchase_volume HOLDOUT_15_CONTIGUOUS      17           11.0           0          15
+
+IMPORTANT
+----------------------------------------------------------------------------------------------------------------------
+No final K is selected here.
+
+No single holdout size is promoted here.
+
+The purpose is to determine whether low-rank structure predicts
+simultaneously unseen future rows and held-out lag coordinates.
+
+Target used                          : NO
+Final K selected                     : NO
+Final BCV scheme selected            : NO
+Folds frozen                         : NO
+Functional model feature created     : NO
+Classifier trained                   : NO
+Silver created                       : NO
+RAW modified                         : NO
+
+Validation failures                  : 0
+Runtime seconds                      : 3.017
+======================================================================================================================

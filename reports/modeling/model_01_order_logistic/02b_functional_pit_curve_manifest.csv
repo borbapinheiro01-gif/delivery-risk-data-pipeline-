@@ -1,0 +1,3 @@
+channel,availability_rule,event_time,weight,lags,bin,shape,dtype,status
+purchase_volume,purchase_j < purchase_i,orders.order_purchase_timestamp,1,90,"[t0-(b+1)*24h, t0-b*24h)","(96470, 90)",int32,DIAGNOSTIC_ONLY
+purchase_freight,purchase_j < purchase_i,orders.order_purchase_timestamp,SUM(order_items.freight_value) per historical order,90,"[t0-(b+1)*24h, t0-b*24h)","(96470, 90)",float64,DIAGNOSTIC_ONLY

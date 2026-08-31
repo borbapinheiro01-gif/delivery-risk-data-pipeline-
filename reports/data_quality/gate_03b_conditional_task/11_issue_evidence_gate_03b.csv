@@ -1,0 +1,2 @@
+canonical_issue_id,gate,evidence_status,evidence,recommended_next_action
+ISSUE-MISSINGNESS-001,DQ_GATE_03B,READY_FOR_REVIEW,Relationship missingness and attribute missingness have been measured separately at source and task scopes.,Review Gate 03B outputs and decide whether ISSUE-MISSINGNESS-001 can be closed.

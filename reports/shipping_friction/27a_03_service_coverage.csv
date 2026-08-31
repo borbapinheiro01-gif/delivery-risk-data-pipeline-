@@ -1,0 +1,9 @@
+field,n_non_null,n_total,coverage_pct
+actual_delivery_days,96203,96211,99.9916849424702
+promised_delivery_days,96211,96211,100.0
+actual_delivery_days_recomputed,96203,96211,99.9916849424702
+promised_delivery_days_recomputed,96211,96211,100.0
+delivery_gap_days_continuous,96203,96211,99.9916849424702
+delivery_gap_calendar_days,96203,96211,99.9916849424702
+positive_tardiness_days,96203,96211,99.9916849424702
+late_delivery_calendar_day,96211,96211,100.0

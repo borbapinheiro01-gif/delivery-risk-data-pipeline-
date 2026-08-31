@@ -1,0 +1,14 @@
+canonical_issue_id,canonical_topic,priority,resolution_status,resolved_by,resolution_evidence,resolution_decision,external_truth_status,last_updated_utc
+ISSUE-FINANCIAL-001,financial_reconciliation,MEDIUM,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-GEO-001,geolocation_consolidation,MEDIUM,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-GROUND-TRUTH-001,external_ground_truth,HIGH,OPEN_LIMITATION,,,,NOT_AVAILABLE,2026-08-30T10:58:09.697102+00:00
+ISSUE-IMPUTATION-001,numeric_imputation_policy,MEDIUM,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-MISSINGNESS-001,conditional_and_task_missingness,HIGH,RESOLVED_ASSESSMENT,DQ_GATE_03B,"DQ Gate 03B PASS; relation missingness, attribute missingness, source quality and task quality quantified separately.",Assessment closed. Residual missingness continues to treatment-policy stage.,,2026-08-30T10:58:09.697102+00:00
+ISSUE-MULTI-SELLER-001,multi_seller_representation,MEDIUM,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-NUMERIC-TRANSFORMATION-001,numeric_transformation_policy,MEDIUM,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-OBSERVATION-WINDOW-001,label_observation_window,HIGH,RESOLVED_POLICY,DQ_GATE_04,Observation-window audit completed; unobserved outcomes were separated from observed deliveries.,Unobserved outcomes must not be encoded as on-time.,,2026-08-30T10:58:09.697102+00:00
+ISSUE-OUTLIERS-001,extreme_value_policy,MEDIUM,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-PAYMENT-AVAILABILITY-001,payment_point_in_time_availability,MEDIUM,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-SELLER-HISTORY-001,seller_point_in_time_history,HIGH,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-SHIPPING-LIMIT-001,shipping_limit_date_provenance,HIGH,OPEN,,,,,2026-08-30T10:58:09.697102+00:00
+ISSUE-TARGET-001,label_and_target_semantics,CRITICAL,RESOLVED_MODELING_CONTRACT,DQ_GATE_04B,estimated_midnight_pct=100.000000; label_disagreements=1292; same_day_share=100.000000%.,Use CALENDAR_DAY as primary modeling label. Timestamp strict and +1-day grace remain sensitivity analyses.,OLIST_PRIVATE_SLA_NOT_VERIFIED,2026-08-30T10:58:09.697102+00:00

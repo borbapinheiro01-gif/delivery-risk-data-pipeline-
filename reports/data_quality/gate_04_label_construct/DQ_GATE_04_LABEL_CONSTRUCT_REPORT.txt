@@ -1,0 +1,44 @@
+============================================================================================================
+DQ GATE 04 — LABEL / CONSTRUCT VALIDITY
+============================================================================================================
+
+STATUS                           : PASS
+SOURCE ORDERS                    : 99,441
+TASK CANDIDATE                   : 96,470
+TASK / SOURCE                    : 97.0123%
+
+LABEL — TIMESTAMP STRICT
+  late_orders                    : 7,826
+  late_rate                      : 8.112367%
+
+LABEL — CALENDAR DAY
+  late_orders                    : 6,534
+  late_rate                      : 6.773090%
+
+CONSTRUCT COMPARISON
+  disagreements                  : 1,292
+  disagreement_rate              : 1.339276%
+  same-day disagreements         : 1,292
+  same-day share                 : 100.000000%
+  estimated timestamps midnight  : 100.000000%
+  unique estimate times          : 1
+
+OBSERVATION WINDOW
+  observation_end                : 2018-10-17 13:22:46
+  right-censoring candidates     : 0
+
+RECOMMENDATION
+  CALENDAR_DAY_RECOMMENDED_PENDING_BUSINESS_CONFIRMATION
+
+The estimated-delivery field behaves as a calendar-date promise and the strict timestamp definition primarily changes orders delivered on the promised calendar day.
+
+IMPORTANT:
+- This is a construct-validity recommendation.
+- The final business label is NOT automatically finalized.
+- Unobserved outcomes are NOT converted to on-time.
+- RAW was not modified.
+- Silver was not created.
+
+CRITICAL FAILURES                : 0
+WARNINGS                         : 2
+============================================================================================================

@@ -1,0 +1,52 @@
+========================================================================================================
+DQ GATE 04B — LABEL CONTRACT FREEZE & REGISTRY SYNC
+========================================================================================================
+
+STATUS                              : PASS
+
+PRIMARY LABEL                       : CALENDAR_DAY
+
+FORMULA:
+Y_i = 1[
+    date(order_delivered_customer_date_i)
+    >
+    date(order_estimated_delivery_date_i)
+]
+
+UNIT OF ANALYSIS                    : order_id
+PREDICTION TIME                     : order_purchase_timestamp
+
+SUPERVISED ORDERS                   : 96,470
+LATE ORDERS                         : 6,534
+ON-TIME ORDERS                      : 89,936
+LATE RATE                           : 6.773090%
+NO-SKILL PR-AUC                     : 0.06773090
+
+CONSTRUCT EVIDENCE
+--------------------------------------------------------------------------------------------------------
+Estimated timestamps at midnight   : 100.000000%
+Label disagreements                 : 1,292
+Same-day disagreements              : 1,292
+Same-day share                      : 100.000000%
+Calendar-late / strict-on-time      : 0
+
+CONTRACT STATUS
+--------------------------------------------------------------------------------------------------------
+Modeling label contract             : FROZEN
+External Olist historical SLA       : NOT VERIFIED
+
+ISSUES SYNCHRONIZED
+--------------------------------------------------------------------------------------------------------
+ISSUE-MISSINGNESS-001               : RESOLVED_ASSESSMENT
+ISSUE-OBSERVATION-WINDOW-001        : RESOLVED_POLICY
+ISSUE-TARGET-001                    : RESOLVED_MODELING_CONTRACT
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------
+Registry 1.1 was preserved.
+Registry 1.2 was created.
+Gate 04 results were preserved.
+RAW was not modified.
+Silver was not created.
+
+========================================================================================================

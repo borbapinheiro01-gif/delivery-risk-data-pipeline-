@@ -1,0 +1,44 @@
+================================================================================
+SYSTEM
+================================================================================
+Mon Aug 31 07:16:18 AM UTC 2026
+
+Linux repl 6.18.48 #Replit-Linux SMP Fri Aug 28 06:22:54 UTC 2026 x86_64 GNU/Linux
+
+--- /etc/os-release ---
+PRETTY_NAME="Ubuntu 24.04.4 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.4 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+
+--- CPU ---
+4
+Architecture:                            x86_64
+CPU(s):                                  4
+On-line CPU(s) list:                     0-3
+Model name:                              INTEL(R) XEON(R) PLATINUM 8581C CPU @ 2.30GHz
+Thread(s) per core:                      1
+Core(s) per socket:                      4
+Socket(s):                               1
+
+--- MEMORY ---
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       2.2Gi       6.2Gi       1.0Mi       750Mi       5.6Gi
+Swap:             0B          0B          0B
+
+--- DISK ---
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vdd        256G   44G  212G  18% /home/runner/workspace
+
+--- SHELL ---
+SHELL=/bin/bash
+GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)

@@ -1,0 +1,29 @@
+check,status,observed,expected
+frozen_contract_sha256,PASS,c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b,c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b
+c36a_status_pass,PASS,PASS,PASS
+c36a_validation_zero_failures,PASS,0,0
+c36b_validation_zero_failures,PASS,0,0
+k_grid_exact,PASS,"[0, 1, 2, 3, 4, 5, 6, 10, 15, 20, 23, 25, 27, 30]","[0, 1, 2, 3, 4, 5, 6, 10, 15, 20, 23, 25, 27, 30]"
+model_fit_count,PASS,238,238
+seventeen_months_per_k,PASS,"{0: 17, 1: 17, 2: 17, 3: 17, 4: 17, 5: 17, 6: 17, 10: 17, 15: 17, 20: 17, 23: 17, 25: 17, 27: 17, 30: 17}",17 por K
+k0_highest_descriptive_mean_ap,PASS,"{'best_k': 0, 'mean_ap': 0.08184095536011984}",K=0
+c36b_status_pass,PASS,PASS,PASS
+primary_metric_average_precision,PASS,AVERAGE_PRECISION,AVERAGE_PRECISION
+baseline_k_zero,PASS,0,0
+alternative_k_count,PASS,13,13
+temporal_month_count,PASS,17,17
+all_observed_mean_deltas_negative,PASS,True,True
+all_observed_median_deltas_negative,PASS,True,True
+all_contiguous_deletions_negative,PASS,True,True
+no_simultaneous_functional_superiority,PASS,False,False
+robust_functional_superiority_empty,PASS,[],[]
+robust_k0_superiority_empty,PASS,[],[]
+secondary_mean_benefits_nonpositive,PASS,True,True
+decision_candidate_ready,PASS,K0_READY_FOR_FORMAL_FREEZE_MODEL01,K0_READY_FOR_FORMAL_FREEZE_MODEL01
+k_not_previously_frozen,PASS,False,False
+threshold_not_selected,PASS,False,False
+raw_unmodified,PASS,False,False
+silver_not_created,PASS,False,False
+paired_alternative_rows,PASS,13,13
+paired_csv_all_mean_deltas_negative,PASS,True,True
+paired_csv_all_median_deltas_negative,PASS,True,True

@@ -1,0 +1,22 @@
+{
+  "gate": "DQ_GATE_03B_CONDITIONAL_TASK_COMPLETENESS",
+  "status": "PASS",
+  "created_at_utc": "2026-08-30T10:34:13.133592+00:00",
+  "source_orders": 99441,
+  "task_candidate_orders": 96470,
+  "task_candidate_pct": 97.01229875001258,
+  "task_orders_without_items": 0,
+  "task_orders_without_payment": 1,
+  "task_product_orphans": 0,
+  "task_seller_orphans": 0,
+  "conditional_product_category_missing_item_exposure": 1537,
+  "conditional_product_physical_missing_item_exposure": 18,
+  "customer_geo_missing_task_orders": 264,
+  "seller_geo_missing_task_item_exposure": 249,
+  "critical_failures": 0,
+  "warnings": 8,
+  "passes": 7,
+  "raw_modified": false,
+  "target_finalized": false,
+  "silver_created": false
+}

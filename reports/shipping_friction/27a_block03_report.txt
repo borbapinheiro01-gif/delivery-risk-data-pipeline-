@@ -1,0 +1,111 @@
+====================================================================================================
+27A — BLOCK 03 — SERVICE PERFORMANCE AUDIT
+====================================================================================================
+
+STATUS
+------
+PASS
+
+POPULATION
+----------
+Total orders:
+    96,211
+
+Observed service outcomes:
+    96,203
+
+Coverage:
+    99.99%
+
+Official late-delivery rate:
+    0.067882
+
+OFFICIAL VS RECOMPUTED DEFINITIONS
+----------------------------------
+Actual-duration max absolute error:
+    5.684341886080802e-14
+
+Promised-duration max absolute error:
+    1.4210854715202004e-14
+
+Delivery-gap algebraic identity max error:
+    2.842170943040401e-14
+
+Official target vs calendar-gap mismatches:
+    0
+
+Official target vs continuous-timestamp-gap mismatches:
+    1291
+
+Continuous timestamp says after estimate,
+but delivery remains on same calendar day:
+    1291
+
+SERVICE SUMMARY
+---------------
+Actual delivery days:
+    mean   = 12.538461
+    median = 10.209988
+
+Promised delivery days:
+    mean   = 23.648391
+    median = 23.215428
+
+Delivery gap:
+    mean   = -11.109930
+    median = -11.817523
+
+Positive tardiness:
+    mean   = 0.776432
+    median = 0.000000
+
+INTERPRETATION
+--------------
+Actual delivery time measures physical elapsed service time.
+
+Promised delivery time measures the service expectation encoded
+in the estimated-delivery commitment.
+
+Continuous delivery gap measures how early/late the delivery
+occurred relative to the promised timestamp.
+
+Positive tardiness measures only the positive side of that gap.
+
+The official project reliability target remains:
+
+    LATE_DELIVERY_CALENDAR_DAY
+
+A positive continuous timestamp gap is NOT automatically treated
+as identical to the official calendar-day target.
+
+This is an EX POST service audit.
+Outcome fields remain forbidden as purchase-time predictors.
+
+No causal service effect is claimed.
+
+FAILED GATES
+------------
+NONE
+
+NEXT BLOCK
+----------
+27A BLOCK 04 — COST-TO-SERVICE
+
+That block will combine:
+
+    Freight Burden
+    Freight Cost Anomaly
+    Delivery Gap
+    Official Late Delivery
+
+to answer:
+
+    Does paying more than expected buy better service?
+
+and to build the first:
+
+    Cost x Service quadrants
+    Critical Shipping Friction definition
+
+PARAR AQUI
+====================================================================================================

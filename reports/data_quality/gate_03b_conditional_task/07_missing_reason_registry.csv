@@ -1,0 +1,12 @@
+component,scope,state,count,denominator,pct,condition,note
+order_items,TASK_ORDER,RELATION_MISSING,0,96470,0.0,task order exists,No child order_item rows.
+payments,TASK_ORDER,RELATION_MISSING,1,96470,0.001036591686534674,task order exists,No child payment rows.
+customer,TASK_ORDER,RELATION_MISSING,0,96470,0.0,task order exists,customer_id does not resolve.
+customer_geolocation,TASK_ORDER,RELATION_MISSING,264,96470,0.27366020524515394,customer_id resolves,"Customer exists, but ZIP has no geolocation reference."
+product,TASK_ITEM,RELATION_MISSING,0,110189,0.0,order item exists,product_id does not resolve.
+product_category,TASK_ITEM,ATTRIBUTE_MISSING,1537,110189,1.3948760765593662,product_id resolves,Entity exists; category attribute is NULL.
+product_physical,TASK_ITEM,ATTRIBUTE_MISSING,18,110189,0.016335568886186463,product_id resolves,Entity exists; one or more physical attributes are NULL.
+seller,TASK_ITEM,RELATION_MISSING,0,110189,0.0,order item exists,seller_id does not resolve.
+seller_geolocation,TASK_ITEM,RELATION_MISSING,249,110189,0.22597536959224604,seller_id resolves,"Seller exists, but ZIP has no geolocation reference."
+order_approved_at,TASK_ORDER,ATTRIBUTE_MISSING,14,96470,0.014512283611485436,task order exists,Post-purchase field; forbidden as baseline t0 feature.
+order_delivered_carrier_date,TASK_ORDER,ATTRIBUTE_MISSING,1,96470,0.001036591686534674,task order exists,Future process field; forbidden as baseline t0 feature.

@@ -1,0 +1,8 @@
+kind,source_recordset,source_field,target_field,target_exists,target_recordset,error,cross_recordset
+REFERENCE,order_items,order_items/order_id,orders/order_id,True,orders,,True
+REFERENCE,order_items,order_items/product_id,products/product_id,True,products,,True
+REFERENCE,order_items,order_items/seller_id,sellers/seller_id,True,sellers,,True
+REFERENCE,payments,payments/order_id,orders/order_id,True,orders,,True
+REFERENCE,reviews,reviews/order_id,orders/order_id,True,orders,,True
+REFERENCE,orders,orders/customer_id,customers/customer_id,True,customers,,True
+REFERENCE,products,products/product_category_name,translation/product_category_name,True,translation,,True

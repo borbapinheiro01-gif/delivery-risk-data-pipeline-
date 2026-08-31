@@ -1,0 +1,2 @@
+geo_rows,exact_duplicate_rows,unique_zip_prefixes,invalid_lat_rows,invalid_lng_rows,zip_with_multiple_states,zip_with_multiple_cities,customers_without_geo,sellers_without_geo
+1000163,261831,19015,0,0,8,8556,278,7

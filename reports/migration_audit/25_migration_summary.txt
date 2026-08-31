@@ -1,0 +1,16 @@
+==========================================================================================
+DELIVERY RISK INTELLIGENCE — MIGRATION SUMMARY
+==========================================================================================
+
+Python source files: 125
+Config files: 12
+Contract files: 1
+Metadata files: 150
+Report files: 451
+Artifact files: 36
+
+Compilation:
+  PASS = 120
+  FAIL = 5
+
+Migration audit: COMPLETE

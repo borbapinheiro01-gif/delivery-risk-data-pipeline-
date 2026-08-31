@@ -1,0 +1,8 @@
+table,key,type,rows_with_null_key,rows_with_duplicated_key,unique,no_nulls
+orders,order_id,candidate_primary_key,0,0,True,True
+customers,customer_id,candidate_primary_key,0,0,True,True
+products,product_id,candidate_primary_key,0,0,True,True
+sellers,seller_id,candidate_primary_key,0,0,True,True
+category_translation,product_category_name,candidate_primary_key,0,0,True,True
+order_items,order_id+order_item_id,candidate_composite_key,0,0,True,True
+payments,order_id+payment_sequential,candidate_composite_key,0,0,True,True

@@ -1,0 +1,3271 @@
+import gc
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from __future__ import annotations
+
+import json
+import re
+import tempfile
+import unicodedata
+import zipfile
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+
+ROOT = Path.home() / "workspace" / "Delivery_Risk_Intelligence"
+RAW = ROOT / "data" / "raw" / "olist"
+EXT = ROOT / "data" / "external" / "landing"
+
+OUT = ROOT / "artifacts" / "spatiotemporal_logistics"
+REPORT = ROOT / "reports" / "spatiotemporal_logistics"
+
+OUT.mkdir(parents=True, exist_ok=True)
+REPORT.mkdir(parents=True, exist_ok=True)
+
+YEARS = {2017, 2018}
+
+
+# =====================================================================
+# HELPERS
+# =====================================================================
+
+def banner(text):
+    print()
+    print("=" * 110)
+    print(text)
+    print("=" * 110)
+
+
+def norm_text(value):
+    if pd.isna(value):
+        return ""
+
+    s = unicodedata.normalize("NFKD", str(value))
+    s = "".join(
+        ch for ch in s
+        if not unicodedata.combining(ch)
+    )
+
+    s = s.upper().strip()
+    s = re.sub(r"[^A-Z0-9]+", " ", s)
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def norm_col(value):
+    return norm_text(value).replace(" ", "_")
+
+
+def clean_code(value, width):
+    if pd.isna(value):
+        return None
+
+    s = re.sub(
+        r"\D",
+        "",
+        str(value).split(".")[0]
+    )
+
+    if not s:
+        return None
+
+    return s.zfill(width)
+
+
+def num_br(series):
+
+    if pd.api.types.is_numeric_dtype(series):
+        return pd.to_numeric(
+            series,
+            errors="coerce"
+        )
+
+    x = series.astype(str).str.strip()
+
+    has_comma = x.str.contains(
+        ",",
+        regex=False,
+        na=False
+    )
+
+    x = x.where(
+        ~has_comma,
+        x.str.replace(
+            ".",
+            "",
+            regex=False
+        ).str.replace(
+            ",",
+            ".",
+            regex=False
+        )
+    )
+
+    x = x.str.replace(
+        r"[^0-9eE+\-.]",
+        "",
+        regex=True
+    )
+
+    return pd.to_numeric(
+        x,
+        errors="coerce"
+    )
+
+
+def find_one(pattern):
+
+    files = sorted(
+        RAW.glob(pattern)
+    )
+
+    if len(files) != 1:
+        raise RuntimeError(
+            f"Esperava 1 arquivo para {pattern}, "
+            f"encontrei {len(files)}: {files}"
+        )
+
+    return files[0]
+
+
+def choose_col(
+    columns,
+    required=(),
+    forbidden=()
+):
+
+    candidates = []
+
+    for col in columns:
+
+        n = norm_col(col)
+
+        if (
+            all(token in n for token in required)
+            and
+            not any(
+                token in n
+                for token in forbidden
+            )
+        ):
+            candidates.append(
+                (len(n), col)
+            )
+
+    if not candidates:
+        return None
+
+    return sorted(
+        candidates
+    )[0][1]
+
+
+def read_excel_detect(
+    path,
+    required_groups,
+    max_header_rows=25
+):
+
+    try:
+        excel = pd.ExcelFile(path)
+
+    except ImportError as exc:
+
+        raise RuntimeError(
+            f"Não foi possível abrir {path.name}. "
+            "Para arquivos .xls o pandas precisa de xlrd."
+        ) from exc
+
+    for sheet in excel.sheet_names:
+
+        preview = pd.read_excel(
+            excel,
+            sheet_name=sheet,
+            header=None,
+            nrows=max_header_rows,
+            dtype=str
+        )
+
+        for idx, row in preview.iterrows():
+
+            joined = " | ".join(
+                norm_col(value)
+                for value in row.tolist()
+                if pd.notna(value)
+            )
+
+            ok = all(
+                any(
+                    token in joined
+                    for token in group
+                )
+                for group in required_groups
+            )
+
+            if ok:
+
+                df = pd.read_excel(
+                    excel,
+                    sheet_name=sheet,
+                    header=idx
+                )
+
+                df.columns = [
+                    str(c).strip()
+                    for c in df.columns
+                ]
+
+                return (
+                    df,
+                    str(sheet),
+                    int(idx)
+                )
+
+    raise RuntimeError(
+        f"Header não identificado em {path}"
+    )
+
+
+def haversine_km(
+    lat1,
+    lon1,
+    lat2,
+    lon2
+):
+
+    lat1 = np.radians(
+        pd.to_numeric(
+            lat1,
+            errors="coerce"
+        )
+    )
+
+    lon1 = np.radians(
+        pd.to_numeric(
+            lon1,
+            errors="coerce"
+        )
+    )
+
+    lat2 = np.radians(
+        pd.to_numeric(
+            lat2,
+            errors="coerce"
+        )
+    )
+
+    lon2 = np.radians(
+        pd.to_numeric(
+            lon2,
+            errors="coerce"
+        )
+    )
+
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+
+    a = (
+        np.sin(dlat / 2.0) ** 2
+        +
+        np.cos(lat1)
+        *
+        np.cos(lat2)
+        *
+        np.sin(dlon / 2.0) ** 2
+    )
+
+    return (
+        6371.0088
+        *
+        2.0
+        *
+        np.arcsin(
+            np.sqrt(
+                np.clip(
+                    a,
+                    0,
+                    1
+                )
+            )
+        )
+    )
+
+
+def save_table(df, stem):
+
+    parquet = (
+        OUT /
+        f"{stem}.parquet"
+    )
+
+    try:
+
+        df.to_parquet(
+            parquet,
+            index=False
+        )
+
+        return (
+            str(
+                parquet.relative_to(ROOT)
+            ),
+            parquet.stat().st_size
+        )
+
+    except Exception as exc:
+
+        csv_gz = (
+            OUT /
+            f"{stem}.csv.gz"
+        )
+
+        df.to_csv(
+            csv_gz,
+            index=False,
+            compression="gzip"
+        )
+
+        print(
+            "[WARN] Parquet indisponível "
+            f"({type(exc).__name__}); "
+            "salvo como CSV.GZ."
+        )
+
+        return (
+            str(
+                csv_gz.relative_to(ROOT)
+            ),
+            csv_gz.stat().st_size
+        )
+
+
+# =====================================================================
+# START
+# =====================================================================
+
+banner(
+    "FAST SPATIOTEMPORAL CORE — 2017/2018"
+)
+
+if not RAW.is_dir():
+    raise SystemExit(
+        f"[FAIL] RAW ausente: {RAW}"
+    )
+
+
+# =====================================================================
+# 1. ORDER_CORE + ORDERS
+# =====================================================================
+
+banner(
+    "1. OLIST — COORTE E MÉTRICAS DE ENTREGA"
+)
+
+core_path = (
+    ROOT
+    / "artifacts"
+    / "model_01_order_logistic"
+    / "pretraining"
+    / "ORDER_CORE_V1_AUDIT_MATRIX.csv"
+)
+
+if not core_path.exists():
+    raise SystemExit(
+        f"[FAIL] ORDER_CORE_V1 ausente: "
+        f"{core_path}"
+    )
+
+core = pd.read_csv(
+    core_path,
+    low_memory=False
+)
+
+if "order_id" not in core.columns:
+    raise SystemExit(
+        "[FAIL] ORDER_CORE_V1 sem order_id"
+    )
+
+if core["order_id"].duplicated().any():
+    raise SystemExit(
+        "[FAIL] ORDER_CORE_V1 tem "
+        "order_id duplicado"
+    )
+
+
+orders = pd.read_csv(
+    find_one(
+        "*orders_dataset.csv"
+    ),
+    usecols=[
+        "order_id",
+        "customer_id",
+        "order_purchase_timestamp",
+        "order_delivered_customer_date",
+        "order_estimated_delivery_date",
+    ],
+    parse_dates=[
+        "order_purchase_timestamp",
+        "order_delivered_customer_date",
+        "order_estimated_delivery_date",
+    ],
+    low_memory=False
+)
+
+orders["year"] = (
+    orders[
+        "order_purchase_timestamp"
+    ].dt.year
+)
+
+orders["month"] = (
+    orders[
+        "order_purchase_timestamp"
+    ].dt.month
+)
+
+orders = orders[
+    orders["year"].isin(YEARS)
+].copy()
+
+
+# ---------------------------------------------------------------------
+# Evitar colisão entre colunas temporais já presentes no ORDER_CORE
+# e as mesmas colunas vindas do RAW orders.
+#
+# Para esta frente, timestamps/customer_id devem vir explicitamente
+# do olist_orders_dataset.csv.
+# ---------------------------------------------------------------------
+
+raw_order_authoritative_cols = [
+    "customer_id",
+    "order_purchase_timestamp",
+    "order_delivered_customer_date",
+    "order_estimated_delivery_date",
+    "year",
+    "month",
+]
+
+overlap = [
+    c
+    for c in raw_order_authoritative_cols
+    if c in core.columns
+]
+
+if overlap:
+    print(
+        "[INFO] Removendo do ORDER_CORE antes do merge "
+        f"colunas que serão obtidas do RAW orders: {overlap}"
+    )
+
+core_for_merge = core.drop(
+    columns=overlap,
+    errors="ignore"
+)
+
+df = core_for_merge.merge(
+    orders,
+    on="order_id",
+    how="inner",
+    validate="1:1"
+)
+
+required_after_merge = [
+    "order_purchase_timestamp",
+    "order_delivered_customer_date",
+    "order_estimated_delivery_date",
+    "customer_id",
+    "year",
+    "month",
+]
+
+missing_after_merge = [
+    c
+    for c in required_after_merge
+    if c not in df.columns
+]
+
+if missing_after_merge:
+    raise RuntimeError(
+        "Colunas obrigatórias ausentes após merge orders: "
+        f"{missing_after_merge}"
+    )
+
+print(
+    "[PASS] merge ORDER_CORE × RAW orders sem colisão | "
+    f"rows={len(df):,}"
+)
+
+
+df["actual_delivery_days"] = (
+
+    df[
+        "order_delivered_customer_date"
+    ]
+    -
+    df[
+        "order_purchase_timestamp"
+    ]
+
+).dt.total_seconds() / 86400.0
+
+
+df["promised_delivery_days"] = (
+
+    df[
+        "order_estimated_delivery_date"
+    ]
+    -
+    df[
+        "order_purchase_timestamp"
+    ]
+
+).dt.total_seconds() / 86400.0
+
+
+df["delivery_slack_days"] = (
+
+    df[
+        "order_estimated_delivery_date"
+    ]
+    -
+    df[
+        "order_delivered_customer_date"
+    ]
+
+).dt.total_seconds() / 86400.0
+
+
+print(
+    f"[PASS] coorte 2017-2018: "
+    f"{len(df):,} pedidos"
+)
+
+
+# =====================================================================
+# 2. CUSTOMER + GEOLOCATION
+# =====================================================================
+
+banner(
+    "2. ROTA — GEOLOCALIZAÇÃO E DISTÂNCIA"
+)
+
+
+customers = pd.read_csv(
+    find_one(
+        "*customers_dataset.csv"
+    ),
+    usecols=[
+        "customer_id",
+        "customer_zip_code_prefix",
+        "customer_city",
+        "customer_state",
+    ],
+    low_memory=False
+)
+
+
+customers[
+    "customer_city_norm"
+] = customers[
+    "customer_city"
+].map(norm_text)
+
+
+customers[
+    "customer_state"
+] = (
+    customers[
+        "customer_state"
+    ]
+    .astype(str)
+    .str.upper()
+    .str.strip()
+)
+
+
+geo = pd.read_csv(
+    find_one(
+        "*geolocation_dataset.csv"
+    ),
+    usecols=[
+        "geolocation_zip_code_prefix",
+        "geolocation_lat",
+        "geolocation_lng",
+    ],
+    low_memory=False
+)
+
+
+geo["geolocation_lat"] = pd.to_numeric(
+    geo["geolocation_lat"],
+    errors="coerce"
+)
+
+geo["geolocation_lng"] = pd.to_numeric(
+    geo["geolocation_lng"],
+    errors="coerce"
+)
+
+
+# Remoção apenas de coordenadas
+# claramente fora do território brasileiro.
+geo = geo[
+
+    geo[
+        "geolocation_lat"
+    ].between(
+        -35.5,
+        6.5
+    )
+
+    &
+
+    geo[
+        "geolocation_lng"
+    ].between(
+        -75.5,
+        -32.0
+    )
+
+].copy()
+
+
+# Lookup pequeno e robusto:
+# uma coordenada mediana por prefixo de CEP.
+geo_zip = (
+
+    geo.groupby(
+        "geolocation_zip_code_prefix",
+        as_index=False
+    )
+
+    .agg(
+        geo_lat=(
+            "geolocation_lat",
+            "median"
+        ),
+        geo_lng=(
+            "geolocation_lng",
+            "median"
+        ),
+        geo_points=(
+            "geolocation_lat",
+            "size"
+        ),
+    )
+
+)
+
+
+cust_geo = customers.merge(
+
+    geo_zip,
+
+    left_on="customer_zip_code_prefix",
+    right_on="geolocation_zip_code_prefix",
+
+    how="left"
+)
+
+
+cust_geo = cust_geo.rename(
+    columns={
+        "geo_lat":
+            "customer_lat",
+        "geo_lng":
+            "customer_lng",
+    }
+)
+
+
+cust_geo = cust_geo[
+    [
+        "customer_id",
+        "customer_zip_code_prefix",
+        "customer_city",
+        "customer_city_norm",
+        "customer_state",
+        "customer_lat",
+        "customer_lng",
+    ]
+]
+
+
+df = df.merge(
+    cust_geo,
+    on="customer_id",
+    how="left",
+    validate="m:1"
+)
+
+
+# =====================================================================
+# 3. SELLERS / MULTI-SELLER ROUTE
+# =====================================================================
+
+items = pd.read_csv(
+    find_one(
+        "*order_items_dataset.csv"
+    ),
+    usecols=[
+        "order_id",
+        "product_id",
+        "seller_id",
+        "price",
+        "freight_value",
+    ],
+    low_memory=False
+)
+
+
+items = items[
+    items[
+        "order_id"
+    ].isin(
+        df["order_id"]
+    )
+].copy()
+
+
+sellers = pd.read_csv(
+    find_one(
+        "*sellers_dataset.csv"
+    ),
+    usecols=[
+        "seller_id",
+        "seller_zip_code_prefix",
+        "seller_city",
+        "seller_state",
+    ],
+    low_memory=False
+)
+
+
+sellers[
+    "seller_city_norm"
+] = sellers[
+    "seller_city"
+].map(norm_text)
+
+
+sellers[
+    "seller_state"
+] = (
+    sellers[
+        "seller_state"
+    ]
+    .astype(str)
+    .str.upper()
+    .str.strip()
+)
+
+
+seller_geo = sellers.merge(
+
+    geo_zip,
+
+    left_on="seller_zip_code_prefix",
+    right_on="geolocation_zip_code_prefix",
+
+    how="left"
+)
+
+
+seller_geo = seller_geo.rename(
+    columns={
+        "geo_lat":
+            "seller_lat",
+        "geo_lng":
+            "seller_lng",
+    }
+)
+
+
+seller_order = (
+
+    items.groupby(
+        [
+            "order_id",
+            "seller_id",
+        ],
+        as_index=False
+    )
+
+    .agg(
+        seller_order_price=(
+            "price",
+            "sum"
+        ),
+        seller_order_freight=(
+            "freight_value",
+            "sum"
+        ),
+        seller_item_rows=(
+            "product_id",
+            "size"
+        ),
+    )
+)
+
+
+seller_order = seller_order.merge(
+
+    seller_geo[
+        [
+            "seller_id",
+            "seller_city",
+            "seller_city_norm",
+            "seller_state",
+            "seller_zip_code_prefix",
+            "seller_lat",
+            "seller_lng",
+        ]
+    ],
+
+    on="seller_id",
+    how="left",
+    validate="m:1"
+)
+
+
+seller_order = seller_order.merge(
+
+    df[
+        [
+            "order_id",
+            "customer_lat",
+            "customer_lng",
+        ]
+    ],
+
+    on="order_id",
+    how="left",
+    validate="m:1"
+)
+
+
+seller_order[
+    "distance_km"
+] = haversine_km(
+
+    seller_order[
+        "customer_lat"
+    ],
+
+    seller_order[
+        "customer_lng"
+    ],
+
+    seller_order[
+        "seller_lat"
+    ],
+
+    seller_order[
+        "seller_lng"
+    ],
+)
+
+
+def weighted_distance(group):
+
+    valid = (
+        group[
+            "distance_km"
+        ].notna()
+    )
+
+    if not valid.any():
+        return np.nan
+
+    weights = (
+
+        pd.to_numeric(
+            group.loc[
+                valid,
+                "seller_order_freight"
+            ],
+            errors="coerce"
+        )
+
+        .fillna(0)
+
+        .clip(
+            lower=0
+        )
+    )
+
+    distance = (
+        group.loc[
+            valid,
+            "distance_km"
+        ].astype(float)
+    )
+
+    if weights.sum() > 0:
+
+        return float(
+            np.average(
+                distance,
+                weights=weights
+            )
+        )
+
+    return float(
+        distance.mean()
+    )
+
+
+route_rows = []
+
+for order_id, group in seller_order.groupby("order_id", sort=False):
+    distances = group["distance_km"]
+    route_rows.append(
+        {
+            "order_id": order_id,
+            "distance_max_km": distances.max(),
+            "distance_mean_km": distances.mean(),
+            "distance_freight_weighted_km": weighted_distance(group),
+            "route_sellers_total": group["seller_id"].nunique(),
+            "route_sellers_with_distance": group.loc[distances.notna(), "seller_id"].nunique(),
+            "seller_state_count": group["seller_state"].nunique(dropna=True),
+        }
+    )
+
+
+route = pd.DataFrame(
+    route_rows
+)
+
+
+route[
+    "route_distance_coverage"
+] = (
+
+    route[
+        "route_sellers_with_distance"
+    ]
+
+    /
+
+    route[
+        "route_sellers_total"
+    ].replace(
+        0,
+        np.nan
+    )
+)
+
+
+df = df.merge(
+    route,
+    on="order_id",
+    how="left",
+    validate="1:1"
+)
+
+
+# =====================================================================
+# 4. PRODUCTS — WEIGHT / VOLUME
+# =====================================================================
+
+banner(
+    "3. PRODUTO — PESO E VOLUME"
+)
+
+
+products = pd.read_csv(
+    find_one(
+        "*products_dataset.csv"
+    ),
+    usecols=[
+        "product_id",
+        "product_weight_g",
+        "product_length_cm",
+        "product_height_cm",
+        "product_width_cm",
+    ],
+    low_memory=False
+)
+
+
+products[
+    "product_volume_cm3"
+] = (
+
+    pd.to_numeric(
+        products[
+            "product_length_cm"
+        ],
+        errors="coerce"
+    )
+
+    *
+
+    pd.to_numeric(
+        products[
+            "product_height_cm"
+        ],
+        errors="coerce"
+    )
+
+    *
+
+    pd.to_numeric(
+        products[
+            "product_width_cm"
+        ],
+        errors="coerce"
+    )
+
+)
+
+
+products[
+    "product_weight_g"
+] = pd.to_numeric(
+    products[
+        "product_weight_g"
+    ],
+    errors="coerce"
+)
+
+
+item_product = (
+
+    items[
+        [
+            "order_id",
+            "product_id",
+        ]
+    ]
+
+    .merge(
+
+        products[
+            [
+                "product_id",
+                "product_weight_g",
+                "product_volume_cm3",
+            ]
+        ],
+
+        on="product_id",
+        how="left",
+        validate="m:1"
+    )
+)
+
+
+product_order = (
+
+    item_product.groupby(
+        "order_id",
+        as_index=False
+    )
+
+    .agg(
+        total_weight_g=(
+            "product_weight_g",
+            lambda x:
+                x.sum(
+                    min_count=1
+                )
+        ),
+
+        total_volume_cm3=(
+            "product_volume_cm3",
+            lambda x:
+                x.sum(
+                    min_count=1
+                )
+        ),
+
+        product_rows_with_weight=(
+            "product_weight_g",
+            "count"
+        ),
+
+        product_rows_with_volume=(
+            "product_volume_cm3",
+            "count"
+        ),
+    )
+)
+
+
+df = df.merge(
+    product_order,
+    on="order_id",
+    how="left",
+    validate="1:1"
+)
+
+
+# =====================================================================
+# 5. IBGE POPULATION
+# =====================================================================
+
+banner(
+    "4. IBGE — POPULAÇÃO"
+)
+
+
+pop_files = {
+
+    2017:
+        EXT
+        / "ibge_population"
+        / "2017"
+        / "estimativa_dou_2017.xls",
+
+    2018:
+        EXT
+        / "ibge_population"
+        / "2018"
+        / "estimativa_dou_2018_20181019.xls",
+}
+
+
+# ---------------------------------------------------------------------
+# IBGE POPULATION READER — ROBUST STRUCTURAL PARSER
+#
+# Os XLS históricos do IBGE possuem linhas de título/notas e podem
+# apresentar cabeçalhos formatados/mesclados.
+#
+# Em vez de depender da posição física do header, identificamos
+# diretamente as linhas municipais pela estrutura oficial:
+#
+# UF | COD. UF | COD. MUNIC | NOME DO MUNICÍPIO | POPULAÇÃO
+#
+# Isso preserva o arquivo original e evita tratamento manual.
+# ---------------------------------------------------------------------
+
+def parse_ibge_population_value(value):
+
+    if pd.isna(value):
+        return None
+
+    if isinstance(
+        value,
+        (int, np.integer)
+    ):
+        value = int(value)
+
+        return (
+            value
+            if value > 0
+            else None
+        )
+
+    if isinstance(
+        value,
+        (float, np.floating)
+    ):
+
+        if not np.isfinite(value):
+            return None
+
+        value = int(round(value))
+
+        return (
+            value
+            if value > 0
+            else None
+        )
+
+    s = str(value).strip()
+
+    # Ex.: 12.345(1)
+    s = re.sub(
+        r"\([^)]*\)",
+        "",
+        s
+    )
+
+    digits = re.sub(
+        r"\D",
+        "",
+        s
+    )
+
+    if not digits:
+        return None
+
+    value = int(digits)
+
+    return (
+        value
+        if value > 0
+        else None
+    )
+
+
+def read_ibge_population_structural(
+    path,
+    year
+):
+
+    excel = pd.ExcelFile(path)
+
+    records = []
+    sheet_stats = []
+
+    for sheet in excel.sheet_names:
+
+        raw = pd.read_excel(
+            excel,
+            sheet_name=sheet,
+            header=None,
+            dtype=object
+        )
+
+        before = len(records)
+
+        for row in raw.itertuples(
+            index=False,
+            name=None
+        ):
+
+            values = [
+                value
+                for value in row
+                if (
+                    pd.notna(value)
+                    and
+                    str(value).strip()
+                )
+            ]
+
+            if len(values) < 5:
+                continue
+
+            # Procura qualquer janela consecutiva de 5 valores úteis.
+            # Isso também tolera colunas vazias/formatativas no XLS.
+            for pos in range(
+                0,
+                len(values) - 4
+            ):
+
+                (
+                    uf_raw,
+                    coduf_raw,
+                    codmun_raw,
+                    city_raw,
+                    population_raw,
+                ) = values[
+                    pos:pos + 5
+                ]
+
+                uf = norm_text(
+                    uf_raw
+                )
+
+                if not re.fullmatch(
+                    r"[A-Z]{2}",
+                    uf
+                ):
+                    continue
+
+                cod_uf = clean_code(
+                    coduf_raw,
+                    2
+                )
+
+                cod_mun = clean_code(
+                    codmun_raw,
+                    5
+                )
+
+                if (
+                    cod_uf is None
+                    or
+                    cod_mun is None
+                ):
+                    continue
+
+                city = str(
+                    city_raw
+                ).strip()
+
+                if (
+                    not city
+                    or
+                    norm_text(city)
+                    in {
+                        "",
+                        "NOME DO MUNICIPIO",
+                        "MUNICIPIO",
+                    }
+                ):
+                    continue
+
+                population_value = (
+                    parse_ibge_population_value(
+                        population_raw
+                    )
+                )
+
+                if population_value is None:
+                    continue
+
+                records.append(
+                    {
+                        "year":
+                            int(year),
+
+                        "uf":
+                            uf,
+
+                        "city":
+                            city,
+
+                        "city_norm":
+                            norm_text(city),
+
+                        "cod_uf":
+                            cod_uf,
+
+                        "cod_mun":
+                            cod_mun,
+
+                        "id_municipio":
+                            cod_uf + cod_mun,
+
+                        "population":
+                            population_value,
+
+                        "source_sheet":
+                            str(sheet),
+                    }
+                )
+
+                break
+
+        sheet_stats.append(
+            (
+                str(sheet),
+                len(records) - before
+            )
+        )
+
+    if not records:
+
+        raise RuntimeError(
+            f"Nenhuma linha municipal reconhecida em {path}"
+        )
+
+    df_pop = pd.DataFrame(
+        records
+    )
+
+    # -------------------------------------------------------------
+    # Remover somente duplicação física da mesma unidade
+    # eventualmente causada por páginas/blocos repetidos no XLS.
+    # -------------------------------------------------------------
+
+    df_pop = (
+
+        df_pop.sort_values(
+            [
+                "id_municipio",
+                "city_norm",
+            ]
+        )
+
+        .drop_duplicates(
+            subset=[
+                "year",
+                "id_municipio",
+            ],
+            keep="first"
+        )
+
+        .reset_index(
+            drop=True
+        )
+    )
+
+    # -------------------------------------------------------------
+    # Validações estruturais
+    # -------------------------------------------------------------
+
+    duplicate_codes = int(
+        df_pop[
+            "id_municipio"
+        ].duplicated().sum()
+    )
+
+    bad_codes = int(
+        ~df_pop[
+            "id_municipio"
+        ].astype(str).str.fullmatch(
+            r"\d{7}"
+        )
+    .sum()
+    ) if False else 0
+
+    # forma explícita para evitar qualquer ambiguidade
+    bad_code_mask = (
+        ~df_pop[
+            "id_municipio"
+        ]
+        .astype(str)
+        .str.fullmatch(
+            r"\d{7}"
+        )
+    )
+
+    bad_codes = int(
+        bad_code_mask.sum()
+    )
+
+    bad_population = int(
+        (
+            pd.to_numeric(
+                df_pop[
+                    "population"
+                ],
+                errors="coerce"
+            )
+            <= 0
+        ).sum()
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"sheets={sheet_stats}"
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"linhas estruturais únicas="
+        f"{len(df_pop):,}"
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"duplicate_codes="
+        f"{duplicate_codes}"
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"bad_codes="
+        f"{bad_codes}"
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"bad_population="
+        f"{bad_population}"
+    )
+
+    if duplicate_codes != 0:
+        raise RuntimeError(
+            f"IBGE {year}: códigos municipais duplicados."
+        )
+
+    if bad_codes != 0:
+        raise RuntimeError(
+            f"IBGE {year}: código municipal inválido."
+        )
+
+    if bad_population != 0:
+        raise RuntimeError(
+            f"IBGE {year}: população inválida."
+        )
+
+    # -------------------------------------------------------------
+    # Sanity check.
+    #
+    # A divulgação oficial possui aproximadamente 5.570 unidades.
+    # Usamos intervalo estreito para detectar parsing incorreto,
+    # sem esconder eventual particularidade histórica.
+    # -------------------------------------------------------------
+
+    if not (
+        5550
+        <= len(df_pop)
+        <= 5590
+    ):
+        raise RuntimeError(
+            f"IBGE {year}: quantidade inesperada "
+            f"de unidades: {len(df_pop):,}. "
+            "Esperado aproximadamente 5.570."
+        )
+
+    return df_pop
+
+
+# ---------------------------------------------------------------------
+# IBGE POPULATION READER — ROBUST STRUCTURAL PARSER
+#
+# Os XLS históricos do IBGE possuem linhas de título/notas e podem
+# apresentar cabeçalhos formatados/mesclados.
+#
+# Em vez de depender da posição física do header, identificamos
+# diretamente as linhas municipais pela estrutura oficial:
+#
+# UF | COD. UF | COD. MUNIC | NOME DO MUNICÍPIO | POPULAÇÃO
+#
+# Isso preserva o arquivo original e evita tratamento manual.
+# ---------------------------------------------------------------------
+
+def parse_ibge_population_value(value):
+
+    if pd.isna(value):
+        return None
+
+    if isinstance(
+        value,
+        (int, np.integer)
+    ):
+        value = int(value)
+
+        return (
+            value
+            if value > 0
+            else None
+        )
+
+    if isinstance(
+        value,
+        (float, np.floating)
+    ):
+
+        if not np.isfinite(value):
+            return None
+
+        value = int(round(value))
+
+        return (
+            value
+            if value > 0
+            else None
+        )
+
+    s = str(value).strip()
+
+    # Ex.: 12.345(1)
+    s = re.sub(
+        r"\([^)]*\)",
+        "",
+        s
+    )
+
+    digits = re.sub(
+        r"\D",
+        "",
+        s
+    )
+
+    if not digits:
+        return None
+
+    value = int(digits)
+
+    return (
+        value
+        if value > 0
+        else None
+    )
+
+
+def read_ibge_population_structural(
+    path,
+    year
+):
+
+    excel = pd.ExcelFile(path)
+
+    records = []
+    sheet_stats = []
+
+    for sheet in excel.sheet_names:
+
+        raw = pd.read_excel(
+            excel,
+            sheet_name=sheet,
+            header=None,
+            dtype=object
+        )
+
+        before = len(records)
+
+        for row in raw.itertuples(
+            index=False,
+            name=None
+        ):
+
+            values = [
+                value
+                for value in row
+                if (
+                    pd.notna(value)
+                    and
+                    str(value).strip()
+                )
+            ]
+
+            if len(values) < 5:
+                continue
+
+            # Procura qualquer janela consecutiva de 5 valores úteis.
+            # Isso também tolera colunas vazias/formatativas no XLS.
+            for pos in range(
+                0,
+                len(values) - 4
+            ):
+
+                (
+                    uf_raw,
+                    coduf_raw,
+                    codmun_raw,
+                    city_raw,
+                    population_raw,
+                ) = values[
+                    pos:pos + 5
+                ]
+
+                uf = norm_text(
+                    uf_raw
+                )
+
+                if not re.fullmatch(
+                    r"[A-Z]{2}",
+                    uf
+                ):
+                    continue
+
+                cod_uf = clean_code(
+                    coduf_raw,
+                    2
+                )
+
+                cod_mun = clean_code(
+                    codmun_raw,
+                    5
+                )
+
+                if (
+                    cod_uf is None
+                    or
+                    cod_mun is None
+                ):
+                    continue
+
+                city = str(
+                    city_raw
+                ).strip()
+
+                if (
+                    not city
+                    or
+                    norm_text(city)
+                    in {
+                        "",
+                        "NOME DO MUNICIPIO",
+                        "MUNICIPIO",
+                    }
+                ):
+                    continue
+
+                population_value = (
+                    parse_ibge_population_value(
+                        population_raw
+                    )
+                )
+
+                if population_value is None:
+                    continue
+
+                records.append(
+                    {
+                        "year":
+                            int(year),
+
+                        "uf":
+                            uf,
+
+                        "city":
+                            city,
+
+                        "city_norm":
+                            norm_text(city),
+
+                        "cod_uf":
+                            cod_uf,
+
+                        "cod_mun":
+                            cod_mun,
+
+                        "id_municipio":
+                            cod_uf + cod_mun,
+
+                        "population":
+                            population_value,
+
+                        "source_sheet":
+                            str(sheet),
+                    }
+                )
+
+                break
+
+        sheet_stats.append(
+            (
+                str(sheet),
+                len(records) - before
+            )
+        )
+
+    if not records:
+
+        raise RuntimeError(
+            f"Nenhuma linha municipal reconhecida em {path}"
+        )
+
+    df_pop = pd.DataFrame(
+        records
+    )
+
+    # -------------------------------------------------------------
+    # Remover somente duplicação física da mesma unidade
+    # eventualmente causada por páginas/blocos repetidos no XLS.
+    # -------------------------------------------------------------
+
+    df_pop = (
+
+        df_pop.sort_values(
+            [
+                "id_municipio",
+                "city_norm",
+            ]
+        )
+
+        .drop_duplicates(
+            subset=[
+                "year",
+                "id_municipio",
+            ],
+            keep="first"
+        )
+
+        .reset_index(
+            drop=True
+        )
+    )
+
+    # -------------------------------------------------------------
+    # Validações estruturais
+    # -------------------------------------------------------------
+
+    duplicate_codes = int(
+        df_pop[
+            "id_municipio"
+        ].duplicated().sum()
+    )
+
+    bad_codes = int(
+        ~df_pop[
+            "id_municipio"
+        ].astype(str).str.fullmatch(
+            r"\d{7}"
+        )
+    .sum()
+    ) if False else 0
+
+    # forma explícita para evitar qualquer ambiguidade
+    bad_code_mask = (
+        ~df_pop[
+            "id_municipio"
+        ]
+        .astype(str)
+        .str.fullmatch(
+            r"\d{7}"
+        )
+    )
+
+    bad_codes = int(
+        bad_code_mask.sum()
+    )
+
+    bad_population = int(
+        (
+            pd.to_numeric(
+                df_pop[
+                    "population"
+                ],
+                errors="coerce"
+            )
+            <= 0
+        ).sum()
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"sheets={sheet_stats}"
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"linhas estruturais únicas="
+        f"{len(df_pop):,}"
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"duplicate_codes="
+        f"{duplicate_codes}"
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"bad_codes="
+        f"{bad_codes}"
+    )
+
+    print(
+        f"[INFO] IBGE {year} "
+        f"bad_population="
+        f"{bad_population}"
+    )
+
+    if duplicate_codes != 0:
+        raise RuntimeError(
+            f"IBGE {year}: códigos municipais duplicados."
+        )
+
+    if bad_codes != 0:
+        raise RuntimeError(
+            f"IBGE {year}: código municipal inválido."
+        )
+
+    if bad_population != 0:
+        raise RuntimeError(
+            f"IBGE {year}: população inválida."
+        )
+
+    # -------------------------------------------------------------
+    # Sanity check.
+    #
+    # A divulgação oficial possui aproximadamente 5.570 unidades.
+    # Usamos intervalo estreito para detectar parsing incorreto,
+    # sem esconder eventual particularidade histórica.
+    # -------------------------------------------------------------
+
+    if not (
+        5550
+        <= len(df_pop)
+        <= 5590
+    ):
+        raise RuntimeError(
+            f"IBGE {year}: quantidade inesperada "
+            f"de unidades: {len(df_pop):,}. "
+            "Esperado aproximadamente 5.570."
+        )
+
+    return df_pop
+
+
+pop_parts = []
+
+
+for year, path in pop_files.items():
+
+    if not path.exists():
+
+        raise SystemExit(
+            f"[FAIL] população ausente: {path}"
+        )
+
+    q = read_ibge_population_structural(
+        path,
+        year
+    )
+
+    pop_parts.append(
+        q
+    )
+
+    print(
+        f"[PASS] população {year}: "
+        f"{len(q):,} unidades"
+    )
+
+
+population = pd.concat(
+    pop_parts,
+    ignore_index=True
+)
+
+
+population[
+    "log_population"
+] = np.log1p(
+    population[
+        "population"
+    ]
+)
+
+
+crosswalk = population[
+    [
+        "year",
+        "uf",
+        "city_norm",
+        "id_municipio",
+        "population",
+        "log_population",
+    ]
+].copy()
+
+
+# ---------------------------------------------------------------------
+# CUSTOMER POPULATION
+# ---------------------------------------------------------------------
+
+dest = crosswalk.rename(
+    columns={
+        "uf":
+            "customer_state",
+
+        "city_norm":
+            "customer_city_norm",
+
+        "id_municipio":
+            "customer_id_municipio",
+
+        "population":
+            "customer_population",
+
+        "log_population":
+            "customer_log_population",
+    }
+)
+
+
+df = df.merge(
+
+    dest,
+
+    on=[
+        "year",
+        "customer_state",
+        "customer_city_norm",
+    ],
+
+    how="left",
+    validate="m:1"
+)
+
+
+# ---------------------------------------------------------------------
+# PRIMARY SELLER
+#
+# Para variáveis contextuais de origem:
+# seller com maior frete dentro do pedido.
+#
+# As distâncias multi-seller continuam preservadas separadamente.
+# ---------------------------------------------------------------------
+
+primary_seller = (
+
+    seller_order.sort_values(
+        [
+            "order_id",
+            "seller_order_freight",
+            "seller_order_price",
+        ],
+        ascending=[
+            True,
+            False,
+            False,
+        ]
+    )
+
+    .drop_duplicates(
+        "order_id"
+    )
+
+    [
+        [
+            "order_id",
+            "seller_city",
+            "seller_city_norm",
+            "seller_state",
+        ]
+    ]
+)
+
+
+df = df.merge(
+    primary_seller,
+    on="order_id",
+    how="left",
+    validate="1:1"
+)
+
+
+orig = crosswalk.rename(
+    columns={
+        "uf":
+            "seller_state",
+
+        "city_norm":
+            "seller_city_norm",
+
+        "id_municipio":
+            "seller_id_municipio",
+
+        "population":
+            "seller_population",
+
+        "log_population":
+            "seller_log_population",
+    }
+)
+
+
+df = df.merge(
+
+    orig,
+
+    on=[
+        "year",
+        "seller_state",
+        "seller_city_norm",
+    ],
+
+    how="left",
+    validate="m:1"
+)
+
+
+# =====================================================================
+# 6. IBGE GDP
+# =====================================================================
+
+banner(
+    "5. IBGE — PIB MUNICIPAL "
+    "[RETROSPECTIVE_ONLY]"
+)
+
+
+gdp_zip = (
+    EXT
+    / "ibge_gdp"
+    / "retrospective"
+    / "base_de_dados_2010_2018_xls.zip"
+)
+
+
+if not gdp_zip.exists():
+
+    raise SystemExit(
+        f"[FAIL] PIB ausente: "
+        f"{gdp_zip}"
+    )
+
+
+with tempfile.TemporaryDirectory() as temp_dir:
+
+    with zipfile.ZipFile(
+        gdp_zip
+    ) as archive:
+
+        members = [
+
+            name
+
+            for name in archive.namelist()
+
+            if (
+                name.lower().endswith(
+                    (
+                        ".xls",
+                        ".xlsx",
+                    )
+                )
+
+                and
+
+                not name.startswith(
+                    "__MACOSX"
+                )
+            )
+        ]
+
+
+        if not members:
+
+            raise RuntimeError(
+                "ZIP PIB não contém "
+                "XLS/XLSX"
+            )
+
+
+        member = max(
+            members,
+            key=lambda name:
+                archive.getinfo(
+                    name
+                ).file_size
+        )
+
+
+        archive.extract(
+            member,
+            temp_dir
+        )
+
+
+        gdp_path = (
+            Path(temp_dir)
+            / member
+        )
+
+
+    try:
+    try:
+    gdp_raw, sheet, header = read_excel_detect(
+        gdp_path,
+        required_groups=[
+            ("ano",),
+            ("municip", "codigo"),
+            ("produto", "pib"),
+        ]
+    )
+except RuntimeError:
+    excel_gdp = pd.ExcelFile(gdp_path)
+    sheet = excel_gdp.sheet_names[0]
+    for h_row in range(0, 15):
+        df_tmp = pd.read_excel(excel_gdp, sheet_name=sheet, header=h_row, nrows=10)
+        cols_str = " ".join([str(c).lower() for c in df_tmp.columns])
+        if "ano" in cols_str and ("municip" in cols_str or "codigo" in cols_str):
+            header = h_row
+            gdp_raw = pd.read_excel(excel_gdp, sheet_name=sheet, header=header)
+            break
+    else:
+        gdp_raw = pd.read_excel(excel_gdp, sheet_name=sheet, header=0)
+        header = 0
+except RuntimeError:
+    # Fallback para planilhas históricas com cabeçalhos mesclados nas primeiras linhas
+    excel_gdp = pd.ExcelFile(gdp_path)
+    sheet = excel_gdp.sheet_names[0]
+    for h_row in range(0, 15):
+        df_tmp = pd.read_excel(excel_gdp, sheet_name=sheet, header=h_row, nrows=10)
+        cols_str = " ".join([str(c).lower() for c in df_tmp.columns])
+        if "ano" in cols_str and ("municip" in cols_str or "codigo" in cols_str):
+            header = h_row
+            gdp_raw = pd.read_excel(excel_gdp, sheet_name=sheet, header=header)
+            break
+    else:
+        gdp_raw = pd.read_excel(excel_gdp, sheet_name=sheet, header=0)
+        header = 0
+
+
+gcols = list(
+    gdp_raw.columns
+)
+
+
+year_col = choose_col(
+    gcols,
+    required=("ano",)
+)
+
+
+idmun_col = choose_col(
+    gcols,
+    required=(
+        "codigo",
+        "municip"
+    )
+)
+
+
+coduf_col = (
+
+    choose_col(
+        gcols,
+        required=(
+            "codigo",
+            "unidade",
+            "feder",
+        )
+    )
+
+    or
+
+    choose_col(
+        gcols,
+        required=(
+            "codigo",
+            "uf"
+        )
+    )
+)
+
+
+pib_pc_col = choose_col(
+    gcols,
+    required=(
+        "produto",
+        "interno",
+        "bruto",
+        "per",
+        "capita",
+    )
+)
+
+
+pib_col = choose_col(
+    gcols,
+    required=(
+        "produto",
+        "interno",
+        "bruto",
+    ),
+    forbidden=(
+        "per_capita",
+        "per",
+        "percent",
+        "particip",
+    )
+)
+
+
+if not all(
+    [
+        year_col,
+        idmun_col,
+        pib_pc_col,
+    ]
+):
+
+    raise RuntimeError(
+        "Schema PIB não reconhecido.\n"
+        f"Colunas:\n{gcols}"
+    )
+
+
+gdp = pd.DataFrame()
+
+
+gdp["year"] = pd.to_numeric(
+    gdp_raw[
+        year_col
+    ],
+    errors="coerce"
+).astype(
+    "Int64"
+)
+
+
+raw_id = gdp_raw[
+    idmun_col
+].map(
+    lambda value:
+        clean_code(
+            value,
+            7
+        )
+)
+
+
+if coduf_col is not None:
+
+    raw5 = gdp_raw[
+        idmun_col
+    ].map(
+        lambda value:
+            clean_code(
+                value,
+                5
+            )
+    )
+
+
+    uf2 = gdp_raw[
+        coduf_col
+    ].map(
+        lambda value:
+            clean_code(
+                value,
+                2
+            )
+    )
+
+
+    rebuilt = (
+        uf2.fillna("")
+        +
+        raw5.fillna("")
+    )
+
+
+    raw_id = raw_id.where(
+        raw_id.str.len().eq(7),
+        rebuilt
+    )
+
+
+gdp[
+    "id_municipio"
+] = raw_id
+
+
+gdp[
+    "gdp_per_capita"
+] = num_br(
+    gdp_raw[
+        pib_pc_col
+    ]
+)
+
+
+if pib_col is not None:
+
+    gdp[
+        "gdp_current"
+    ] = num_br(
+        gdp_raw[
+            pib_col
+        ]
+    )
+
+
+gdp = gdp[
+
+    gdp[
+        "year"
+    ].isin(YEARS)
+
+    &
+
+    gdp[
+        "id_municipio"
+    ].notna()
+
+].copy()
+
+
+gdp = gdp.drop_duplicates(
+    [
+        "year",
+        "id_municipio",
+    ],
+    keep="first"
+)
+
+
+print(
+    "[PASS] PIB 2017/2018: "
+    f"{len(gdp):,} linhas | "
+    f"sheet={sheet} "
+    f"header={header}"
+)
+
+
+dest_gdp = gdp.rename(
+    columns={
+        "id_municipio":
+            "customer_id_municipio",
+
+        "gdp_per_capita":
+            "customer_gdp_per_capita",
+
+        "gdp_current":
+            "customer_gdp_current",
+    }
+)
+
+
+df = df.merge(
+    dest_gdp,
+    on=[
+        "year",
+        "customer_id_municipio",
+    ],
+    how="left",
+    validate="m:1"
+)
+
+
+orig_gdp = gdp.rename(
+    columns={
+        "id_municipio":
+            "seller_id_municipio",
+
+        "gdp_per_capita":
+            "seller_gdp_per_capita",
+
+        "gdp_current":
+            "seller_gdp_current",
+    }
+)
+
+
+df = df.merge(
+    orig_gdp,
+    on=[
+        "year",
+        "seller_id_municipio",
+    ],
+    how="left",
+    validate="m:1"
+)
+
+
+for col in [
+    "customer_gdp_per_capita",
+    "seller_gdp_per_capita",
+]:
+
+    if col in df.columns:
+
+        df[
+            "log_" + col
+        ] = np.log1p(
+
+            pd.to_numeric(
+                df[col],
+                errors="coerce"
+            ).clip(
+                lower=0
+            )
+        )
+
+
+# =====================================================================
+# 7. ANP DIESEL
+# =====================================================================
+
+banner(
+    "6. ANP — DIESEL MUNICIPAL MENSAL"
+)
+
+
+anp_path = (
+    EXT
+    / "anp_fuel"
+    / "monthly_municipality_2016_2018"
+    / "mensal_municipios_2016_2018.xlsx"
+)
+
+
+if not anp_path.exists():
+
+    raise SystemExit(
+        f"[FAIL] ANP ausente: "
+        f"{anp_path}"
+    )
+
+
+excel = pd.ExcelFile(
+    anp_path
+)
+
+
+anp_parts = []
+
+
+for sheet in excel.sheet_names:
+
+    preview = pd.read_excel(
+        excel,
+        sheet_name=sheet,
+        header=None,
+        nrows=25,
+        dtype=str
+    )
+
+
+    header_idx = None
+
+
+    for idx, row in preview.iterrows():
+
+        joined = " | ".join(
+
+            norm_col(value)
+
+            for value
+            in row.tolist()
+
+            if pd.notna(value)
+        )
+
+
+        if (
+            "MUNIC" in joined
+
+            and
+
+            "PRODUTO" in joined
+
+            and
+
+            (
+                "PRECO_MEDIO" in joined
+                or
+                "PRECO" in joined
+            )
+        ):
+
+            header_idx = int(idx)
+            break
+
+
+    if header_idx is not None:
+
+        tmp = pd.read_excel(
+            excel,
+            sheet_name=sheet,
+            header=header_idx
+        )
+
+        tmp[
+            "__sheet__"
+        ] = str(sheet)
+
+        anp_parts.append(
+            tmp
+        )
+
+
+if not anp_parts:
+
+    raise RuntimeError(
+        "Nenhuma planilha ANP com "
+        "município/produto/preço "
+        "foi identificada"
+    )
+
+
+anp = pd.concat(
+    anp_parts,
+    ignore_index=True,
+    sort=False
+)
+
+
+acols = list(
+    anp.columns
+)
+
+
+municipio_col = choose_col(
+    acols,
+    required=("municip",)
+)
+
+
+uf_col = (
+
+    choose_col(
+        acols,
+        required=("estado",)
+    )
+
+    or
+
+    choose_col(
+        acols,
+        required=("uf",)
+    )
+)
+
+
+produto_col = choose_col(
+    acols,
+    required=("produto",)
+)
+
+
+price_col = (
+
+    choose_col(
+        acols,
+        required=(
+            "preco",
+            "medio",
+            "revenda",
+        )
+    )
+
+    or
+
+    choose_col(
+        acols,
+        required=(
+            "preco",
+            "medio",
+        )
+    )
+)
+
+
+posts_col = (
+
+    choose_col(
+        acols,
+        required=(
+            "numero",
+            "postos",
+        )
+    )
+
+    or
+
+    choose_col(
+        acols,
+        required=("postos",)
+    )
+)
+
+
+anp_year_col = choose_col(
+    acols,
+    required=("ano",)
+)
+
+
+anp_month_col = choose_col(
+    acols,
+    required=("mes",)
+)
+
+
+date_col = (
+
+    choose_col(
+        acols,
+        required=(
+            "data",
+            "inicial",
+        )
+    )
+
+    or
+
+    choose_col(
+        acols,
+        required=("data",)
+    )
+)
+
+
+if not all(
+    [
+        municipio_col,
+        produto_col,
+        price_col,
+    ]
+):
+
+    raise RuntimeError(
+        "Schema ANP não reconhecido.\n"
+        f"Colunas:\n{acols}"
+    )
+
+
+anp_small = pd.DataFrame()
+
+
+anp_small[
+    "city_norm"
+] = anp[
+    municipio_col
+].map(norm_text)
+
+
+if uf_col is not None:
+
+    anp_small[
+        "uf"
+    ] = (
+        anp[
+            uf_col
+        ]
+        .astype(str)
+        .str.upper()
+        .str.strip()
+    )
+
+else:
+
+    anp_small[
+        "uf"
+    ] = None
+
+
+anp_small[
+    "product_norm"
+] = anp[
+    produto_col
+].map(norm_text)
+
+
+anp_small[
+    "price_mean"
+] = num_br(
+    anp[
+        price_col
+    ]
+)
+
+
+if posts_col is not None:
+
+    anp_small[
+        "n_posts"
+    ] = num_br(
+        anp[
+            posts_col
+        ]
+    )
+
+else:
+
+    anp_small[
+        "n_posts"
+    ] = np.nan
+
+
+if (
+    anp_year_col is not None
+    and
+    anp_month_col is not None
+):
+
+    anp_small[
+        "year"
+    ] = pd.to_numeric(
+        anp[
+            anp_year_col
+        ],
+        errors="coerce"
+    )
+
+
+    raw_month = anp[
+        anp_month_col
+    ]
+
+
+    numeric_month = pd.to_numeric(
+        raw_month,
+        errors="coerce"
+    )
+
+
+    month_map = {
+        "JANEIRO": 1,
+        "FEVEREIRO": 2,
+        "MARCO": 3,
+        "ABRIL": 4,
+        "MAIO": 5,
+        "JUNHO": 6,
+        "JULHO": 7,
+        "AGOSTO": 8,
+        "SETEMBRO": 9,
+        "OUTUBRO": 10,
+        "NOVEMBRO": 11,
+        "DEZEMBRO": 12,
+    }
+
+
+    numeric_month = numeric_month.fillna(
+
+        raw_month.map(
+            lambda x:
+                month_map.get(
+                    norm_text(x)
+                )
+        )
+    )
+
+
+    anp_small[
+        "month"
+    ] = numeric_month
+
+
+elif date_col is not None:
+
+    dates = pd.to_datetime(
+        anp[
+            date_col
+        ],
+        errors="coerce",
+        dayfirst=True
+    )
+
+
+    anp_small[
+        "year"
+    ] = dates.dt.year
+
+
+    anp_small[
+        "month"
+    ] = dates.dt.month
+
+
+else:
+
+    raise RuntimeError(
+        "ANP: não foi possível "
+        "identificar ano/mês"
+    )
+
+
+anp_small = anp_small[
+
+    anp_small[
+        "year"
+    ].isin(YEARS)
+
+].copy()
+
+
+anp_small[
+    "diesel_type"
+] = np.where(
+
+    anp_small[
+        "product_norm"
+    ].str.contains(
+        "DIESEL",
+        na=False
+    )
+
+    &
+
+    anp_small[
+        "product_norm"
+    ].str.contains(
+        "S10",
+        na=False
+    ),
+
+    "DIESEL_S10",
+
+    np.where(
+
+        anp_small[
+            "product_norm"
+        ].str.contains(
+            "DIESEL",
+            na=False
+        ),
+
+        "DIESEL_COMMON",
+
+        None
+    )
+)
+
+
+anp_small = anp_small[
+
+    anp_small[
+        "diesel_type"
+    ].notna()
+
+    &
+
+    anp_small[
+        "price_mean"
+    ].notna()
+
+].copy()
+
+
+anp_month = (
+
+    anp_small.groupby(
+        [
+            "year",
+            "month",
+            "uf",
+            "city_norm",
+            "diesel_type",
+        ],
+        as_index=False
+    )
+
+    .agg(
+        diesel_price_mean=(
+            "price_mean",
+            "mean"
+        ),
+
+        diesel_n_posts=(
+            "n_posts",
+            "sum"
+        ),
+    )
+)
+
+
+price_wide = anp_month.pivot_table(
+
+    index=[
+        "year",
+        "month",
+        "uf",
+        "city_norm",
+    ],
+
+    columns="diesel_type",
+
+    values="diesel_price_mean",
+
+    aggfunc="mean"
+
+).reset_index()
+
+
+price_wide.columns.name = None
+
+
+price_wide = price_wide.rename(
+    columns={
+        "DIESEL_COMMON":
+            "diesel_common_mean",
+
+        "DIESEL_S10":
+            "diesel_s10_mean",
+    }
+)
+
+
+print(
+    "[PASS] ANP diesel 2017/2018: "
+    f"{len(anp_month):,} "
+    "município-mês-produto"
+)
+
+
+# ---------------------------------------------------------------------
+# DESTINATION DIESEL
+# ---------------------------------------------------------------------
+
+dest_anp = price_wide.rename(
+    columns={
+        "uf":
+            "customer_state",
+
+        "city_norm":
+            "customer_city_norm",
+
+        "diesel_common_mean":
+            "customer_diesel_common_mean",
+
+        "diesel_s10_mean":
+            "customer_diesel_s10_mean",
+    }
+)
+
+
+df = df.merge(
+
+    dest_anp,
+
+    on=[
+        "year",
+        "month",
+        "customer_state",
+        "customer_city_norm",
+    ],
+
+    how="left",
+    validate="m:1"
+)
+
+
+# ---------------------------------------------------------------------
+# ORIGIN DIESEL
+# ---------------------------------------------------------------------
+
+orig_anp = price_wide.rename(
+    columns={
+        "uf":
+            "seller_state",
+
+        "city_norm":
+            "seller_city_norm",
+
+        "diesel_common_mean":
+            "seller_diesel_common_mean",
+
+        "diesel_s10_mean":
+            "seller_diesel_s10_mean",
+    }
+)
+
+
+df = df.merge(
+
+    orig_anp,
+
+    on=[
+        "year",
+        "month",
+        "seller_state",
+        "seller_city_norm",
+    ],
+
+    how="left",
+    validate="m:1"
+)
+
+
+# =====================================================================
+# 8. FINAL COVERAGE AUDIT
+# =====================================================================
+
+banner(
+    "7. COBERTURA E SAÍDAS"
+)
+
+
+if df[
+    "order_id"
+].duplicated().any():
+
+    raise RuntimeError(
+        "Join final criou "
+        "duplicatas de order_id"
+    )
+
+
+coverage_fields = [
+
+    "customer_lat",
+
+    "distance_max_km",
+
+    "distance_freight_weighted_km",
+
+    "total_weight_g",
+
+    "total_volume_cm3",
+
+    "customer_id_municipio",
+
+    "customer_population",
+
+    "customer_gdp_per_capita",
+
+    "seller_id_municipio",
+
+    "seller_population",
+
+    "seller_gdp_per_capita",
+
+    "customer_diesel_common_mean",
+
+    "customer_diesel_s10_mean",
+
+    "seller_diesel_common_mean",
+
+    "seller_diesel_s10_mean",
+]
+
+
+coverage = []
+
+
+for field in coverage_fields:
+
+    if field not in df.columns:
+        continue
+
+    n = int(
+        df[field]
+        .notna()
+        .sum()
+    )
+
+
+    coverage.append(
+        {
+            "field":
+                field,
+
+            "n_non_null":
+                n,
+
+            "n_orders":
+                int(
+                    len(df)
+                ),
+
+            "coverage_pct":
+                (
+                    100.0
+                    *
+                    n
+                    /
+                    len(df)
+                )
+                if len(df)
+                else np.nan,
+        }
+    )
+
+
+coverage_df = pd.DataFrame(
+    coverage
+).sort_values(
+    "coverage_pct",
+    ascending=False
+)
+
+
+coverage_path = (
+    REPORT
+    / "01_fast_context_coverage.csv"
+)
+
+
+coverage_df.to_csv(
+    coverage_path,
+    index=False
+)
+
+
+output_rel, output_bytes = save_table(
+    df,
+    "SPATIOTEMPORAL_CONTEXT_CORE"
+)
+
+
+summary = {
+
+    "status":
+        "PASS",
+
+    "scope":
+        "FAST_SPATIOTEMPORAL_CORE_2017_2018",
+
+    "orders":
+        int(
+            len(df)
+        ),
+
+    "years":
+        sorted(
+            int(x)
+            for x
+            in df[
+                "year"
+            ].dropna().unique()
+        ),
+
+    "order_id_duplicates":
+        int(
+            df[
+                "order_id"
+            ].duplicated().sum()
+        ),
+
+    "raw_modified":
+        False,
+
+    "consumer_gov":
+        "HOLD_PHASE_2",
+
+    "regic":
+        "HOLD_PHASE_2",
+
+    "gdp_temporal_class":
+        "RETROSPECTIVE_ONLY",
+
+    "geolocation_zip_method":
+        "median_lat_lon_after_broad_brazil_bounds_filter",
+
+    "distance_method":
+        "haversine_great_circle",
+
+    "multi_seller_route":
+        "max_mean_and_freight_weighted_distance",
+
+    "output":
+        output_rel,
+
+    "output_bytes":
+        int(
+            output_bytes
+        ),
+
+    "coverage_report":
+        str(
+            coverage_path.relative_to(
+                ROOT
+            )
+        ),
+
+    "coverage":
+        coverage,
+}
+
+
+summary_path = (
+    REPORT
+    / "01_fast_context_summary.json"
+)
+
+
+summary_path.write_text(
+    json.dumps(
+        summary,
+        indent=2,
+        ensure_ascii=False
+    ),
+    encoding="utf-8"
+)
+
+
+print(
+    coverage_df.to_string(
+        index=False,
+        formatters={
+            "coverage_pct":
+                "{:.2f}".format
+        }
+    )
+)
+
+
+print()
+print(
+    f"[PASS] tabela: "
+    f"{output_rel}"
+)
+
+print(
+    "[PASS] cobertura: "
+    f"{coverage_path.relative_to(ROOT)}"
+)
+
+print(
+    "[PASS] resumo: "
+    f"{summary_path.relative_to(ROOT)}"
+)
+
+
+print()
+print("STATUS = PASS")
+print("RAW_MODIFIED = false")
+print(
+    "NEXT = "
+    "REVIEW_COVERAGE_BEFORE_ANALYSIS"
+)
+print("PARAR AQUI")

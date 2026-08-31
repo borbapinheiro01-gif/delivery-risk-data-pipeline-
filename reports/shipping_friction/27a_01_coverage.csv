@@ -1,0 +1,9 @@
+field,n_non_null,n_total,coverage_pct
+total_price,96211,96211,100.0
+total_freight,96211,96211,100.0
+expected_freight_oot,91262,96211,94.85609753562483
+freight_burden,96211,96211,100.0
+freight_to_price_ratio,96211,96211,100.0
+freight_residual_abs,91262,96211,94.85609753562483
+freight_log_ratio,91262,96211,94.85609753562483
+freight_log_ratio_month_z,91262,96211,94.85609753562483

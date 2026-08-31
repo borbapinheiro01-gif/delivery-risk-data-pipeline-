@@ -1,0 +1,5 @@
+check_id,table,coverage_measure,total,uncovered,uncovered_pct,warning_threshold_pct,status,description
+STA-COV-001,orders,order_items_coverage,99441,775,0.7793566034130791,2.0,PASS,Orders without order_items
+STA-COV-002,orders,payment_coverage,99441,1,0.0010056214237588118,0.1,PASS,Orders without payment
+STA-COV-003,customers,geolocation_coverage,99441,278,0.27956275580494966,1.0,PASS,Customers whose ZIP is absent from geolocation
+STA-COV-004,sellers,geolocation_coverage,3095,7,0.22617124394184168,1.0,PASS,Sellers whose ZIP is absent from geolocation

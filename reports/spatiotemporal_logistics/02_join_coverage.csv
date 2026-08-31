@@ -1,0 +1,9 @@
+field,n_non_null,n_orders,coverage_pct
+distance_freight_weighted_km,95734,96211,99.50421469478542
+total_weight_g,96195,96211,99.98336988494039
+product_volume_sum_proxy_cm3,96195,96211,99.98336988494039
+customer_population,95628,96211,99.39404018251551
+customer_gdp_per_capita,95628,96211,99.39404018251551
+customer_diesel_common_municipal,74270,96211,77.19491534232053
+customer_diesel_common_state,96211,96211,100.0
+actual_delivery_days,96203,96211,99.9916849424702

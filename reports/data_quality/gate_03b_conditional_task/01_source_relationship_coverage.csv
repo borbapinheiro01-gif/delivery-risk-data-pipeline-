@@ -1,0 +1,6 @@
+metric,denominator,affected,affected_pct
+orders_without_items,99441,775,0.7793566034130791
+orders_without_payments,99441,1,0.0010056214237588118
+orders_without_customer_resolution,99441,0,0.0
+item_product_orphans,112650,0,0.0
+item_seller_orphans,112650,0,0.0

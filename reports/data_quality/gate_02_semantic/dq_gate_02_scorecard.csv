@@ -1,0 +1,46 @@
+gate,check_id,table,variable,dimension,severity,status,affected_rows,affected_pct,observed,expected,details
+DQ_GATE_02_SEMANTIC,SEM-001,orders,order_status,domain_validity,CRITICAL,PASS,0,0.0,all valid,"['approved', 'canceled', 'created', 'delivered', 'invoiced', 'processing', 'shipped', 'unavailable']",Nulls não são avaliados neste gate.
+DQ_GATE_02_SEMANTIC,SEM-002,payments,payment_type,domain_validity,CRITICAL,PASS,0,0.0,all valid,"['boleto', 'credit_card', 'debit_card', 'not_defined', 'voucher']",Nulls não são avaliados neste gate.
+DQ_GATE_02_SEMANTIC,SEM-003,customers,customer_state,domain_validity,CRITICAL,PASS,0,0.0,all valid,"['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']",Nulls não são avaliados neste gate.
+DQ_GATE_02_SEMANTIC,SEM-004,sellers,seller_state,domain_validity,CRITICAL,PASS,0,0.0,all valid,"['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']",Nulls não são avaliados neste gate.
+DQ_GATE_02_SEMANTIC,SEM-005,geolocation,geolocation_state,domain_validity,CRITICAL,PASS,0,0.0,all valid,"['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO']",Nulls não são avaliados neste gate.
+DQ_GATE_02_SEMANTIC,SEM-011,order_items,price,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 0, 'min_inclusive': True}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-012,order_items,freight_value,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 0, 'min_inclusive': True}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-013,payments,payment_value,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 0, 'min_inclusive': True}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-014,payments,payment_installments,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 0, 'min_inclusive': True}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-015,reviews,review_score,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 1, 'max': 5, 'min_inclusive': True, 'max_inclusive': True}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-016,products,product_weight_g,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 0, 'min_inclusive': True}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-017,products,product_length_cm,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 0, 'min_inclusive': False}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-018,products,product_height_cm,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 0, 'min_inclusive': False}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-019,products,product_width_cm,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': 0, 'min_inclusive': False}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-020,geolocation,geolocation_lat,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': -90, 'max': 90, 'min_inclusive': True, 'max_inclusive': True}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-021,geolocation,geolocation_lng,numeric_validity,CRITICAL,PASS,0,0.0,all valid,"{'min': -180, 'max': 180, 'min_inclusive': True, 'max_inclusive': True}",Missing values são tratados posteriormente no DQ Gate de completude.
+DQ_GATE_02_SEMANTIC,SEM-030,payments,payment_value,semantic_suspicion,WARNING,WARN,9,0.008663342510059104,9 zero value(s),> 0 preferred,payment_value == 0
+DQ_GATE_02_SEMANTIC,SEM-031,payments,payment_installments,semantic_suspicion,WARNING,WARN,2,0.0019251872244575785,2 zero value(s),> 0 preferred,payment_installments == 0
+DQ_GATE_02_SEMANTIC,SEM-032,products,product_weight_g,semantic_suspicion,WARNING,WARN,4,0.012139237048951474,4 zero value(s),> 0 preferred,product_weight_g == 0
+DQ_GATE_02_SEMANTIC,SEM-033,order_items,freight_value,business_plausibility,INFO,PASS,383,0.33999112294718153,383 zero freight rows,zero freight allowed; negative freight prohibited,Frete zero não é tratado automaticamente como erro.
+DQ_GATE_02_SEMANTIC,SEM-040,orders,order_purchase_timestamp,datetime_parseability,CRITICAL,PASS,0,0.0,0 non-null unparseable values,all non-null timestamps parseable,
+DQ_GATE_02_SEMANTIC,SEM-041,orders,order_approved_at,datetime_parseability,CRITICAL,PASS,0,0.0,0 non-null unparseable values,all non-null timestamps parseable,
+DQ_GATE_02_SEMANTIC,SEM-042,orders,order_delivered_carrier_date,datetime_parseability,CRITICAL,PASS,0,0.0,0 non-null unparseable values,all non-null timestamps parseable,
+DQ_GATE_02_SEMANTIC,SEM-043,orders,order_delivered_customer_date,datetime_parseability,CRITICAL,PASS,0,0.0,0 non-null unparseable values,all non-null timestamps parseable,
+DQ_GATE_02_SEMANTIC,SEM-044,orders,order_estimated_delivery_date,datetime_parseability,CRITICAL,PASS,0,0.0,0 non-null unparseable values,all non-null timestamps parseable,
+DQ_GATE_02_SEMANTIC,SEM-045,order_items,shipping_limit_date,datetime_parseability,CRITICAL,PASS,0,0.0,0 non-null unparseable values,all non-null timestamps parseable,
+DQ_GATE_02_SEMANTIC,SEM-046,reviews,review_creation_date,datetime_parseability,CRITICAL,PASS,0,0.0,0 non-null unparseable values,all non-null timestamps parseable,
+DQ_GATE_02_SEMANTIC,SEM-047,reviews,review_answer_timestamp,datetime_parseability,CRITICAL,PASS,0,0.0,0 non-null unparseable values,all non-null timestamps parseable,
+DQ_GATE_02_SEMANTIC,SEM-050,orders,purchase_after_approval,cross_field_temporal_consistency,CRITICAL,PASS,0,0.0,0 violation(s),purchase <= approval,
+DQ_GATE_02_SEMANTIC,SEM-051,orders,approval_after_carrier,cross_field_temporal_consistency,WARNING,WARN,1359,1.3917905862111344,1359 violation(s),approval <= carrier,
+DQ_GATE_02_SEMANTIC,SEM-052,orders,carrier_after_customer_delivery,cross_field_temporal_consistency,WARNING,WARN,23,0.023840373153666754,23 violation(s),carrier <= customer_delivery,
+DQ_GATE_02_SEMANTIC,SEM-053,orders,purchase_after_customer_delivery,cross_field_temporal_consistency,CRITICAL,PASS,0,0.0,0 violation(s),purchase <= customer_delivery,
+DQ_GATE_02_SEMANTIC,SEM-054,orders,promised_lead_time,business_temporal_validity,CRITICAL,PASS,0,0.0,0 invalid promised lead times,estimated_delivery_date > purchase_timestamp,
+DQ_GATE_02_SEMANTIC,SEM-060,products,product_category_name,cross_table_semantic_consistency,WARNING,WARN,13,0.04019665440153366,"['pc_gamer', 'portateis_cozinha_e_preparadores_de_alimentos']",category available in translation table,Tradução é apenas apoio/apresentação; produto não será removido.
+DQ_GATE_02_SEMANTIC,SEM-061,geolocation,geolocation_zip_code_prefix,geographic_consistency,WARNING,WARN,8,0.04207204838285564,8 prefixes associated with more than one state,1 state per zip prefix,Será investigado antes da consolidação definitiva da geolocalização.
+DQ_GATE_02_SEMANTIC,SEM-070,order_items,price,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-071,order_items,freight_value,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-072,payments,payment_value,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-073,payments,payment_installments,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-074,products,product_weight_g,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-075,products,product_length_cm,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-076,products,product_height_cm,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-077,products,product_width_cm,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-078,geolocation,geolocation_lat,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,
+DQ_GATE_02_SEMANTIC,SEM-079,geolocation,geolocation_lng,finite_numeric_validity,CRITICAL,PASS,0,0.0,0 non-finite value(s),all non-null numeric values finite,

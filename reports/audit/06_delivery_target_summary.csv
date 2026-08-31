@@ -1,0 +1,2 @@
+orders_total,eligible_target,on_time,late,late_rate_pct,delivery_delta_mean_days,delivery_delta_median_days,delivery_delta_p90_days,delivery_delta_p95_days,delivery_delta_max_days
+99441,96476,88649,7827,8.112898544715785,-11.179119879819469,-11.948940972222221,-1.1375173611111111,3.8184577546296294,188.97508101851852

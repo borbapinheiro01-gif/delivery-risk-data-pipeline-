@@ -1,0 +1,3 @@
+comparison,n_compared,n_mismatch,mismatch_pct,expected_identity
+official_target_vs_calendar_gap,96203,0,0.0,True
+official_target_vs_continuous_timestamp_gap,96203,1291,1.3419539931187177,False

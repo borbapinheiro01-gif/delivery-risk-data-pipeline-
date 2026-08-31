@@ -1,0 +1,28 @@
+====================================================================================================
+DQ GATE 03 — STATISTICAL / COMPLETENESS
+====================================================================================================
+
+DQ GATE 01       : PASS
+DQ GATE 02       : PASS
+
+STATUS            : PASS
+TOTAL CHECKS      : 50
+PASS              : 36
+WARNINGS          : 0
+INFORMATIONAL     : 14
+CRITICAL FAILURES : 0
+
+CHECKS NÃO-PASS:
+----------------------------------------------------------------------------------------------------
+Nenhum.
+
+----------------------------------------------------------------------------------------------------
+INTERPRETAÇÃO
+CRITICAL FAIL -> Gate 03 reprovado.
+WARN -> problema/tolerância que exige documentação.
+INFO -> perfil estatístico, sem decisão automática.
+IQR/MAD são sinalizadores de cauda, não regras de exclusão.
+Nenhum missing foi imputado.
+Nenhum extremo foi removido.
+Nenhum arquivo RAW foi modificado.
+----------------------------------------------------------------------------------------------------

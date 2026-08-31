@@ -1,0 +1,3 @@
+canonical_issue_id,gate,evidence_status,recommendation,evidence,final_business_confirmation_required
+ISSUE-TARGET-001,DQ_GATE_04,ASSESSED,CALENDAR_DAY_RECOMMENDED_PENDING_BUSINESS_CONFIRMATION,estimated_midnight_pct=100.000000; label_disagreements=1292; same_day_disagreement_pct=100.000000,True
+ISSUE-OBSERVATION-WINDOW-001,DQ_GATE_04,ASSESSED,DO_NOT_LABEL_UNOBSERVED_ORDERS_AS_ON_TIME,observation_end=2018-10-17 13:22:46; right_censor_candidates=0,False

@@ -1,0 +1,82 @@
+{
+  "orders": {
+    "file": "data/raw/olist/olist_orders_dataset.csv",
+    "bytes": 17654914,
+    "rows": 99441,
+    "columns": [
+      "order_id",
+      "customer_id",
+      "order_status",
+      "order_purchase_timestamp",
+      "order_approved_at",
+      "order_delivered_carrier_date",
+      "order_delivered_customer_date",
+      "order_estimated_delivery_date"
+    ]
+  },
+  "items": {
+    "file": "data/raw/olist/olist_order_items_dataset.csv",
+    "bytes": 15438671,
+    "rows": 112650,
+    "columns": [
+      "order_id",
+      "order_item_id",
+      "product_id",
+      "seller_id",
+      "shipping_limit_date",
+      "price",
+      "freight_value"
+    ]
+  },
+  "customers": {
+    "file": "data/raw/olist/olist_customers_dataset.csv",
+    "bytes": 9033957,
+    "rows": 99441,
+    "columns": [
+      "customer_id",
+      "customer_unique_id",
+      "customer_zip_code_prefix",
+      "customer_city",
+      "customer_state"
+    ]
+  },
+  "sellers": {
+    "file": "data/raw/olist/olist_sellers_dataset.csv",
+    "bytes": 174703,
+    "rows": 3095,
+    "columns": [
+      "seller_id",
+      "seller_zip_code_prefix",
+      "seller_city",
+      "seller_state"
+    ]
+  },
+  "products": {
+    "file": "data/raw/olist/olist_products_dataset.csv",
+    "bytes": 2379446,
+    "rows": 32951,
+    "columns": [
+      "product_id",
+      "product_category_name",
+      "product_name_lenght",
+      "product_description_lenght",
+      "product_photos_qty",
+      "product_weight_g",
+      "product_length_cm",
+      "product_height_cm",
+      "product_width_cm"
+    ]
+  },
+  "geolocation": {
+    "file": "data/raw/olist/olist_geolocation_dataset.csv",
+    "bytes": 61273883,
+    "rows": 1000163,
+    "columns": [
+      "geolocation_zip_code_prefix",
+      "geolocation_lat",
+      "geolocation_lng",
+      "geolocation_city",
+      "geolocation_state"
+    ]
+  }
+}

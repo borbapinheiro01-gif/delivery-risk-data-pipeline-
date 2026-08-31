@@ -1,0 +1,3 @@
+W0830 10:09:58.087588 139994429353152 datasets.py:41] Found the following 1 warning(s) during the validation:
+  -  [Metadata(olist_brazilian_ecommerce_delivery_risk)] Property "https://schema.org/datePublished" is recommended, but does not exist.
+I0830 10:09:58.088352 139994429353152 validate.py:53] Done.

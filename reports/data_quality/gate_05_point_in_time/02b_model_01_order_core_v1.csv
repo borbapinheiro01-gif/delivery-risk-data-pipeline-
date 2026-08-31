@@ -1,0 +1,14 @@
+feature_name,module,sources,source_statuses,target_grain,formula,aggregation,availability_class,feature_set,model_01_policy,model_02_policy,status,notes,has_forbidden_or_target_dependency
+item_count,ORDER,order_items.order_item_id,AGGREGATE_SAFE_AT_T0,ORDER,COUNT(order_item_id),COUNT_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,Number of line items in the current order.,False
+unique_product_count,ORDER,order_items.product_id,JOIN_KEY_ONLY,ORDER,COUNT_DISTINCT(product_id),COUNT_DISTINCT_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,Raw product IDs are not direct predictors.,False
+unique_seller_count,ORDER,order_items.seller_id,JOIN_KEY_ONLY,ORDER,COUNT_DISTINCT(seller_id),COUNT_DISTINCT_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,Seller IDs are used only to derive current-order seller count.,False
+total_price,ORDER,order_items.price,AGGREGATE_SAFE_AT_T0,ORDER,SUM(price),SUM_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False
+mean_price,ORDER,order_items.price,AGGREGATE_SAFE_AT_T0,ORDER,MEAN(price),MEAN_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False
+max_price,ORDER,order_items.price,AGGREGATE_SAFE_AT_T0,ORDER,MAX(price),MAX_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False
+min_price,ORDER,order_items.price,AGGREGATE_SAFE_AT_T0,ORDER,MIN(price),MIN_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False
+total_freight,ORDER,order_items.freight_value,AGGREGATE_SAFE_AT_T0,ORDER,SUM(freight_value),SUM_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False
+mean_freight,ORDER,order_items.freight_value,AGGREGATE_SAFE_AT_T0,ORDER,MEAN(freight_value),MEAN_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False
+max_freight,ORDER,order_items.freight_value,AGGREGATE_SAFE_AT_T0,ORDER,MAX(freight_value),MAX_BY_ORDER,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False
+order_merchandise_plus_freight,ORDER,order_items.price;order_items.freight_value,AGGREGATE_SAFE_AT_T0;AGGREGATE_SAFE_AT_T0,ORDER,SUM(price) + SUM(freight_value),DERIVED_AFTER_ORDER_AGGREGATION,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False
+freight_price_ratio,ORDER,order_items.price;order_items.freight_value,AGGREGATE_SAFE_AT_T0;AGGREGATE_SAFE_AT_T0,ORDER,SUM(freight_value) / SUM(price),DERIVED_AFTER_ORDER_AGGREGATION,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,"Division must explicitly handle zero denominator, although observed item prices are positive.",False
+price_range,ORDER,order_items.price,AGGREGATE_SAFE_AT_T0,ORDER,MAX(price) - MIN(price),DERIVED_AFTER_ORDER_AGGREGATION,SAFE_AT_T0,ORDER_CORE_V1,USE,USE,READY_FOR_BUILD,,False

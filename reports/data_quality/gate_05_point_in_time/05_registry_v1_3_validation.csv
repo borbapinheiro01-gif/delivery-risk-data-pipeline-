@@ -1,0 +1,14 @@
+check,status,observed,expected
+canonical_issue_count,PASS,13,13
+seller_history_resolved_pit,PASS,RESOLVED_PIT_INFRASTRUCTURE,RESOLVED_PIT_INFRASTRUCTURE
+ISSUE-PAYMENT-AVAILABILITY-001_not_resolved,PASS,OPEN,NOT RESOLVED
+ISSUE-SHIPPING-LIMIT-001_not_resolved,PASS,OPEN,NOT RESOLVED
+ISSUE-GEO-001_not_resolved,PASS,OPEN,NOT RESOLVED
+manifest_version,PASS,1.3.0,1.3.0
+manifest_parent,PASS,1.2.0,1.2.0
+manifest_gate05_pass,PASS,PASS,PASS
+model01_validation_only,PASS,UNLOCKED_FOR_TEMPORAL_VALIDATION,UNLOCKED_FOR_TEMPORAL_VALIDATION
+model02_locked,PASS,LOCKED,LOCKED
+seller_purchase_leakage_zero,PASS,0,0
+seller_outcome_leakage_zero,PASS,0,0
+bruteforce_mismatch_zero,PASS,0,0

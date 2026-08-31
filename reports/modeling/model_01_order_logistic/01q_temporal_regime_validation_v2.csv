@@ -1,0 +1,7 @@
+check,status,observed,expected
+unique_current_month,PASS,0,0
+all_scores_finite,PASS,0,0
+scores_below_zero,PASS,0,0
+scores_above_one,PASS,0,0
+consensus_rank_complete,PASS,True,True
+folds_not_frozen,PASS,False,False

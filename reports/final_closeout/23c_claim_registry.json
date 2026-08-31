@@ -1,0 +1,18 @@
+{
+  "allowed_claims": [
+    "The analytical pipeline was completed through spatiotemporal integration and OOT expected freight.",
+    "Flexible nonlinear reliability specifications did not establish robust temporal predictive superiority over the simpler linear specification.",
+    "The GN–ADMM Brier-NLS implementation was numerically validated on the evaluated real-world logistics data.",
+    "GN–ADMM showed a small favorable mean AP difference relative to logistic regression, but paired temporal evidence was not decisive.",
+    "Constraint ablation and calibration diagnostics favored different models, so no universal model winner is claimed.",
+    "The imposed nonnegative quadratic constraint is not evidence of a true U-shaped data-generating relationship."
+  ],
+  "prohibited_claims": [
+    "Freight deviations cause delivery delays.",
+    "GN–ADMM is universally superior to logistic regression.",
+    "The beta_z2 >= 0 constraint proves a true U-shaped relationship.",
+    "Independent-solver agreement proves global convergence of the external nonlinear sequence.",
+    "A lower Brier score alone proves superior calibration.",
+    "Haversine distance is equivalent to road-network distance."
+  ]
+}

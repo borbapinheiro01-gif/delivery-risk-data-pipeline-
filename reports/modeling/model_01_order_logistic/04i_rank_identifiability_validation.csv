@@ -1,0 +1,9 @@
+check,status,observed,expected
+c34a_pass,PASS,PASS,PASS
+channel_month_groups,PASS,34,34
+k_monotonic_failures,PASS,0,0
+reconstruction_error_monotonic_failures,PASS,0,0
+c34a_candidate_is_099,PASS,0.99,0.99
+q099_retains_over_80pct_dimensions,PASS,87.2549% .. 89.6078%,>80%
+full_rank_dimension,PASS,30,30
+theoretical_full_rank_error,PASS,0.0,0.0

@@ -1,0 +1,69 @@
+================================================================================================================
+MODEL 01.0-C3.4-A.1 — RANK IDENTIFIABILITY AUDIT
+================================================================================================================
+
+STATUS
+----------------------------------------------------------------------------------------------------------------
+Validation status                       : PASS
+Criterion classification                : NON_IDENTIFYING_FOR_INTRINSIC_RANK
+
+EMPIRICAL EVIDENCE
+----------------------------------------------------------------------------------------------------------------
+Channel-month groups                    : 34
+K monotonic failures                    : 0
+Reconstruction-error monotonic failures : 0
+
+C3.4-A reconstruction candidate         : 0.99
+
+q=.99 dimension retained
+----------------------------------------------------------------------------------------------------------------
+Minimum channel mean                    : 87.2549%
+Maximum channel mean                    : 89.6078%
+
+MATHEMATICAL STRUCTURE
+----------------------------------------------------------------------------------------------------------------
+For nested PCA spaces:
+
+    S_K subset S_(K+1)
+
+therefore:
+
+    ||X - P_(K+1)X||_F <= ||X - P_K X||_F
+
+At complete rank p = 30:
+
+    P_30 = I
+
+and therefore:
+
+    ||X - P_30 X||_F = 0
+
+INTERPRETATION
+----------------------------------------------------------------------------------------------------------------
+q=.99 is the best TESTED reconstruction policy.
+
+It is NOT established as an intrinsic-rank estimate.
+
+Full-vector reconstruction error alone is NON-IDENTIFYING
+for intrinsic-rank selection in this experiment.
+
+NEXT
+----------------------------------------------------------------------------------------------------------------
+Temporal bi-cross-validation of low-rank structure.
+
+No final K is frozen yet.
+
+GOVERNANCE
+----------------------------------------------------------------------------------------------------------------
+Target used                    : NO
+PCA executed in this step      : NO
+SVD executed in this step      : NO
+BCV executed                   : NO
+Final K selected               : NO
+Folds frozen                   : NO
+Classifier trained             : NO
+Silver created                 : NO
+RAW modified                   : NO
+
+Validation failures            : 0
+================================================================================================================

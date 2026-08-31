@@ -1,0 +1,21 @@
+HTTP/2 200 
+date: Mon, 31 Aug 2026 01:45:09 GMT
+content-type: text/html;charset=UTF-8
+set-cookie: INGRESSCOOKIE=91b492b0a7c8231ba1755ba2dd42cf21|bd31240a9f44f4d7fad6759da0e3196a; Path=/; HttpOnly
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-headers: *
+access-control-allow-methods: *
+set-cookie: acoesSessaoCookie=C1413905C783798236339ADDCD636A65; Path=/; HttpOnly
+pragma: no-cache
+expires: Thu, 01 Jan 1970 00:00:00 GMT
+cache-control: no-cache,no-store
+content-language: en-US
+set-cookie: BIGipServer~Apps~pool_kube-app-production-oke01=2433350922.20480.0000; path=/; Httponly
+set-cookie: TS01d92bef=019a7e6128e4c6c0a95ccc478ac6d8bdcbe673c6498ebf34807df1e4507d671bbe861d1b5f4f325f54b7f3c9a80aca9ae867d16966d9a311ea7d3ab2bf8fff35bf3a2b74f35b9632ceaabc2276aae521d6c09ebc64ba6b44296694a341b2cc69483bbbb0e2; Path=/; Domain=.gov.br
+x-envoy-upstream-service-time: 797
+strict-transport-security: max-age=31536000
+set-cookie: TS01dc4fc6=01399b794f85bed36afcc6dc2e7fb46e1c7b828630a6fce7a27858e2a8beb2f1595d6136a729c62cdb7971fe83d290add359c4f3a9; Path=/; Secure; HttpOnly; SameSite=Strict; 
+set-cookie: TS016c21a7=01399b794f85bed36afcc6dc2e7fb46e1c7b828630a6fce7a27858e2a8beb2f1595d6136a729c62cdb7971fe83d290add359c4f3a9; path=/; domain=.gov.br; Secure; HttpOnly; SameSite=Strict; 
+server: volt-adc
+

@@ -1,0 +1,45 @@
+================================================================================================================
+MODEL 01 — C3.6-C LOW-MEMORY — FORMAL K FREEZE
+================================================================================================================
+
+STATUS                          : FROZEN
+VALIDATION FAILURES             : 0
+
+MODEL                           : MODEL_01_ORDER_LOGISTIC
+PRIMARY METRIC                  : Average Precision
+TEMPORAL MONTHS                 : 17
+MODEL FITS AUDITED              : 238
+
+CONTRACT SHA256                 : c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b
+CONTRACT HASH MATCH             : True
+
+K0 MEAN AP                      : 0.0818409554
+DESCRIPTIVE BEST K              : 0
+ALL PAIRED MEAN DELTAS < 0      : True
+ALL PAIRED MEDIAN DELTAS < 0    : True
+
+ROBUST FUNCTIONAL SUPERIOR K    : []
+ROBUST K0 SUPERIOR K            : []
+
+INTERPRETATION:
+
+No robust predictive improvement was found for K>0 relative to K=0
+under the frozen MODEL 01 temporal protocol.
+
+This DOES NOT mean that temporal information is universally useless.
+This DOES NOT establish universal statistical superiority of K=0.
+
+FORMAL K MODEL 01               : 0
+SELECTED INPUT                  : ORDER_CORE_V1_ONLY
+
+NEW TRAINING                   : NO
+PCA RERUN                      : NO
+BOOTSTRAP RERUN                : NO
+THRESHOLD                      : NOT SELECTED
+SILVER                         : NOT CREATED
+RAW                            : INTACT
+
+NEXT BRANCH:
+SPATIOTEMPORAL_LOGISTICS_AUDIT
+
+================================================================================================================

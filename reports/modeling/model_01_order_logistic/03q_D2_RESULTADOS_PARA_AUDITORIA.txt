@@ -1,0 +1,280 @@
+
+======================================================================================================================
+A. SUMMARY JSON — ESTADO FORMAL DO D2
+======================================================================================================================
+{
+    "step": "MODEL_01_0_C3_3D2_RAW_VS_SMOOTH_TEMPORAL",
+    "status": "FAIL",
+    "created_at_utc": "2026-08-30T20:42:06.801794+00:00",
+    "comparison": "RAW_30D_VS_SMOOTH_30D_EDF_0_75",
+    "comparison_design": "PAIRED_EXPANDING_HISTORY_OUT_OF_TIME",
+    "window_days": 30,
+    "smooth_edf_ratio": 0.75,
+    "smooth_effective_df": 22.5,
+    "smooth_lambda": 0.0840662845049379,
+    "channels": [
+        "purchase_volume",
+        "purchase_freight"
+    ],
+    "temporal_fold_rows": 34,
+    "temporal_tests_per_channel": 17,
+    "same_orders_per_pair": true,
+    "same_temporal_boundaries_per_pair": true,
+    "pca_fit_on_past_only": true,
+    "k90_fit_on_past_only": true,
+    "fair_end_to_end_raw_error_computed": true,
+    "target_used": false,
+    "negative_values_clipped": false,
+    "smoothing_selected": false,
+    "lambda_selected_as_final": false,
+    "window_selected_as_final": false,
+    "component_count_selected": false,
+    "functional_feature_created": false,
+    "functional_module_unlocked": false,
+    "folds_frozen": false,
+    "classifier_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 1,
+    "runtime_seconds": 5.3903982670017285
+}
+
+======================================================================================================================
+B. VALIDAÇÃO DO D2
+======================================================================================================================
+                                 check status                                        observed                                expected
+                             c33c_pass   PASS                                            PASS                                    PASS
+                               d1_pass   PASS                                            PASS                                    PASS
+                              d11_pass   PASS                                            PASS                                    PASS
+                   candidate_window_30   PASS                                              30                                      30
+                     candidate_edf_075   PASS                                            0.75                                    0.75
+                candidate_effective_df   PASS                                            22.5                                    22.5
+                    paired_folds_exist   PASS                                              34                                      >0
+                 both_channels_present   PASS         ['purchase_freight', 'purchase_volume'] ['purchase_freight', 'purchase_volume']
+                 all_train_before_test   PASS                                               0                                       0
+      same_fold_count_between_channels   PASS {'purchase_freight': 17, 'purchase_volume': 17}                                   equal
+expected_17_temporal_tests_per_channel   PASS                                              17                                      17
+               all_core_metrics_finite   PASS                                               0                                       0
+             no_negative_error_metrics   PASS                                               0                                       0
+                         k_order_valid   PASS                                               0                                       0
+ negative_values_preserved_not_clipped   FAIL                                               0                                      >0
+                       target_not_used   PASS                                           False                                   False
+
+VALIDATION FAILURES = 1
+
+======================================================================================================================
+C. RAW 30D vs SMOOTH 30D EDF=0.75 — RESUMO PRINCIPAL
+======================================================================================================================
+         channel  temporal_tests  raw_k90_median  raw_k90_min  raw_k90_max  smooth_k90_median  smooth_k90_min  smooth_k90_max  k90_reduction_mean  raw_future_error_mean  raw_future_error_median  raw_future_error_p95  smooth_internal_future_error_mean  smooth_internal_future_error_median  smooth_end_to_end_raw_error_mean  smooth_end_to_end_raw_error_median  smooth_end_to_end_raw_error_p95  paired_end_to_end_delta_mean  paired_end_to_end_delta_median  paired_end_to_end_ratio_mean  smooth_better_end_to_end_folds  smooth_better_end_to_end_fold_pct  smooth_test_distortion_mean  smooth_test_distortion_p95  raw_basis_mean_angle_deg_mean  smooth_basis_mean_angle_deg_mean  raw_basis_max_angle_deg_max  smooth_basis_max_angle_deg_max  smooth_negative_cell_pct_mean  smooth_negative_cell_pct_max
+purchase_freight              17   13.0000000000            8           15       7.0000000000               5              11        4.1764705882           0.3100039582             0.2795022251          0.5271118719                       0.3013468894                         0.2547505997                      0.3752674090                        0.3549542640                     0.6085755854                  0.0652634508                    0.0693344334                  1.2396055420                               0                       0.0000000000                 0.1196493505                0.1480231378                  39.4097225158                     38.2984122647                89.8556865887                   89.8883938880                   0.0000000000                  0.0000000000
+ purchase_volume              17   10.0000000000            7           15       6.0000000000               5              11        3.4705882353           0.3055432296             0.2679583646          0.5925005699                       0.2998851961                         0.2538986885                      0.3650761651                        0.3161797620                     0.6407153766                  0.0595329355                    0.0596934727                  1.2439387775                               0                       0.0000000000                 0.1100062927                0.1421189194                  38.8340548140                     39.5525431784                89.5342894353                   89.9271584302                   0.0000000000                  0.0000000000
+
+======================================================================================================================
+D. LEITURA NUMÉRICA AUTOMÁTICA — SEM PROMOVER NENHUM MÉTODO
+======================================================================================================================
+
+purchase_freight
+--------------------------------------------------------------------------------
+RAW future error mean             : 0.3100039582
+SMOOTH -> RAW future error mean   : 0.3752674090
+Delta (smooth - raw)              : 0.0652634508
+Ratio (smooth / raw)              : 1.2396055420
+RAW K90 median                    : 13.00
+SMOOTH K90 median                 : 7.00
+SMOOTH better folds               : 0/17
+SINAL END-TO-END                  : RAW teve erro médio menor.
+
+purchase_volume
+--------------------------------------------------------------------------------
+RAW future error mean             : 0.3055432296
+SMOOTH -> RAW future error mean   : 0.3650761651
+Delta (smooth - raw)              : 0.0595329355
+Ratio (smooth / raw)              : 1.2439387775
+RAW K90 median                    : 10.00
+SMOOTH K90 median                 : 6.00
+SMOOTH better folds               : 0/17
+SINAL END-TO-END                  : RAW teve erro médio menor.
+
+======================================================================================================================
+E. COMPARAÇÃO PAREADA MÊS A MÊS
+======================================================================================================================
+         channel current_month  train_orders  test_orders  raw_k90_train  smooth_k90_train  k90_delta_smooth_minus_raw  raw_future_relative_error_k90  smooth_internal_future_error_k90  smooth_end_to_end_raw_error_k90  smooth_test_distortion_from_raw  end_to_end_error_delta_smooth_minus_raw  end_to_end_error_ratio_smooth_over_raw  smooth_lower_end_to_end_error  raw_basis_mean_angle_deg  smooth_basis_mean_angle_deg  smooth_negative_cell_pct_test
+purchase_freight       2017-04          5167         2303              9                 5                          -4                   0.3619102208                      0.3321503185                     0.3976977117                     0.1207783952                             0.0357874908                            1.0988849963                          False             48.4419250735                41.1047456150                   0.0000000000
+purchase_freight       2017-05          7470         3545             10                 6                          -4                   0.2953023831                      0.2547505997                     0.3229279540                     0.1096347423                             0.0276255710                            1.0935501118                          False             47.6613816705                32.6902095122                   0.0000000000
+purchase_freight       2017-06         11015         3135             10                 5                          -5                   0.3607547603                      0.3202706335                     0.4052648032                     0.1365448613                             0.0445100429                            1.1233803342                          False             46.4888686153                41.9614108011                   0.0000000000
+purchase_freight       2017-07         14150         3872             11                 6                          -5                   0.4087739172                      0.4103717886                     0.4982872526                     0.1538862773                             0.0895133354                            1.2189800564                          False             38.5695742025                34.9933234319                   0.0000000000
+purchase_freight       2017-08         18022         4193             13                 7                          -6                   0.2542338522                      0.2763684388                     0.3549542640                     0.1183430135                             0.1007204118                            1.3961723072                          False             35.4679266319                48.8663726118                   0.0000000000
+purchase_freight       2017-09         22215         4150             12                 7                          -5                   0.2795022251                      0.3163747526                     0.3701736065                     0.1152757312                             0.0906713814                            1.3244030755                          False             33.4879982107                38.4914958073                   0.0000000000
+purchase_freight       2017-10         26365         4478             11                 7                          -4                   0.2511423628                      0.2300539784                     0.2984755175                     0.1004912649                             0.0473331547                            1.1884714081                          False             35.7986658822                28.4142052551                   0.0000000000
+purchase_freight       2017-11         30843         7288             11                 6                          -5                   0.4907559741                      0.5338201628                     0.5885993306                     0.1378443700                             0.0978433565                            1.1993727263                          False             62.5497715922                61.7512206323                   0.0000000000
+purchase_freight       2017-12         38131         5513              8                 6                          -2                   0.6725354633                      0.6474951096                     0.6884806049                     0.1465573529                             0.0159451416                            1.0237089975                          False             70.6897307047                70.5309426054                   0.0000000000
+purchase_freight       2018-01         43644         7069             15                11                          -4                   0.2466720407                      0.2246141777                     0.3035914697                     0.1108035311                             0.0569194290                            1.2307494146                          False             35.3938572544                36.8648717641                   0.0000000000
+purchase_freight       2018-02         50713         6555             15                11                          -4                   0.2017133994                      0.1980616081                     0.2802460972                     0.1006230825                             0.0785326978                            1.3893281162                          False             32.3642281011                32.5724487913                   0.0000000000
+purchase_freight       2018-03         57268         7003             14                10                          -4                   0.1852930213                      0.1823412117                     0.2546274547                     0.0910708471                             0.0693344334                            1.3741880452                          False             25.5692728092                33.1214282470                   0.0000000000
+purchase_freight       2018-04         64271         6798             14                10                          -4                   0.2337230366                      0.2314298500                     0.3240239000                     0.1199462332                             0.0903008634                            1.3863584211                          False             35.2804558334                37.9292796822                   0.0000000000
+purchase_freight       2018-05         71069         6749             13                10                          -3                   0.2352772931                      0.2162347689                     0.3026018698                     0.1137326113                             0.0673245766                            1.2861499115                          False             32.2231799883                35.8132606575                   0.0000000000
+purchase_freight       2018-06         77818         6096             13                 9                          -4                   0.2996546878                      0.3116217119                     0.3798295813                     0.1207719243                             0.0801748936                            1.2675576149                          False             37.9442072218                33.3536199941                   0.0000000000
+purchase_freight       2018-07         83914         6156             13                 9                          -4                   0.2857667482                      0.2527086053                     0.3554867265                     0.1420091094                             0.0697199784                            1.2439751260                          False             24.9955658007                18.9521936036                   0.0000000000
+purchase_freight       2018-08         90070         6351             13                 9                          -4                   0.2070559040                      0.1842294047                     0.2542778086                     0.0957256109                             0.0472219046                            1.2280635505                          False             27.0386731763                23.6619794886                   0.0000000000
+ purchase_volume       2017-04          5167         2303              8                 5                          -3                   0.3421960531                      0.3202553762                     0.3726865942                     0.1066565386                             0.0304905410                            1.0891025503                          False             46.9151370053                37.7693080821                   0.0000000000
+ purchase_volume       2017-05          7470         3545              9                 5                          -4                   0.2679583646                      0.2538986885                     0.3117288627                     0.0986098865                             0.0437704980                            1.1633481309                          False             37.6864141198                28.3060011346                   0.0000000000
+ purchase_volume       2017-06         11015         3135              8                 5                          -3                   0.3301877213                      0.2850145043                     0.3587385262                     0.1128356377                             0.0285508049                            1.0864684028                          False             42.1314648012                43.5507574760                   0.0000000000
+ purchase_volume       2017-07         14150         3872              8                 5                          -3                   0.4076447079                      0.3776749653                     0.4594407544                     0.1340697155                             0.0517960465                            1.1270617415                          False             33.1665602910                25.3982539053                   0.0000000000
+ purchase_volume       2017-08         18022         4193             10                 6                          -4                   0.2173906573                      0.2391120822                     0.3024906514                     0.0962136168                             0.0850999941                            1.3914611382                          False             36.9126388675                46.2238623621                   0.0000000000
+ purchase_volume       2017-09         22215         4150              9                 5                          -4                   0.3303965431                      0.3332216235                     0.3776461241                     0.1001964932                             0.0472495810                            1.1430087026                          False             35.6220019365                40.2946550061                   0.0000000000
+ purchase_volume       2017-10         26365         4478              9                 6                          -3                   0.2524499172                      0.2441556196                     0.3121433900                     0.1066204972                             0.0596934727                            1.2364566936                          False             30.2131785529                38.2567516347                   0.0000000000
+ purchase_volume       2017-11         30843         7288              8                 5                          -3                   0.5701323523                      0.5806059537                     0.6298178571                     0.1412946207                             0.0596855048                            1.1046871039                          False             62.0254451139                62.4076371216                   0.0000000000
+ purchase_volume       2017-12         38131         5513              7                 6                          -1                   0.6819734402                      0.6436744698                     0.6843054546                     0.1454161142                             0.0023320144                            1.0034195091                          False             73.0804179586                71.0472968634                   0.0000000000
+ purchase_volume       2018-01         43644         7069             15                11                          -4                   0.2309204465                      0.2102077735                     0.2774530053                     0.0993192792                             0.0465325587                            1.2015090453                          False             39.8908897943                50.4154860218                   0.0000000000
+ purchase_volume       2018-02         50713         6555             15                10                          -5                   0.1599743789                      0.1690856056                     0.2303606352                     0.0798463849                             0.0703862563                            1.4399845572                          False             32.5529531930                34.7758114693                   0.0000000000
+ purchase_volume       2018-03         57268         7003             14                10                          -4                   0.1648021726                      0.1815381214                     0.2443901823                     0.0830636081                             0.0795880097                            1.4829305851                          False             25.7858208047                32.8812999281                   0.0000000000
+ purchase_volume       2018-04         64271         6798             13                10                          -3                   0.2350390032                      0.2306707672                     0.3161797620                     0.1116267566                             0.0811407587                            1.3452225274                          False             35.0549414474                37.7120096206                   0.0000000000
+ purchase_volume       2018-05         71069         6749             13                10                          -3                   0.2086379769                      0.1999354426                     0.2801899220                     0.1046637376                             0.0715519452                            1.3429478479                          False             36.3985146944                34.4710202493                   0.0000000000
+ purchase_volume       2018-06         77818         6096             13                 9                          -4                   0.2863557494                      0.3342572329                     0.3957415135                     0.1192196294                             0.1093857641                            1.3819925542                          False             38.4497213148                38.7989355210                   0.0000000000
+ purchase_volume       2018-07         83914         6156             13                 9                          -4                   0.3147438806                      0.2961074203                     0.3856356131                     0.1354552765                             0.0708917325                            1.2252362536                          False             27.0558682624                24.8987173982                   0.0000000000
+ purchase_volume       2018-08         90070         6351             13                 9                          -4                   0.1934315372                      0.1986326878                     0.2673459588                     0.0949991826                             0.0739144216                            1.3821218744                          False             27.2369636801                25.1854302386                   0.0000000000
+
+======================================================================================================================
+F. TOP MESES — SMOOTH MAIS AJUDOU END-TO-END
+======================================================================================================================
+         channel current_month  raw_k90_train  smooth_k90_train  raw_future_relative_error_k90  smooth_end_to_end_raw_error_k90  end_to_end_error_delta_smooth_minus_raw  end_to_end_error_ratio_smooth_over_raw
+ purchase_volume       2017-12              7                 6                   0.6819734402                     0.6843054546                             0.0023320144                            1.0034195091
+purchase_freight       2017-12              8                 6                   0.6725354633                     0.6884806049                             0.0159451416                            1.0237089975
+purchase_freight       2017-05             10                 6                   0.2953023831                     0.3229279540                             0.0276255710                            1.0935501118
+ purchase_volume       2017-06              8                 5                   0.3301877213                     0.3587385262                             0.0285508049                            1.0864684028
+ purchase_volume       2017-04              8                 5                   0.3421960531                     0.3726865942                             0.0304905410                            1.0891025503
+purchase_freight       2017-04              9                 5                   0.3619102208                     0.3976977117                             0.0357874908                            1.0988849963
+ purchase_volume       2017-05              9                 5                   0.2679583646                     0.3117288627                             0.0437704980                            1.1633481309
+purchase_freight       2017-06             10                 5                   0.3607547603                     0.4052648032                             0.0445100429                            1.1233803342
+ purchase_volume       2018-01             15                11                   0.2309204465                     0.2774530053                             0.0465325587                            1.2015090453
+purchase_freight       2018-08             13                 9                   0.2070559040                     0.2542778086                             0.0472219046                            1.2280635505
+
+======================================================================================================================
+G. TOP MESES — SMOOTH MAIS PIOROU END-TO-END
+======================================================================================================================
+         channel current_month  raw_k90_train  smooth_k90_train  raw_future_relative_error_k90  smooth_end_to_end_raw_error_k90  end_to_end_error_delta_smooth_minus_raw  end_to_end_error_ratio_smooth_over_raw
+ purchase_volume       2018-06             13                 9                   0.2863557494                     0.3957415135                             0.1093857641                            1.3819925542
+purchase_freight       2017-08             13                 7                   0.2542338522                     0.3549542640                             0.1007204118                            1.3961723072
+purchase_freight       2017-11             11                 6                   0.4907559741                     0.5885993306                             0.0978433565                            1.1993727263
+purchase_freight       2017-09             12                 7                   0.2795022251                     0.3701736065                             0.0906713814                            1.3244030755
+purchase_freight       2018-04             14                10                   0.2337230366                     0.3240239000                             0.0903008634                            1.3863584211
+purchase_freight       2017-07             11                 6                   0.4087739172                     0.4982872526                             0.0895133354                            1.2189800564
+ purchase_volume       2017-08             10                 6                   0.2173906573                     0.3024906514                             0.0850999941                            1.3914611382
+ purchase_volume       2018-04             13                10                   0.2350390032                     0.3161797620                             0.0811407587                            1.3452225274
+purchase_freight       2018-06             13                 9                   0.2996546878                     0.3798295813                             0.0801748936                            1.2675576149
+ purchase_volume       2018-03             14                10                   0.1648021726                     0.2443901823                             0.0795880097                            1.4829305851
+
+======================================================================================================================
+H. CONSISTÊNCIA DA COMPARAÇÃO
+======================================================================================================================
+
+purchase_freight
+--------------------------------------------------------------------------------
+Temporal tests          : 17
+SMOOTH wins             : 0
+RAW wins                : 17
+Ties                    : 0
+Mean delta              : 0.0652634508
+Median delta            : 0.0693344334
+Minimum delta           : 0.0159451416
+Maximum delta           : 0.1007204118
+
+purchase_volume
+--------------------------------------------------------------------------------
+Temporal tests          : 17
+SMOOTH wins             : 0
+RAW wins                : 17
+Ties                    : 0
+Mean delta              : 0.0595329355
+Median delta            : 0.0596934727
+Minimum delta           : 0.0023320144
+Maximum delta           : 0.1093857641
+
+======================================================================================================================
+I. RELATÓRIO FORMAL GERADO PELO D2
+======================================================================================================================
+================================================================================================================
+MODEL 01.0-C3.3-D2 — RAW 30D vs SMOOTH 30D EDF=0.75
+================================================================================================================
+
+STATUS                         : FAIL
+WINDOW                         : 30 days
+SMOOTH EDF RATIO               : 0.75
+SMOOTH EFFECTIVE DF            : 22.5
+LAMBDA                         : 0.0840662845049
+
+DESIGN
+----------------------------------------------------------------------------------------------------------------
+Paired expanding-history temporal comparison.
+Same orders in RAW and SMOOTH routes.
+PCA learned only from past curves.
+K90 learned only from past curves.
+Target not used.
+
+KEY FAIRNESS METRIC
+----------------------------------------------------------------------------------------------------------------
+RAW route is reconstructed against RAW future curves.
+SMOOTH route is ALSO evaluated against RAW future curves.
+Therefore smoothing distortion is not hidden by evaluating only in smoothed space.
+
+purchase_freight
+  temporal tests              : 17
+  RAW K90 median              : 13.00
+  SMOOTH K90 median           : 7.00
+  mean K90 reduction          : 4.1765
+  RAW future error mean       : 0.310004
+  SMOOTH internal error mean  : 0.301347
+  SMOOTH end-to-end RAW mean  : 0.375267
+  paired delta mean           : 0.065263
+  smooth lower error folds    : 0/17
+
+purchase_volume
+  temporal tests              : 17
+  RAW K90 median              : 10.00
+  SMOOTH K90 median           : 6.00
+  mean K90 reduction          : 3.4706
+  RAW future error mean       : 0.305543
+  SMOOTH internal error mean  : 0.299885
+  SMOOTH end-to-end RAW mean  : 0.365076
+  paired delta mean           : 0.059533
+  smooth lower error folds    : 0/17
+
+IMPORTANT
+----------------------------------------------------------------------------------------------------------------
+No automatic winner is declared.
+No smoothing configuration is promoted.
+No clipping is applied.
+No target is used.
+No final K is selected.
+No fold is frozen.
+No model is trained.
+No Silver is created.
+RAW is not modified.
+
+VALIDATION FAILURES            : 1
+RUNTIME                        : 5.390s
+================================================================================================================
+
+======================================================================================================================
+J. ESTADO APÓS O D2
+======================================================================================================================
+D2 executado                     : SIM
+Comparação RAW vs SMOOTH          : SIM
+Comparação temporal pareada       : SIM
+Erro end-to-end contra RAW futuro : SIM
+
+Smoothing promovido               : NÃO
+Janela final congelada            : NÃO
+K final congelado                 : NÃO
+Target usado nesta análise        : NÃO
+Clipping aplicado                 : NÃO
+Feature funcional criada          : NÃO
+Modelo treinado                   : NÃO
+Silver criada                     : NÃO
+RAW alterado                      : NÃO
+
+VALIDATION FAILURES               : 1
+
+======================================================================================================================
+FIM DOS RESULTADOS C3.3-D2
+======================================================================================================================

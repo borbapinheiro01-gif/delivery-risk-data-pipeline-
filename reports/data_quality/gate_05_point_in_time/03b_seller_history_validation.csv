@@ -1,0 +1,10 @@
+check,status,observed,expected
+supervised_order_count_matches_label_contract,PASS,96470,96470
+all_task_orders_have_seller_entity,PASS,0,0
+order_seller_entity_unique,PASS,0,0
+historical_outcomes_not_before_own_purchase,PASS,0,0
+latest_purchase_event_strictly_before_prediction,PASS,0,0
+latest_outcome_event_strictly_before_prediction,PASS,0,0
+no_negative_history_counts,PASS,0,0
+late_counts_never_exceed_observed_outcomes,PASS,0,0
+independent_bruteforce_sample_matches,PASS,0,0

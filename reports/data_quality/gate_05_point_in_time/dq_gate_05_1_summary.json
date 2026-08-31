@@ -1,0 +1,17 @@
+{
+  "step": "DQ_GATE_05_1_POINT_IN_TIME_REGISTRY",
+  "step_status": "PASS",
+  "gate_05_status": "IN_PROGRESS",
+  "created_at_utc": "2026-08-30T11:28:37.872850+00:00",
+  "prediction_time": "order_purchase_timestamp",
+  "raw_tables": 9,
+  "raw_columns_audited": 52,
+  "classified_columns": 52,
+  "review_required": 0,
+  "forbidden_or_target": 11,
+  "hold_columns": 10,
+  "step_validation_failures": 0,
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

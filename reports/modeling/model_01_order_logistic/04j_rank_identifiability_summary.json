@@ -1,0 +1,37 @@
+{
+    "step": "MODEL_01_0_C3_4A_1_RANK_IDENTIFIABILITY",
+    "status": "PASS",
+    "created_at_utc": "2026-08-30T21:32:46.684967+00:00",
+    "source": "MODEL_01_0_C3_4A_TEMPORAL_K_POLICY",
+    "representation": "RAW_30D",
+    "dimension": 30,
+    "channel_month_groups": 34,
+    "k_monotonic_failures": 0,
+    "reconstruction_error_monotonic_failures": 0,
+    "original_reconstruction_candidate": 0.99,
+    "q099_mean_dimension_retained_pct_range": [
+        87.25490196078431,
+        89.6078431372549
+    ],
+    "full_rank_theoretical_error": 0.0,
+    "criterion_classification": "NON_IDENTIFYING_FOR_INTRINSIC_RANK",
+    "interpretation": {
+        "q099_best_tested_reconstruction_policy": true,
+        "q099_intrinsic_rank_estimate": false,
+        "final_k_selected": false,
+        "reason": "Nested PCA reconstruction error decreases structurally as K increases and is zero at complete rank.",
+        "next_method": "TEMPORAL_BI_CROSS_VALIDATION_OF_LOW_RANK_STRUCTURE"
+    },
+    "governance": {
+        "target_used": false,
+        "pca_executed": false,
+        "svd_executed": false,
+        "bcv_executed": false,
+        "final_k_selected": false,
+        "folds_frozen": false,
+        "classifier_trained": false,
+        "silver_created": false,
+        "raw_modified": false
+    },
+    "validation_failures": 0
+}

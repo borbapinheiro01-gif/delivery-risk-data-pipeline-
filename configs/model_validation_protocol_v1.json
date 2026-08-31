@@ -1,0 +1,63 @@
+{
+  "protocol_id": "DELIVERY_RISK_MODEL_VALIDATION_V1",
+  "version": "1.0.0",
+
+  "principle": "ONE_MODEL_AT_A_TIME",
+
+  "sequence": [
+    "GATE_05_POINT_IN_TIME",
+    "MODEL_01_ORDER_LOGISTIC",
+    "MODEL_02_ORDER_CATBOOST",
+    "MODEL_03_SELLER_EXPERT",
+    "MODEL_04_GEO_PROMISE_EXPERT",
+    "MODEL_05_TEMPORAL_EXPERT",
+    "MODEL_06_FUSION",
+    "MONOLITHIC_CHALLENGER"
+  ],
+
+  "promotion_policy": {
+    "decision_values": [
+      "PROMOTE",
+      "HOLD",
+      "REJECT"
+    ],
+
+    "requirements": [
+      "No point-in-time leakage violations",
+      "Evaluation only on future temporal blocks",
+      "Average Precision compared with fold prevalence",
+      "Brier score compared with constant-probability baseline",
+      "Log loss compared with constant-probability baseline",
+      "Recall@K and Precision@K reported",
+      "Lift@K reported",
+      "Performance stability across temporal folds",
+      "Calibration assessed",
+      "Final holdout remains untouched until architecture selection"
+    ],
+
+    "no_fixed_arbitrary_score_threshold": true,
+
+    "promotion_logic": "A model is promoted only if it shows consistent out-of-sample incremental value over the relevant baseline or previous promoted model."
+  },
+
+  "primary_metrics": [
+    "average_precision",
+    "brier_score",
+    "log_loss",
+    "recall_at_10pct",
+    "precision_at_10pct",
+    "capture_at_10pct",
+    "lift_at_10pct"
+  ],
+
+  "secondary_metrics": [
+    "roc_auc",
+    "f2",
+    "calibration_curve"
+  ],
+
+  "final_holdout_policy": {
+    "status": "LOCKED",
+    "rule": "Do not inspect the final holdout while selecting modules or algorithms."
+  }
+}

@@ -1,0 +1,25 @@
+================================================================================
+PYTHON
+================================================================================
+/home/runner/workspace/.pythonlibs/bin/python3
+Python 3.12.12
+
+--- sys information ---
+executable = /home/runner/workspace/.pythonlibs/bin/python3
+version    = 3.12.12 (main, Oct  9 2025, 11:07:00) [GCC 15.2.0]
+platform   = Linux-6.18.48-x86_64-with-glibc2.40
+machine    = x86_64
+
+sys.path:
+  
+  /nix/store/y50fwh2sha400s38m12psfxpvk2c8w39-sitecustomize/lib/python/site-packages
+  /nix/store/3idd141l4qkq2s4b1jqwfahmzf739yyb-python3.12-pip-25.0.1/lib/python3.12/site-packages
+  /nix/store/iizfzmqjdfvbyx82gqw92glb5zl6m4my-python3-3.12.12/lib/python312.zip
+  /nix/store/iizfzmqjdfvbyx82gqw92glb5zl6m4my-python3-3.12.12/lib/python3.12
+  /nix/store/iizfzmqjdfvbyx82gqw92glb5zl6m4my-python3-3.12.12/lib/python3.12/lib-dynload
+  /home/runner/workspace/.pythonlibs/lib/python3.12/site-packages
+  /home/runner/workspace/.pythonlibs/lib/python3.12/site-packages
+  /nix/store/y9isj47l7a4i7ycp7njnbgrv7c1kyziv-python3.12-setuptools-80.9.0/lib/python3.12/site-packages
+
+site-packages:
+  /home/runner/workspace/.pythonlibs/lib/python3.12/site-packages

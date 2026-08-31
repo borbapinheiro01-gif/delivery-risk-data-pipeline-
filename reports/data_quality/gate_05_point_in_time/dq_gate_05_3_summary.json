@@ -1,0 +1,21 @@
+{
+  "step": "DQ_GATE_05_3_SELLER_HISTORY_PIT",
+  "step_status": "PASS",
+  "gate_05_status": "IN_PROGRESS",
+  "created_at_utc": "2026-08-30T11:56:38.189286+00:00",
+  "supervised_orders": 96470,
+  "order_seller_rows": 97811,
+  "unique_current_sellers": 2970,
+  "purchase_event_rows": 100010,
+  "outcome_event_rows": 97811,
+  "purchase_time_leakage": 0,
+  "outcome_time_leakage": 0,
+  "bruteforce_sample_rows": 300,
+  "bruteforce_mismatches": 0,
+  "validation_failures": 0,
+  "smoothing_applied": false,
+  "model_01_unlocked": false,
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

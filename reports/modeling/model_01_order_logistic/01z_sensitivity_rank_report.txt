@@ -1,0 +1,40 @@
+====================================================================================================
+MODEL 01.0-C3.2 — SENSITIVITY / SVD / RANK / CONDITIONING
+====================================================================================================
+
+STATUS                       : PASS
+PATH ASSESSMENT              : VIABLE_DIAGNOSTIC
+ROWS                         : 96,470
+FEATURES                     : 13
+GLOBAL RANK                  : 11
+GLOBAL NULLITY               : 2
+KNOWN EXACT RELATIONS        : 2
+KNOWN RANK UPPER BOUND       : 11
+EFFECTIVE CONDITION NUMBER   : 2.18387203e+02
+
+IMPORTANT
+----------------------------------------------------------------------------------------------------
+Diagnostic only.
+No feature was removed.
+No threshold was frozen.
+No temporal boundary was frozen.
+No fold was frozen.
+No model was trained.
+RAW was not modified.
+
+KNOWN IDENTITIES
+----------------------------------------------------------------------------------------------------
+PRICE_RANGE | max residual=5.68434189e-14 | nullspace projection=100.00000000%
+MERCHANDISE_PLUS_FREIGHT | max residual=4.54747351e-13 | nullspace projection=100.00000000%
+
+TEMPORAL
+----------------------------------------------------------------------------------------------------
+Months total      : 23
+Months computable : 21
+Temporal rank     : 11 .. 11
+
+C3 joined                    : True
+Spearman consensus/condition : -0.061430457866390294
+Spearman persistent/condition: -0.06672522325825148
+
+====================================================================================================

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "multilevel_model_type": "Frequentista Linear MixedLM (groups=customer_state)",
+  "freight_residual_coef": -0.007694243760629856,
+  "freight_residual_ci_95": [
+    -0.011567952323923793,
+    -0.0038205351973359175
+  ],
+  "n_groups_uf": 27
+}

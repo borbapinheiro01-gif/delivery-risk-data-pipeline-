@@ -1,0 +1,13 @@
+gate,check_id,dimension,severity,status,affected,denominator,affected_pct,observed,expected,details
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-001,task_observability,CRITICAL,PASS,0,99441,0.0,96470 observable delivered orders,> 0,Candidate supervised cohort exists.
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-002,timestamp_parseability,CRITICAL,PASS,0,99441,0.0,0 parse failures,0,order_purchase_timestamp
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-003,timestamp_parseability,CRITICAL,PASS,0,99441,0.0,0 parse failures,0,order_estimated_delivery_date
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-004,timestamp_parseability,CRITICAL,PASS,0,96476,0.0,0 parse failures,0,order_delivered_customer_date
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-005,temporal_validity,CRITICAL,PASS,0,96470,0.0,0 estimated dates before purchase,0,
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-006,temporal_validity,CRITICAL,PASS,0,96470,0.0,0 actual deliveries before purchase,0,
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-007,status_outcome_consistency,WARNING,WARN,8,96478,0.008292045855013579,8 delivered statuses without actual delivery timestamp,0 preferred,
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-008,status_outcome_consistency,WARNING,WARN,6,99441,0.00603372854255287,6 non-delivered statuses with actual timestamp,0 preferred,
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-009,promise_time_semantics,INFO,INFO,96470,96470,100.0,100.000000% estimated timestamps at midnight,diagnostic,unique_time_of_day_values=1
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-010,construct_sensitivity,INFO,INFO,1292,96470,1.3392764590027988,1292 timestamp/calendar disagreements,diagnostic,
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-011,construct_boundary,INFO,INFO,1292,1292,100.0,100.000000% of disagreements are same-calendar-day cases,diagnostic,
+DQ_GATE_04_LABEL_CONSTRUCT_VALIDITY,LBL-012,observation_window,INFO,INFO,0,99441,0.0,0 right-censoring candidates,diagnostic,observation_end=2018-10-17 13:22:46

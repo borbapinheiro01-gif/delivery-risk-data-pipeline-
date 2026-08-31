@@ -1,0 +1,37 @@
+======================================================================================================================
+MODEL 01.0-C3.4-C — TEMPORAL BLOCK-BOOTSTRAP BCV RANK STABILITY
+======================================================================================================================
+
+STATUS                     : PASS
+REPLICATES/GROUP           : 2000
+BLOCK LENGTHS              : [2, 3, 4]
+OBJECTIVE                  : SQRT_SUM_SSE_OVER_SUM_ENERGY
+
+IMPORTANT
+----------------------------------------------------------------------------------------------------------------------
+This is a bootstrap of already computed out-of-time BCV evidence.
+It quantifies rank-selection stability under temporal resampling.
+It is NOT a generative Monte Carlo model of raw Olist observations.
+
+CROSS-BLOCK SUMMARY
+----------------------------------------------------------------------------------------------------------------------
+         channel                scheme  block_lengths_tested  mode_k_min  mode_k_max  median_mode_selection_pct  max_entropy  median_entropy  min_pct_k_le_6  max_pct_k_le_6
+purchase_freight HOLDOUT_03_CONTIGUOUS                     3           6           6                      65.30     0.456596        0.444509           68.25           75.50
+purchase_freight HOLDOUT_06_CONTIGUOUS                     3           3           3                      52.60     0.612681        0.569602           68.85           74.65
+purchase_freight HOLDOUT_15_CONTIGUOUS                     3           1           1                      35.80     0.703747        0.695503           69.45           77.60
+ purchase_volume HOLDOUT_03_CONTIGUOUS                     3           6           6                      52.35     0.555291        0.529109           67.30           74.25
+ purchase_volume HOLDOUT_06_CONTIGUOUS                     3           3           3                      71.00     0.506921        0.433232           66.25           76.60
+ purchase_volume HOLDOUT_15_CONTIGUOUS                     3           1           1                      40.40     0.667094        0.652159           70.25           77.65
+
+GOVERNANCE
+----------------------------------------------------------------------------------------------------------------------
+Target used              : NO
+Final K selected         : NO
+Adaptive evidence run    : NO
+Classifier trained       : NO
+Silver created           : NO
+RAW modified             : NO
+
+Validation failures      : 0
+Runtime seconds          : 1.6647
+======================================================================================================================

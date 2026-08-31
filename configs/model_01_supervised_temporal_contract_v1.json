@@ -1,0 +1,188 @@
+{
+    "contract_id": "MODEL_01_SUPERVISED_TEMPORAL_CONTRACT_V1",
+    "created_at_utc": "2026-08-30T22:12:06.751906+00:00",
+    "status": "FROZEN_BEFORE_MODEL_PERFORMANCE",
+    "model": "MODEL_01_ORDER_LOGISTIC",
+    "prediction_time": "order_purchase_timestamp",
+    "target": "late_delivery_calendar_day",
+    "target_positive_class": 1,
+    "representation": "RAW_30D",
+    "temporal_protocol": {
+        "type": "EXPANDING_HISTORY_MONTHLY_OUT_OF_TIME",
+        "test_months": [
+            "2017-04",
+            "2017-05",
+            "2017-06",
+            "2017-07",
+            "2017-08",
+            "2017-09",
+            "2017-10",
+            "2017-11",
+            "2017-12",
+            "2018-01",
+            "2018-02",
+            "2018-03",
+            "2018-04",
+            "2018-05",
+            "2018-06",
+            "2018-07",
+            "2018-08"
+        ],
+        "first_test_month": "2017-04",
+        "last_test_month": "2018-08",
+        "training_purchase_rule": "order_purchase_timestamp < fit_cutoff",
+        "training_label_availability_rule": "order_delivered_customer_date < fit_cutoff",
+        "test_rule": "purchase belongs to current test month"
+    },
+    "preprocessing_contract": {
+        "fit_scaler_on_train_only": true,
+        "transform_test_with_train_scaler_only": true,
+        "fit_functional_pca_on_train_only": true,
+        "transform_test_with_train_pca_only": true,
+        "pca_channels": [
+            "purchase_volume",
+            "purchase_freight"
+        ],
+        "functional_window_days": 30,
+        "smoothing": false,
+        "functional_pca_input": "RAW_DAILY_CURVES",
+        "functional_pca_pointwise_standardization": false,
+        "functional_pca_centering": "TRAIN_MEAN_ONLY",
+        "functional_pca_whiten": false,
+        "functional_pca_solver": "full",
+        "post_pca_model_design": "ORDER_CORE_V1 concatenated with volume PC scores and freight PC scores",
+        "final_design_scaler": "StandardScaler",
+        "final_design_scaler_fit_scope": "TRAIN_ONLY",
+        "final_design_test_action": "Transform TEST using TRAIN PCA objects and TRAIN StandardScaler only"
+    },
+    "classifier_contract": {
+        "family": "LOGISTIC_REGRESSION",
+        "penalty": "L2",
+        "solver": "lbfgs",
+        "max_iter": 5000,
+        "random_state": 20260830,
+        "class_weight": null,
+        "note": "Class weighting is not tuned in the first K-utility experiment to avoid introducing another selection dimension.",
+        "regularization": "L2",
+        "C": 1.0,
+        "tol": 0.0001,
+        "fit_intercept": true,
+        "implementation_note": "C is fixed at 1.0 before observing model performance. lbfgs is deterministic for this use; random_state is retained as provenance but is not operational for lbfgs."
+    },
+    "k_grid": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        10,
+        15,
+        20,
+        23,
+        25,
+        27,
+        30
+    ],
+    "mandatory_baseline": {
+        "k": 0,
+        "meaning": "ORDER_CORE_V1 only; no functional components."
+    },
+    "full_functional_control": {
+        "k": 30,
+        "meaning": "No PCA truncation within each 30-day functional channel."
+    },
+    "metrics": {
+        "primary": {
+            "average_precision": "Primary ranking metric for delayed-order class."
+        },
+        "secondary_ranking": {
+            "roc_auc": "Threshold-free ranking metric.",
+            "ap_lift_over_prevalence": "Average precision divided by test-month positive prevalence."
+        },
+        "probabilistic": {
+            "log_loss": "Proper scoring rule.",
+            "brier_score": "Mean squared probability error."
+        },
+        "operational": {
+            "recall_at_05pct": "Fraction of true delays captured among the highest-risk 5% of orders.",
+            "recall_at_10pct": "Fraction of true delays captured among the highest-risk 10% of orders.",
+            "recall_at_20pct": "Fraction of true delays captured among the highest-risk 20% of orders."
+        }
+    },
+    "threshold_policy": {
+        "classification_threshold_selected": false,
+        "reason": "This stage evaluates ranking/probability performance before operational threshold selection."
+    },
+    "selection_scope": {
+        "k_final_selected": false,
+        "final_holdout_selected": false,
+        "adaptive_evidence_used": false,
+        "production_claim_allowed": false
+    },
+    "governance": {
+        "raw_modified": false,
+        "silver_created": false,
+        "classifier_trained_at_contract_creation": false
+    },
+    "functional_component_semantics": {
+        "k_definition": "SHARED_COMPONENT_COUNT_PER_CHANNEL",
+        "channels": [
+            "purchase_volume",
+            "purchase_freight"
+        ],
+        "pca_strategy": "INDEPENDENT_PCA_PER_CHANNEL",
+        "for_k_greater_than_zero": "Fit one PCA on TRAIN purchase_volume RAW-30D curves and one PCA on TRAIN purchase_freight RAW-30D curves. Use the first K scores from EACH channel.",
+        "functional_dimensions_formula": "functional_dimension(K) = 2*K",
+        "k_zero": {
+            "functional_components": 0,
+            "total_functional_dimensions": 0,
+            "meaning": "ORDER_CORE_V1 only"
+        },
+        "k_30": {
+            "components_per_channel": 30,
+            "total_functional_dimensions": 60,
+            "meaning": "Full 30-dimensional PCA coordinate system for each of the two functional channels."
+        },
+        "joint_60d_pca_used": false,
+        "same_k_required_for_both_channels": true
+    },
+    "metric_aggregation_contract": {
+        "primary_model_comparison_metric": "UNWEIGHTED_MEAN_MONTHLY_AVERAGE_PRECISION",
+        "formula": "mean_AP(K) = (1/M) * sum_m AP_m(K), with M=17 temporal test months",
+        "reason": "Each future calendar month is treated as one temporal evaluation origin, preventing the largest months from fully dominating the primary comparison.",
+        "paired_baseline": "K=0",
+        "paired_monthly_delta": "delta_AP_m(K) = AP_m(K) - AP_m(K=0)",
+        "also_report": [
+            "median_monthly_average_precision",
+            "mean_monthly_ap_lift_over_prevalence",
+            "mean_monthly_roc_auc",
+            "mean_monthly_log_loss",
+            "mean_monthly_brier_score",
+            "mean_monthly_recall_at_05pct",
+            "mean_monthly_recall_at_10pct",
+            "mean_monthly_recall_at_20pct",
+            "months_beating_k0",
+            "months_tying_k0",
+            "months_worse_than_k0"
+        ],
+        "pooled_predictions_metric_status": "DESCRIPTIVE_ONLY",
+        "pooled_metric_reason": "Predictions come from separately fitted monthly models under changing class prevalence, so pooled metrics are not the primary model-selection criterion.",
+        "automatic_k_selection": false,
+        "final_k_after_this_stage": false
+    },
+    "first_supervised_experiment": {
+        "experiment_id": "MODEL_01_0_C3_6A_K_UTILITY",
+        "purpose": "Measure whether RAW-30D functional components add out-of-time predictive utility beyond ORDER_CORE_V1.",
+        "models_per_month": 14,
+        "temporal_months": 17,
+        "expected_model_fits": 238,
+        "performance_not_yet_observed": true
+    },
+    "reproducibility_patch": {
+        "patch_id": "C3.5-B1",
+        "created_at_utc": "2026-08-30T22:15:06.001681+00:00",
+        "applied_before_any_model_performance": true
+    }
+}

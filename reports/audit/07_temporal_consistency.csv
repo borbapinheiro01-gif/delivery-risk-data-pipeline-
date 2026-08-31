@@ -1,0 +1,4 @@
+check,comparable_rows,violations,violation_pct
+purchase_after_approval,99281,0,0.0
+approval_after_carrier,97644,1359,1.3917905862111344
+carrier_after_customer_delivery,96475,23,0.023840373153666754

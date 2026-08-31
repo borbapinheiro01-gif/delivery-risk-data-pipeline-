@@ -1,0 +1,38 @@
+============================================================================================================
+MODEL 01.0-C3.3-C — TEMPORAL FUNCTIONAL BASIS PORTABILITY
+============================================================================================================
+
+STATUS                     : PASS
+TEMPORAL TEST ROWS         : 98
+CHANNEL/WINDOW GROUPS      : 6
+
+CONTRACT
+------------------------------------------------------------------------------------------------------------
+Basis learned on historical orders only.
+K learned from historical curves only.
+Current/future month never participates in basis fitting.
+Target is not used.
+
+SUMMARY
+------------------------------------------------------------------------------------------------------------
+purchase_freight | 30d | tests=17 | K90 median=13.0 | K90 range=8-15 | future RE90 mean=0.3100 | future RE90 p95=0.5271 | max inflation=2.3560
+purchase_freight | 60d | tests=16 | K90 median=19.0 | K90 range=10-28 | future RE90 mean=0.3475 | future RE90 p95=0.6475 | max inflation=2.2915
+purchase_freight | 90d | tests=16 | K90 median=20.0 | K90 range=11-39 | future RE90 mean=0.3734 | future RE90 p95=0.6922 | max inflation=2.2993
+purchase_volume | 30d | tests=17 | K90 median=10.0 | K90 range=7-15 | future RE90 mean=0.3055 | future RE90 p95=0.5925 | max inflation=2.1823
+purchase_volume | 60d | tests=16 | K90 median=16.0 | K90 range=9-27 | future RE90 mean=0.3417 | future RE90 p95=0.6582 | max inflation=2.4917
+purchase_volume | 90d | tests=16 | K90 median=16.5 | K90 range=10-38 | future RE90 mean=0.3677 | future RE90 p95=0.7184 | max inflation=2.3481
+
+IMPORTANT
+------------------------------------------------------------------------------------------------------------
+Window NOT selected.
+K NOT selected.
+No target used.
+No classifier trained.
+No model feature created.
+No fold frozen.
+No Silver created.
+RAW not modified.
+
+VALIDATION FAILURES        : 0
+RUNTIME                    : 20.142s
+============================================================================================================

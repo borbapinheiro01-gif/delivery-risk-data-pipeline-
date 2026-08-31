@@ -1,0 +1,49 @@
+====================================================================================================
+DATASET KNOWLEDGE & TRUTH REGISTRY
+====================================================================================================
+
+Dataset              : Brazilian E-Commerce Public Dataset by Olist
+Dataset ID           : olistbr/brazilian-ecommerce
+Tables mapped        : 9
+Columns mapped       : 52
+Relationships mapped : 7
+Domain values        : 168
+Quality observations : 230
+Open questions       : 18
+Search records       : 109
+
+DQ GATES
+----------------------------------------------------------------------------------------------------
+gate_01_structural       : PASS
+gate_02_semantic         : PASS
+gate_03_statistical      : PASS
+
+ARTEFATOS
+----------------------------------------------------------------------------------------------------
+- 00_registry_build_manifest.json
+- DATA_CARD_OLIST.md
+- column_catalog.csv
+- dataset_manifest.json
+- quality_observation_registry.csv
+- relationship_registry.csv
+- search_knowledge.jsonl
+- table_catalog.csv
+- temporal_availability_registry.csv
+- truth_provenance_registry.csv
+- unresolved_questions.csv
+- value_domain_registry.csv
+
+PRINCÍPIOS REGISTRADOS
+----------------------------------------------------------------------------------------------------
+1. CSV observado != verdade externa comprovada.
+2. Missing de relação != missing de atributo.
+3. Valor existente no dataset != valor disponível em t0.
+4. Feature != target source.
+5. Campo futuro não entra no baseline.
+6. Questões não comprovadas permanecem OPEN.
+7. RAW não foi alterado.
+
+PRÓXIMA ETAPA RECOMENDADA:
+DQ Gate 03B — Conditional & Task Completeness.
+
+====================================================================================================

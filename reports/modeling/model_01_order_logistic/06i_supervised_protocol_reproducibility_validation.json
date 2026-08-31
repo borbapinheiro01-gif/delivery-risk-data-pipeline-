@@ -1,0 +1,29 @@
+{
+    "step": "MODEL_01_0_C3_5B1_REPRODUCIBILITY_PATCH",
+    "status": "PASS",
+    "checks": {
+        "contract_frozen": true,
+        "C_explicit": true,
+        "tol_explicit": true,
+        "fit_intercept_explicit": true,
+        "k_semantics_defined": true,
+        "two_channels": true,
+        "k30_means_60_functional_dimensions": true,
+        "joint_pca_disabled": true,
+        "pointwise_scaling_disabled": true,
+        "pca_whitening_disabled": true,
+        "final_scaler_train_only": true,
+        "primary_aggregation_frozen": true,
+        "k0_paired_baseline": true,
+        "automatic_k_selection_false": true,
+        "expected_238_fits": true,
+        "performance_still_unobserved": true,
+        "classifier_still_untrained": true
+    },
+    "validation_failures": 0,
+    "contract_sha256_after_patch": "c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b",
+    "performance_observed": false,
+    "classifier_trained": false,
+    "raw_modified": false,
+    "silver_created": false
+}

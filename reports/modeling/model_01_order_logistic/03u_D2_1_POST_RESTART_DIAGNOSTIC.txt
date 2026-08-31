@@ -1,0 +1,105 @@
+
+================================================================================================
+D2.1 — DIAGNÓSTICO PÓS-RESTART
+================================================================================================
+
+[1] ESTADO DA MÁQUINA
+------------------------------------------------------------------------------------------------
+PWD:
+/home/runner/workspace/Delivery_Risk_Intelligence
+
+UPTIME:
+ 20:55:49  up   3:19,  0 users,  load average: 0.30, 0.12, 0.10
+
+BOOT TIME:
+
+MEMÓRIA:
+               total        used        free      shared  buff/cache   available
+Mem:           7.8Gi       2.2Gi       6.4Gi       1.3Mi       347Mi       5.6Gi
+Swap:             0B          0B          0B
+
+DISCO:
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vdf        256G   50G  205G  20% /home/runner/workspace
+
+[2] SCRIPT D2.1
+------------------------------------------------------------------------------------------------
+[PASS] script existe
+-rw-r--r-- 1 runner runner 34K Aug 30 20:53 /home/runner/workspace/Delivery_Risk_Intelligence/src/modeling/model_01_c3_3d2_1_close_representation_decision.py
+
+Sintaxe:
+  File "/home/runner/workspace/Delivery_Risk_Intelligence/src/modeling/model_01_c3_3d2_1_close_representation_decision.py", line 1470
+    \\frac{\\lVert H_{{test}}-\\widehat H_R\\rVert_F}
+                                                     ^
+SyntaxError: unexpected character after line continuation character
+[FAIL] erro de sintaxe
+
+[3] D2 ORIGINAL — DEVE CONTINUAR PRESERVADO
+------------------------------------------------------------------------------------------------
+[OK] 03l_raw_vs_smooth_temporal_summary.csv
+[OK] 03m_raw_vs_smooth_paired_comparison.csv
+[OK] 03n_raw_vs_smooth_validation.csv
+[OK] 03o_raw_vs_smooth_summary.json
+[OK] 03p_raw_vs_smooth_report.txt
+
+[4] ARTEFATOS NOVOS QUE O D2.1 TENTAVA CRIAR
+------------------------------------------------------------------------------------------------
+[NÃO CRIADO] 03r_d2_methodological_validation_v2.csv
+[NÃO CRIADO] 03s_functional_representation_decision.json
+[NÃO CRIADO] 03t_functional_representation_decision_report.txt
+
+Documento científico:
+[NÃO CRIADO] docs/FUNCTIONAL_REPRESENTATION_DECISION_D2.md
+
+[5] SE DECISION JSON EXISTIR, MOSTRAR
+------------------------------------------------------------------------------------------------
+[INFO] Decision JSON não existe.
+
+[6] SE VALIDAÇÃO V2 EXISTIR, MOSTRAR SEM PANDAS
+------------------------------------------------------------------------------------------------
+[INFO] Validation V2 não existe.
+
+[7] D2 ORIGINAL — STATUS CONTINUA CONHECIDO?
+------------------------------------------------------------------------------------------------
+D2 original status       : FAIL
+D2 validation failures  : 1
+temporal fold rows       : 34
+tests/channel            : 17
+target used              : False
+raw modified             : False
+
+[8] ARQUIVOS MAIS RECENTES — MODEL 01
+------------------------------------------------------------------------------------------------
+2026-08-30 20:22:10.6800664620         243 bytes  02y_functional_temporal_portability_validation.csv
+2026-08-30 20:22:10.6808675210         927 bytes  02z_functional_temporal_portability_summary.json
+2026-08-30 20:22:10.6820334530        2081 bytes  03a_functional_temporal_portability_report.txt
+2026-08-30 20:28:47.0196505060        1259 bytes  03b_smoothing_operator_grid.csv
+2026-08-30 20:29:01.1829243620        6464 bytes  03c_smoothing_geometry_sensitivity.csv
+2026-08-30 20:29:01.1872569010         541 bytes  03d_smoothing_sensitivity_validation.csv
+2026-08-30 20:29:01.1881226850        1104 bytes  03e_smoothing_sensitivity_summary.json
+2026-08-30 20:29:01.1888758810        1307 bytes  03f_smoothing_sensitivity_report.txt
+2026-08-30 20:34:22.4915434890        7524 bytes  03g_negative_smoothing_severity.csv
+2026-08-30 20:34:22.4936512760         195 bytes  03h_negative_smoothing_validation.csv
+2026-08-30 20:34:22.4945158210         802 bytes  03i_negative_smoothing_summary.json
+2026-08-30 20:34:22.4950351790        1078 bytes  03j_negative_smoothing_report.txt
+2026-08-30 20:42:06.7661345880       15079 bytes  03k_raw_vs_smooth_temporal_folds.csv
+2026-08-30 20:42:06.7907018660        1641 bytes  03l_raw_vs_smooth_temporal_summary.csv
+2026-08-30 20:42:06.7977734440        7459 bytes  03m_raw_vs_smooth_paired_comparison.csv
+2026-08-30 20:42:06.8015026220         693 bytes  03n_raw_vs_smooth_validation.csv
+2026-08-30 20:42:06.8026828810        1211 bytes  03o_raw_vs_smooth_summary.json
+2026-08-30 20:42:06.8032022240        2376 bytes  03p_raw_vs_smooth_report.txt
+2026-08-30 20:45:17.5374139480       33884 bytes  03q_D2_RESULTADOS_PARA_AUDITORIA.txt
+2026-08-30 20:55:49.3901387860        3029 bytes  03u_D2_1_POST_RESTART_DIAGNOSTIC.txt
+
+[9] POSSÍVEL OOM / KERNEL KILL — SOMENTE LEITURA
+------------------------------------------------------------------------------------------------
+
+================================================================================================
+FIM DO DIAGNÓSTICO
+================================================================================================
+
+Nenhum experimento foi reexecutado.
+RAW alterado    : NÃO
+PCA executada   : NÃO
+Smoothing       : NÃO
+Modelo treinado : NÃO

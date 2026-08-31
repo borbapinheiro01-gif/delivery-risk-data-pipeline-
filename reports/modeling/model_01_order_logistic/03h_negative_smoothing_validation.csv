@@ -1,0 +1,6 @@
+check,status,observed,expected
+d1_pass,PASS,PASS,PASS
+nontrivial_configs,PASS,18,18
+negative_counts_recomputed_exactly,PASS,0,0
+all_core_metrics_finite,PASS,0,0
+no_data_mutation,PASS,False,False

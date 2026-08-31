@@ -1,0 +1,11 @@
+check,status,observed,expected
+c34b_pass,PASS,PASS,PASS
+original_candidates_reproduced,PASS,0,0
+six_channel_scheme_groups,PASS,6,6
+three_block_lengths,PASS,3,3
+eighteen_bootstrap_groups,PASS,18,18
+all_bootstrap_replicates_complete,PASS,36000,36000
+selection_pct_sums_100,PASS,1.4210854715202004e-14,<1e-10
+all_metrics_finite,PASS,0,0
+target_not_used,PASS,False,False
+final_k_not_selected,PASS,False,False

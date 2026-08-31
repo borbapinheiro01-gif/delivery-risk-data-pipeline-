@@ -1,0 +1,30 @@
+================================================================================================
+DQ GATE 02 — SEMANTIC / VALIDITY
+================================================================================================
+
+PRÉ-REQUISITO
+DQ GATE 01       : PASS
+
+STATUS            : PASS
+TOTAL CHECKS      : 45
+PASS              : 38
+WARNINGS          : 7
+CRITICAL FAILURES : 0
+
+CHECKS NÃO-PASS:
+------------------------------------------------------------------------------------------------
+[WARN] SEM-030 | payments.payment_value | semantic_suspicion | afetados=9 (0.0087%) | observado=9 zero value(s) | esperado=> 0 preferred
+[WARN] SEM-031 | payments.payment_installments | semantic_suspicion | afetados=2 (0.0019%) | observado=2 zero value(s) | esperado=> 0 preferred
+[WARN] SEM-032 | products.product_weight_g | semantic_suspicion | afetados=4 (0.0121%) | observado=4 zero value(s) | esperado=> 0 preferred
+[WARN] SEM-051 | orders.approval_after_carrier | cross_field_temporal_consistency | afetados=1359 (1.3918%) | observado=1359 violation(s) | esperado=approval <= carrier
+[WARN] SEM-052 | orders.carrier_after_customer_delivery | cross_field_temporal_consistency | afetados=23 (0.0238%) | observado=23 violation(s) | esperado=carrier <= customer_delivery
+[WARN] SEM-060 | products.product_category_name | cross_table_semantic_consistency | afetados=13 (0.0402%) | observado=['pc_gamer', 'portateis_cozinha_e_preparadores_de_alimentos'] | esperado=category available in translation table
+[WARN] SEM-061 | geolocation.geolocation_zip_code_prefix | geographic_consistency | afetados=8 (0.0421%) | observado=8 prefixes associated with more than one state | esperado=1 state per zip prefix
+
+------------------------------------------------------------------------------------------------
+INTERPRETAÇÃO:
+CRITICAL FAIL -> DQ Gate 02 reprovado.
+WARNING -> anomalia real documentada, mas não bloqueante.
+PASS com warnings -> pode avançar ao DQ Gate 03 — Statistical / Completeness.
+Nenhum dado RAW é alterado por este gate.
+------------------------------------------------------------------------------------------------

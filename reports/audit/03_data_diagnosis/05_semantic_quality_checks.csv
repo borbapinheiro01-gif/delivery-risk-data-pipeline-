@@ -1,0 +1,19 @@
+table,variable,rule,count,pct,severity
+order_items,price,price < 0,0,0.0,INVALID_IF_PRESENT
+order_items,price,price == 0,0,0.0,REVIEW
+order_items,freight_value,freight_value < 0,0,0.0,INVALID_IF_PRESENT
+order_items,freight_value,freight_value == 0,383,0.33999112294718153,PLAUSIBLE_REVIEW
+payments,payment_value,payment_value < 0,0,0.0,INVALID_IF_PRESENT
+payments,payment_value,payment_value == 0,9,0.008663342510059104,REVIEW
+payments,payment_installments,payment_installments < 0,0,0.0,INVALID_IF_PRESENT
+payments,payment_installments,payment_installments == 0,2,0.0019251872244575785,REVIEW
+products,product_weight_g,product_weight_g < 0,0,0.0,INVALID_IF_PRESENT
+products,product_weight_g,product_weight_g == 0,4,0.012139237048951474,REVIEW
+products,product_length_cm,product_length_cm < 0,0,0.0,INVALID_IF_PRESENT
+products,product_length_cm,product_length_cm == 0,0,0.0,REVIEW
+products,product_height_cm,product_height_cm < 0,0,0.0,INVALID_IF_PRESENT
+products,product_height_cm,product_height_cm == 0,0,0.0,REVIEW
+products,product_width_cm,product_width_cm < 0,0,0.0,INVALID_IF_PRESENT
+products,product_width_cm,product_width_cm == 0,0,0.0,REVIEW
+cohort,promised_lead_days,promised_lead_days <= 0,0,0.0,REVIEW
+cohort,actual_lead_days,actual_lead_days < 0,0,0.0,INVALID_IF_PRESENT

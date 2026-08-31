@@ -1,0 +1,19 @@
+{
+  "registry_version": "1.0.0",
+  "created_at_utc": "2026-08-30T09:38:02.688688+00:00",
+  "project": "Delivery Risk Intelligence Platform",
+  "dataset": "olistbr/brazilian-ecommerce",
+  "dataset_fingerprint": "3a2d46493a1d746f1840068264755660a30705a7ff80475eaee89b470387a7e3",
+  "python_version": "3.12.12 (main, Oct  9 2025, 11:07:00) [GCC 15.2.0]",
+  "platform": "Linux-6.18.48-x86_64-with-glibc2.40",
+  "pandas_version": "2.3.3",
+  "numpy_version": "2.5.0",
+  "tables": 9,
+  "columns": 52,
+  "relationships": 7,
+  "domain_values": 168,
+  "quality_observations": 230,
+  "open_questions": 18,
+  "search_records": 109,
+  "raw_modified": false
+}

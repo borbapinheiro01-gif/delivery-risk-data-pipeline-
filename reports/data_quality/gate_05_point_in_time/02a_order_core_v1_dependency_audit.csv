@@ -1,0 +1,16 @@
+feature_name,source,source_exists,point_in_time_status,source_allowed_for_model_01
+item_count,order_items.order_item_id,True,AGGREGATE_SAFE_AT_T0,True
+unique_product_count,order_items.product_id,True,JOIN_KEY_ONLY,True
+unique_seller_count,order_items.seller_id,True,JOIN_KEY_ONLY,True
+total_price,order_items.price,True,AGGREGATE_SAFE_AT_T0,True
+mean_price,order_items.price,True,AGGREGATE_SAFE_AT_T0,True
+max_price,order_items.price,True,AGGREGATE_SAFE_AT_T0,True
+min_price,order_items.price,True,AGGREGATE_SAFE_AT_T0,True
+price_range,order_items.price,True,AGGREGATE_SAFE_AT_T0,True
+total_freight,order_items.freight_value,True,AGGREGATE_SAFE_AT_T0,True
+mean_freight,order_items.freight_value,True,AGGREGATE_SAFE_AT_T0,True
+max_freight,order_items.freight_value,True,AGGREGATE_SAFE_AT_T0,True
+merchandise_plus_freight,order_items.price,True,AGGREGATE_SAFE_AT_T0,True
+merchandise_plus_freight,order_items.freight_value,True,AGGREGATE_SAFE_AT_T0,True
+freight_price_ratio,order_items.price,True,AGGREGATE_SAFE_AT_T0,True
+freight_price_ratio,order_items.freight_value,True,AGGREGATE_SAFE_AT_T0,True

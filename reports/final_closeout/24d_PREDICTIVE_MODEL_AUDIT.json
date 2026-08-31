@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "evaluation_scope": "TEMPORAL_OUT_OF_TIME",
+  "primary_metric": "AVERAGE_PRECISION",
+  "nonlinear_audit": {
+    "status": "NO_ROBUST_OOT_GAIN",
+    "linear_mean_AP": 0.12056569872496804,
+    "best_flexible_mean_AP": 0.11977525270467902,
+    "linear_mean_Brier": 0.06288059262392,
+    "best_flexible_mean_Brier": 0.06310062042557084
+  },
+  "gnadmm_temporal_AP_evidence": "FAVORABLE_NOT_DECISIVE",
+  "mean_GNADMM_AP_improvement_vs_logit": 0.001672883764737321,
+  "metric_winners": [
+    {
+      "metric": "Average Precision",
+      "direction": "MAX",
+      "winner": "GN_EQ0",
+      "value": 0.121082861885728
+    },
+    {
+      "metric": "Brier",
+      "direction": "MIN",
+      "winner": "GN_EQ0",
+      "value": 0.0630500603527122
+    },
+    {
+      "metric": "LogLoss",
+      "direction": "MIN",
+      "winner": "GN_EQ0",
+      "value": 0.2455923979361494
+    },
+    {
+      "metric": "ROC-AUC",
+      "direction": "MAX",
+      "winner": "LOGIT_MLE",
+      "value": 0.6217611790095791
+    }
+  ],
+  "calibration_winners": {
+    "best_pooled_Brier": "GN_EQ0",
+    "best_ECE": "LOGIT_MLE",
+    "best_intercept_slope_proximity": "GN_EQ0",
+    "important_guardrail": "Brier is an overall proper probabilistic score and is not interpreted as calibration alone."
+  },
+  "universal_winner": null,
+  "universal_superiority_supported": false,
+  "scientific_interpretation": "Performance is evaluated across ranking/discrimination, proper probabilistic losses and calibration diagnostics. Different metric winners are preserved rather than forcing a single universal model ranking.",
+  "raw_modified": false
+}

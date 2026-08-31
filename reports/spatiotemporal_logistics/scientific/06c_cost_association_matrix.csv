@@ -1,0 +1,7 @@
+var_x,var_y,pearson_r,spearman_rho
+total_freight,distance_freight_weighted_km,0.3155048847202868,0.5848616957223413
+total_freight,total_weight_g,0.6400462927377575,0.4917836856744283
+total_freight,product_volume_sum_proxy_cm3,0.6385918804113423,0.4247919746863926
+total_freight,total_price,0.4111622151284089,0.46949183669580286
+total_freight,customer_population,-0.11693325506231846,-0.19263534678206737
+total_freight,customer_gdp_per_capita,-0.10913812362125032,-0.26722255019566227

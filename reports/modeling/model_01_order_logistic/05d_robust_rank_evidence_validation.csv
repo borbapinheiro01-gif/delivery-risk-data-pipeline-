@@ -1,0 +1,10 @@
+check,status,observed,expected
+c34c_pass,PASS,PASS,PASS
+bootstrap_groups,PASS,18,18
+scheme_channel_groups,PASS,6,6
+mode_stable_within_each_scheme,PASS,0,0
+cdf_monotonic,PASS,True,True
+cdf_reaches_one,PASS,0.9999999999999996,1.0
+all_probabilities_valid,PASS,True,True
+target_not_used,PASS,False,False
+final_k_not_selected,PASS,False,False

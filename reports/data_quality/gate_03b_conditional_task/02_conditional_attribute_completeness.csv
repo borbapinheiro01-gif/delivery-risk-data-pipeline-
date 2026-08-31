@@ -1,0 +1,10 @@
+scope,entity,attribute,applicability_condition,denominator,missing,missing_pct,completeness_pct,missing_reason,ml_relevance,severity,status
+TASK_ITEM_EXPOSURE,product,product_category_name,order has item AND product_id resolves,110189,1537,1.3948760765593662,98.60512392344063,ATTRIBUTE_MISSING,optional candidate feature,WARNING,WARN
+TASK_ITEM_EXPOSURE,product,physical_dimensions_or_weight,order has item AND product_id resolves,110189,18,0.016335568886186463,99.98366443111381,ATTRIBUTE_MISSING,optional candidate feature,WARNING,WARN
+TASK_UNIQUE_PRODUCT,product,product_category_name,product is referenced by at least one task item,32214,584,1.8128763891475757,98.18712361085242,ATTRIBUTE_MISSING,entity-level diagnostic,WARNING,WARN
+TASK_UNIQUE_PRODUCT,product,physical_dimensions_or_weight,product is referenced by at least one task item,32214,2,0.0062084807847519715,99.99379151921525,ATTRIBUTE_MISSING,entity-level diagnostic,WARNING,WARN
+TASK_ITEM,order_item,price_or_freight,order item exists,110189,0,0.0,100.0,ATTRIBUTE_MISSING,core purchase-time candidate features,CRITICAL,PASS
+TASK_ORDER,customer,geolocation_reference,customer_id resolves to customers,96470,264,0.27366020524515394,99.72633979475485,RELATION_MISSING,geographic candidate features,WARNING,WARN
+TASK_ITEM_EXPOSURE,seller,geolocation_reference,seller_id resolves to sellers,110189,249,0.22597536959224604,99.77402463040775,RELATION_MISSING,geographic candidate features,WARNING,WARN
+TASK_UNIQUE_SELLER,seller,geolocation_reference,seller referenced by at least one task item,2970,7,0.2356902356902357,99.76430976430976,RELATION_MISSING,entity-level diagnostic,WARNING,WARN
+TASK_PAYMENT_RECORD,payment,payment_core_fields,payment relation exists,100748,0,0.0,100.0,ATTRIBUTE_MISSING,candidate features; point-in-time availability still unresolved,WARNING,PASS

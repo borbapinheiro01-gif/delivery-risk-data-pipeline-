@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "model_refit": false,
+  "raw_modified": false,
+  "comparison": "GN_EQ0_vs_LOGIT_MLE",
+  "primary_metric": "AP",
+  "n_months": 14,
+  "mean_AP_delta": 0.0024107907467564847,
+  "median_AP_delta": 0.003286028047266548,
+  "months_GN_EQ0_better": 8,
+  "months_LOGIT_better": 6,
+  "wilcoxon_p": 0.267578125,
+  "sign_test_p": 0.79052734375,
+  "LOMO_mean_min": 0.0014796022851999142,
+  "LOMO_mean_max": 0.003550722563320621,
+  "classification": "FAVORABLE_AND_LOMO_ROBUST_NOT_DECISIVE"
+}

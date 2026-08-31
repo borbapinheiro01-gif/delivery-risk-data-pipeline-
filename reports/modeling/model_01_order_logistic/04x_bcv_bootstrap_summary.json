@@ -1,0 +1,27 @@
+{
+    "step": "MODEL_01_0_C3_4C_TEMPORAL_BLOCK_BOOTSTRAP_BCV_STABILITY",
+    "status": "PASS",
+    "representation": "RAW_30D",
+    "source_method": "TEMPORAL_BLOCK_BICROSSVALIDATION",
+    "bootstrap_method": "MOVING_BLOCK_BOOTSTRAP_OF_OUT_OF_TIME_BCV_EVIDENCE",
+    "important_scope": "STABILITY_OF_BCV_RANK_SELECTION_NOT_FULL_DATA_GENERATIVE_MONTE_CARLO",
+    "bootstrap_replicates_per_group": 2000,
+    "block_lengths_months": [
+        2,
+        3,
+        4
+    ],
+    "seed": 20260830,
+    "objective_method": "SQRT_SUM_SSE_OVER_SUM_ENERGY",
+    "channel_scheme_groups": 6,
+    "bootstrap_groups": 18,
+    "original_candidates_reproduced": true,
+    "target_used": false,
+    "final_k_selected": false,
+    "adaptive_evidence_run": false,
+    "classifier_trained": false,
+    "silver_created": false,
+    "raw_modified": false,
+    "validation_failures": 0,
+    "runtime_seconds": 1.664712249999866
+}

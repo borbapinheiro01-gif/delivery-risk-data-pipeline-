@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "models": [
+    "GNADMM_GE0",
+    "GNADMM_LE0",
+    "GN_EQ0",
+    "GN_FREE_BRIER",
+    "LOGIT_MLE"
+  ],
+  "best_mean_AP": "GN_EQ0",
+  "best_mean_Brier": "GN_EQ0",
+  "best_mean_LogLoss": "GN_EQ0",
+  "best_mean_AUC": "LOGIT_MLE",
+  "scientific_question": "Does the previous GN–ADMM gain arise from positive curvature, removal of the quadratic term, negative curvature, or the constraint acting as regularization?",
+  "important_guardrail": "A predictive benefit from a sign constraint is not evidence that the constrained sign is the true structural shape of the data-generating process."
+}

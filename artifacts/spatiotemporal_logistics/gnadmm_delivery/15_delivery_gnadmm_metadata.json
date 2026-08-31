@@ -1,0 +1,51 @@
+{
+  "status": "PASS",
+  "n_orders": 90783,
+  "n_parameters": 8,
+  "feature_names": [
+    "intercept",
+    "z_freight",
+    "z_freight_sq",
+    "log_distance",
+    "log_weight",
+    "log_volume",
+    "promised_days",
+    "interstate"
+  ],
+  "objective": "HALF_MEAN_BRIER_NLLS",
+  "operator": "sigmoid(X beta)",
+  "residual": "y - sigmoid(X beta)",
+  "jacobian": "p*(1-p)*X",
+  "operator_valid": true,
+  "jacobian_valid": true,
+  "jacobian_best_h": 1e-05,
+  "jacobian_best_max_abs_error": 1.5684148424455202e-11,
+  "scaler": {
+    "z_freight": {
+      "mean": -0.0008623629806366084,
+      "std": 0.7365565197399689
+    },
+    "z_freight_sq": {
+      "mean": 0.5425102744821358,
+      "std": 8.141241197650166
+    },
+    "log_distance": {
+      "mean": 5.770418333095974,
+      "std": 1.3694993137102303
+    },
+    "log_weight": {
+      "mean": 6.773404636897209,
+      "std": 1.3556734749242314
+    },
+    "log_volume": {
+      "mean": 8.92345286836011,
+      "std": 1.3095626275336771
+    },
+    "promised_delivery_days": {
+      "mean": 23.33398257650723,
+      "std": 8.458026676335272
+    }
+  },
+  "primary_constraint_candidate": "beta_z_freight_sq >= 0",
+  "raw_modified": false
+}

@@ -1,0 +1,154 @@
+====================================================================================================
+27A — BLOCK 04 — COST-TO-SERVICE AUDIT
+====================================================================================================
+
+STATUS
+------
+PASS
+
+POPULATION
+----------
+Total orders:
+    96,211
+
+Continuous adjusted sample:
+    90,775
+
+Binary reliability adjusted sample:
+    90,783
+
+Quadrant-classifiable:
+    91,262
+
+PRIMARY QUESTION
+----------------
+Does paying relatively more than expected buy better service?
+
+ADJUSTED COST ANOMALY -> DELIVERY GAP
+-------------------------------------
+Coefficient per +1 monthly robust anomaly scale:
+    -0.01021195 days
+
+FDR-adjusted p:
+    0.0071565259
+
+Negative coefficient:
+    relatively higher cost associated with earlier/better
+    delivery relative to promise.
+
+Positive coefficient:
+    relatively higher cost associated with worse/later
+    service relative to promise.
+
+ADJUSTED COST ANOMALY -> OFFICIAL LATE
+--------------------------------------
+Odds ratio per +1 monthly robust anomaly scale:
+    1.00503974
+
+FDR-adjusted p:
+    0.17368076
+
+OR < 1:
+    higher relative cost associated with lower late odds.
+
+OR > 1:
+    higher relative cost associated with higher late odds.
+
+BURDEN +10 PERCENTAGE POINTS -> DELIVERY GAP
+--------------------------------------------
+Coefficient:
+    0.52388431 days
+
+FDR-adjusted p:
+    2.519546e-34
+
+BURDEN +10 PERCENTAGE POINTS -> LATE
+------------------------------------
+Odds ratio:
+    1.10371149
+
+FDR-adjusted p:
+    3.8737318e-06
+
+FINAL COST-SERVICE DIRECTION
+----------------------------
+MIXED_COST_SERVICE_EVIDENCE
+
+QUADRANTS
+---------
+          cost_service_quadrant     n  pct_of_classifiable  cost_anomaly_median  freight_log_ratio_median  freight_burden_median  delivery_gap_median  late_rate
+BENCHMARK_LOW_COST_GOOD_SERVICE 21337            23.379939            -1.142096                 -0.168645               0.143179           -11.073623    0.00000
+          LOW_COST_POOR_SERVICE  1479             1.620609            -1.183278                 -0.177319               0.141444             6.822002    1.00000
+            NEUTRAL_MIDDLE_COST 45630            49.998904             0.000000                  0.012803               0.183884           -11.372668    0.06728
+  OPERATIONAL_LEAKAGE_CANDIDATE  1795             1.966865             1.452107                  0.267301               0.226749             7.828102    1.00000
+      PREMIUM_COST_GOOD_SERVICE 21021            23.033683             1.385393                  0.269029               0.226006           -13.154265    0.00000
+
+CRITICAL SHIPPING FRICTION SENSITIVITY
+--------------------------------------
+ threshold_quantile  cost_anomaly_threshold  freight_burden_threshold  n_eligible  n_critical  critical_pct_eligible
+               0.75                0.692286                  0.275664       91262         647               0.708948
+               0.80                0.895583                  0.303117       91262         446               0.488703
+               0.90                1.667753                  0.383629       91262         150               0.164362
+
+DEFINITION
+----------
+Critical Shipping Friction requires simultaneously:
+
+    high Freight Burden
+    AND
+    high month-relative Cost Anomaly
+    AND
+    official calendar-day Late Delivery
+
+Threshold sensitivities:
+
+    Q75
+    Q80
+    Q90
+
+INTERPRETATION GUARDRAILS
+-------------------------
+1. Cost anomaly is relative to the OOT expected-freight model.
+
+2. Cost anomaly is NOT proven operational inefficiency.
+
+3. Freight Burden is customer-side economic friction.
+
+4. Freight Burden is NOT observed abandonment/conversion.
+
+5. Operational Leakage Candidate is a diagnostic label,
+   not proof of waste or mismanagement.
+
+6. Continuous Delivery Gap is used for service magnitude.
+
+7. LATE_DELIVERY_CALENDAR_DAY remains the official reliability failure.
+
+8. All models in this block are associational diagnostics.
+
+9. No carrier identity is available.
+
+10. No causal claim is made.
+
+FAILED GATES
+------------
+NONE
+
+NEXT BLOCK
+----------
+27A BLOCK 05 — SEGMENT CONCENTRATION
+
+The next block will answer:
+
+    WHERE does Critical Shipping Friction concentrate?
+
+including:
+
+    seller
+    region
+    distance band
+    ticket band
+    multi-seller
+    interstate
+
+PARAR AQUI
+====================================================================================================

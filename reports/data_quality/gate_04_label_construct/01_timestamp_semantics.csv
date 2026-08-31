@@ -1,0 +1,3 @@
+variable,task_rows,unique_time_of_day_values,midnight_count,midnight_pct,interpretation
+order_estimated_delivery_date,96470,1,96470,100.0,"If nearly all values are midnight, the field behaves as a calendar-date promise rather than an exact time-of-day SLA."
+order_delivered_customer_date,96470,41098,0,0.0,Actual delivery contains operational timestamp information.

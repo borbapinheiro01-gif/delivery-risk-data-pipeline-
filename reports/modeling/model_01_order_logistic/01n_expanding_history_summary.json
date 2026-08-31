@@ -1,0 +1,27 @@
+{
+  "step": "MODEL_01_0_C2_EXPANDING_HISTORY_DIAGNOSTIC",
+  "status": "DIAGNOSTIC_COMPLETE",
+  "reference_semantics": "ALL_OBSERVATIONS_STRICTLY_BEFORE_CURRENT_MONTH",
+  "matrix_rows": 96470,
+  "features": 13,
+  "months": 23,
+  "support_policy": {
+    "minimum_historical_orders": 1000,
+    "minimum_current_orders": 200,
+    "interpretation": "diagnostic support flag only; not a drift threshold"
+  },
+  "metrics": [
+    "KS_STATISTIC",
+    "PSI",
+    "JENSEN_SHANNON_DISTANCE",
+    "WASSERSTEIN_DISTANCE",
+    "NORMALIZED_WASSERSTEIN_BY_REFERENCE_IQR",
+    "ROBUST_MEDIAN_SHIFT",
+    "TARGET_DELTA_PP"
+  ],
+  "drift_threshold_frozen": false,
+  "folds_frozen": false,
+  "model_trained": false,
+  "silver_created": false,
+  "raw_modified": false
+}

@@ -1,0 +1,93 @@
+{
+  "status": "PASS",
+  "generated_utc": "2026-08-31T06:40:01.619810+00:00",
+  "module": "27A_BLOCK04_COST_TO_SERVICE",
+  "population": {
+    "n_orders": 96211,
+    "n_continuous_complete_case": 90775,
+    "n_binary_complete_case": 90783,
+    "n_quadrant_classifiable": 91262
+  },
+  "adjusted_cost_service": {
+    "cost_anomaly_to_delivery_gap": {
+      "coefficient_days_per_1_robust_scale": -0.010211948914524356,
+      "p_value_fdr_bh": 0.007156525881753382
+    },
+    "cost_anomaly_to_late": {
+      "odds_ratio_per_1_robust_scale": 1.0050397416974777,
+      "p_value_fdr_bh": 0.17368075501676505
+    },
+    "burden_10pp_to_delivery_gap": {
+      "coefficient_days": 0.5238843086521232,
+      "p_value_fdr_bh": 2.5195459908679723e-34
+    },
+    "burden_10pp_to_late": {
+      "odds_ratio": 1.1037114868055486,
+      "p_value_fdr_bh": 3.873731802289023e-06
+    }
+  },
+  "cost_service_interpretation": "MIXED_COST_SERVICE_EVIDENCE",
+  "critical_friction": {
+    "q75": {
+      "n_critical": 647,
+      "critical_pct_eligible": 0.7089478643904363,
+      "cost_threshold": 0.6922862510782408,
+      "burden_threshold": 0.27566358758814213
+    },
+    "q80": {
+      "n_critical": 446,
+      "critical_pct_eligible": 0.4887028555148912,
+      "cost_threshold": 0.8955831350826089,
+      "burden_threshold": 0.3031173092698933
+    },
+    "q90": {
+      "n_critical": 150,
+      "critical_pct_eligible": 0.1643619469220486,
+      "cost_threshold": 1.6677527849009401,
+      "burden_threshold": 0.383629191321499
+    }
+  },
+  "quadrant_definition": {
+    "BENCHMARK_LOW_COST_GOOD_SERVICE": "cost anomaly <= Q25 and official on-time",
+    "LOW_COST_POOR_SERVICE": "cost anomaly <= Q25 and official late",
+    "PREMIUM_COST_GOOD_SERVICE": "cost anomaly >= Q75 and official on-time",
+    "OPERATIONAL_LEAKAGE_CANDIDATE": "cost anomaly >= Q75 and official late",
+    "NEUTRAL_MIDDLE_COST": "cost anomaly between Q25 and Q75"
+  },
+  "critical_friction_definition": "high freight burden AND high month-relative cost anomaly AND official calendar-day late",
+  "interpretation_guardrails": {
+    "higher_freight_means_true_operating_cost": false,
+    "cost_anomaly_equals_proven_inefficiency": false,
+    "operational_leakage_candidate_is_proven_waste": false,
+    "critical_friction_is_causal": false,
+    "freight_burden_is_conversion_probability": false,
+    "post_outcome_service_valid_for_purchase_time_prediction": false,
+    "carrier_identity_available": false,
+    "final_predictive_model_refit": false,
+    "raw_modified": false
+  },
+  "gates": {
+    "B04_G01_inputs_exist": true,
+    "B04_G02_population_preserved": true,
+    "B04_G03_order_id_unique": true,
+    "B04_G04_continuous_sample_nontrivial": true,
+    "B04_G05_binary_sample_nontrivial": true,
+    "B04_G06_reliability_R0_converged": true,
+    "B04_G07_reliability_R1_converged": true,
+    "B04_G08_focal_model_results_finite": true,
+    "B04_G09_quadrant_population_reconciles": true,
+    "B04_G10_critical_monotonic_with_threshold": true,
+    "B04_G11_final_predictive_model_not_refit": true,
+    "B04_G12_raw_untouched": true,
+    "B04_G13_no_causal_claim": true
+  },
+  "failed_gates": [],
+  "outputs": [
+    "artifacts/shipping_friction/27a_04_cost_service_core.csv",
+    "reports/shipping_friction/27a_04_cost_service_models.csv",
+    "reports/shipping_friction/27a_04_cost_anomaly_deciles.csv",
+    "reports/shipping_friction/27a_04_cost_service_quadrants.csv",
+    "reports/shipping_friction/27a_04_critical_friction_sensitivity.csv",
+    "reports/shipping_friction/27a_04_thresholds.csv"
+  ]
+}

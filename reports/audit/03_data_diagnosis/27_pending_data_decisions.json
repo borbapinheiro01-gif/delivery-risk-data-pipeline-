@@ -1,0 +1,11 @@
+{
+  "target_definition": "Comparar timestamp_strict versus calendar_date e decidir a semântica correta da promessa.",
+  "outliers": "Investigar extremos plausíveis e suspeitos. Nenhuma exclusão automática.",
+  "numeric_transformations": "Log, clipping ou winsorization somente após EDA. Se adotados, parâmetros serão ajustados somente no treino.",
+  "numeric_imputation": "Método e estatísticas somente depois do split. Fit apenas no conjunto de treino.",
+  "shipping_limit_date": "Confirmar se a informação existia no instante t0 antes de liberar como feature.",
+  "seller_history": "Definir janela, smoothing e construção point-in-time sem utilizar o futuro.",
+  "multi_seller_orders": "Definir regra definitiva para sellers e distâncias quando um pedido possui vários sellers.",
+  "payment_inconsistencies": "Revisar a distribuição de payment_delta antes de qualquer correção ou exclusão.",
+  "geolocation_spread": "Inspecionar CEPs com vários estados/cidades ou grande dispersão antes da consolidação definitiva."
+}

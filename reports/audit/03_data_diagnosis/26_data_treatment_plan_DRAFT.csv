@@ -1,0 +1,28 @@
+table,variable,issue_type,proposed_action,rationale
+orders,order_id,identifier,KEEP_AS_KEY_ONLY,Chave técnica; nunca como feature bruta
+orders,customer_id,high_cardinality_id,KEY_JOIN_ONLY,Não usar ID bruto no modelo
+customers,customer_unique_id,high_cardinality_id,EDA_OR_HISTORY_ONLY,Somente se houver hipótese clara e construção point-in-time
+order_items,product_id,high_cardinality_id,NO_RAW_MODEL_ID,Preferir atributos do produto
+order_items,seller_id,high_cardinality_id,HISTORICAL_FEATURES_LATER,Histórico deverá usar apenas informação anterior ao pedido
+orders,order_purchase_timestamp,prediction_time,KEEP_DERIVE_CALENDAR,t0 candidato; derivar calendário e sazonalidade
+orders,order_estimated_delivery_date,promise,KEEP_DERIVE_PROMISED_LEAD,Revisar semântica de data antes de congelar target
+orders,order_delivered_customer_date,future_label,TARGET_ONLY,Informação futura; proibida como feature
+orders,order_delivered_carrier_date,future_event,EXCLUDE_FEATURE,Informação posterior ao instante da compra
+orders,order_approved_at,post_purchase_event,EXCLUDE_BASELINE_FEATURE,Posterior ao t0 e apresenta anomalias temporais
+order_items,shipping_limit_date,provenance_uncertain,HOLD_PROVENANCE_CHECK,Somente liberar se confirmarmos disponibilidade no t0
+order_items,price,numeric,KEEP_DIAGNOSE_TAIL,Não remover extremos automaticamente
+order_items,freight_value,numeric,KEEP_DIAGNOSE_TAIL,Frete zero pode ser plausível; negativos seriam inválidos
+payments,payment_value,numeric_multirecord,AGGREGATE_BY_ORDER,Somar por pedido antes do join final
+payments,payment_type,categorical_multirecord,AGGREGATE_MULTI_PAYMENT,Um pedido pode ter vários registros/tipos
+payments,payment_installments,numeric_multirecord,AGGREGATE_BY_ORDER,Revisar zeros antes da regra definitiva
+products,product_category_name,categorical_missing,MISSING_AS_UNKNOWN_CANDIDATE,Decisão final somente após revisar padrão de missing
+products,product_weight_g,numeric_missing,IMPUTE_TRAIN_ONLY_PLUS_FLAG_CANDIDATE,Não aprender imputação usando validation/test
+products,product_length_cm,numeric_missing,IMPUTE_TRAIN_ONLY_PLUS_FLAG_CANDIDATE,Não aprender imputação usando validation/test
+products,product_height_cm,numeric_missing,IMPUTE_TRAIN_ONLY_PLUS_FLAG_CANDIDATE,Não aprender imputação usando validation/test
+products,product_width_cm,numeric_missing,IMPUTE_TRAIN_ONLY_PLUS_FLAG_CANDIDATE,Não aprender imputação usando validation/test
+geolocation,geolocation_zip_code_prefix,many_rows_per_zip,AGGREGATE_MEDIAN_BY_ZIP,Nunca fazer join direto das ~1M linhas
+geolocation,lat/lng,geospatial,VALIDATE_THEN_DISTANCE,Consolidar coordenada antes de calcular Haversine
+customers,customer_state,categorical,KEEP,Informação geográfica disponível no pedido
+sellers,seller_state,categorical,AGGREGATE_MULTI_SELLER,Pedido pode conter mais de um seller
+reviews,review_score/comments,post_delivery,EXCLUDE_MAIN_MODEL,Reservar para módulo NLP pós-entrega
+translation,product_category_name_english,presentation,PRESENTATION_ONLY,Não excluir produtos por falta de tradução

@@ -1,0 +1,47 @@
+======================================================================================================================
+MODEL 01.0-C3.4-D — ROBUST RANK EVIDENCE SYNTHESIS
+======================================================================================================================
+
+STATUS
+----------------------------------------------------------------------------------------------------------------------
+Status                              : PASS
+
+SCHEME-CONDITIONED MODES
+----------------------------------------------------------------------------------------------------------------------
+         channel                scheme  block_lengths  mode_k_min  mode_k_max  mode_selection_pct_min  mode_selection_pct_median  mode_selection_pct_max  entropy_min  entropy_median  entropy_max  mode_stable_across_temporal_block_lengths
+purchase_freight HOLDOUT_03_CONTIGUOUS              3           6           6                   64.40                      65.30                   66.35     0.433865        0.444509     0.456596                                       True
+purchase_freight HOLDOUT_06_CONTIGUOUS              3           3           3                   48.85                      52.60                   55.50     0.546759        0.569602     0.612681                                       True
+purchase_freight HOLDOUT_15_CONTIGUOUS              3           1           1                   32.35                      35.80                   38.25     0.623461        0.695503     0.703747                                       True
+ purchase_volume HOLDOUT_03_CONTIGUOUS              3           6           6                   47.00                      52.35                   53.45     0.527312        0.529109     0.555291                                       True
+ purchase_volume HOLDOUT_06_CONTIGUOUS              3           3           3                   64.90                      71.00                   75.95     0.391814        0.433232     0.506921                                       True
+ purchase_volume HOLDOUT_15_CONTIGUOUS              3           1           1                   35.15                      40.40                   41.85     0.573681        0.652159     0.667094                                       True
+
+ROBUST CUMULATIVE EVIDENCE
+----------------------------------------------------------------------------------------------------------------------
+Worst-case P(K <= 6)                : 66.2500%
+Worst-case P(K <= 10)               : 67.5500%
+
+BCV RANGE
+----------------------------------------------------------------------------------------------------------------------
+Best BCV K range                    : [2, 6]
+1-SE candidate range                : [1, 6]
+
+EXACT-RANK ASSESSMENT
+----------------------------------------------------------------------------------------------------------------------
+EXACT_K_NOT_IDENTIFIED_ACROSS_HOLDOUT_SCHEMES
+
+IMPORTANT
+----------------------------------------------------------------------------------------------------------------------
+No arbitrary evidence weighting is used.
+No softmax is interpreted as posterior probability.
+No exact K is selected.
+Target is not used.
+Classifier is not trained.
+RAW is not modified.
+
+NEXT
+----------------------------------------------------------------------------------------------------------------------
+Use this structural evidence to define the supervised temporal component-selection experiment.
+
+Validation failures                 : 0
+======================================================================================================================

@@ -1,0 +1,187 @@
+{
+  "file": "data/external/landing/anp_fuel/monthly_municipality_2016_2018/mensal_municipios_2016_2018.xlsx",
+  "bytes": 10578255,
+  "sheets": [
+    {
+      "sheet": "MUNICÍPIOS - JAN 16 - DEZ 18 ",
+      "dimension": "A1:R90503",
+      "sample_rows": [
+        {
+          "row_index_zero_based": 0,
+          "values": [
+            "AGÊNCIA NACIONAL DO PETRÓLEO, GÁS NATURAL E BIOCOMBUSTÍVEIS - ANP"
+          ]
+        },
+        {
+          "row_index_zero_based": 1,
+          "values": [
+            "SUPERINTENDÊNCIA DE DEFESA DA CONCORRÊNCIA"
+          ]
+        },
+        {
+          "row_index_zero_based": 2,
+          "values": [
+            "SISTEMA DE LEVANTAMENTO DE PREÇOS"
+          ]
+        },
+        {
+          "row_index_zero_based": 4,
+          "values": [
+            "RELATÓRIO DE DEFESA DA CONCORRÊNCIA"
+          ]
+        },
+        {
+          "row_index_zero_based": 6,
+          "values": [
+            "INTERVALO DE TEMPO: MENSAL"
+          ]
+        },
+        {
+          "row_index_zero_based": 7,
+          "values": [
+            "PERÍODO: JANEIRO DE 2016 A DEZEMBRO DE 2018"
+          ]
+        },
+        {
+          "row_index_zero_based": 8,
+          "values": [
+            "COMBUSTÍVEL: TODOS"
+          ]
+        },
+        {
+          "row_index_zero_based": 9,
+          "values": [
+            "TIPO RELATÓRIO: MUNICÍPIO"
+          ]
+        },
+        {
+          "row_index_zero_based": 11,
+          "values": [
+            "Obs: Entre 30/07/17 e 30/12/17, a abrangência geográfica da pesquisa foi reduzida de 501 para 459 municípios, distribuídos da seguinte forma: as 26 capitais e o DF pesquisados semanalmente e outros 432 municípios pesquisados quinzenalmente, alternando-se a cada semana um determinado grupo (Grupo A com as 27 capitais mais 215 municípios, totalizando 242 localidades, e Grupo B com as 27 capitais e outros 217 municípios, reunindo 244 localidades)."
+          ]
+        },
+        {
+          "row_index_zero_based": 12,
+          "values": [
+            "Entre 27/5/18 e 2/6/18, o quantitativo de revendas com combustível disponível pesquisadas foi reduzido em torno de 85% em função dos impactos gerados pela greve dos caminhoneiros."
+          ]
+        },
+        {
+          "row_index_zero_based": 16,
+          "values": [
+            "MÊS",
+            "PRODUTO",
+            "REGIÃO",
+            "ESTADO",
+            "MUNICÍPIO",
+            "NÚMERO DE POSTOS PESQUISADOS",
+            "UNIDADE DE MEDIDA",
+            "PREÇO MÉDIO REVENDA",
+            "DESVIO PADRÃO REVENDA",
+            "PREÇO MÍNIMO REVENDA",
+            "PREÇO MÁXIMO REVENDA",
+            "MARGEM MÉDIA REVENDA",
+            "COEF DE VARIAÇÃO REVENDA",
+            "PREÇO MÉDIO DISTRIBUIÇÃO",
+            "DESVIO PADRÃO DISTRIBUIÇÃO",
+            "PREÇO MÍNIMO DISTRIBUIÇÃO",
+            "PREÇO MÁXIMO DISTRIBUIÇÃO",
+            "COEF DE VARIAÇÃO DISTRIBUIÇÃO"
+          ]
+        },
+        {
+          "row_index_zero_based": 17,
+          "values": [
+            "2016-01-01 00:00:00",
+            "ETANOL HIDRATADO",
+            "NORTE",
+            "PARA",
+            "ABAETETUBA",
+            "4",
+            "R$/l",
+            "3.43",
+            "0",
+            "3.43",
+            "3.43",
+            "0.524",
+            "0",
+            "2.906",
+            "0.098",
+            "2.822",
+            "2.991",
+            "0.034"
+          ]
+        },
+        {
+          "row_index_zero_based": 18,
+          "values": [
+            "2016-01-01 00:00:00",
+            "ETANOL HIDRATADO",
+            "NORDESTE",
+            "PERNAMBUCO",
+            "ABREU E LIMA",
+            "28",
+            "R$/l",
+            "2.8",
+            "0.097",
+            "2.69",
+            "2.999",
+            "0.326",
+            "0.035",
+            "2.474",
+            "0.005",
+            "2.47",
+            "2.48",
+            "0.002"
+          ]
+        },
+        {
+          "row_index_zero_based": 19,
+          "values": [
+            "2016-01-01 00:00:00",
+            "ETANOL HIDRATADO",
+            "NORDESTE",
+            "MARANHAO",
+            "ACAILANDIA",
+            "16",
+            "R$/l",
+            "3.215",
+            "0.192",
+            "2.829",
+            "3.35",
+            "0.352",
+            "0.06",
+            "2.863",
+            "0",
+            "2.863",
+            "2.863",
+            "0"
+          ]
+        },
+        {
+          "row_index_zero_based": 20,
+          "values": [
+            "2016-01-01 00:00:00",
+            "ETANOL HIDRATADO",
+            "SUDESTE",
+            "SAO PAULO",
+            "ADAMANTINA",
+            "32",
+            "R$/l",
+            "2.548",
+            "0.078",
+            "2.47",
+            "2.69",
+            "0.364",
+            "0.031",
+            "2.184",
+            "0.096",
+            "2.08",
+            "2.324",
+            "0.044"
+          ]
+        }
+      ]
+    }
+  ]
+}

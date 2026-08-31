@@ -1,0 +1,67 @@
+============================================================================================================
+MODEL 01.0-C3.3-D2.1-A — FUNCTIONAL REPRESENTATION DECISION
+============================================================================================================
+
+STATUS                            : PASS
+
+DECISION
+------------------------------------------------------------------------------------------------------------
+RAW-30D                           : PRIMARY_FOR_NEXT_FUNCTIONAL_STAGE
+SMOOTH-30D-EDF0.75                : REJECTED_AS_PRIMARY_UNSUPERVISED_PREPROCESSING
+
+EMPIRICAL EVIDENCE
+------------------------------------------------------------------------------------------------------------
+Paired temporal comparisons       : 34
+RAW wins                          : 34
+SMOOTH wins                       : 0
+Ties                              : 0
+Pairs with lower SMOOTH K90       : 34
+
+purchase_freight
+  temporal tests                 : 17
+  RAW wins                       : 17
+  SMOOTH wins                    : 0
+  RAW future error mean          : 0.3100039582
+  SMOOTH->RAW error mean         : 0.3752674090
+  delta mean                     : 0.0652634508
+  ratio mean                     : 1.2396055420
+  RAW K90 median                 : 13.00
+  SMOOTH K90 median              : 7.00
+
+purchase_volume
+  temporal tests                 : 17
+  RAW wins                       : 17
+  SMOOTH wins                    : 0
+  RAW future error mean          : 0.3055432296
+  SMOOTH->RAW error mean         : 0.3650761651
+  delta mean                     : 0.0595329355
+  ratio mean                     : 1.2439387775
+  RAW K90 median                 : 10.00
+  SMOOTH K90 median              : 6.00
+
+D2 VALIDATION CORRECTION
+------------------------------------------------------------------------------------------------------------
+Original D2 status                : FAIL
+Original D2 failures              : 1
+Original failed check             : negative_values_preserved_not_clipped
+D1.1 negative configs             : 18/18
+D2 test subsets with negatives    : 0
+Corrected validation failures      : 0
+
+SCIENTIFIC SCOPE
+------------------------------------------------------------------------------------------------------------
+Target used                        : NO
+Predictive superiority claimed     : NO
+Final K selected                   : NO
+Folds frozen                       : NO
+Classifier trained                 : NO
+Silver created                     : NO
+RAW modified                       : NO
+
+Original D2 artifacts preserved : YES
+
+NEXT STAGE
+------------------------------------------------------------------------------------------------------------
+RAW-30D
+Temporal component-count policy
+============================================================================================================

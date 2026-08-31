@@ -1,0 +1,30 @@
+====================================================================================================
+MODEL 01.0-C3.2.1 — COMMON-SCALE NULLSPACE VALIDATION
+====================================================================================================
+
+STATUS                     : PASS
+GLOBAL RANK                : 11
+GLOBAL NULLITY             : 2
+KNOWN RELATIONS            : 2
+COMPUTABLE MONTHS          : 21
+TEMPORAL RANK              : 11 .. 11
+TEMPORAL NULLITY           : 2 .. 2
+
+COMMON-SCALE ANGLES
+----------------------------------------------------------------------------------------------------
+Global numerical vs theoretical max angle: 1.165521872414e-13 deg
+Maximum month/global angle: 4.376795736892e-11 deg
+Mean maximum month/global angle: 2.545894729642e-12 deg
+Maximum month/theoretical angle: 4.368631793239e-11 deg
+Mean maximum month/theoretical angle: 2.528881966068e-12 deg
+
+ASSESSMENT
+----------------------------------------------------------------------------------------------------
+INVARIANT_IDENTITIES_CONFIRMED
+
+No feature was removed.
+No temporal boundary was frozen.
+No fold was frozen.
+No model was trained.
+RAW was not modified.
+====================================================================================================

@@ -1,0 +1,8 @@
+check,status,observed,expected,details
+all_columns_preserved,PASS,52,52,
+column_key_unique,PASS,0,0,
+all_columns_have_grain_policy,PASS,0,0,
+all_issues_have_canonical_id,PASS,0,0,
+high_leakage_not_direct_feature,PASS,0,0,
+child_grain_requires_aggregation,PASS,0,0,
+raw_directory_exists,PASS,True,True,

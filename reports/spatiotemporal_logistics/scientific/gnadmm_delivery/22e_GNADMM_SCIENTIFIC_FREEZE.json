@@ -1,0 +1,20 @@
+{
+  "final_status": "GNADMM_SCIENTIFIC_FREEZE_COMPLETE",
+  "scope": "GN_ADMM_DELIVERY_BRIER_NLLS_V1",
+  "n_orders": 90783,
+  "n_parameters": 8,
+  "objective": "HALF_MEAN_BRIER_NLLS",
+  "constraint_primary": "beta_z_freight_sq >= 0",
+  "hypothesis_status_counts": {
+    "SUPPORTED": 4,
+    "PARTIALLY_SUPPORTED": 2,
+    "NOT_SUPPORTED": 2
+  },
+  "primary_OOT_AP_evidence": "PARTIALLY_SUPPORTED",
+  "positive_quadratic_curvature_evidence": "NOT_SUPPORTED",
+  "structural_regularization_evidence": "PARTIALLY_SUPPORTED",
+  "GNADMM_calibration_superiority": "NOT_SUPPORTED",
+  "global_convergence_certified": false,
+  "causal_claim": false,
+  "raw_modified": false
+}

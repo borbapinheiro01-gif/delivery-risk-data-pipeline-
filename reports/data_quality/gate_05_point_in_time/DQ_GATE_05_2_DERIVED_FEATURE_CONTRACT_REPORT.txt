@@ -1,0 +1,43 @@
+========================================================================================================
+DQ GATE 05.2 — DERIVED FEATURE CONTRACT
+========================================================================================================
+
+STEP STATUS                         : FAIL
+GATE 05 STATUS                      : IN_PROGRESS
+
+DERIVED FEATURES DEFINED            : 48
+MODEL 01 FEATURE SET                : ORDER_CORE_V1
+MODEL 01 FEATURES                   : 13
+
+BLOCKED FEATURES                    : 6
+SELLER HISTORY DEFINITIONS          : 8
+
+DIRECT FUTURE/TARGET VIOLATIONS     : 0
+MODEL 01 DEPENDENCY VIOLATIONS      : 0
+VALIDATION FAILURES                 : 1
+
+MODEL 01
+--------------------------------------------------------------------------------------------------------
+Still LOCKED.
+
+The feature contract exists, but no feature matrix has been materialized yet.
+
+ORDER_CORE_V1 deliberately excludes:
+- payments;
+- shipping_limit_date;
+- geolocation coordinates;
+- seller historical outcomes;
+- reviews;
+- final order status;
+- approval/carrier/delivery timestamps;
+- product static-reference enrichment.
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------
+This step defines transformations only.
+
+RAW modified                        : NO
+Silver created                      : NO
+Model trained                       : NO
+
+========================================================================================================

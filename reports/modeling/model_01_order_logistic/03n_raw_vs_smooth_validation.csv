@@ -1,0 +1,17 @@
+check,status,observed,expected
+c33c_pass,PASS,PASS,PASS
+d1_pass,PASS,PASS,PASS
+d11_pass,PASS,PASS,PASS
+candidate_window_30,PASS,30,30
+candidate_edf_075,PASS,0.75,0.75
+candidate_effective_df,PASS,22.5,22.5
+paired_folds_exist,PASS,34,>0
+both_channels_present,PASS,"['purchase_freight', 'purchase_volume']","['purchase_freight', 'purchase_volume']"
+all_train_before_test,PASS,0,0
+same_fold_count_between_channels,PASS,"{'purchase_freight': 17, 'purchase_volume': 17}",equal
+expected_17_temporal_tests_per_channel,PASS,17,17
+all_core_metrics_finite,PASS,0,0
+no_negative_error_metrics,PASS,0,0
+k_order_valid,PASS,0,0
+negative_values_preserved_not_clipped,FAIL,0,>0
+target_not_used,PASS,False,False

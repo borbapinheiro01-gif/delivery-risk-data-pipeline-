@@ -1,0 +1,6 @@
+{
+  "residual_status": "VALID_FOR_DOWNSTREAM",
+  "r2_oot_global": 0.6705424176510877,
+  "max_residual_spearman_correlation": 0.1225683703330233,
+  "n_valid_oot_orders": 91262
+}

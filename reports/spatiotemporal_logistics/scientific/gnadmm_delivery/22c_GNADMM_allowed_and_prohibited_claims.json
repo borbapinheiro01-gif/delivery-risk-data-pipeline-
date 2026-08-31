@@ -1,0 +1,17 @@
+{
+  "allowed_claims": [
+    "The GN–ADMM Brier-NLS formulation was implemented and numerically validated on the logistics reliability dataset.",
+    "The analytic probability Jacobian showed high numerical agreement with finite differences.",
+    "The constrained GN–ADMM solution showed close agreement with an independent constrained numerical optimizer.",
+    "Predictive performance differed by metric; therefore no model is described as universally superior.",
+    "GN–ADMM showed a small favorable mean Average Precision difference OOT, but the paired temporal evidence was not strong enough to establish decisive superiority.",
+    "The nonnegative quadratic restriction must not be interpreted as evidence of an underlying U-shaped relationship: the unrestricted Brier-NLS fit preferred negative quadratic curvature and the restricted solution was located at the constraint boundary."
+  ],
+  "prohibited_claims": [
+    "GN–ADMM proves that freight deviations cause delivery delays.",
+    "GN–ADMM is universally superior to logistic regression.",
+    "The imposed beta_z2 >= 0 restriction proves that the true relationship is U-shaped.",
+    "Agreement with the independent optimizer proves global convergence of the external Gauss–Newton sequence.",
+    "A lower Brier score alone proves superior probability calibration."
+  ]
+}

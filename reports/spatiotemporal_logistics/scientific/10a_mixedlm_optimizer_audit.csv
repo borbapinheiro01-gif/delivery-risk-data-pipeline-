@@ -1,0 +1,4 @@
+optimizer,converged,llf,warnings
+lbfgs,True,inf,The MLE may be on the boundary of the parameter space. | The Hessian matrix at the estimated parameter values is not positive definite.
+bfgs,False,-63048.85970137722,"Maximum Likelihood optimization failed to converge. Check mle_retvals | MixedLM optimization failed, trying a different optimizer may help. | Gradient optimization failed, |grad| = 32.126188 | The Hessian matrix at the estimated parameter values is not positive definite."
+cg,True,-63033.82163143647,

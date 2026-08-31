@@ -1,0 +1,33 @@
+==============================================================================================================
+MODEL 01.0-C3.3-D1 — ROUGHNESS-PENALTY SMOOTHING SENSITIVITY
+==============================================================================================================
+
+STATUS                       : PASS
+SENSITIVITY RUNS             : 24
+NEGATIVE-VALUE CONFIGS       : 18
+
+FORMULATION
+--------------------------------------------------------------------------------------------------------------
+min_z ||h-z||^2 + lambda ||D2 z||^2
+H_lambda = H (I + lambda D2^T D2)^(-1)
+
+LAMBDA CONTROL
+--------------------------------------------------------------------------------------------------------------
+Lambda is NOT manually chosen.
+Smoothing strength is compared through effective degrees of freedom.
+EDF ratios: 1.00, 0.75, 0.50, 0.25.
+
+IMPORTANT
+--------------------------------------------------------------------------------------------------------------
+No lambda selected.
+No window selected.
+No K selected.
+No target used.
+No FPCA score produced.
+No model trained.
+No Silver created.
+RAW not modified.
+
+VALIDATION FAILURES          : 0
+RUNTIME                      : 14.460s
+==============================================================================================================

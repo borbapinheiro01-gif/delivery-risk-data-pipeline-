@@ -1,0 +1,10 @@
+check,status,observed,expected
+rows,PASS,96470,96470
+features,PASS,13,13
+feature_na,PASS,0,0
+feature_inf,PASS,0,0
+zero_variance_global,PASS,0,0
+numpy_rank_equals_explicit_svd_rank,PASS,11,11
+known_linear_identities,PASS,2,2
+nullity_at_least_two,PASS,2,>=2
+rank_respects_known_upper_bound,PASS,11,<=11

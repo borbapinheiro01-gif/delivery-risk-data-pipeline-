@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "experiment": "PREQUENTIAL_PROBABILITY_BLEND",
+  "base_model_refit": false,
+  "raw_modified": false,
+  "n_x_n_matrix_created": false,
+  "alpha_grid": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "alpha_selection": "minimum historical Brier using prior OOT months only",
+  "warmup_month": "2017-07",
+  "n_evaluation_months": 13,
+  "primary_metric": "AP",
+  "ensemble_AP_gain_vs_best_base": -0.00018010484854152908,
+  "ensemble_Brier_gap_vs_best_base": 0.00011173964176923457,
+  "ensemble_LogLoss_gap_vs_best_base": 0.0021910602721098016,
+  "ensemble_months_AP_better_than_GN_EQ0": 1,
+  "ensemble_months_AP_better_than_LOGIT": 7,
+  "guardrails_pass": false,
+  "classification": "ENSEMBLE_REJECTED_KEEP_BASE_MODEL",
+  "recommended_model": "GN_EQ0",
+  "scientific_guardrail": "No universal superiority claim. Blend is retained only if it improves primary OOT AP without material degradation of probability scores."
+}

@@ -1,0 +1,13 @@
+{
+  "prediction_time": "ORDER_PURCHASE_TIMESTAMP",
+  "target": "LATE_DELIVERY_CALENDAR_DAY",
+  "expected_freight": "Out-of-time model-derived quantity; downstream analyses inherit upstream uncertainty.",
+  "distance": "Great-circle/Haversine geographic proxy; not road-network distance.",
+  "volume": "Product-volume-sum proxy; not observed parcel cubage.",
+  "GDP": "Retrospective contextual variable; not point-in-time operational information.",
+  "population": "Annual municipal estimate with publication-timing caveat.",
+  "ANP": "Municipal missingness is preserved; state-level context remains separate.",
+  "causality": "Observational associations only; no causal identification.",
+  "GNADMM": "No claim of global convergence for the complete external nonlinear sequence.",
+  "curvature_constraint": "beta_z2 >= 0 is an imposed modeling hypothesis and is not evidence of a true U-shaped mechanism."
+}

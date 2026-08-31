@@ -1,0 +1,37 @@
+module,module_status,feature_name,availability_class,history_type,source,source_status,source_exists,blocked_by,rule
+TEMPORAL,LOCKED,purchase_hour,SAFE_AT_T0,,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,,hour(t0)
+TEMPORAL,LOCKED,purchase_weekday,SAFE_AT_T0,,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,,weekday(t0)
+TEMPORAL,LOCKED,purchase_month,SAFE_AT_T0,,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,,month(t0)
+TEMPORAL,LOCKED,purchase_quarter,SAFE_AT_T0,,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,,quarter(t0)
+TEMPORAL,LOCKED,is_weekend,SAFE_AT_T0,,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,,"1[weekday(t0) in {Saturday, Sunday}]"
+GEO_PROMISE,LOCKED,promised_lead_days,SAFE_AT_T0,,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,,date(estimated_delivery) - date(purchase)
+GEO_PROMISE,LOCKED,promised_lead_days,SAFE_AT_T0,,orders.order_estimated_delivery_date,DERIVED_SAFE_AT_T0,True,,date(estimated_delivery) - date(purchase)
+GEO_PROMISE,LOCKED,customer_state,SAFE_AT_T0,,customers.customer_state,SAFE_CONTEXT_AT_T0,True,,current order destination state
+GEO_PROMISE,LOCKED,seller_customer_distance_km,HOLD_DATA_QUALITY,,customers.customer_zip_code_prefix,SAFE_CONTEXT_AT_T0,True,ISSUE-GEO-001,Haversine after ZIP consolidation
+GEO_PROMISE,LOCKED,seller_customer_distance_km,HOLD_DATA_QUALITY,,sellers.seller_zip_code_prefix,STATIC_REFERENCE_ASSUMPTION,True,ISSUE-GEO-001,Haversine after ZIP consolidation
+GEO_PROMISE,LOCKED,seller_customer_distance_km,HOLD_DATA_QUALITY,,geolocation.geolocation_lat,HOLD_DATA_QUALITY,True,ISSUE-GEO-001,Haversine after ZIP consolidation
+GEO_PROMISE,LOCKED,seller_customer_distance_km,HOLD_DATA_QUALITY,,geolocation.geolocation_lng,HOLD_DATA_QUALITY,True,ISSUE-GEO-001,Haversine after ZIP consolidation
+GEO_PROMISE,LOCKED,shipping_limit_days,HOLD_PROVENANCE,,order_items.shipping_limit_date,HOLD_PROVENANCE,True,ISSUE-SHIPPING-LIMIT-001,shipping_limit_date - purchase_timestamp
+GEO_PROMISE,LOCKED,shipping_limit_days,HOLD_PROVENANCE,,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,ISSUE-SHIPPING-LIMIT-001,shipping_limit_date - purchase_timestamp
+SELLER_HISTORY,LOCKED,seller_prior_order_count,POINT_IN_TIME_REQUIRED,PURCHASE_EVENT_HISTORY,order_items.seller_id,JOIN_KEY_ONLY,True,,purchase_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_prior_order_count,POINT_IN_TIME_REQUIRED,PURCHASE_EVENT_HISTORY,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,,purchase_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_order_volume_30d,POINT_IN_TIME_REQUIRED,PURCHASE_EVENT_HISTORY,order_items.seller_id,JOIN_KEY_ONLY,True,,purchase_i - 30d <= purchase_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_order_volume_30d,POINT_IN_TIME_REQUIRED,PURCHASE_EVENT_HISTORY,orders.order_purchase_timestamp,DERIVED_SAFE_AT_T0,True,,purchase_i - 30d <= purchase_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_prior_observed_delivery_count,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,order_items.seller_id,JOIN_KEY_ONLY,True,,delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_prior_observed_delivery_count,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_delivered_customer_date,TARGET_ONLY,True,,delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_prior_late_count,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,order_items.seller_id,JOIN_KEY_ONLY,True,,delivery_j < purchase_i AND late_j = 1
+SELLER_HISTORY,LOCKED,seller_prior_late_count,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_delivered_customer_date,TARGET_ONLY,True,,delivery_j < purchase_i AND late_j = 1
+SELLER_HISTORY,LOCKED,seller_prior_late_count,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_estimated_delivery_date,DERIVED_SAFE_AT_T0,True,,delivery_j < purchase_i AND late_j = 1
+SELLER_HISTORY,LOCKED,seller_late_rate_prior,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,order_items.seller_id,JOIN_KEY_ONLY,True,,use only j with delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_late_rate_prior,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_delivered_customer_date,TARGET_ONLY,True,,use only j with delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_late_rate_prior,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_estimated_delivery_date,DERIVED_SAFE_AT_T0,True,,use only j with delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_late_rate_30d,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,order_items.seller_id,JOIN_KEY_ONLY,True,,purchase_i - 30d <= delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_late_rate_30d,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_delivered_customer_date,TARGET_ONLY,True,,purchase_i - 30d <= delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_late_rate_30d,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_estimated_delivery_date,DERIVED_SAFE_AT_T0,True,,purchase_i - 30d <= delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_late_rate_90d,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,order_items.seller_id,JOIN_KEY_ONLY,True,,purchase_i - 90d <= delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_late_rate_90d,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_delivered_customer_date,TARGET_ONLY,True,,purchase_i - 90d <= delivery_j < purchase_i
+SELLER_HISTORY,LOCKED,seller_late_rate_90d,POINT_IN_TIME_REQUIRED,HISTORICAL_OUTCOME_ONLY,orders.order_estimated_delivery_date,DERIVED_SAFE_AT_T0,True,,purchase_i - 90d <= delivery_j < purchase_i
+PAYMENT,BLOCKED,payment_record_count,HOLD_PROVENANCE,,payments.payment_sequential,HOLD_PROVENANCE,True,ISSUE-PAYMENT-AVAILABILITY-001,
+PAYMENT,BLOCKED,payment_type_count,HOLD_PROVENANCE,,payments.payment_type,HOLD_PROVENANCE,True,ISSUE-PAYMENT-AVAILABILITY-001,
+PAYMENT,BLOCKED,max_payment_installments,HOLD_PROVENANCE,,payments.payment_installments,HOLD_PROVENANCE,True,ISSUE-PAYMENT-AVAILABILITY-001,
+PAYMENT,BLOCKED,total_payment_value,HOLD_PROVENANCE,,payments.payment_value,HOLD_PROVENANCE,True,ISSUE-PAYMENT-AVAILABILITY-001,

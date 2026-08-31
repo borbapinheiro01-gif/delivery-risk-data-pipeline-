@@ -1,0 +1,44 @@
+{
+  "registry_version": "1.3.0",
+  "created_at_utc": "2026-08-30T17:55:45.172001+00:00",
+  "gate": "DQ_GATE_05_POINT_IN_TIME_AVAILABILITY_AND_LEAKAGE",
+  "gate_status": "PASS",
+  "prediction_time": "order_purchase_timestamp",
+  "fundamental_point_in_time_rule": "t_available(X_ij) <= order_purchase_timestamp_i",
+  "raw_columns_audited": 52,
+  "future_target_columns": 11,
+  "hold_columns": 10,
+  "model_01": {
+    "id": "MODEL_01_ORDER_LOGISTIC",
+    "feature_set": "ORDER_CORE_V1",
+    "feature_count": 13,
+    "status": "UNLOCKED_FOR_TEMPORAL_VALIDATION_ONLY",
+    "predictive_validation_completed": false
+  },
+  "model_02": {
+    "id": "MODEL_02_ORDER_CATBOOST",
+    "status": "LOCKED"
+  },
+  "seller_history": {
+    "order_seller_rows": 97811,
+    "unique_sellers": 2970,
+    "purchase_history_rule": "purchase_j < purchase_i",
+    "outcome_history_rule": "delivery_j < purchase_i",
+    "purchase_time_leakage": 0,
+    "outcome_time_leakage": 0,
+    "independent_validation_sample": 300,
+    "independent_validation_mismatches": 0,
+    "order_any_prior_outcome_coverage_pct": 94.6366746138696,
+    "order_any_prior_outcome_30d_coverage_pct": 90.41152689955426,
+    "order_any_prior_outcome_90d_coverage_pct": 93.85715766559552,
+    "availability_proxy_limitation": "order_delivered_customer_date is used as a conservative proxy for outcome availability because private Olist ingestion timestamps are unavailable."
+  },
+  "blocked_feature_groups": {
+    "payments": "HOLD_PROVENANCE",
+    "shipping_limit_date": "HOLD_PROVENANCE",
+    "geo_coordinates": "HOLD_DATA_QUALITY"
+  },
+  "raw_modified": false,
+  "silver_created": false,
+  "model_trained": false
+}

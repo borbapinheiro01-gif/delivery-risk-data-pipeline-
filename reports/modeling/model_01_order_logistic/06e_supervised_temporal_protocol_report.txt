@@ -1,0 +1,47 @@
+========================================================================================================================
+MODEL 01.0-C3.5-A — SUPERVISED TEMPORAL PROTOCOL
+========================================================================================================================
+
+STATUS
+------------------------------------------------------------------------------------------------------------------------
+PASS
+
+TEMPORAL CONTRACT
+------------------------------------------------------------------------------------------------------------------------
+Prediction time:
+    order_purchase_timestamp
+
+For test month m:
+
+    fit_cutoff = beginning of month m
+
+Training purchase requirement:
+
+    purchase_j < fit_cutoff
+
+Training label-availability requirement:
+
+    delivery_j < fit_cutoff
+
+Thus the training procedure cannot use a historical order whose final
+delivery outcome was still unknown at model-fit time.
+
+DATA
+------------------------------------------------------------------------------------------------------------------------
+Task rows                       : 96,470
+Full 30D support rows           : 96,421
+Temporal test months            : 17
+First test month                : 2017-04
+Last test month                 : 2018-08
+
+GOVERNANCE
+------------------------------------------------------------------------------------------------------------------------
+Final holdout frozen            : NO
+Final K selected                : NO
+PCA executed                    : NO
+Classifier trained              : NO
+Silver created                  : NO
+RAW modified                    : NO
+
+Validation failures             : 0
+========================================================================================================================

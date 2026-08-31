@@ -1,0 +1,87 @@
+{
+    "decision_id": "FUNCTIONAL_REPRESENTATION_D2_V1",
+    "created_at_utc": "2026-08-30T20:58:18.637980+00:00",
+    "status": "PASS",
+    "scientific_scope": "UNSUPERVISED_TEMPORAL_FUNCTIONAL_REPRESENTATION",
+    "primary_representation_for_next_stage": {
+        "representation": "RAW_30D",
+        "status": "PRIMARY_FOR_NEXT_FUNCTIONAL_STAGE"
+    },
+    "smooth_challenger": {
+        "representation": "SMOOTH_30D_EDF_0_75",
+        "status": "REJECTED_AS_PRIMARY_UNSUPERVISED_PREPROCESSING",
+        "not_rejected_for_all_predictive_uses": true
+    },
+    "paired_evidence": {
+        "comparisons": 34,
+        "raw_wins": 34,
+        "smooth_wins": 0,
+        "ties": 0,
+        "smooth_k90_lower_pairs": 34,
+        "channels": [
+            {
+                "channel": "purchase_freight",
+                "temporal_tests": 17,
+                "raw_wins": 17,
+                "smooth_wins": 0,
+                "raw_future_error_mean": 0.31000395822980054,
+                "smooth_end_to_end_raw_error_mean": 0.37526740899319905,
+                "delta_mean": 0.06526345076339855,
+                "delta_median": 0.06933443343079768,
+                "ratio_mean": 1.2396055419572904,
+                "raw_k90_median": 13,
+                "smooth_k90_median": 7,
+                "mean_k90_reduction": 4.176470588235294
+            },
+            {
+                "channel": "purchase_volume",
+                "temporal_tests": 17,
+                "raw_wins": 17,
+                "smooth_wins": 0,
+                "raw_future_error_mean": 0.3055432295575605,
+                "smooth_end_to_end_raw_error_mean": 0.3650761651014879,
+                "delta_mean": 0.059532935543927384,
+                "delta_median": 0.059693472730836694,
+                "ratio_mean": 1.24393877753716,
+                "raw_k90_median": 10,
+                "smooth_k90_median": 6,
+                "mean_k90_reduction": 3.4705882352941178
+            }
+        ]
+    },
+    "original_d2": {
+        "status": "FAIL",
+        "validation_failures": 1,
+        "preserved": true,
+        "only_failed_check": "negative_values_preserved_not_clipped"
+    },
+    "corrected_validation": {
+        "status": "PASS",
+        "validation_failures": 0,
+        "artifact": "reports/modeling/model_01_order_logistic/03r_d2_methodological_validation_v2.csv"
+    },
+    "scope_limits": {
+        "target_used": false,
+        "predictive_superiority_claimed": false,
+        "final_k_selected": false,
+        "production_representation_frozen": false
+    },
+    "next_stage": {
+        "representation": "RAW_30D",
+        "task": "TEMPORAL_COMPONENT_COUNT_POLICY"
+    },
+    "governance": {
+        "clipping_applied": false,
+        "smoothing_committed": false,
+        "folds_frozen": false,
+        "classifier_trained": false,
+        "silver_created": false,
+        "raw_modified": false
+    },
+    "provenance_sha256": {
+        "03o_raw_vs_smooth_summary.json": "98bae7b6011ecb17b5f90ce3fea33ea8f1702cbef4fd8194eb3c79e23f35dfbf",
+        "03n_raw_vs_smooth_validation.csv": "a37b639d670f0563f807fd89921600f8f40a8b76bcc828d3aee84542d38853e4",
+        "03m_raw_vs_smooth_paired_comparison.csv": "bc4dbe51f48df91c2cad27228374a3f3a2e7f151b40a9a0b2262cbbdac978aa9",
+        "03l_raw_vs_smooth_temporal_summary.csv": "07a9f1d8d9c8bbff5889991f2fbf1f6dbc2b7f3fed69aa5ce9190f47d11679a7"
+    }
+}

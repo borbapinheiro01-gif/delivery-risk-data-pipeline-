@@ -1,0 +1,17 @@
+check,status,observed,expected
+rows,PASS,96470,96470
+feature_count,PASS,13,13
+columns_exact,PASS,"['order_id', 'order_purchase_timestamp', 'late_delivery_calendar_day', 'item_count', 'unique_product_count', 'unique_seller_count', 'total_price', 'mean_price', 'max_price', 'min_price', 'price_range', 'total_freight', 'mean_freight', 'max_freight', 'merchandise_plus_freight', 'freight_price_ratio']","['order_id', 'order_purchase_timestamp', 'late_delivery_calendar_day', 'item_count', 'unique_product_count', 'unique_seller_count', 'total_price', 'mean_price', 'max_price', 'min_price', 'price_range', 'total_freight', 'mean_freight', 'max_freight', 'merchandise_plus_freight', 'freight_price_ratio']"
+order_id_unique,PASS,0,0
+matrix_order_ids_match_supervised_cohort,PASS,0,0
+target_mismatches,PASS,0,0
+positive_orders,PASS,6534,6534
+negative_orders,PASS,89936,89936
+target_domain,PASS,"[0, 1]","[0, 1]"
+feature_missing,PASS,0,0
+feature_inf,PASS,0,0
+forbidden_columns_absent,PASS,[],[]
+chronological_sort,PASS,True,True
+price_range_identity,PASS,0,0
+merchandise_plus_freight_identity,PASS,0,0
+freight_price_ratio_identity,PASS,0,0

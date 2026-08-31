@@ -1,0 +1,2 @@
+rows,features,numerical_rank,numpy_matrix_rank,nullity,known_exact_relations,known_relation_rank_upper_bound,svd_tolerance,largest_singular_value,smallest_singular_value,smallest_retained_singular_value,effective_condition_number,full_condition_number,zero_variance_features,pc1_energy_pct,pc3_cumulative_energy_pct,pc5_cumulative_energy_pct
+96470,13,11,11,2,2,11,1.593975106977302e-08,744.1303719105239,5.889870449386618e-14,3.4073899935945158,218.3872034928199,inf,0,44.15322502808321,77.48596247391265,90.50806935795855

@@ -1,0 +1,14 @@
+check,status,observed,expected
+c33c_pass,PASS,PASS,PASS
+operator_rows,PASS,12,12
+sensitivity_rows,PASS,24,24
+penalty_nullity_two,PASS,0,0
+effective_df_target_match,PASS,2.4868995751603507e-14,<1e-6
+constant_nullspace_preserved,PASS,3.774758283725532e-15,<1e-8
+linear_nullspace_preserved,PASS,1.5631940186722204e-13,<1e-7
+all_metrics_finite,PASS,0,0
+row_sum_preserved,PASS,2.1893777805270976e-15,<1e-8
+first_moment_preserved,PASS,1.4044419227602176e-14,<1e-8
+edf_1_is_identity,PASS,0.0,<1e-12
+edf_monotonic,PASS,0,0
+lambda_monotonic,PASS,0,0

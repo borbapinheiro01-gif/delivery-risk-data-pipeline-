@@ -1,0 +1,9 @@
+hypothesis,status,evidence
+P1_DATA_PIPELINE_COMPLETE,SUPPORTED,core_files=True; context_N=96211; expected_freight_N=96211.
+P2_NONLINEAR_RELIABILITY_PREDICTIVE_GAIN,NOT_SUPPORTED,"Linear OOT AP=0.120566, Brier=0.062881; best flexible AP=0.119775, Brier=0.063101."
+P3_GNADMM_NUMERICAL_IMPLEMENTATION_VALID,SUPPORTED,"The complete experiment ran on 90783 real-world e-commerce observations with 8 model parameters, including OOT validation and an independent constrained solver."
+P4_GNADMM_TEMPORAL_AP_ADVANTAGE,PARTIALLY_SUPPORTED,"classification=FAVORABLE_NOT_DECISIVE; mean_delta_AP=0.001672883764737321; months_better=8; block_CI=[-0.001869653050370023, 0.005666736812889149]."
+P5_POSITIVE_QUADRATIC_CURVATURE,NOT_SUPPORTED,"The unconstrained Brier-NLS solution preferred beta_z2=-0.141176, while the beta_z2>=0 constrained solution collapsed to the boundary near zero. This does not support positive convex curvature as an empirical conclusion."
+P6_GNADMM_CALIBRATION_SUPERIORITY,NOT_SUPPORTED,Best pooled Brier: GN_EQ0; best quantile-ECE: LOGIT_MLE; best intercept/slope proximity: GN_EQ0.
+P7_CONSTRAINT_ABLATION_NO_UNIVERSAL_WINNER,SUPPORTED,best_AP=GN_EQ0; best_Brier=GN_EQ0; best_LogLoss=GN_EQ0; best_AUC=LOGIT_MLE.
+P8_READY_FOR_FINAL_DOCUMENTATION,SUPPORTED,Core analytical artifacts and machine-readable scientific results 19–22 were found.

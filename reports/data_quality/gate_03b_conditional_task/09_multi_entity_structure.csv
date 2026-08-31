@@ -1,0 +1,6 @@
+metric,orders,pct,maximum
+orders_multi_item,9635,9.987560899761585,21.0
+orders_multi_product,3197,3.3139836218513525,8.0
+orders_multi_seller,1275,1.3216544003317094,5.0
+orders_multi_payment_record,2875,2.980201098787188,26.0
+orders_multi_payment_type,2182,2.2618430600186588,2.0

@@ -1,0 +1,13 @@
+check,status,observed,expected
+c34d_pass,PASS,PASS,PASS
+task_rows,PASS,96470,96470
+full_support_30d,PASS,96421,96421
+temporal_months,PASS,17,17
+first_month,PASS,2017-04,2017-04
+last_month,PASS,2018-08,2018-08
+all_purchase_boundaries_strict,PASS,0,0
+all_label_boundaries_strict,PASS,0,0
+all_train_sets_have_both_classes,PASS,0,0
+all_test_sets_have_both_classes,PASS,0,0
+no_final_holdout_frozen,PASS,False,False
+no_model_trained,PASS,False,False

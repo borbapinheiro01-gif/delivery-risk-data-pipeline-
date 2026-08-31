@@ -1,0 +1,11 @@
+readiness_dimension,task_orders,ready_orders,not_ready_orders,ready_pct
+has_items,96470,96470,0,100.0
+all_item_core_complete,96470,96470,0,100.0
+customer_resolved,96470,96470,0,100.0
+core_purchase_context_complete,96470,96470,0,100.0
+product_metadata_complete,96470,95077,1393,98.5560277806572
+seller_reference_complete,96470,96470,0,100.0
+payment_data_complete,96470,96469,1,99.99896340831347
+customer_geo_reference_complete,96470,96206,264,99.72633979475485
+seller_geo_reference_complete,96470,96253,217,99.77505960402198
+geo_reference_complete,96470,95990,480,99.50243599046335
