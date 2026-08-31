@@ -1,0 +1,90 @@
+{
+  "spec": "EXPECTED_FREIGHT_RUNTIME_EXECUTION_SPEC_V1",
+  "prediction_time": "order_purchase_timestamp",
+  "status": "READY_FOR_INDEPENDENT_RUNTIME_REPRODUCTION",
+  "primary_producer": "src/spatiotemporal_logistics/04_run_four_analyses.py",
+  "producer_score": 380,
+  "producer_evidence": {
+    "assign_expected": 0,
+    "output_filename": 1,
+    "model_fit": 9,
+    "model_predict": 3,
+    "hist_gradient_boosting": 2,
+    "gradient_boosting": 2,
+    "random_forest": 0
+  },
+  "model_constructor_expressions": [
+    "for i in range(MIN_TRAIN_MONTHS, len(months)):\n    train_months = months[:i]\n    test_month = months[i]\n    train_mask = rso['year_month'].isin(train_months) & rso['log_freight'].notna()\n    test_mask = rso['year_month'].eq(test_month)\n    if not train_mask.any() or not test_mask.any():\n        continue\n    X_train = rso.loc[train_mask, features_f]\n    y_train = rso.loc[train_mask, 'log_freight']\n    X_test = rso.loc[test_mask, features_f]\n    baseline = float(y_train.median())\n    rso.loc[test_mask, 'pred_log_f0'] = baseline\n    train_complete = X_train.notna().all(axis=1)\n    test_complete = X_test.notna().all(axis=1)\n    if train_complete.sum() >= 100:\n        f1 = LinearRegression()\n        f1.fit(X_train.loc[train_complete], y_train.loc[train_complete])\n        test_indices = X_test.index[test_complete]\n        if len(test_indices):\n            rso.loc[test_indices, 'pred_log_f1'] = f1.predict(X_test.loc[test_complete])\n    f2 = HistGradientBoostingRegressor(max_iter=100, random_state=42)\n    f2.fit(X_train, y_train)\n    rso.loc[test_mask, 'pred_log_f2'] = f2.predict(X_test)\n    folds.append({'test_month': test_month, 'train_start': train_months[0], 'train_end': train_months[-1], 'n_train': int(train_mask.sum()), 'n_test': int(test_mask.sum())})",
+    "for model_name, features in speed_features.items():\n    pred = pd.Series(np.nan, index=master.index, dtype=float)\n    needed = features + ['actual_delivery_days', 'year_month']\n    for i in range(MIN_TRAIN_MONTHS, len(speed_months)):\n        train_months = speed_months[:i]\n        test_month = speed_months[i]\n        train = master[master['year_month'].isin(train_months)].dropna(subset=needed)\n        test = master[master['year_month'].eq(test_month)].dropna(subset=needed)\n        if len(train) < 100 or test.empty:\n            continue\n        model = LinearRegression()\n        model.fit(train[features], train['actual_delivery_days'])\n        pred.loc[test.index] = model.predict(test[features])\n    valid = pred.notna() & master['actual_delivery_days'].notna()\n    y = master.loc[valid, 'actual_delivery_days']\n    p = pred.loc[valid]\n    speed_oot_metrics.append({'model': model_name, 'n_oot': int(valid.sum()), 'mae_oot': mean_absolute_error(y, p) if len(y) else np.nan, 'median_ae_oot': median_absolute_error(y, p) if len(y) else np.nan, 'rmse_oot': root_mean_squared_error(y, p) if len(y) else np.nan, 'r2_oot': r2_score(y, p) if len(y) > 1 else np.nan})",
+    "if train_complete.sum() >= 100:\n    f1 = LinearRegression()\n    f1.fit(X_train.loc[train_complete], y_train.loc[train_complete])\n    test_indices = X_test.index[test_complete]\n    if len(test_indices):\n        rso.loc[test_indices, 'pred_log_f1'] = f1.predict(X_test.loc[test_complete])",
+    "HistGradientBoostingRegressor(max_iter=100, random_state=42)",
+    "for i in range(MIN_TRAIN_MONTHS, len(speed_months)):\n    train_months = speed_months[:i]\n    test_month = speed_months[i]\n    train = master[master['year_month'].isin(train_months)].dropna(subset=needed)\n    test = master[master['year_month'].eq(test_month)].dropna(subset=needed)\n    if len(train) < 100 or test.empty:\n        continue\n    model = LinearRegression()\n    model.fit(train[features], train['actual_delivery_days'])\n    pred.loc[test.index] = model.predict(test[features])",
+    "LinearRegression()",
+    "HistGradientBoostingRegressor(max_iter=100, random_state=42)",
+    "LinearRegression()",
+    "LinearRegression()",
+    "LinearRegression()"
+  ],
+  "fit_expressions": [
+    "for i in range(MIN_TRAIN_MONTHS, len(months)):\n    train_months = months[:i]\n    test_month = months[i]\n    train_mask = rso['year_month'].isin(train_months) & rso['log_freight'].notna()\n    test_mask = rso['year_month'].eq(test_month)\n    if not train_mask.any() or not test_mask.any():\n        continue\n    X_train = rso.loc[train_mask, features_f]\n    y_train = rso.loc[train_mask, 'log_freight']\n    X_test = rso.loc[test_mask, features_f]\n    baseline = float(y_train.median())\n    rso.loc[test_mask, 'pred_log_f0'] = baseline\n    train_complete = X_train.notna().all(axis=1)\n    test_complete = X_test.notna().all(axis=1)\n    if train_complete.sum() >= 100:\n        f1 = LinearRegression()\n        f1.fit(X_train.loc[train_complete], y_train.loc[train_complete])\n        test_indices = X_test.index[test_complete]\n        if len(test_indices):\n            rso.loc[test_indices, 'pred_log_f1'] = f1.predict(X_test.loc[test_complete])\n    f2 = HistGradientBoostingRegressor(max_iter=100, random_state=42)\n    f2.fit(X_train, y_train)\n    rso.loc[test_mask, 'pred_log_f2'] = f2.predict(X_test)\n    folds.append({'test_month': test_month, 'train_start': train_months[0], 'train_end': train_months[-1], 'n_train': int(train_mask.sum()), 'n_test': int(test_mask.sum())})",
+    "for model_name, features in speed_features.items():\n    pred = pd.Series(np.nan, index=master.index, dtype=float)\n    needed = features + ['actual_delivery_days', 'year_month']\n    for i in range(MIN_TRAIN_MONTHS, len(speed_months)):\n        train_months = speed_months[:i]\n        test_month = speed_months[i]\n        train = master[master['year_month'].isin(train_months)].dropna(subset=needed)\n        test = master[master['year_month'].eq(test_month)].dropna(subset=needed)\n        if len(train) < 100 or test.empty:\n            continue\n        model = LinearRegression()\n        model.fit(train[features], train['actual_delivery_days'])\n        pred.loc[test.index] = model.predict(test[features])\n    valid = pred.notna() & master['actual_delivery_days'].notna()\n    y = master.loc[valid, 'actual_delivery_days']\n    p = pred.loc[valid]\n    speed_oot_metrics.append({'model': model_name, 'n_oot': int(valid.sum()), 'mae_oot': mean_absolute_error(y, p) if len(y) else np.nan, 'median_ae_oot': median_absolute_error(y, p) if len(y) else np.nan, 'rmse_oot': root_mean_squared_error(y, p) if len(y) else np.nan, 'r2_oot': r2_score(y, p) if len(y) > 1 else np.nan})",
+    "for model_name, features in rel_features.items():\n    pred = pd.Series(np.nan, index=master.index, dtype=float)\n    needed = features + ['late_delivery_calendar_day', 'year_month']\n    for i in range(MIN_TRAIN_MONTHS, len(speed_months)):\n        train_months = speed_months[:i]\n        test_month = speed_months[i]\n        train = master[master['year_month'].isin(train_months)].dropna(subset=needed)\n        test = master[master['year_month'].eq(test_month)].dropna(subset=needed)\n        if len(train) < 200 or test.empty or train['late_delivery_calendar_day'].nunique() < 2:\n            continue\n        clf = make_pipeline(StandardScaler(), LogisticRegression(max_iter=1000, random_state=42))\n        clf.fit(train[features], train['late_delivery_calendar_day'])\n        pred.loc[test.index] = clf.predict_proba(test[features])[:, 1]\n    valid = pred.notna() & master['late_delivery_calendar_day'].notna()\n    y = master.loc[valid, 'late_delivery_calendar_day'].astype(int)\n    p = pred.loc[valid]\n    rel_oot_metrics.append({'model': model_name, 'n_oot': int(valid.sum()), 'base_rate': y.mean() if len(y) else np.nan, 'average_precision_oot': average_precision_score(y, p) if y.nunique() > 1 else np.nan, 'roc_auc_oot': roc_auc_score(y, p) if y.nunique() > 1 else np.nan, 'brier_oot': brier_score_loss(y, p) if len(y) else np.nan})",
+    "if train_complete.sum() >= 100:\n    f1 = LinearRegression()\n    f1.fit(X_train.loc[train_complete], y_train.loc[train_complete])\n    test_indices = X_test.index[test_complete]\n    if len(test_indices):\n        rso.loc[test_indices, 'pred_log_f1'] = f1.predict(X_test.loc[test_complete])",
+    "for i in range(MIN_TRAIN_MONTHS, len(speed_months)):\n    train_months = speed_months[:i]\n    test_month = speed_months[i]\n    train = master[master['year_month'].isin(train_months)].dropna(subset=needed)\n    test = master[master['year_month'].eq(test_month)].dropna(subset=needed)\n    if len(train) < 100 or test.empty:\n        continue\n    model = LinearRegression()\n    model.fit(train[features], train['actual_delivery_days'])\n    pred.loc[test.index] = model.predict(test[features])",
+    "for i in range(MIN_TRAIN_MONTHS, len(speed_months)):\n    train_months = speed_months[:i]\n    test_month = speed_months[i]\n    train = master[master['year_month'].isin(train_months)].dropna(subset=needed)\n    test = master[master['year_month'].eq(test_month)].dropna(subset=needed)\n    if len(train) < 200 or test.empty or train['late_delivery_calendar_day'].nunique() < 2:\n        continue\n    clf = make_pipeline(StandardScaler(), LogisticRegression(max_iter=1000, random_state=42))\n    clf.fit(train[features], train['late_delivery_calendar_day'])\n    pred.loc[test.index] = clf.predict_proba(test[features])[:, 1]",
+    "smf.ols(formula=speed_formulas['S3A_Context_All'], data=cluster_df).fit(cov_type='cluster', cov_kwds={'groups': cluster_df['customer_id_municipio']})",
+    "f2.fit(X_train, y_train)",
+    "smf.ols(formula=speed_formulas['S3A_Context_All'], data=cluster_ss).fit()",
+    "f1.fit(X_train.loc[train_complete], y_train.loc[train_complete])",
+    "smf.ols(formula=formula, data=master).fit()",
+    "model.fit(train[features], train['actual_delivery_days'])",
+    "smf.logit(formula=formula, data=master).fit(disp=False, maxiter=200)",
+    "clf.fit(train[features], train['late_delivery_calendar_day'])",
+    "smf.ols(formula=formula, data=master.loc[mask]).fit()"
+  ],
+  "predict_expressions": [
+    "for i in range(MIN_TRAIN_MONTHS, len(months)):\n    train_months = months[:i]\n    test_month = months[i]\n    train_mask = rso['year_month'].isin(train_months) & rso['log_freight'].notna()\n    test_mask = rso['year_month'].eq(test_month)\n    if not train_mask.any() or not test_mask.any():\n        continue\n    X_train = rso.loc[train_mask, features_f]\n    y_train = rso.loc[train_mask, 'log_freight']\n    X_test = rso.loc[test_mask, features_f]\n    baseline = float(y_train.median())\n    rso.loc[test_mask, 'pred_log_f0'] = baseline\n    train_complete = X_train.notna().all(axis=1)\n    test_complete = X_test.notna().all(axis=1)\n    if train_complete.sum() >= 100:\n        f1 = LinearRegression()\n        f1.fit(X_train.loc[train_complete], y_train.loc[train_complete])\n        test_indices = X_test.index[test_complete]\n        if len(test_indices):\n            rso.loc[test_indices, 'pred_log_f1'] = f1.predict(X_test.loc[test_complete])\n    f2 = HistGradientBoostingRegressor(max_iter=100, random_state=42)\n    f2.fit(X_train, y_train)\n    rso.loc[test_mask, 'pred_log_f2'] = f2.predict(X_test)\n    folds.append({'test_month': test_month, 'train_start': train_months[0], 'train_end': train_months[-1], 'n_train': int(train_mask.sum()), 'n_test': int(test_mask.sum())})",
+    "for model_name, features in speed_features.items():\n    pred = pd.Series(np.nan, index=master.index, dtype=float)\n    needed = features + ['actual_delivery_days', 'year_month']\n    for i in range(MIN_TRAIN_MONTHS, len(speed_months)):\n        train_months = speed_months[:i]\n        test_month = speed_months[i]\n        train = master[master['year_month'].isin(train_months)].dropna(subset=needed)\n        test = master[master['year_month'].eq(test_month)].dropna(subset=needed)\n        if len(train) < 100 or test.empty:\n            continue\n        model = LinearRegression()\n        model.fit(train[features], train['actual_delivery_days'])\n        pred.loc[test.index] = model.predict(test[features])\n    valid = pred.notna() & master['actual_delivery_days'].notna()\n    y = master.loc[valid, 'actual_delivery_days']\n    p = pred.loc[valid]\n    speed_oot_metrics.append({'model': model_name, 'n_oot': int(valid.sum()), 'mae_oot': mean_absolute_error(y, p) if len(y) else np.nan, 'median_ae_oot': median_absolute_error(y, p) if len(y) else np.nan, 'rmse_oot': root_mean_squared_error(y, p) if len(y) else np.nan, 'r2_oot': r2_score(y, p) if len(y) > 1 else np.nan})",
+    "if train_complete.sum() >= 100:\n    f1 = LinearRegression()\n    f1.fit(X_train.loc[train_complete], y_train.loc[train_complete])\n    test_indices = X_test.index[test_complete]\n    if len(test_indices):\n        rso.loc[test_indices, 'pred_log_f1'] = f1.predict(X_test.loc[test_complete])",
+    "for i in range(MIN_TRAIN_MONTHS, len(speed_months)):\n    train_months = speed_months[:i]\n    test_month = speed_months[i]\n    train = master[master['year_month'].isin(train_months)].dropna(subset=needed)\n    test = master[master['year_month'].eq(test_month)].dropna(subset=needed)\n    if len(train) < 100 or test.empty:\n        continue\n    model = LinearRegression()\n    model.fit(train[features], train['actual_delivery_days'])\n    pred.loc[test.index] = model.predict(test[features])",
+    "if len(test_indices):\n    rso.loc[test_indices, 'pred_log_f1'] = f1.predict(X_test.loc[test_complete])",
+    "f2.predict(X_test)",
+    "model.predict(test[features])",
+    "f1.predict(X_test.loc[test_complete])"
+  ],
+  "feature_vector_candidates": [
+    [
+      "log_distance",
+      "log_weight",
+      "log_volume",
+      "log_price",
+      "seller_item_count"
+    ]
+  ],
+  "pit_clean_feature_vector_candidates": [
+    [
+      "log_distance",
+      "log_weight",
+      "log_volume",
+      "log_price",
+      "seller_item_count"
+    ]
+  ],
+  "future_intersection_by_candidate": [
+    []
+  ],
+  "temporal_markers_found": [
+    "year_month",
+    "train",
+    "test",
+    "oot"
+  ],
+  "guardrails": {
+    "m1_released": false,
+    "expected_freight_released": false,
+    "runtime_training_performed": false,
+    "same_order_future_predictors_forbidden": true,
+    "independent_prediction_parity_required": true,
+    "267_missing_coverage_requires_explicit_protocol": true
+  }
+}

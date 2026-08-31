@@ -1,0 +1,1079 @@
+path,source_sha256,anchor_line,line,text
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,61,"    den > 0,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,62,"    master[""total_freight""] / den,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,63,"    np.nan,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,64,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,65,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,66,cost_cols = [
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,67,"    ""total_freight"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,68,"    ""freight_burden"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,69,"    ""distance_freight_weighted_km"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,70,"    ""total_weight_g"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,71,"    ""product_volume_sum_proxy_cm3"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,72,"    ""total_price"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,73,]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,66,74,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,98,"            ""min"": s.min(),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,99,"            ""max"": s.max(),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,100,        }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,101,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,102,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,103,pd.DataFrame(desc).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,104,"    REP / ""06_cost_descriptive.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,105,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,106,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,107,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,108,master[cost_cols].corr(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,109,"    method=""pearson"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,110,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,103,111,"    REP / ""07a_cost_pearson.csv"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,103,pd.DataFrame(desc).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,104,"    REP / ""06_cost_descriptive.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,105,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,106,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,107,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,108,master[cost_cols].corr(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,109,"    method=""pearson"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,110,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,111,"    REP / ""07a_cost_pearson.csv"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,112,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,113,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,114,master[cost_cols].corr(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,115,"    method=""spearman"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,108,116,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,109,"    method=""pearson"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,110,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,111,"    REP / ""07a_cost_pearson.csv"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,112,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,113,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,114,master[cost_cols].corr(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,115,"    method=""spearman"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,116,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,117,"    REP / ""07b_cost_spearman.csv"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,118,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,119,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,120,"print(""[PASS A1] COST STRUCTURE"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,121,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,114,122,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,169,"    rso[""seller_price""].where("
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,170,"        rso[""seller_price""] >= 0"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,171,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,172,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,173,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,174,features_f = [
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,175,"    ""log_distance"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,176,"    ""log_weight"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,177,"    ""log_volume"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,178,"    ""log_price"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,179,"    ""seller_item_count"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,180,]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,181,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,174,182,months = sorted(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,189,"for name in [""f0"", ""f1"", ""f2""]:"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,190,"    rso[f""pred_log_{name}""] = np.nan"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,191,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,192,folds = []
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,193,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,194,for i in range(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,195,"    MIN_TRAIN_MONTHS,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,196,"    len(months),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,197,):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,198,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,199,    train_months = months[:i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,200,    test_month = months[i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,201,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,194,202,    train_mask = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,209,    test_mask = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,210,"        rso[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,211,        .eq(test_month)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,212,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,213,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,214,    if not train_mask.any() or not test_mask.any():
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,215,        continue
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,216,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,217,    X_train = rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,218,"        train_mask,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,219,"        features_f,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,220,    ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,221,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,214,222,    y_train = rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,248,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,249,    test_complete = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,250,        X_test.notna().all(axis=1)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,251,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,252,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,253,    if train_complete.sum() >= 100:
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,254,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,255,        f1 = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,256,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,257,        f1.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,258,"            X_train.loc[train_complete],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,259,"            y_train.loc[train_complete],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,260,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,253,261,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,250,        X_test.notna().all(axis=1)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,251,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,252,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,253,    if train_complete.sum() >= 100:
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,254,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,255,        f1 = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,256,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,257,        f1.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,258,"            X_train.loc[train_complete],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,259,"            y_train.loc[train_complete],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,260,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,261,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,262,        test_indices = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,255,263,            X_test.index[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,252,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,253,    if train_complete.sum() >= 100:
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,254,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,255,        f1 = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,256,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,257,        f1.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,258,"            X_train.loc[train_complete],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,259,"            y_train.loc[train_complete],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,260,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,261,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,262,        test_indices = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,263,            X_test.index[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,264,                test_complete
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,257,265,            ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,263,            X_test.index[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,264,                test_complete
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,265,            ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,266,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,267,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,268,        if len(test_indices):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,269,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,270,            rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,271,"                test_indices,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,272,"                ""pred_log_f1"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,273,            ] = f1.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,274,                X_test.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,275,                    test_complete
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,268,276,                ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,268,        if len(test_indices):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,269,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,270,            rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,271,"                test_indices,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,272,"                ""pred_log_f1"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,273,            ] = f1.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,274,                X_test.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,275,                    test_complete
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,276,                ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,277,            )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,278,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,279,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,280,    # F2 — HistGradientBoosting with native NaN handling.
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,273,281,    f2 = HistGradientBoostingRegressor(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,276,                ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,277,            )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,278,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,279,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,280,    # F2 — HistGradientBoosting with native NaN handling.
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,281,    f2 = HistGradientBoostingRegressor(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,282,"        max_iter=100,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,283,"        random_state=42,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,284,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,285,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,286,    f2.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,287,"        X_train,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,288,"        y_train,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,281,289,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,281,    f2 = HistGradientBoostingRegressor(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,282,"        max_iter=100,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,283,"        random_state=42,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,284,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,285,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,286,    f2.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,287,"        X_train,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,288,"        y_train,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,289,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,290,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,291,    rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,292,"        test_mask,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,293,"        ""pred_log_f2"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,286,294,    ] = f2.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,289,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,290,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,291,    rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,292,"        test_mask,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,293,"        ""pred_log_f2"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,294,    ] = f2.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,295,        X_test
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,296,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,297,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,298,    folds.append(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,299,        {
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,300,"            ""test_month"": test_month,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,301,"            ""train_start"": train_months[0],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,294,302,"            ""train_end"": train_months[-1],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,303,"            ""n_train"": int(train_mask.sum()),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,304,"            ""n_test"": int(test_mask.sum()),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,305,        }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,306,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,307,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,308,pd.DataFrame(folds).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,309,"    REP / ""08_freight_oot_folds.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,310,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,311,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,312,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,313,"for name in [""f0"", ""f1"", ""f2""]:"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,314,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,315,"    rso[f""pred_freight_{name}""] = np.maximum("
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,308,316,"        0.0,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,356,"            ""r2"":"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,357,"                r2_score(y, p),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,358,        }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,359,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,360,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,361,pd.DataFrame(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,362,    metrics_f
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,363,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,364,"    REP / ""09_freight_model_comparison.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,365,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,366,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,367,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,368,# F2 = primary structural model for downstream.
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,361,369,"rso[""pred_freight_oot""] = ("
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,422,"        master[""expected_freight_oot""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,423,"    ),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,424,"    np.nan,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,425,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,426,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,427,master.to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,428,"    ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,429,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,430,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,431,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,432,"print(""[PASS A2] EXPECTED FREIGHT OOT"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,433,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,434,"del rso, order_resid"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,427,435,gc.collect()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,504,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,505,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,506,# A3 — DELIVERY SPEED
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,507,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,508,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,509,speed_features = {
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,510,"    ""S0_Physical"": ["
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,511,"        ""log_distance"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,512,"        ""log_weight"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,513,"        ""log_volume"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,514,"        ""route_sellers_total"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,515,"        ""any_interstate_route"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,516,"    ],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,509,517,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,578,speed_in_sample = []
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,579,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,580,"for name, formula in speed_formulas.items():"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,581,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,582,    try:
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,583,        fit = smf.ols(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,584,"            formula=formula,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,585,"            data=master,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,586,        ).fit()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,587,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,588,        speed_in_sample.append(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,589,            {
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,590,"                ""model"": name,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,583,591,"                ""status"": ""PASS"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,604,"                ""status"":"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,605,"                    f""FAIL:{type(exc).__name__}"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,606,            }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,607,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,608,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,609,pd.DataFrame(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,610,    speed_in_sample
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,611,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,612,"    REP / ""11a_speed_nested_in_sample.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,613,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,614,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,615,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,616,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,609,617,# OOT speed evaluation
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,622,    .unique()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,623,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,624,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,625,speed_oot_metrics = []
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,626,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,627,"for model_name, features in speed_features.items():"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,628,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,629,    pred = pd.Series(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,630,"        np.nan,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,631,"        index=master.index,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,632,"        dtype=float,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,633,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,634,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,627,635,    needed = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,639,"            ""actual_delivery_days"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,640,"            ""year_month"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,641,        ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,642,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,643,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,644,    for i in range(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,645,"        MIN_TRAIN_MONTHS,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,646,"        len(speed_months),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,647,    ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,648,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,649,        train_months = speed_months[:i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,650,        test_month = speed_months[i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,651,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,644,652,        train = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,659,"            master[""year_month""].eq(test_month)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,660,        ].dropna(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,661,            subset=needed
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,662,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,663,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,664,        if (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,665,            len(train) < 100
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,666,            or
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,667,            test.empty
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,668,        ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,669,            continue
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,670,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,671,        model = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,664,672,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,666,            or
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,667,            test.empty
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,668,        ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,669,            continue
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,670,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,671,        model = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,672,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,673,        model.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,674,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,675,"            train[""actual_delivery_days""],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,676,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,677,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,678,        pred.loc[test.index] = model.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,671,679,            test[features]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,668,        ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,669,            continue
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,670,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,671,        model = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,672,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,673,        model.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,674,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,675,"            train[""actual_delivery_days""],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,676,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,677,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,678,        pred.loc[test.index] = model.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,679,            test[features]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,680,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,673,681,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,673,        model.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,674,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,675,"            train[""actual_delivery_days""],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,676,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,677,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,678,        pred.loc[test.index] = model.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,679,            test[features]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,680,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,681,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,682,    valid = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,683,        pred.notna()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,684,        &
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,685,        master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,678,686,"            ""actual_delivery_days"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,715,                if len(y) > 1
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,716,"                else np.nan,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,717,        }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,718,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,719,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,720,pd.DataFrame(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,721,    speed_oot_metrics
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,722,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,723,"    REP / ""11b_speed_nested_oot.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,724,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,725,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,726,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,727,"print(""[PASS A3] DELIVERY SPEED"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,720,728,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,729,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,730,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,731,# A4 — DELIVERY RELIABILITY
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,732,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,733,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,734,rel_features = {
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,735,"    ""R_A_Observed"": ["
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,736,"        ""log_distance"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,737,"        ""log_weight"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,738,"        ""log_volume"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,739,"        ""route_sellers_total"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,740,"        ""any_interstate_route"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,741,"        ""freight_residual_OOT"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,734,742,"    ],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,767,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,768,"for name, formula in rel_formulas.items():"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,769,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,770,    try:
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,771,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,772,        fit = smf.logit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,773,"            formula=formula,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,774,"            data=master,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,775,        ).fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,776,"            disp=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,777,"            maxiter=200,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,778,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,779,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,772,780,        rel_inference.append(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,795,"                ""status"":"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,796,"                    f""FAIL:{type(exc).__name__}"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,797,            }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,798,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,799,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,800,pd.DataFrame(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,801,    rel_inference
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,802,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,803,"    REP / ""13a_reliability_inference.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,804,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,805,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,806,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,807,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,800,808,# Expanding-window OOT classification metrics.
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,806,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,807,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,808,# Expanding-window OOT classification metrics.
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,809,rel_oot_metrics = []
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,810,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,811,"for model_name, features in rel_features.items():"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,812,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,813,    pred = pd.Series(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,814,"        np.nan,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,815,"        index=master.index,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,816,"        dtype=float,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,817,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,818,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,811,819,    needed = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,823,"            ""late_delivery_calendar_day"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,824,"            ""year_month"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,825,        ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,826,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,827,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,828,    for i in range(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,829,"        MIN_TRAIN_MONTHS,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,830,"        len(speed_months),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,831,    ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,832,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,833,        train_months = speed_months[:i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,834,        test_month = speed_months[i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,835,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,828,836,        train = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,843,"            master[""year_month""].eq(test_month)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,844,        ].dropna(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,845,            subset=needed
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,846,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,847,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,848,        if (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,849,            len(train) < 200
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,850,            or
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,851,            test.empty
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,852,            or
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,853,            train[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,854,"                ""late_delivery_calendar_day"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,855,            ].nunique() < 2
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,848,856,        ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,854,"                ""late_delivery_calendar_day"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,855,            ].nunique() < 2
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,856,        ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,857,            continue
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,858,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,859,        clf = make_pipeline(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,860,"            StandardScaler(),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,861,            LogisticRegression(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,862,"                max_iter=1000,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,863,"                random_state=42,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,864,"            ),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,865,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,866,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,859,867,        clf.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,855,            ].nunique() < 2
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,856,        ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,857,            continue
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,858,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,859,        clf = make_pipeline(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,860,"            StandardScaler(),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,861,            LogisticRegression(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,862,"                max_iter=1000,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,863,"                random_state=42,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,864,"            ),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,865,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,866,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,867,        clf.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,860,868,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,862,"                max_iter=1000,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,863,"                random_state=42,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,864,"            ),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,865,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,866,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,867,        clf.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,868,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,869,            train[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,870,"                ""late_delivery_calendar_day"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,871,"            ],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,872,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,873,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,874,        pred.loc[test.index] = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,867,875,            clf.predict_proba(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,913,                if len(y)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,914,"                else np.nan,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,915,        }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,916,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,917,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,918,pd.DataFrame(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,919,    rel_oot_metrics
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,920,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,921,"    REP / ""13b_reliability_oot_metrics.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,922,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,923,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,924,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,925,"print(""[PASS A4] DELIVERY RELIABILITY"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,918,926,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,927,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,928,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,929,# CLUSTERED INFERENCE
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,930,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,931,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,932,features_cluster = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,933,    speed_features[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,934,"        ""S3A_Context_All"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,935,    ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,936,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,937,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,938,needed_cluster = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,939,    features_cluster
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,932,940,    +
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,946,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,947,cluster_df = master.dropna(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,948,    subset=needed_cluster
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,949,).copy()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,950,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,951,fit_one = smf.ols(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,952,    formula=speed_formulas[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,953,"        ""S3A_Context_All"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,954,"    ],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,955,"    data=cluster_df,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,956,).fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,957,"    cov_type=""cluster"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,958,    cov_kwds={
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,951,959,"        ""groups"":"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,997,        ].eq(1)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,998,    ].dropna(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,999,        subset=needed_ss
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1000,    ).copy()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1001,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1002,    fit_ss = smf.ols(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1003,        formula=speed_formulas[
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1004,"            ""S3A_Context_All"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1005,"        ],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1006,"        data=cluster_ss,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1007,    ).fit()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1008,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1009,    seller_groups = pd.factorize(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1002,1010,"        cluster_ss[""seller_id""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1041,                    se_two_way
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1042,"                ),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1043,        }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1044,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1045,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1046,    table_two.to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1047,"        REP / ""18b_twoway_cluster_single_seller.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1048,"        index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1049,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1050,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1051,"    two_way_status = ""PASS"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1052,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1053,except Exception as exc:
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1046,1054,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1128,        ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1129,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1130,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1131,    try:
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1132,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1133,        fit = smf.ols(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1134,"            formula=formula,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1135,"            data=master.loc[mask],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1136,        ).fit()
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1137,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1138,        sens.append(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1139,            {
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1140,"                ""sensitivity"": name,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1133,1141,"                ""status"": ""PASS"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1153,"                ""status"":"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1154,"                    f""FAIL:{type(exc).__name__}"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1155,            }
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1156,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1157,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1158,pd.DataFrame(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1159,    sens
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1160,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1161,"    REP / ""15_sensitivity_summary.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1162,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1163,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1164,
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1165,"print(f""[INFO] two-way cluster = {two_way_status}"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9,1158,1166,"print(""[PASS 04] FOUR ANALYSES COMPLETE"")"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,100,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,101,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,102,# CONFIG
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,103,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,104,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,105,CORE_COLS = [
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,106,"    ""order_id"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,107,"    ""year_month"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,108,"    ""total_price"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,109,"    ""total_freight"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,110,"    ""freight_burden"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,111,"    ""freight_to_price_ratio"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,112,]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,105,113,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,109,"    ""total_freight"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,110,"    ""freight_burden"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,111,"    ""freight_to_price_ratio"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,112,]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,113,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,114,MASTER_REQUIRED = [
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,115,"    ""order_id"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,116,"    ""distance_freight_weighted_km"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,117,"    ""total_weight_g"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,118,"    ""product_volume_sum_proxy_cm3"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,119,"    ""route_sellers_total"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,120,"    ""any_interstate_route"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,121,]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,114,122,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,118,"    ""product_volume_sum_proxy_cm3"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,119,"    ""route_sellers_total"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,120,"    ""any_interstate_route"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,121,]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,122,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,123,FOCAL_TERMS = [
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,124,"    ""log_price"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,125,"    ""log_distance"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,126,"    ""log_weight"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,127,"    ""log_volume"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,128,"    ""route_sellers_total"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,129,"    ""any_interstate_route"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,130,]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,123,131,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,246,"    """""""
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,247,    Average predicted burden change after a +10% change
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,248,    in one original continuous variable.
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,249,"    """""""
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,250,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,251,    base_pred = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,252,"        fit.predict(frame),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,253,"        dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,254,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,255,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,256,    alt = frame.copy()
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,257,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,258,    alt[variable] = (
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,251,259,        alt[variable]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,247,    Average predicted burden change after a +10% change
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,248,    in one original continuous variable.
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,249,"    """""""
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,250,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,251,    base_pred = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,252,"        fit.predict(frame),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,253,"        dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,254,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,255,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,256,    alt = frame.copy()
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,257,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,258,    alt[variable] = (
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,259,        alt[variable]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,252,260,        *
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,261,        (1.0 + relative_change)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,262,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,263,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,264,    alt = add_logs(alt)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,265,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,266,    alt_pred = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,267,"        fit.predict(alt),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,268,"        dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,269,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,270,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,271,    delta = alt_pred - base_pred
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,272,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,273,    return {
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,266,274,"        ""scenario"":"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,262,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,263,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,264,    alt = add_logs(alt)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,265,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,266,    alt_pred = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,267,"        fit.predict(alt),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,268,"        dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,269,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,270,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,271,    delta = alt_pred - base_pred
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,272,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,273,    return {
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,274,"        ""scenario"":"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,267,275,"            f""{variable}_PLUS_{int(relative_change*100)}PCT"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,409,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,410,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,411,# 3. VALIDITY + TRANSFORMATIONS
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,412,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,413,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,414,numeric_cols = [
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,415,"    ""total_price"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,416,"    ""total_freight"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,417,"    ""freight_burden"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,418,"    ""distance_freight_weighted_km"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,419,"    ""total_weight_g"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,420,"    ""product_volume_sum_proxy_cm3"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,421,"    ""route_sellers_total"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,414,422,"    ""any_interstate_route"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,510,"        df[""freight_burden""].quantile(0.95)"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,511,"    ),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,512,}
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,513,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,514,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,515,pd.DataFrame(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,516,    [
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,517,        {
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,518,"            ""quantile"": key,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,519,"            ""freight_burden"": value,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,520,        }
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,521,"        for key, value"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,522,        in burden_quantiles.items()
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,515,523,    ]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,547,# NOTE:
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,548,# Price/Burden has a definitional component because price
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,549,# enters the burden denominator.
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,550,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,551,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,552,association_variables = [
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,553,"    ""total_price"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,554,"    ""distance_freight_weighted_km"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,555,"    ""total_weight_g"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,556,"    ""product_volume_sum_proxy_cm3"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,557,"    ""route_sellers_total"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,558,"    ""any_interstate_route"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,559,]
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,552,560,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,609,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,610,assoc_df = pd.DataFrame(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,611,    assoc_rows
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,612,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,613,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,614,assoc_df.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,615,"    OUT_ASSOC,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,616,"    index=False,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,617,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,618,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,619,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,620,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,621,# 6. DECILE CURVES
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,614,622,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,648,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,649,else:
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,650,    deciles = pd.DataFrame()
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,651,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,652,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,653,deciles.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,654,"    OUT_DECILES,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,655,"    index=False,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,656,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,657,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,658,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,659,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,660,# 7. ROUTE-STRUCTURE DESCRIPTIVES
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,653,661,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,719,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,720,group_df = pd.DataFrame(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,721,    group_rows
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,722,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,723,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,724,group_df.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,725,"    OUT_GROUPS,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,726,"    index=False,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,727,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,728,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,729,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,730,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,731,# 8. FRACTIONAL LOGIT
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,724,732,#
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,781,"        formula=formula,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,782,"        data=analysis,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,783,"        family=sm.families.Binomial(),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,784,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,785,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,786,    result = model.fit(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,787,"        maxiter=200,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,788,"        tol=1e-8,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,789,"        cov_type=""HC1"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,790,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,791,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,792,    return result
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,793,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,786,794,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,887,].to_numpy(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,888,    dtype=float
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,889,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,890,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,891,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,892,if len(focal_p):
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,893,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,894,"    reject, p_adj, _, _ = multipletests("
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,895,"        focal_p,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,896,"        alpha=0.05,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,897,"        method=""fdr_bh"","
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,898,    )
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,899,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,892,900,    coef_df.loc[
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,911,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,912,"    coef_df[""p_value_fdr_bh""] = np.nan"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,913,"    coef_df[""fdr_reject_005""] = np.nan"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,914,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,915,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,916,coef_df.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,917,"    OUT_COEFS,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,918,"    index=False,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,919,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,920,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,921,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,922,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,923,# 10. BUSINESS-READABLE +10% SCENARIO EFFECTS
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,916,924,#
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,951,base1 = analysis.copy()
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,952,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,953,"base0[""any_interstate_route""] = 0"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,954,"base1[""any_interstate_route""] = 1"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,955,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,956,pred0 = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,957,"    fit_m2.predict(base0),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,958,"    dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,959,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,960,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,961,pred1 = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,962,"    fit_m2.predict(base1),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,963,"    dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,956,964,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,952,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,953,"base0[""any_interstate_route""] = 0"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,954,"base1[""any_interstate_route""] = 1"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,955,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,956,pred0 = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,957,"    fit_m2.predict(base0),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,958,"    dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,959,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,960,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,961,pred1 = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,962,"    fit_m2.predict(base1),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,963,"    dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,964,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,957,965,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,956,pred0 = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,957,"    fit_m2.predict(base0),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,958,"    dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,959,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,960,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,961,pred1 = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,962,"    fit_m2.predict(base1),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,963,"    dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,964,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,965,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,966,delta_interstate = (
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,967,    pred1 - pred0
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,968,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,961,969,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,957,"    fit_m2.predict(base0),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,958,"    dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,959,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,960,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,961,pred1 = np.asarray(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,962,"    fit_m2.predict(base1),"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,963,"    dtype=float,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,964,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,965,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,966,delta_interstate = (
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,967,    pred1 - pred0
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,968,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,969,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,962,970,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1012,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1013,effects_df = pd.DataFrame(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1014,    effect_rows
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1015,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1016,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1017,effects_df.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1018,"    OUT_EFFECTS,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1019,"    index=False,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1020,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1021,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1022,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1023,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1024,# 11. SEGMENT MATERIALIZATION
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1017,1025,#
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1090,"    ""any_interstate_route"":"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1091,"        df[""any_interstate_route""],"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1092,})
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1093,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1094,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1095,segments.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1096,"    OUT_SEGMENTS,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1097,"    index=False,"
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1098,)
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1099,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1100,
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1101,# =============================================================================
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1102,# 12. SCIENTIFIC CHECKS
+src/shipping_friction/27a_block02_burden_decomposition.py,b52fb9425296fa3e421adb387b3665cccf58b98677d1c865e4fe2f6e007faae2,1095,1103,# =============================================================================
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,14,ROOT = Path.cwd()
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,15,"ARTIFACTS_DIR = ROOT / ""artifacts"" / ""spatiotemporal_logistics"""
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,16,"REPORTS_DIR = ROOT / ""reports"" / ""spatiotemporal_logistics"" / ""scientific"""
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,17,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,18,# 1. Carregar Dados e Aplicar Trava de Validade do Ratio
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,19,USECOLS = [
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,20,"    ""total_freight"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,21,"    ""expected_freight_oot"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,22,"    ""late_delivery_calendar_day"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,23,"    ""distance_freight_weighted_km"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,24,"    ""total_weight_g"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,25,"    ""product_volume_sum_proxy_cm3"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,26,"    ""route_sellers_total"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,19,27,"    ""any_interstate_route"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,40,eps = 1e-4
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,41,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,42,df_valid['Q_freight_ratio'] = df_valid['total_freight'] / df_valid['expected_freight_oot']
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,43,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,44,# Congelar Amostra Analítica Única
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,45,"req_cols = ['late_delivery_calendar_day', 'Z_freight_log_ratio', 'distance_freight_weighted_km', "
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,46,"            'total_weight_g', 'product_volume_sum_proxy_cm3', 'route_sellers_total', "
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,47,"            'any_interstate_route', 'promised_delivery_days', 'year_month']"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,48,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,49,df_sample = df_valid.dropna(subset=req_cols).copy()
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,50,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,51,df_sample['log_distance'] = np.log1p(df_sample['distance_freight_weighted_km'].where(df_sample['distance_freight_weighted_km'] >= 0))
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,52,df_sample['log_weight'] = np.log1p(df_sample['total_weight_g'].where(df_sample['total_weight_g'] >= 0))
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,45,53,df_sample['log_volume'] = np.log1p(df_sample['product_volume_sum_proxy_cm3'].where(df_sample['product_volume_sum_proxy_cm3'] >= 0))
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,69,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,70,"fits_A, fits_B = {}, {}"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,71,comp_rows = []
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,72,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,73,"for m_name, expr in models_specs.items():"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,74,"    fit_a = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_A, data=df_sample).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,75,"    fit_b = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_B, data=df_sample).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,76,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,77,    fits_A[m_name] = fit_a
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,78,    fits_B[m_name] = fit_b
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,79,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,80,    comp_rows.append({
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,81,"        'model': m_name,"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,74,82,"        'aic_A': fit_a.aic, 'bic_A': fit_a.bic, 'llf_A': fit_a.llf,"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,70,"fits_A, fits_B = {}, {}"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,71,comp_rows = []
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,72,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,73,"for m_name, expr in models_specs.items():"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,74,"    fit_a = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_A, data=df_sample).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,75,"    fit_b = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_B, data=df_sample).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,76,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,77,    fits_A[m_name] = fit_a
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,78,    fits_B[m_name] = fit_b
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,79,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,80,    comp_rows.append({
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,81,"        'model': m_name,"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,82,"        'aic_A': fit_a.aic, 'bic_A': fit_a.bic, 'llf_A': fit_a.llf,"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,75,83,"        'aic_B': fit_b.aic, 'bic_B': fit_b.bic, 'llf_B': fit_b.llf,"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,82,"        'aic_A': fit_a.aic, 'bic_A': fit_a.bic, 'llf_A': fit_a.llf,"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,83,"        'aic_B': fit_b.aic, 'bic_B': fit_b.bic, 'llf_B': fit_b.llf,"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,84,        'nobs': int(fit_a.nobs)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,85,    })
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,86,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,87,"pd.DataFrame(comp_rows).to_csv(REPORTS_DIR / ""11a_nonlinear_model_comparison.csv"", index=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,88,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,89,# Ponto Estacionário Quadrático N2_B
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,90,b1 = fits_B['N2_Quadratic'].params['Z_freight_log_ratio']
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,91,b2 = fits_B['N2_Quadratic'].params['I(Z_freight_log_ratio ** 2)']
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,92,z_stat_quad = -b1 / (2 * b2) if b2 != 0 else np.nan
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,93,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,94,# Likelihood Ratio Test N1_B vs N2_B
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,87,95,lr_stat = 2 * (fits_B['N2_Quadratic'].llf - fits_B['N1_Linear'].llf)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,98,# 3. Avaliação Preditiva Temporal Expansiva OOT
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,99,months_sorted = sorted(df_sample['year_month'].unique())
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,100,min_train_months = 3
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,101,oot_scores = []
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,102,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,103,"for i in range(min_train_months, len(months_sorted)):"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,104,    train_m = months_sorted[:i]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,105,    test_m = months_sorted[i]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,106,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,107,    tr_df = df_sample[df_sample['year_month'].isin(train_m)]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,108,    te_df = df_sample[df_sample['year_month'] == test_m]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,109,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,110,    if te_df.empty or tr_df['late_delivery_calendar_day'].nunique() < 2:
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,103,111,        continue
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,108,    te_df = df_sample[df_sample['year_month'] == test_m]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,109,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,110,    if te_df.empty or tr_df['late_delivery_calendar_day'].nunique() < 2:
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,111,        continue
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,112,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,113,"    for m_name, expr in models_specs.items():"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,114,"        m_oot = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_B, data=tr_df).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,115,        preds = m_oot.predict(te_df)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,116,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,117,"        ap = average_precision_score(te_df['late_delivery_calendar_day'], preds)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,118,"        brier = brier_score_loss(te_df['late_delivery_calendar_day'], preds)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,119,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,120,"        oot_scores.append({'test_month': test_m, 'model': m_name, 'ap_oot': ap, 'brier_oot': brier})"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,113,121,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,109,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,110,    if te_df.empty or tr_df['late_delivery_calendar_day'].nunique() < 2:
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,111,        continue
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,112,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,113,"    for m_name, expr in models_specs.items():"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,114,"        m_oot = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_B, data=tr_df).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,115,        preds = m_oot.predict(te_df)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,116,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,117,"        ap = average_precision_score(te_df['late_delivery_calendar_day'], preds)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,118,"        brier = brier_score_loss(te_df['late_delivery_calendar_day'], preds)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,119,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,120,"        oot_scores.append({'test_month': test_m, 'model': m_name, 'ap_oot': ap, 'brier_oot': brier})"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,121,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,114,122,oot_df = pd.DataFrame(oot_scores)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,110,    if te_df.empty or tr_df['late_delivery_calendar_day'].nunique() < 2:
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,111,        continue
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,112,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,113,"    for m_name, expr in models_specs.items():"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,114,"        m_oot = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_B, data=tr_df).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,115,        preds = m_oot.predict(te_df)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,116,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,117,"        ap = average_precision_score(te_df['late_delivery_calendar_day'], preds)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,118,"        brier = brier_score_loss(te_df['late_delivery_calendar_day'], preds)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,119,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,120,"        oot_scores.append({'test_month': test_m, 'model': m_name, 'ap_oot': ap, 'brier_oot': brier})"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,121,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,122,oot_df = pd.DataFrame(oot_scores)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,115,123,"oot_df.to_csv(REPORTS_DIR / ""11b_nonlinear_oot_performance.csv"", index=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,118,"        brier = brier_score_loss(te_df['late_delivery_calendar_day'], preds)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,119,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,120,"        oot_scores.append({'test_month': test_m, 'model': m_name, 'ap_oot': ap, 'brier_oot': brier})"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,121,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,122,oot_df = pd.DataFrame(oot_scores)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,123,"oot_df.to_csv(REPORTS_DIR / ""11b_nonlinear_oot_performance.csv"", index=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,124,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,125,# 4. Curva de Predição Marginal Média com Intervalos de Confiança (N3_B)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,126,#
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,127,# LOW-MEMORY IMPLEMENTATION
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,128,# --------------------------------------------------------------
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,129,# Nunca formar:
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,130,#
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,123,131,#     X @ Cov @ X.T
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,346,"            f""| Z={z_val:.4f} """
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,347,"            f""| p={mean_prob:.6f}"""
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,348,        )
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,349,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,350,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,351,pd.DataFrame(
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,352,    pred_curves
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,353,).to_csv(
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,354,    REPORTS_DIR
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,355,"    / ""11c_spline_marginal_prediction_curve.csv"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,356,    index=False
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,357,)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,358,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,6849cc3bdd190d188db3fb1d4a308788ac07a85b34c054359399341cc9b94ac8,351,359,print(

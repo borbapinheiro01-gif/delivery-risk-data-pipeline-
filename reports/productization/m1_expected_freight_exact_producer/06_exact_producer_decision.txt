@@ -1,0 +1,17 @@
+============================================================================================
+DELIVERY RISK — BLOCK 06 EXACT EXPECTED FREIGHT PRODUCER DECISION
+============================================================================================
+
+PRIMARY_PRODUCER         : src/spatiotemporal_logistics/04_run_four_analyses.py
+STRONG_PRODUCER_COUNT    : 3
+MODEL_CONSTRUCTORS       : 10
+FIT_EXPRESSIONS          : 15
+PREDICT_EXPRESSIONS      : 8
+FEATURE_VECTOR_CANDIDATES: 1
+PIT_CLEAN_CANDIDATES     : 1
+TEMPORAL_MARKERS         : year_month|train|test|oot
+EXPECTED_FREIGHT_RELEASED: NO
+M1_RELEASED              : NO
+MODEL_TRAINED            : NO
+
+STATUS = READY_FOR_INDEPENDENT_RUNTIME_REPRODUCTION

@@ -1,0 +1,394 @@
+path,line,evidence_type,text
+src/data/auditar_coorte_modelagem.py,167,to_csv,monthly.to_csv(
+src/data/auditar_coorte_modelagem.py,363,to_csv,}).to_csv(
+src/data/auditar_diagnostico_dados.py,888,to_csv,estimated_hour_counts.to_csv(
+src/data/auditar_diagnostico_dados.py,949,to_csv,comparison.to_csv(
+src/data/auditar_diagnostico_dados.py,1073,to_csv,delay_dist.to_csv(
+src/data/auditar_diagnostico_dados.py,1634,to_csv,numeric_df.to_csv(
+src/data/auditar_diagnostico_dados.py,1916,to_csv,quality_df.to_csv(
+src/data/auditar_diagnostico_dados.py,1991,to_csv,fin.to_csv(
+src/data/auditar_diagnostico_dados.py,2097,to_csv,fin_summary.to_csv(
+src/data/auditar_diagnostico_dados.py,2182,to_csv,missing_global_df.to_csv(
+src/data/auditar_diagnostico_dados.py,2265,to_csv,missing_by_target_df.to_csv(
+src/data/auditar_diagnostico_dados.py,2363,to_csv,missing_month_df.to_csv(
+src/data/auditar_diagnostico_dados.py,2499,to_csv,geo_zip.to_csv(
+src/data/auditar_diagnostico_dados.py,2666,to_csv,geo_summary.to_csv(
+src/data/auditar_diagnostico_dados.py,2849,to_csv,distance_profile.to_csv(
+src/data/auditar_diagnostico_dados.py,2960,to_csv,biv_df.to_csv(
+src/data/auditar_diagnostico_dados.py,3088,to_csv,customer_state_rates.to_csv(
+src/data/auditar_diagnostico_dados.py,3146,to_csv,payment_type_rates.to_csv(
+src/data/auditar_diagnostico_dados.py,3204,to_csv,category_rates.to_csv(
+src/data/auditar_diagnostico_dados.py,3278,to_csv,seller_state_rates.to_csv(
+src/data/auditar_diagnostico_dados.py,3313,to_csv,cat_summary.to_csv(
+src/data/auditar_diagnostico_dados.py,3420,to_csv,monthly.to_csv(
+src/data/auditar_diagnostico_dados.py,3451,to_csv,weekday.to_csv(
+src/data/auditar_diagnostico_dados.py,3482,to_csv,hourly.to_csv(
+src/data/auditar_diagnostico_dados.py,3607,to_csv,seller_stats.to_csv(
+src/data/auditar_diagnostico_dados.py,3641,to_csv,seller_volume.to_csv(
+src/data/auditar_diagnostico_dados.py,3769,to_csv,id_df.to_csv(
+src/data/auditar_diagnostico_dados.py,4031,to_csv,treatment_df.to_csv(
+src/data/auditar_olist_raw.py,203,to_csv,table_summary_df.to_csv(
+src/data/auditar_olist_raw.py,251,to_csv,missing_df.to_csv(
+src/data/auditar_olist_raw.py,352,to_csv,pd.DataFrame(key_results).to_csv(
+src/data/auditar_olist_raw.py,440,to_csv,pd.DataFrame(relationship_results).to_csv(
+src/data/auditar_olist_raw.py,493,to_csv,status_df.to_csv(
+src/data/auditar_olist_raw.py,561,to_csv,delivery_summary.to_csv(
+src/data/auditar_olist_raw.py,626,to_csv,pd.DataFrame(temporal_checks).to_csv(
+src/data/dq_gate_01_structural.py,941,to_csv,scorecard.to_csv(
+src/data/dq_gate_01_structural.py,959,to_csv,exceptions.to_csv(
+src/data/dq_gate_01_structural.py,967,to_csv,).to_csv(
+src/data/dq_gate_02_semantic.py,736,to_csv,bad.to_csv(
+src/data/dq_gate_02_semantic.py,842,to_csv,out.to_csv(
+src/data/dq_gate_02_semantic.py,1178,to_csv,.to_csv(
+src/data/dq_gate_02_semantic.py,1456,to_csv,geo_multi_state.to_csv(
+src/data/dq_gate_02_semantic.py,1625,to_csv,scorecard.to_csv(
+src/data/dq_gate_02_semantic.py,1649,to_csv,exceptions.to_csv(
+src/data/dq_gate_02_semantic.py,1661,to_csv,).to_csv(
+src/data/dq_gate_03_statistical.py,465,to_csv,completeness_df.to_csv(
+src/data/dq_gate_03_statistical.py,738,to_csv,coverage_df.to_csv(
+src/data/dq_gate_03_statistical.py,1080,to_csv,numeric_df.to_csv(
+src/data/dq_gate_03_statistical.py,1362,to_csv,frequency.to_csv(
+src/data/dq_gate_03_statistical.py,1378,to_csv,categorical_df.to_csv(
+src/data/dq_gate_03_statistical.py,1775,to_csv,monthly_df.to_csv(
+src/data/dq_gate_03_statistical.py,1912,to_csv,stability_df.to_csv(
+src/data/dq_gate_03_statistical.py,1944,to_csv,tail_df.to_csv(
+src/data/dq_gate_03_statistical.py,2073,to_csv,global_missing_df.to_csv(
+src/data/dq_gate_03_statistical.py,2100,to_csv,scorecard.to_csv(
+src/data/dq_gate_03_statistical.py,2120,to_csv,exceptions.to_csv(
+src/data/dq_gate_03b_conditional_task.py,862,to_csv,source_relation_rows.to_csv(
+src/data/dq_gate_03b_conditional_task.py,1920,to_csv,conditional_df.to_csv(
+src/data/dq_gate_03b_conditional_task.py,2098,to_csv,post_event_rows.to_csv(
+src/data/dq_gate_03b_conditional_task.py,2540,to_csv,readiness.to_csv(
+src/data/dq_gate_03b_conditional_task.py,2613,to_csv,readiness_summary.to_csv(
+src/data/dq_gate_03b_conditional_task.py,2692,to_csv,monthly.to_csv(
+src/data/dq_gate_03b_conditional_task.py,2913,to_csv,reason_df.to_csv(
+src/data/dq_gate_03b_conditional_task.py,3133,to_csv,source_vs_task.to_csv(
+src/data/dq_gate_03b_conditional_task.py,3385,to_csv,multi_summary.to_csv(
+src/data/dq_gate_03b_conditional_task.py,3501,to_csv,funnel.to_csv(
+src/data/dq_gate_03b_conditional_task.py,3518,to_csv,scorecard.to_csv(
+src/data/dq_gate_03b_conditional_task.py,3539,to_csv,exceptions.to_csv(
+src/data/dq_gate_03b_conditional_task.py,3638,to_csv,issue_evidence.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,862,to_csv,source_relation_rows.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,1890,to_csv,conditional_df.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,2068,to_csv,post_event_rows.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,2510,to_csv,readiness.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,2583,to_csv,readiness_summary.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,2662,to_csv,monthly.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,2883,to_csv,reason_df.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,3103,to_csv,source_vs_task.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,3355,to_csv,multi_summary.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,3471,to_csv,funnel.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,3488,to_csv,scorecard.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,3509,to_csv,exceptions.to_csv(
+src/data/dq_gate_03b_conditional_task_BEFORE_FIX_CUSTOMER_GEO.py,3608,to_csv,issue_evidence.to_csv(
+src/data/dq_gate_04_label_construct.py,829,to_csv,time_semantics.to_csv(
+src/data/dq_gate_04_label_construct.py,945,to_csv,label_comparison.to_csv(
+src/data/dq_gate_04_label_construct.py,1022,to_csv,confusion_df.to_csv(
+src/data/dq_gate_04_label_construct.py,1116,to_csv,].to_csv(
+src/data/dq_gate_04_label_construct.py,1234,to_csv,margin_profile.to_csv(
+src/data/dq_gate_04_label_construct.py,1330,to_csv,margin_bins.to_csv(
+src/data/dq_gate_04_label_construct.py,1424,to_csv,monthly.to_csv(
+src/data/dq_gate_04_label_construct.py,1609,to_csv,observation_summary.to_csv(
+src/data/dq_gate_04_label_construct.py,1623,to_csv,].to_csv(
+src/data/dq_gate_04_label_construct.py,1721,to_csv,coverage_month.to_csv(
+src/data/dq_gate_04_label_construct.py,1843,to_csv,candidate_contract.to_csv(
+src/data/dq_gate_04_label_construct.py,2063,to_csv,scorecard.to_csv(
+src/data/dq_gate_04_label_construct.py,2084,to_csv,exceptions.to_csv(
+src/data/dq_gate_04_label_construct.py,2190,to_csv,issue_evidence.to_csv(
+src/data/dq_gate_04b_label_contract_freeze.py,262,to_csv,checks_df.to_csv(
+src/data/dq_gate_04b_label_contract_freeze.py,722,to_csv,issues.to_csv(
+src/data/dq_gate_04b_label_contract_freeze.py,729,to_csv,issues.to_csv(
+src/data/dq_gate_04b_label_contract_freeze.py,751,to_csv,resolution_registry.to_csv(
+src/data/dq_gate_05_point_in_time.py,1402,to_csv,pit.to_csv(
+src/data/dq_gate_05_point_in_time.py,1409,to_csv,pit.to_csv(
+src/data/dq_gate_05_point_in_time.py,1416,to_csv,derived.to_csv(
+src/data/dq_gate_05_point_in_time.py,1423,to_csv,module_plan.to_csv(
+src/data/dq_gate_05_point_in_time.py,1430,to_csv,forbidden.to_csv(
+src/data/dq_gate_05_point_in_time.py,1437,to_csv,holds.to_csv(
+src/data/dq_gate_05_point_in_time.py,1444,to_csv,review.to_csv(
+src/data/dq_gate_05_point_in_time.py,1477,to_csv,status_counts.to_csv(
+src/data/gate_05_1_build_pit_registry.py,772,to_csv,registry.to_csv(
+src/data/gate_05_1_build_pit_registry.py,793,to_csv,status_summary.to_csv(
+src/data/gate_05_1_build_pit_registry.py,813,to_csv,forbidden.to_csv(
+src/data/gate_05_1_build_pit_registry.py,833,to_csv,hold.to_csv(
+src/data/gate_05_1_build_pit_registry.py,840,to_csv,review_df.to_csv(
+src/data/gate_05_2_build_derived_feature_contract.py,1431,to_csv,contract.to_csv(
+src/data/gate_05_2_build_derived_feature_contract.py,1438,to_csv,model01.to_csv(
+src/data/gate_05_2_build_derived_feature_contract.py,1445,to_csv,blocked.to_csv(
+src/data/gate_05_2_build_derived_feature_contract.py,1452,to_csv,module_summary.to_csv(
+src/data/gate_05_2_build_derived_feature_contract.py,1459,to_csv,validation.to_csv(
+src/data/gate_05_2_build_derived_feature_contract.py,1466,to_csv,model01_violations_df.to_csv(
+src/data/gate_05_3_validate_seller_history_pit.py,1803,to_csv,current.to_csv(
+src/data/gate_05_3_validate_seller_history_pit.py,1810,to_csv,validation.to_csv(
+src/data/gate_05_3_validate_seller_history_pit.py,1817,to_csv,coverage.to_csv(
+src/data/gate_05_3_validate_seller_history_pit.py,1824,to_csv,profile.to_csv(
+src/data/gate_05_3_validate_seller_history_pit.py,1831,to_csv,brute.to_csv(
+src/data/gate_05_3_validate_seller_history_pit.py,1838,to_csv,order_coverage.to_csv(
+src/data/gate_05_4a_finalize_gate.py,756,to_csv,validation.to_csv(
+src/data/gate_05_4a_finalize_gate.py,763,to_csv,model_status.to_csv(
+src/metadata/build_dataset_knowledge_registry.py,2096,to_csv,table_catalog.to_csv(
+src/metadata/build_dataset_knowledge_registry.py,2104,to_csv,column_catalog.to_csv(
+src/metadata/build_dataset_knowledge_registry.py,2112,to_csv,value_domain.to_csv(
+src/metadata/build_dataset_knowledge_registry.py,2301,to_csv,relationship_registry.to_csv(
+src/metadata/build_dataset_knowledge_registry.py,2395,to_csv,truth_registry.to_csv(
+src/metadata/build_dataset_knowledge_registry.py,2520,to_csv,temporal_registry.to_csv(
+src/metadata/build_dataset_knowledge_registry.py,2580,to_csv,quality_registry.to_csv(
+src/metadata/build_dataset_knowledge_registry.py,2826,to_csv,unresolved.to_csv(
+src/metadata/corrigir_validar_croissant_v1_1.py,443,to_csv,audit_df.to_csv(
+src/metadata/corrigir_validar_croissant_v1_1.py,529,to_csv,cross_df.to_csv(
+src/metadata/upgrade_registry_v1_1.py,558,to_csv,issues_v11.to_csv(
+src/metadata/upgrade_registry_v1_1.py,698,to_csv,canonical_issues.to_csv(
+src/metadata/upgrade_registry_v1_1.py,1391,to_csv,grain_policy.to_csv(
+src/metadata/upgrade_registry_v1_1.py,1425,to_csv,columns_v11.to_csv(
+src/metadata/upgrade_registry_v1_1.py,1635,to_csv,relationships_v11.to_csv(
+src/metadata/upgrade_registry_v1_1.py,1674,to_csv,grain_summary.to_csv(
+src/metadata/upgrade_registry_v1_1.py,2709,to_csv,validation_df.to_csv(
+src/modeling/model_01_c3_2_1_common_scale_nullspace.py,1000,to_csv,temporal_df.to_csv(
+src/modeling/model_01_c3_2_1_common_scale_nullspace.py,1005,to_csv,relation_df.to_csv(
+src/modeling/model_01_c3_2_1_common_scale_nullspace.py,1240,to_csv,validation_df.to_csv(
+src/modeling/model_01_c3_2_sensitivity_rank_audit.py,300,to_csv,singular.to_csv(
+src/modeling/model_01_c3_2_sensitivity_rank_audit.py,357,to_csv,).to_csv(
+src/modeling/model_01_c3_2_sensitivity_rank_audit.py,509,to_csv,identity_df.to_csv(
+src/modeling/model_01_c3_2_sensitivity_rank_audit.py,576,to_csv,global_summary.to_csv(
+src/modeling/model_01_c3_2_sensitivity_rank_audit.py,841,to_csv,temporal_df.to_csv(
+src/modeling/model_01_c3_2_sensitivity_rank_audit.py,949,to_csv,validation.to_csv(
+src/modeling/model_01_c3_3a_build_functional_pit_curves.py,396,to_csv,].to_csv(
+src/modeling/model_01_c3_3a_build_functional_pit_curves.py,608,to_csv,manifest.to_csv(
+src/modeling/model_01_c3_3a_build_functional_pit_curves.py,653,to_csv,window_df.to_csv(
+src/modeling/model_01_c3_3a_build_functional_pit_curves.py,754,to_csv,brute_df.to_csv(
+src/modeling/model_01_c3_3a_build_functional_pit_curves.py,905,to_csv,validation.to_csv(
+src/modeling/model_01_c3_3b_support_aware_functional_geometry.py,874,to_csv,support.to_csv(
+src/modeling/model_01_c3_3b_support_aware_functional_geometry.py,966,to_csv,support_summary.to_csv(
+src/modeling/model_01_c3_3b_support_aware_functional_geometry.py,1027,to_csv,support_month.to_csv(
+src/modeling/model_01_c3_3b_support_aware_functional_geometry.py,1216,to_csv,geometry_df.to_csv(
+src/modeling/model_01_c3_3b_support_aware_functional_geometry.py,1221,to_csv,spectrum_df.to_csv(
+src/modeling/model_01_c3_3b_support_aware_functional_geometry.py,1344,to_csv,lag_profile_df.to_csv(
+src/modeling/model_01_c3_3b_support_aware_functional_geometry.py,1429,to_csv,corr_df.to_csv(
+src/modeling/model_01_c3_3b_support_aware_functional_geometry.py,1779,to_csv,validation_df.to_csv(
+src/modeling/model_01_c3_3c_temporal_basis_portability.py,847,to_csv,folds.to_csv(
+src/modeling/model_01_c3_3c_temporal_basis_portability.py,989,to_csv,summary_table.to_csv(
+src/modeling/model_01_c3_3c_temporal_basis_portability.py,1014,to_csv,k_stability.to_csv(
+src/modeling/model_01_c3_3c_temporal_basis_portability.py,1223,to_csv,validation.to_csv(
+src/modeling/model_01_c3_3d1_1_negative_smoothing_audit.py,861,to_csv,audit.to_csv(
+src/modeling/model_01_c3_3d1_1_negative_smoothing_audit.py,978,to_csv,validation.to_csv(
+src/modeling/model_01_c3_3d1_roughness_penalty_sensitivity.py,955,to_csv,operator_df.to_csv(
+src/modeling/model_01_c3_3d1_roughness_penalty_sensitivity.py,1342,to_csv,results.to_csv(
+src/modeling/model_01_c3_3d1_roughness_penalty_sensitivity.py,1650,to_csv,validation.to_csv(
+src/modeling/model_01_c3_3d2_raw_vs_smooth_temporal.py,1733,to_csv,folds.to_csv(
+src/modeling/model_01_c3_3d2_raw_vs_smooth_temporal.py,2006,to_csv,summary_table.to_csv(
+src/modeling/model_01_c3_3d2_raw_vs_smooth_temporal.py,2053,to_csv,paired.to_csv(
+src/modeling/model_01_c3_3d2_raw_vs_smooth_temporal.py,2420,to_csv,validation.to_csv(
+src/modeling/model_01_c3_4a_1_rank_criterion_identifiability.py,299,to_csv,audit.to_csv(
+src/modeling/model_01_c3_4a_1_rank_criterion_identifiability.py,436,to_csv,marginal.to_csv(
+src/modeling/model_01_c3_4a_1_rank_criterion_identifiability.py,607,to_csv,validation.to_csv(
+src/modeling/model_01_c3_4a_1_rank_identifiability.py,185,to_csv,audit.to_csv(
+src/modeling/model_01_c3_4a_1_rank_identifiability.py,287,to_csv,tradeoff.to_csv(
+src/modeling/model_01_c3_4a_1_rank_identifiability.py,422,to_csv,validation.to_csv(
+src/modeling/model_01_c3_4a_temporal_k_policy.py,883,to_csv,folds.to_csv(
+src/modeling/model_01_c3_4a_temporal_k_policy.py,1111,to_csv,summary.to_csv(
+src/modeling/model_01_c3_4a_temporal_k_policy.py,1292,to_csv,one_se.to_csv(
+src/modeling/model_01_c3_4a_temporal_k_policy.py,1653,to_csv,validation.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank.py,1826,to_csv,folds.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank.py,1990,to_csv,profile.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank.py,2169,to_csv,candidates.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank.py,2315,to_csv,monthly_best.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank.py,2655,to_csv,validation.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank_BEFORE_EIG_FIX.py,1829,to_csv,folds.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank_BEFORE_EIG_FIX.py,1993,to_csv,profile.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank_BEFORE_EIG_FIX.py,2172,to_csv,candidates.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank_BEFORE_EIG_FIX.py,2318,to_csv,monthly_best.to_csv(
+src/modeling/model_01_c3_4b_temporal_bcv_rank_BEFORE_EIG_FIX.py,2658,to_csv,validation.to_csv(
+src/modeling/model_01_c3_4c_bcv_block_bootstrap_stability.py,576,to_csv,monthly.to_csv(
+src/modeling/model_01_c3_4c_bcv_block_bootstrap_stability.py,1129,to_csv,freq.to_csv(
+src/modeling/model_01_c3_4c_bcv_block_bootstrap_stability.py,1134,to_csv,summary.to_csv(
+src/modeling/model_01_c3_4c_bcv_block_bootstrap_stability.py,1396,to_csv,validation.to_csv(
+src/modeling/model_01_c3_4d_robust_rank_evidence.py,284,to_csv,curve.to_csv(
+src/modeling/model_01_c3_4d_robust_rank_evidence.py,349,to_csv,threshold_df.to_csv(
+src/modeling/model_01_c3_4d_robust_rank_evidence.py,421,to_csv,mode_summary.to_csv(
+src/modeling/model_01_c3_4d_robust_rank_evidence.py,615,to_csv,validation.to_csv(
+src/modeling/model_01_c3_5a_supervised_temporal_protocol.py,572,to_csv,folds.to_csv(
+src/modeling/model_01_c3_5a_supervised_temporal_protocol.py,577,to_csv,excluded.to_csv(
+src/modeling/model_01_c3_5a_supervised_temporal_protocol.py,822,to_csv,validation.to_csv(
+src/modeling/model_01_c3_5b_freeze_supervised_protocol.py,519,to_csv,validation.to_csv(
+src/modeling/model_01_c3_6a_supervised_k_utility.py,209,to_csv,df.to_csv(
+src/modeling/model_01_c3_6a_supervised_k_utility.py,1122,model_fit,clf.fit(
+src/modeling/model_01_c3_6a_supervised_k_utility.py,1392,to_csv,pred_frame.to_csv(
+src/modeling/model_01_c3_6b_paired_temporal_robustness.py,181,to_csv,df.to_csv(
+src/modeling/model_01_c3_6c_freeze_k0_decision.py,374,to_csv,validation.to_csv(
+src/shipping_friction/27a_block01_core_friction.py,27,output_filename,artifacts/spatiotemporal_logistics/06_EXPECTED_FREIGHT_OOT.csv
+src/shipping_friction/27a_block01_core_friction.py,48,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block01_core_friction.py,152,output_filename,"f""06_EXPECTED_FREIGHT_OOT.csv: {missing}"""
+src/shipping_friction/27a_block01_core_friction.py,544,to_csv,coverage.to_csv(
+src/shipping_friction/27a_block01_core_friction.py,592,to_csv,quantiles.to_csv(
+src/shipping_friction/27a_block01_core_friction.py,598,to_csv,month_stats.to_csv(
+src/shipping_friction/27a_block01_core_friction.py,642,to_csv,].to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,81,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block02_burden_decomposition.py,252,model_predict,"fit.predict(frame),"
+src/shipping_friction/27a_block02_burden_decomposition.py,267,model_predict,"fit.predict(alt),"
+src/shipping_friction/27a_block02_burden_decomposition.py,524,to_csv,).to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,614,to_csv,assoc_df.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,653,to_csv,deciles.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,724,to_csv,group_df.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,786,model_fit,result = model.fit(
+src/shipping_friction/27a_block02_burden_decomposition.py,916,to_csv,coef_df.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,957,model_predict,"fit_m2.predict(base0),"
+src/shipping_friction/27a_block02_burden_decomposition.py,962,model_predict,"fit_m2.predict(base1),"
+src/shipping_friction/27a_block02_burden_decomposition.py,1017,to_csv,effects_df.to_csv(
+src/shipping_friction/27a_block02_burden_decomposition.py,1095,to_csv,segments.to_csv(
+src/shipping_friction/27a_block03_service_performance.py,66,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block03_service_performance.py,645,to_csv,coverage.to_csv(
+src/shipping_friction/27a_block03_service_performance.py,681,to_csv,quantiles.to_csv(
+src/shipping_friction/27a_block03_service_performance.py,796,to_csv,monthly.to_csv(
+src/shipping_friction/27a_block03_service_performance.py,851,to_csv,consistency.to_csv(
+src/shipping_friction/27a_block03_service_performance.py,889,to_csv,].to_csv(
+src/shipping_friction/27a_block04_cost_to_service.py,90,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block04_cost_to_service.py,542,model_fit,).fit(
+src/shipping_friction/27a_block04_cost_to_service.py,552,model_fit,).fit(
+src/shipping_friction/27a_block04_cost_to_service.py,563,model_fit,).fit(
+src/shipping_friction/27a_block04_cost_to_service.py,576,model_fit,).fit(
+src/shipping_friction/27a_block04_cost_to_service.py,702,to_csv,models_df.to_csv(
+src/shipping_friction/27a_block04_cost_to_service.py,815,to_csv,deciles_df.to_csv(
+src/shipping_friction/27a_block04_cost_to_service.py,877,to_csv,thresholds_df.to_csv(
+src/shipping_friction/27a_block04_cost_to_service.py,1070,to_csv,quadrants_df.to_csv(
+src/shipping_friction/27a_block04_cost_to_service.py,1183,to_csv,critical_df.to_csv(
+src/shipping_friction/27a_block04_cost_to_service.py,1240,to_csv,].to_csv(
+src/spatiotemporal_logistics/01_build_route_checkpoint.py,127,to_csv,status_counts.to_csv(
+src/spatiotemporal_logistics/01_build_route_checkpoint.py,559,to_csv,rso.to_csv(
+src/spatiotemporal_logistics/01_build_route_checkpoint.py,664,to_csv,route_summary.to_csv(
+src/spatiotemporal_logistics/02_build_external_context_checkpoint.py,429,to_csv,muni.to_csv(
+src/spatiotemporal_logistics/02_build_external_context_checkpoint.py,626,to_csv,anp_muni.to_csv(
+src/spatiotemporal_logistics/02_build_external_context_checkpoint.py,710,to_csv,anp_state.to_csv(
+src/spatiotemporal_logistics/03_build_master_checkpoint.py,385,to_csv,master.to_csv(
+src/spatiotemporal_logistics/03_build_master_checkpoint.py,428,to_csv,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,11,hist_gbr,from sklearn.ensemble import HistGradientBoostingRegressor
+src/spatiotemporal_logistics/04_run_four_analyses.py,11,gradient_gbr,from sklearn.ensemble import HistGradientBoostingRegressor
+src/spatiotemporal_logistics/04_run_four_analyses.py,103,to_csv,pd.DataFrame(desc).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,110,to_csv,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,116,to_csv,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,257,model_fit,f1.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,273,model_predict,] = f1.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,281,hist_gbr,f2 = HistGradientBoostingRegressor(
+src/spatiotemporal_logistics/04_run_four_analyses.py,281,gradient_gbr,f2 = HistGradientBoostingRegressor(
+src/spatiotemporal_logistics/04_run_four_analyses.py,286,model_fit,f2.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,294,model_predict,] = f2.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,308,to_csv,pd.DataFrame(folds).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,363,to_csv,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,427,to_csv,master.to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,428,output_filename,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,586,model_fit,).fit()
+src/spatiotemporal_logistics/04_run_four_analyses.py,611,to_csv,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,673,model_fit,model.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,678,model_predict,pred.loc[test.index] = model.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,722,to_csv,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,775,model_fit,).fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,802,to_csv,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,867,model_fit,clf.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,920,to_csv,).to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,956,model_fit,).fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,1007,model_fit,).fit()
+src/spatiotemporal_logistics/04_run_four_analyses.py,1046,to_csv,table_two.to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,1136,model_fit,).fit()
+src/spatiotemporal_logistics/04_run_four_analyses.py,1160,to_csv,).to_csv(
+src/spatiotemporal_logistics/05_integrated_validation_report.py,17,output_filename,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,36,to_csv,"sample_flow.to_csv(REPORTS_DIR / ""06a_sample_flow.csv"", index=False)"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,67,to_csv,"pd.DataFrame(univariate).to_csv(REPORTS_DIR / ""06b_univariate_full.csv"", index=False)"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,81,to_csv,"pd.DataFrame(assoc).to_csv(REPORTS_DIR / ""06c_cost_association_matrix.csv"", index=False)"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,102,to_csv,"pd.DataFrame(decile_rows).to_csv(REPORTS_DIR / ""06d_cost_decile_curves.csv"", index=False)"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,105,model_fit,"mod_struct = smf.ols('log_freight ~ log_distance + log_weight + log_volume + log_price + route_sellers_total', data=df).fit()"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,106,to_csv,"pd.DataFrame({'term': mod_struct.params.index, 'coef': mod_struct.params.values, 'std_err': mod_struct.bse.values, 'p_value': mod_struct.pvalues.values}).to_csv(REPORTS_DIR / ""06e_cost_structural_coefficients.csv"", index=False)"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,108,model_fit,"mod_inter = smf.ols('log_freight ~ log_distance * log_weight + log_distance * log_volume + log_price + route_sellers_total', data=df).fit()"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,109,to_csv,"pd.DataFrame({'term': mod_inter.params.index, 'coef': mod_inter.params.values, 'p_value': mod_inter.pvalues.values}).to_csv(REPORTS_DIR / ""06f_cost_interactions.csv"", index=False)"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,113,model_fit,"s_single = smf.ols('log_freight ~ log_distance + log_weight + log_volume + log_price', data=df[df['single_seller_order'] == 1]).fit()"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,114,model_fit,"s_route = smf.ols('log_freight ~ log_distance + log_weight + log_volume + log_price', data=df[df['route_distance_coverage'] == 1.0]).fit()"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,115,model_fit,"s_phys = smf.ols('log_freight ~ log_distance + log_weight + log_volume + log_price', data=df[(df['weight_complete'] == 1) & (df['volume_complete'] == 1)]).fit()"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,117,model_fit,"s_trim = smf.ols('log_freight ~ log_distance + log_weight + log_volume + log_price', data=df[df['total_freight'].between(q05, q95)]).fit()"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,126,to_csv,"sens_df.to_csv(REPORTS_DIR / ""06g_cost_sensitivity.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,16,output_filename,"oot_master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,34,to_csv,"f0_f1_comp.to_csv(REPORTS_DIR / ""07a_freight_model_global_metrics.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,37,to_csv,"global_metrics.to_csv(REPORTS_DIR / ""07a_freight_model_global_metrics.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,50,to_csv,"monthly_df.to_csv(REPORTS_DIR / ""07b_freight_model_monthly_metrics.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,62,to_csv,"bootstrap_df.to_csv(REPORTS_DIR / ""07d_freight_block_bootstrap.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,71,to_csv,"calib.to_csv(REPORTS_DIR / ""07e_freight_calibration.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,83,to_csv,"res_corr.to_csv(REPORTS_DIR / ""07f_residual_structural_associations.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,91,to_csv,"drift.to_csv(REPORTS_DIR / ""07g_residual_temporal_drift.csv"", index=False)"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,24,output_filename,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,48,model_fit,"mix_mod = smf.mixedlm(fml_mixed, speed_std, groups=speed_std['customer_state']).fit()"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,65,to_csv,"pd.DataFrame(multilevel_res).to_csv(REPORTS_DIR / ""08d_speed_multilevel_coefficients.csv"", index=False)"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,70,to_csv,"random_effects.to_csv(REPORTS_DIR / ""08e_speed_multilevel_group_effects.csv"", index=False)"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,16,output_filename,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,59,to_csv,"beta_binom_df.to_csv(REPORTS_DIR / ""09c_beta_binomial_residual_groups.csv"", index=False)"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,77,model_fit,"fit_ra = smf.logit('late_delivery_calendar_day ~ log_distance_std + log_weight_std + log_volume_std + freight_residual_OOT_std', data=rel_std).fit(disp=False)"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,78,model_fit,"fit_rb = smf.logit('late_delivery_calendar_day ~ log_distance_std + log_weight_std + log_volume_std + freight_residual_OOT_std + promised_delivery_days', data=rel_std).fit(disp=False)"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,96,to_csv,"or_df.to_csv(REPORTS_DIR / ""09h_frequentist_odds_ratios.csv"", index=False)"
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,236,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,393,model_fit,fit = model.fit(
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,464,to_csv,attempt_df.to_csv(
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,33,output_filename,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,74,model_fit,"fit_a = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_A, data=df_sample).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,75,model_fit,"fit_b = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_B, data=df_sample).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,87,to_csv,"pd.DataFrame(comp_rows).to_csv(REPORTS_DIR / ""11a_nonlinear_model_comparison.csv"", index=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,114,model_fit,"m_oot = smf.logit(f'late_delivery_calendar_day ~ {expr}' + fml_controls_B, data=tr_df).fit(disp=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,115,model_predict,preds = m_oot.predict(te_df)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,123,to_csv,"oot_df.to_csv(REPORTS_DIR / ""11b_nonlinear_oot_performance.csv"", index=False)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,353,to_csv,).to_csv(
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,31,output_filename,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,82,model_fit,"fit = model.fit(method=opt, reml=False, maxiter=1000, disp=False)"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,113,to_csv,"pd.DataFrame(opt_audit).to_csv(REPORTS_DIR / ""12a_mixedlm_optimizer_audit.csv"", index=False)"
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,45,output_filename,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,82,to_csv,"pd.DataFrame(smd_list).to_csv(REPORTS_DIR / ""13a_group_composition_smd.csv"", index=False)"
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,106,model_fit,"fit = smf.logit(fml, data=df_sub_A).fit(disp=False)"
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,110,model_fit,"fit_h4 = smf.logit(f'late_delivery_calendar_day ~ {z_expr} + log_distance + log_weight + log_volume + route_sellers_total + promised_delivery_days + log_pop + log_gdp + log_diesel + truck_strike_2018', data=df_sub_B).fit(disp=False)"
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,113,to_csv,"pd.DataFrame(seq_res).to_csv(REPORTS_DIR / ""13b_sequential_decomposition.csv"", index=False)"
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,121,model_fit,"fit_t = smf.logit(f'late_delivery_calendar_day ~ {z_expr} + log_weight + log_volume + promised_delivery_days', data=t_df).fit(disp=False)"
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,131,to_csv,"pd.DataFrame(het_rows).to_csv(REPORTS_DIR / ""13c_heterogeneity_fdr.csv"", index=False)"
+src/spatiotemporal_logistics/14_integrated_scientific_freeze.py,98,to_csv,"hyp_df.to_csv(REPORTS_DIR / ""14a_hypothesis_matrix.csv"", index=False)"
+src/spatiotemporal_logistics/15_gnadmm_delivery_operator_jacobian_audit.py,16,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/15_gnadmm_delivery_operator_jacobian_audit.py,341,to_csv,jac_df.to_csv(
+src/spatiotemporal_logistics/16_gn_brier_unconstrained.py,333,to_csv,).to_csv(
+src/spatiotemporal_logistics/16_gn_brier_unconstrained.py,339,to_csv,best_hist.to_csv(
+src/spatiotemporal_logistics/16_gn_brier_unconstrained.py,355,to_csv,coef_df.to_csv(
+src/spatiotemporal_logistics/17_gnadmm_brier_constrained.py,603,to_csv,).to_csv(
+src/spatiotemporal_logistics/17_gnadmm_brier_constrained.py,609,to_csv,best_outer.to_csv(
+src/spatiotemporal_logistics/17_gnadmm_brier_constrained.py,616,to_csv,best_admm.to_csv(
+src/spatiotemporal_logistics/17_gnadmm_brier_constrained.py,632,to_csv,coef_df.to_csv(
+src/spatiotemporal_logistics/18_gnadmm_delivery_oot_benchmark.py,594,model_fit,logit_fit = logit.fit(
+src/spatiotemporal_logistics/18_gnadmm_delivery_oot_benchmark.py,600,model_predict,logit_fit.predict(
+src/spatiotemporal_logistics/18_gnadmm_delivery_oot_benchmark.py,619,model_predict,logit_fit.predict(
+src/spatiotemporal_logistics/18_gnadmm_delivery_oot_benchmark.py,753,to_csv,oot.to_csv(
+src/spatiotemporal_logistics/18_gnadmm_delivery_oot_benchmark.py,798,to_csv,summary.to_csv(
+src/spatiotemporal_logistics/18_gnadmm_delivery_oot_benchmark.py,930,to_csv,paired_df.to_csv(
+src/spatiotemporal_logistics/19_gnadmm_paired_temporal_inference.py,527,to_csv,res.to_csv(
+src/spatiotemporal_logistics/19_gnadmm_paired_temporal_inference.py,535,to_csv,).to_csv(
+src/spatiotemporal_logistics/19_gnadmm_paired_temporal_inference.py,543,to_csv,).to_csv(
+src/spatiotemporal_logistics/20_gnadmm_constraint_ablation.py,766,model_fit,fit = model.fit(
+src/spatiotemporal_logistics/20_gnadmm_constraint_ablation.py,1186,to_csv,metrics_df.to_csv(
+src/spatiotemporal_logistics/20_gnadmm_constraint_ablation.py,1198,to_csv,pred_df.to_csv(
+src/spatiotemporal_logistics/20_gnadmm_constraint_ablation.py,1258,to_csv,summary.to_csv(
+src/spatiotemporal_logistics/21_gnadmm_calibration_resolution_audit.py,70,model_fit,).fit()
+src/spatiotemporal_logistics/21_gnadmm_calibration_resolution_audit.py,524,to_csv,overall.to_csv(
+src/spatiotemporal_logistics/21_gnadmm_calibration_resolution_audit.py,534,to_csv,).to_csv(
+src/spatiotemporal_logistics/21_gnadmm_calibration_resolution_audit.py,545,to_csv,monthly.to_csv(
+src/spatiotemporal_logistics/22_gnadmm_scientific_freeze.py,599,to_csv,hyp_df.to_csv(
+src/spatiotemporal_logistics/22_gnadmm_scientific_freeze.py,672,to_csv,).to_csv(
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,62,output_filename,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,88,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,94,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,445,to_csv,hyp_df.to_csv(
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,515,to_csv,).to_csv(
+src/spatiotemporal_logistics/24_predictive_model_audit.py,242,to_csv,registry.to_csv(
+src/spatiotemporal_logistics/24_predictive_model_audit.py,253,to_csv,calibration.to_csv(
+src/spatiotemporal_logistics/24_predictive_model_audit.py,337,to_csv,winners.to_csv(
+src/spatiotemporal_logistics/25_governance_reproducibility_audit.py,111,to_csv,raw_manifest.to_csv(
+src/spatiotemporal_logistics/25_governance_reproducibility_audit.py,183,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/25_governance_reproducibility_audit.py,233,output_filename,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/25_governance_reproducibility_audit.py,705,to_csv,gate_df.to_csv(
+src/spatiotemporal_logistics/25f_final_model_consistency.py,512,to_csv,summary.to_csv(
+src/spatiotemporal_logistics/25f_final_model_consistency.py,517,to_csv,monthly.to_csv(
+src/spatiotemporal_logistics/25f_final_temporal_robustness.py,497,to_csv,summary.to_csv(
+src/spatiotemporal_logistics/25f_final_temporal_robustness.py,502,to_csv,monthly.to_csv(
+src/spatiotemporal_logistics/25f_paired_ablation_inference.py,1065,to_csv,summary.to_csv(
+src/spatiotemporal_logistics/25f_paired_ablation_inference.py,1070,to_csv,monthly.to_csv(
+src/spatiotemporal_logistics/25i_prequential_probability_blend.py,1391,to_csv,pred.to_csv(
+src/spatiotemporal_logistics/25i_prequential_probability_blend.py,1397,to_csv,monthly.to_csv(
+src/spatiotemporal_logistics/25i_prequential_probability_blend.py,1403,to_csv,summary.to_csv(
+src/spatiotemporal_logistics/25i_prequential_probability_blend.py,1409,to_csv,alpha_history.to_csv(
