@@ -1,0 +1,25 @@
+layer,module,status,role
+DATA_FOUNDATION,Raw Governance,COMPLETE,Scientific Core
+DATA_FOUNDATION,Data Quality Gates,COMPLETE,Scientific Core
+DATA_FOUNDATION,Point-in-Time Governance,COMPLETE,Scientific Core
+LOGISTICS_INTELLIGENCE,Route Engine,COMPLETE,Scientific Core
+LOGISTICS_INTELLIGENCE,Spatiotemporal Core,COMPLETE,Scientific Core
+LOGISTICS_INTELLIGENCE,Expected Freight OOT,COMPLETE,Scientific Core
+LOGISTICS_INTELLIGENCE,Shipping Friction,COMPLETE,Scientific Core
+LOGISTICS_INTELLIGENCE,Critical Shipping Friction,COMPLETE,Ex-post Diagnostic
+PREDICTIVE_AI,Late Risk Scientific Core,COMPLETE,Scientific Core
+PREDICTIVE_AI,Late Risk Production Benchmark,PLANNED,Product Layer
+PREDICTIVE_AI,Shipping Intelligence Feature Ablation,PLANNED,Product Layer
+PREDICTIVE_AI,ETA,PLANNED,Product Layer
+PREDICTIVE_AI,Probabilistic ETA,PLANNED,Product Layer
+PREDICTIVE_AI,Explainability,PLANNED,Product Layer
+DECISION_ENGINE,Recall Top-K Operational Ranking,PLANNED,Product Layer
+DECISION_ENGINE,Expected Value Decisioning,PLANNED,Product Layer
+MLOPS_CLOUD,SQL Medallion,PLANNED,Production Infrastructure
+MLOPS_CLOUD,MLflow,PLANNED,Production Infrastructure
+MLOPS_CLOUD,Model Registry,PLANNED,Production Infrastructure
+MLOPS_CLOUD,FastAPI,PLANNED,Production Infrastructure
+MLOPS_CLOUD,Docker,PLANNED,Production Infrastructure
+MLOPS_CLOUD,AWS,PLANNED,Production Infrastructure
+MLOPS_CLOUD,GitHub Actions,PLANNED,Production Infrastructure
+MLOPS_CLOUD,Monitoring and Drift,PLANNED,Production Infrastructure

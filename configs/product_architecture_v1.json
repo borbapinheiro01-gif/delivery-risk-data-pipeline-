@@ -1,0 +1,59 @@
+{
+  "project": {
+    "name": "Delivery Risk & Shipping Friction Intelligence Platform",
+    "subtitle": "End-to-End AI for Predictive Logistics, Cost Intelligence and MLOps",
+    "architecture_version": "1.0",
+    "status": "FROZEN_TARGET_ARCHITECTURE"
+  },
+  "architecture": [
+    "DATA_FOUNDATION",
+    "LOGISTICS_INTELLIGENCE",
+    "PREDICTIVE_AI",
+    "DECISION_ENGINE",
+    "MLOPS_CLOUD"
+  ],
+  "scientific_core": {
+    "preserve_existing_paths": true,
+    "physical_reorganization_of_existing_sources": false
+  },
+  "prediction_contract": {
+    "prediction_time": "order_purchase_timestamp",
+    "official_target": "late_delivery_calendar_day",
+    "point_in_time_required": true,
+    "future_information_forbidden": true
+  },
+  "shipping_friction": {
+    "role": "DIAGNOSTIC_AND_FEATURE_INTELLIGENCE",
+    "critical_shipping_friction_is_ex_post": true,
+    "critical_shipping_friction_allowed_as_same_order_t0_predictor": false,
+    "expected_freight_may_be_predictive_if_point_in_time_safe": true
+  },
+  "late_risk": {
+    "scientific_experimental_core": "EXISTS",
+    "production_benchmark": "PLANNED",
+    "primary_metric": "PR_AUC",
+    "operational_metrics": [
+      "Recall@TopK",
+      "Precision@TopK",
+      "Calibration",
+      "Brier"
+    ]
+  },
+  "eta": {
+    "status": "PLANNED",
+    "probabilistic_outputs": [
+      "P50",
+      "P80",
+      "P95"
+    ]
+  },
+  "production": {
+    "sql": "PLANNED",
+    "mlflow": "PLANNED",
+    "fastapi": "PLANNED",
+    "docker": "PLANNED",
+    "aws": "PLANNED",
+    "github_actions": "PLANNED",
+    "monitoring": "PLANNED"
+  }
+}
