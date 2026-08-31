@@ -60,3 +60,7 @@ src/modeling/model_01_c3_3d2_1_close_representation_decision_BROKEN.py
 src/spatiotemporal_logistics/01_build_fast_spatiotemporal_core.py
 src/spatiotemporal_logistics/01_build_fast_spatiotemporal_core.before_syntax_repair_*.py
 src/spatiotemporal_logistics/v2_before_v21_*/
+
+# Local DuckDB Medallion runtime
+data/bronze/*.duckdb
+data/bronze/*.duckdb.wal

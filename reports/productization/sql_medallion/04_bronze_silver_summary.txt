@@ -1,0 +1,19 @@
+============================================================================================
+DELIVERY RISK — SQL MEDALLION BLOCK 02 SUMMARY
+============================================================================================
+
+DUCKDB_VERSION       : 1.5.5
+BRONZE_TABLES        : 9
+SILVER_TABLES        : 9
+QUALITY_CHECKS       : 36
+QUALITY_PASS         : 36
+QUALITY_FAIL         : 0
+BRONZE_ORDERS        : 99441
+SILVER_ORDERS        : 99441
+BRONZE_GEOLOCATION   : 1000163
+SILVER_GEOLOCATION   : 1000163
+RAW_MODIFIED          : NO
+SILENT_DEDUPLICATION  : NO
+SCIENTIFIC_CORE       : UNCHANGED
+
+STATUS = SQL_MEDALLION_BRONZE_SILVER_READY_FOR_GOLD

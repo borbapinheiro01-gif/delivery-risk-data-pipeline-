@@ -1,0 +1,15 @@
+{
+  "contract": "SQL_MEDALLION_SOURCES_V1",
+  "grain_policy": "PRESERVE_RAW_MULTIPLICITY_IN_BRONZE",
+  "sources": [
+    {"table": "orders", "file": "olist_orders_dataset.csv", "primary_key": ["order_id"]},
+    {"table": "order_items", "file": "olist_order_items_dataset.csv", "primary_key": ["order_id", "order_item_id"]},
+    {"table": "customers", "file": "olist_customers_dataset.csv", "primary_key": ["customer_id"]},
+    {"table": "sellers", "file": "olist_sellers_dataset.csv", "primary_key": ["seller_id"]},
+    {"table": "products", "file": "olist_products_dataset.csv", "primary_key": ["product_id"]},
+    {"table": "payments", "file": "olist_order_payments_dataset.csv", "primary_key": ["order_id", "payment_sequential"]},
+    {"table": "reviews", "file": "olist_order_reviews_dataset.csv", "primary_key": null},
+    {"table": "geolocation", "file": "olist_geolocation_dataset.csv", "primary_key": null},
+    {"table": "product_category_translation", "file": "product_category_name_translation.csv", "primary_key": ["product_category_name"]}
+  ]
+}
