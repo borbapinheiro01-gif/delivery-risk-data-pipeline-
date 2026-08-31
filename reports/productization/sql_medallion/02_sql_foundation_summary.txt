@@ -1,0 +1,19 @@
+============================================================================================
+DELIVERY RISK — SQL MEDALLION FOUNDATION SUMMARY
+============================================================================================
+
+RAW source files        : 9
+RAW source rows total   : 1550922
+RAW modified            : NO
+Scientific Core changed : NO
+Model trained           : NO
+Features recalculated   : NO
+
+Preferred SQL engine    : DuckDB
+DuckDB available        : YES
+Bronze contract         : DEFINED
+Silver contract         : DEFINED
+Gold contract           : DEFINED
+PIT guardrail           : DEFINED
+
+STATUS = SQL_MEDALLION_FOUNDATION_READY_FOR_BRONZE

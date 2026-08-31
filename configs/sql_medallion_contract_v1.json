@@ -1,0 +1,66 @@
+{
+  "project": "Delivery Risk & Shipping Friction Intelligence Platform",
+  "contract": "SQL_MEDALLION_V1",
+  "status": "FOUNDATION_DEFINED",
+  "principles": {
+    "raw_immutable": true,
+    "scientific_provenance_preserved": true,
+    "silent_deduplication_forbidden": true,
+    "point_in_time_governance_required": true,
+    "future_information_forbidden_for_prediction": true,
+    "prediction_time": "order_purchase_timestamp",
+    "official_target": "late_delivery_calendar_day"
+  },
+  "engine": {
+    "preferred_local_engine": "DuckDB",
+    "installation_by_this_stage": false
+  },
+  "bronze": {
+    "purpose": "Source-aligned SQL representations of Olist files.",
+    "rules": [
+      "Preserve source columns.",
+      "Preserve source row multiplicity.",
+      "No silent semantic correction.",
+      "Attach provenance.",
+      "Do not overwrite RAW."
+    ]
+  },
+  "silver": {
+    "purpose": "Typed, validated and reusable business entities.",
+    "planned_entities": [
+      "orders",
+      "order_items",
+      "customers",
+      "sellers",
+      "products",
+      "payments",
+      "reviews",
+      "geolocation",
+      "product_category_translation",
+      "order_seller_route"
+    ],
+    "rules": [
+      "Type timestamps explicitly.",
+      "Document every deduplication.",
+      "Preserve missingness semantics.",
+      "Validate keys and joins.",
+      "Separate ex-post fields from purchase-time fields."
+    ]
+  },
+  "gold": {
+    "purpose": "Product-facing analytical and ML entities.",
+    "planned_entities": [
+      "ml_delivery_features_core",
+      "ml_delivery_features_shipping_intelligence",
+      "delivery_service_outcomes",
+      "shipping_friction_diagnostic"
+    ],
+    "primary_predictive_grain": "one row per order_id",
+    "rules": [
+      "Point-in-Time contract required.",
+      "Critical Shipping Friction is ex-post and forbidden as same-order predictor.",
+      "Expected Freight may enter only if generated Point-in-Time safely.",
+      "Training and serving feature definitions must match."
+    ]
+  }
+}
