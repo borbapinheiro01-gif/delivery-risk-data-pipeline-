@@ -1,0 +1,26 @@
+================================================================================================
+DELIVERY RISK — BLOCK 08 EXPECTED FREIGHT RUNTIME REPRODUCTION
+================================================================================================
+
+HISTORICAL_ROWS              : 96211
+REPRODUCED_ROWS              : 96211
+HISTORICAL_NONNULL           : 91262
+REPRODUCED_NONNULL           : 91262
+MEMBERSHIP_MISMATCH          : 0
+NULL_PATTERN_MISMATCH        : 0
+NUMERIC_MISMATCH             : 0
+MAX_ABS_DIFF                 : 5.684341886080802e-14
+STRICT_PARITY                : PASS
+GOLD_ROWS                    : 96470
+GOLD_EXPECTED_AVAILABLE      : 91254
+GOLD_EXPECTED_UNAVAILABLE    : 5216
+GOLD_AVAILABLE_SHARE         : 0.9459313776
+UNEXPECTED_POST_WARMUP_MISSING: 0
+MISSING_TIME_KEY             : 0
+SILENT_COMPLETE_CASE_DROP    : FORBIDDEN
+M0_FALLBACK                  : ENABLED
+EXPECTED_FREIGHT_RELEASED    : YES_WITH_FALLBACK
+M1_RELEASED                  : NO
+LATE_RISK_MODEL_TRAINED      : NO
+
+STATUS = EXPECTED_FREIGHT_RUNTIME_REPRODUCED_AND_RELEASED_FOR_M1_CANDIDATE

@@ -1,0 +1,16 @@
+{
+  "historical_rows": 96211,
+  "reproduced_rows": 96211,
+  "left_only": 0,
+  "right_only": 0,
+  "historical_nonnull": 91262,
+  "reproduced_nonnull": 91262,
+  "null_pattern_mismatch": 0,
+  "numeric_mismatch": 0,
+  "both_nonnull_compared": 91262,
+  "max_abs_diff": 5.684341886080802e-14,
+  "median_abs_diff": 0.0,
+  "atol": 1e-10,
+  "rtol": 1e-12,
+  "strict_parity_pass": true
+}

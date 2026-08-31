@@ -1,0 +1,10 @@
+{
+  "python": "3.12.12",
+  "numpy": "2.5.0",
+  "pandas": "2.3.3",
+  "sklearn": "1.9.0",
+  "duckdb": "1.5.5",
+  "route_sha256": "1f1c7d03db5f8ccf713bb3bed722bb2564a8f287338b05c459a5e9cff76705af",
+  "historical_expected_freight_sha256": "cefb0ae08d6b15e8c4be77ddea720b0841a0373a7ec7e1b135c9a20d56a19846",
+  "runtime_manifest_sha256": "1f64d9cd6dfb26c760567593700c7505c592de705455800e36c474dbec20b3fc"
+}

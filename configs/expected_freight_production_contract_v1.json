@@ -1,0 +1,40 @@
+{
+  "contract": "EXPECTED_FREIGHT_PRODUCTION_CONTRACT_V1",
+  "status": "RELEASED_FOR_M1_CANDIDATE_WITH_M0_FALLBACK",
+  "prediction_time": "order_purchase_timestamp",
+  "source_runtime_manifest": "configs/expected_freight_runtime_manifest_v1.json",
+  "runtime_reproduction": {
+    "strict_historical_parity_pass": true,
+    "historical_rows": 96211,
+    "reproduced_rows": 96211,
+    "historical_nonnull": 91262,
+    "reproduced_nonnull": 91262,
+    "numeric_mismatch": 0,
+    "null_pattern_mismatch": 0,
+    "max_abs_diff": 5.684341886080802e-14
+  },
+  "gold_supervised_coverage": {
+    "rows": 96470,
+    "available_rows": 91254,
+    "unavailable_rows": 5216,
+    "available_share": 0.9459313776303514,
+    "warmup_months": [
+      "2017-01",
+      "2017-02",
+      "2017-03"
+    ],
+    "unexpected_post_warmup_missing": 0,
+    "missing_time_key": 0
+  },
+  "serving_protocol": {
+    "if_expected_freight_available": "M1_ELIGIBLE",
+    "otherwise": "M0_FALLBACK",
+    "silent_complete_case_drop_forbidden": true,
+    "imputation_required": false
+  },
+  "release": {
+    "expected_freight_released_for_m1_candidate": true,
+    "m1_released": false,
+    "late_risk_model_trained": false
+  }
+}
