@@ -1,0 +1,23 @@
+============================================================================================
+DELIVERY RISK — SQL MEDALLION BLOCK 03 SUMMARY
+============================================================================================
+
+GOLD_FEATURE_ROWS          : 99441
+GOLD_WITH_ITEMS            : 98666
+SUPERVISED_ROWS            : 96470
+SUPERVISED_LATE            : 6534
+SUPERVISED_LATE_RATE       : 0.0677309008
+SUPERVISED_STATUS_REQUIRED : delivered
+SUPERVISED_ID_PARITY       : PASS
+GOLD_QUALITY_CHECKS        : 9
+GOLD_QUALITY_FAIL          : 0
+PARITY_FEATURES            : 13
+PARITY_TOTAL_MISMATCH      : 0
+PREDICTION_TIME            : order_purchase_timestamp
+M0_STATUS                  : RELEASED_AFTER_PARITY_PASS
+M1_STATUS                  : PENDING_PIT_REPRODUCTION_AUDIT
+OUTCOME_IN_FEATURE_TABLE    : NO
+RAW_MODIFIED               : NO
+SCIENTIFIC_CORE            : UNCHANGED
+
+STATUS = SQL_MEDALLION_GOLD_CORE_AND_FEATURE_CONTRACT_READY

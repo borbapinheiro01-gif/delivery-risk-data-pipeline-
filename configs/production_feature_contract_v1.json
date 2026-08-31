@@ -1,0 +1,78 @@
+{
+  "contract": "PRODUCTION_FEATURE_CONTRACT_V1",
+  "project": "Delivery Risk & Shipping Friction Intelligence Platform",
+  "prediction_time": "order_purchase_timestamp",
+  "grain": "one row per order_id",
+  "target": {
+    "name": "late_delivery_calendar_day",
+    "table": "gold.delivery_service_outcomes",
+    "formula": "CAST(order_delivered_customer_date AS DATE) > CAST(order_estimated_delivery_date AS DATE)",
+    "ex_post": true,
+    "same_order_predictor": false
+  },
+  "m0": {
+    "status": "RELEASED_FOR_TEMPORAL_BENCHMARK_AFTER_GOLD_PARITY_PASS",
+    "feature_source": "gold.ml_delivery_features_core",
+    "features": [
+      "item_count",
+      "unique_product_count",
+      "unique_seller_count",
+      "total_price",
+      "mean_price",
+      "max_price",
+      "min_price",
+      "price_range",
+      "total_freight",
+      "mean_freight",
+      "max_freight",
+      "merchandise_plus_freight",
+      "freight_price_ratio"
+    ]
+  },
+  "m1_shipping_intelligence": {
+    "status": "PENDING_PIT_REPRODUCTION_AUDIT",
+    "candidate_features": [
+      "expected_freight_oot",
+      "freight_burden",
+      "freight_ratio_expected",
+      "freight_log_ratio_expected"
+    ],
+    "released": false,
+    "reason": "Shipping Intelligence may enter only after independent reproduction confirms same-order Point-in-Time availability at order_purchase_timestamp."
+  },
+  "technical_columns": [
+    "order_id",
+    "prediction_time",
+    "has_order_items"
+  ],
+  "forbidden_same_order_predictors": [
+    "order_approved_at",
+    "order_delivered_carrier_date",
+    "order_delivered_customer_date",
+    "order_estimated_delivery_date",
+    "late_delivery_calendar_day",
+    "delivery_gap_days",
+    "positive_tardiness_days",
+    "critical_shipping_friction",
+    "review_score",
+    "review_comment_title",
+    "review_comment_message",
+    "review_creation_date",
+    "review_answer_timestamp"
+  ],
+  "principles": {
+    "raw_immutable": true,
+    "relation_missing_not_attribute_missing": true,
+    "not_yet_observed_not_negative_label": true,
+    "training_serving_definition_match_required": true
+  },
+  "supervised_cohort": {
+    "status_required": "delivered",
+    "target_observed_required": true,
+    "order_items_relation_required": true,
+    "reference_cohort_rows": 96470,
+    "reference_late_rows": 6534,
+    "reference": "frozen scientific ORDER_CORE_V1 supervised cohort",
+    "parity_required": true
+  }
+}

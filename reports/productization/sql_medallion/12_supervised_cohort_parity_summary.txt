@@ -1,0 +1,16 @@
+============================================================================================
+DELIVERY RISK — SUPERVISED COHORT PARITY AUDIT
+============================================================================================
+
+HISTORICAL_COHORT        : 96470
+GOLD_CURRENT_COHORT      : 96476
+GOLD_CURRENT_LATE        : 6535
+CURRENT_EXTRA            : 6
+CURRENT_MISSING          : 0
+CANDIDATE_DELIVERED      : 96470
+CANDIDATE_EXTRA          : 0
+CANDIDATE_MISSING        : 0
+CANDIDATE_EXACT_ID_MATCH : YES
+EXTRA_STATUS_COUNTS      : {'canceled': 6}
+
+STATUS = DELIVERED_STATUS_RULE_EXACTLY_REPRODUCES_FROZEN_COHORT

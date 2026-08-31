@@ -1,0 +1,14 @@
+feature,rows,mismatches,max_abs_diff,status
+item_count,96470,0,0.0,PASS
+unique_product_count,96470,0,0.0,PASS
+unique_seller_count,96470,0,0.0,PASS
+total_price,96470,0,6.821210263296962e-13,PASS
+mean_price,96470,0,1.1368683772161603e-13,PASS
+max_price,96470,0,0.0,PASS
+min_price,96470,0,0.0,PASS
+price_range,96470,0,5.684341886080802e-14,PASS
+total_freight,96470,0,2.2737367544323206e-13,PASS
+mean_freight,96470,0,2.842170943040401e-14,PASS
+max_freight,96470,0,0.0,PASS
+merchandise_plus_freight,96470,0,4.547473508864641e-13,PASS
+freight_price_ratio,96470,0,1.7763568394002505e-15,PASS

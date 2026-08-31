@@ -1,0 +1,7 @@
+order_id,order_status,order_delivered_customer_date,order_estimated_delivery_date,target_observed,late_delivery_calendar_day,has_order_items,item_count,has_customer_relation,has_payment_relation,membership_issue
+8beb59392e21af5eb9547ae1a9938d06,canceled,2016-10-19 18:47:43,2016-11-30,True,False,True,1,True,True,EXTRA_IN_GOLD
+1950d777989f6a877539f53795b4c3c3,canceled,2018-03-21 22:03:51,2018-03-09,True,True,True,1,True,True,EXTRA_IN_GOLD
+dabf2b0e35b423f94618bf965fcb7514,canceled,2016-10-16 14:36:59,2016-11-30,True,False,True,2,True,True,EXTRA_IN_GOLD
+2c45c33d2f9cb8ff8b1c86cc28c11c30,canceled,2016-11-09 14:53:50,2016-12-08,True,False,True,1,True,True,EXTRA_IN_GOLD
+770d331c84e5b214bd9dc70a10b829d0,canceled,2016-10-14 15:07:11,2016-11-29,True,False,True,1,True,True,EXTRA_IN_GOLD
+65d1e226dfaeb8cdc42f665422522d14,canceled,2016-11-08 10:58:34,2016-11-25,True,False,True,1,True,True,EXTRA_IN_GOLD
