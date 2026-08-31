@@ -1,0 +1,18 @@
+DELIVERY RISK — GIT LFS RECOVERY
+
+Expected derived large files : 23
+Valid LFS pointers            : 23
+Pointer failures              : 0
+RAW/external indexed          : 0
+Scientific RAW modified       : NO
+Models retrained              : NO
+Features recalculated         : NO
+
+Recovery reason:
+Previous git add stopped because some audited derived artifacts were
+intentionally ignored by .gitignore.
+
+Resolution:
+git add -f was applied only to the 23 explicitly audited derived paths.
+
+STATUS = LFS_RECOVERY_VALIDATED
