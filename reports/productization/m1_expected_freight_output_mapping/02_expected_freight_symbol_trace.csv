@@ -1,0 +1,34 @@
+line,node_type,symbols,expression
+194,For,pred_log_f2,"for i in range(MIN_TRAIN_MONTHS, len(months)):
+    train_months = months[:i]
+    test_month = months[i]
+    train_mask = rso['year_month'].isin(train_months) & rso['log_freight'].notna()
+    test_mask = rso['year_month'].eq(test_month)
+    if not train_mask.any() or not test_mask.any():
+        continue
+    X_train = rso.loc[train_mask, features_f]
+    y_train = rso.loc[train_mask, 'log_freight']
+    X_test = rso.loc[test_mask, features_f]
+    baseline = float(y_train.median())
+    rso.loc[test_mask, 'pred_log_f0'] = baseline
+    train_complete = X_train.notna().all(axis=1)
+    test_complete = X_test.notna().all(axis=1)
+    if train_complete.sum() >= 100:
+        f1 = LinearRegression()
+        f1.fit(X_train.loc[train_complete], y_train.loc[train_complete])
+        test_indices = X_test.index[test_complete]
+        if len(test_indices):
+            rso.loc[test_indices, 'pred_log_f1'] = f1.predict(X_test.loc[test_complete])
+    f2 = HistGradientBoostingRegressor(max_iter=100, random_state=42)
+    f2.fit(X_train, y_train)
+    rso.loc[test_mask, 'pred_log_f2'] = f2.predict(X_test)
+    folds.append({'test_month': test_month, 'train_start': train_months[0], 'train_end': train_months[-1], 'n_train': int(train_mask.sum()), 'n_test': int(test_mask.sum())})"
+369,Assign,pred_freight_oot,rso['pred_freight_oot'] = rso['pred_freight_f2']
+373,Assign,pred_freight_oot,rso['freight_residual_oot'] = rso['seller_freight'] - rso['pred_freight_oot']
+384,Assign,pred_freight_oot|expected_freight_oot,expected = g['pred_freight_oot'].sum(min_count=1).rename('expected_freight_oot')
+411,Assign,freight_oot_available,master['freight_oot_available'] = master['freight_residual_OOT'].notna().astype('int8')
+417,Assign,expected_freight_oot|freight_ratio_to_expected,"master['freight_ratio_to_expected'] = np.where(master['expected_freight_oot'] > 0, master['total_freight'] / master['expected_freight_oot'], np.nan)"
+291,Assign,pred_log_f2,"rso.loc[test_mask, 'pred_log_f2'] = f2.predict(X_test)"
+385,Call,pred_freight_oot|expected_freight_oot,g['pred_freight_oot'].sum(min_count=1).rename('expected_freight_oot')
+417,Call,expected_freight_oot,"np.where(master['expected_freight_oot'] > 0, master['total_freight'] / master['expected_freight_oot'], np.nan)"
+385,Call,pred_freight_oot,g['pred_freight_oot'].sum(min_count=1)

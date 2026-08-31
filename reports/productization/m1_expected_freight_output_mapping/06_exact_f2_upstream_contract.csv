@@ -1,0 +1,8 @@
+component,value,status
+INPUT_ARTIFACT,artifacts/spatiotemporal_logistics/01_ROUTE_SELLER_ORDER.csv,PRESENT
+FEATURE_VECTOR,log_distance|log_weight|log_volume|log_price|seller_item_count,EXACT
+TARGET,log1p(seller_freight),EXACT
+MIN_TRAIN_MONTHS,3,EXACT
+MODEL,"HistGradientBoostingRegressor(max_iter=100, random_state=42)",EXACT
+TEMPORAL_RULE,expanding months strictly before current test_month,EXACT
+DOWNSTREAM_SPEED_RELIABILITY_COLUMNS,actual_delivery_days|promised_delivery_days|late_delivery_calendar_day|freight_residual_OOT,EXCLUDED_FROM_F2_PATH

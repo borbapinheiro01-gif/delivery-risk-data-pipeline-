@@ -1,0 +1,6 @@
+step,name,line,expression,proof,status
+1,F2_LOG_PREDICTION,291,"rso.loc[test_mask, 'pred_log_f2'] = f2.predict(X_test)",direct assignment,PASS
+2,F2_DYNAMIC_LOG_TO_FREIGHT,313,"pred_freight_f2 = max(0, expm1(pred_log_f2))",generic f-string transform instantiated at name='f2',PASS
+3,F2_PRODUCTION_POLICY_FREEZE,369,rso['pred_freight_oot'] = rso['pred_freight_f2'],unique direct assignment pred_freight_oot <- pred_freight_f2,PASS
+4,SELLER_TO_ORDER_AGGREGATION,384,expected = g['pred_freight_oot'].sum(min_count=1).rename('expected_freight_oot'),grouped sum with min_count=1,PASS
+5,ORDER_LEVEL_INTEGRATION,417,"master['freight_ratio_to_expected'] = np.where(master['expected_freight_oot'] > 0, master['total_freight'] / master['expected_freight_oot'], np.nan)",order-level integration/use,PASS

@@ -1,0 +1,6 @@
+feature,source_column,line,expression,source_column_present_in_expression,future_token_in_exact_definition,future_dependencies
+log_distance,great_circle_distance_km,149,rso['log_distance'] = np.log1p(rso['great_circle_distance_km'].where(rso['great_circle_distance_km'] >= 0)),True,False,
+log_weight,seller_weight_g,156,rso['log_weight'] = np.log1p(rso['seller_weight_g'].where(rso['seller_weight_g'] >= 0)),True,False,
+log_volume,seller_volume_proxy_cm3,162,rso['log_volume'] = np.log1p(rso['seller_volume_proxy_cm3'].where(rso['seller_volume_proxy_cm3'] >= 0)),True,False,
+log_price,seller_price,168,rso['log_price'] = np.log1p(rso['seller_price'].where(rso['seller_price'] >= 0)),True,False,
+seller_item_count,seller_item_count,174,"features_f = ['log_distance', 'log_weight', 'log_volume', 'log_price', 'seller_item_count']",True,False,

@@ -1,0 +1,421 @@
+00006: import warnings
+00007: 
+00008: import numpy as np
+00009: import pandas as pd
+00010: 
+00011: from sklearn.ensemble import HistGradientBoostingRegressor
+00012: from sklearn.linear_model import LinearRegression, LogisticRegression
+00013: from sklearn.metrics import (
+00014:     average_precision_score,
+00015:     brier_score_loss,
+00016:     mean_absolute_error,
+00017:     median_absolute_error,
+00018:     r2_score,
+00019:     roc_auc_score,
+00020:     root_mean_squared_error,
+00021: )
+00022: from sklearn.pipeline import make_pipeline
+00023: from sklearn.preprocessing import StandardScaler
+00024: 
+00025: import statsmodels.formula.api as smf
+00026: 
+00027: from statsmodels.stats.sandwich_covariance import (
+00028:     cov_cluster_2groups,
+00029: )
+00030: 
+00031: 
+00032: ROOT = Path.home() / "workspace" / "Delivery_Risk_Intelligence"
+00033: ART = ROOT / "artifacts" / "spatiotemporal_logistics"
+00034: REP = ROOT / "reports" / "spatiotemporal_logistics"
+00035: 
+00036: MIN_TRAIN_MONTHS = 3
+00037: 
+00038: print("=" * 110)
+00039: print("STAGE 04 — FOUR ANALYSES")
+00040: print("=" * 110)
+00041: 
+00042: 
+00043: # ==================================================================================================
+00044: # A1 — COST STRUCTURE
+00045: # ==================================================================================================
+00046: 
+00047: master = pd.read_csv(
+00048:     ART / "05_SPATIOTEMPORAL_CONTEXT_CORE.csv",
+00049:     dtype={
+00050:         "customer_id_municipio": "string",
+00051:     },
+00052: )
+00053: 
+00054: den = (
+00055:     master["total_price"]
+00056:     +
+00057:     master["total_freight"]
+00058: )
+00059: 
+00060: master["freight_burden"] = np.where(
+00061:     den > 0,
+00062:     master["total_freight"] / den,
+00063:     np.nan,
+00064: )
+00065: 
+00066: cost_cols = [
+00067:     "total_freight",
+00068:     "freight_burden",
+00069:     "distance_freight_weighted_km",
+00070:     "total_weight_g",
+00071:     "product_volume_sum_proxy_cm3",
+00072:     "total_price",
+00073: ]
+00074: 
+00075: desc = []
+00076: 
+00077: for c in cost_cols:
+00078: 
+00079:     s = pd.to_numeric(
+00080:         master[c],
+00081:         errors="coerce",
+00082:     ).dropna()
+00083: 
+00084:     desc.append(
+00085:         {
+00086:             "variable": c,
+00087:             "n": len(s),
+00088:             "mean": s.mean(),
+00089:             "std": s.std(),
+00090:             "median": s.median(),
+00091:             "q1": s.quantile(.25),
+00092:             "q3": s.quantile(.75),
+00093:             "p05": s.quantile(.05),
+00094:             "p10": s.quantile(.10),
+00095:             "p90": s.quantile(.90),
+00096:             "p95": s.quantile(.95),
+00097:             "p99": s.quantile(.99),
+00098:             "min": s.min(),
+00099:             "max": s.max(),
+00100:         }
+00101:     )
+00102: 
+00103: pd.DataFrame(desc).to_csv(
+00104:     REP / "06_cost_descriptive.csv",
+00105:     index=False,
+00106: )
+00107: 
+00108: master[cost_cols].corr(
+00109:     method="pearson",
+00110: ).to_csv(
+00111:     REP / "07a_cost_pearson.csv"
+00112: )
+00113: 
+00114: master[cost_cols].corr(
+00115:     method="spearman",
+00116: ).to_csv(
+00117:     REP / "07b_cost_spearman.csv"
+00118: )
+00119: 
+00120: print("[PASS A1] COST STRUCTURE")
+00121: 
+00122: 
+00123: # ==================================================================================================
+00124: # A2 — EXPECTED / TYPICAL FREIGHT — OOT
+00125: # ==================================================================================================
+00126: 
+00127: rso = pd.read_csv(
+00128:     ART / "01_ROUTE_SELLER_ORDER.csv"
+00129: )
+00130: 
+00131: for c in [
+00132:     "seller_freight",
+00133:     "great_circle_distance_km",
+00134:     "seller_weight_g",
+00135:     "seller_volume_proxy_cm3",
+00136:     "seller_price",
+00137: ]:
+00138:     rso[c] = pd.to_numeric(
+00139:         rso[c],
+00140:         errors="coerce",
+00141:     )
+00142: 
+00143: rso["log_freight"] = np.log1p(
+00144:     rso["seller_freight"].where(
+00145:         rso["seller_freight"] >= 0
+00146:     )
+00147: )
+00148: 
+00149: rso["log_distance"] = np.log1p(
+00150:     rso["great_circle_distance_km"].where(
+00151:         rso["great_circle_distance_km"] >= 0
+00152:     )
+00153: )
+00154: 
+00155: # Missing físico permanece NaN.
+00156: rso["log_weight"] = np.log1p(
+00157:     rso["seller_weight_g"].where(
+00158:         rso["seller_weight_g"] >= 0
+00159:     )
+00160: )
+00161: 
+00162: rso["log_volume"] = np.log1p(
+00163:     rso["seller_volume_proxy_cm3"].where(
+00164:         rso["seller_volume_proxy_cm3"] >= 0
+00165:     )
+00166: )
+00167: 
+00168: rso["log_price"] = np.log1p(
+00169:     rso["seller_price"].where(
+00170:         rso["seller_price"] >= 0
+00171:     )
+00172: )
+00173: 
+00174: features_f = [
+00175:     "log_distance",
+00176:     "log_weight",
+00177:     "log_volume",
+00178:     "log_price",
+00179:     "seller_item_count",
+00180: ]
+00181: 
+00182: months = sorted(
+00183:     rso["year_month"]
+00184:     .dropna()
+00185:     .astype(str)
+00186:     .unique()
+00187: )
+00188: 
+00189: for name in ["f0", "f1", "f2"]:
+00190:     rso[f"pred_log_{name}"] = np.nan
+00191: 
+00192: folds = []
+00193: 
+00194: for i in range(
+00195:     MIN_TRAIN_MONTHS,
+00196:     len(months),
+00197: ):
+00198: 
+00199:     train_months = months[:i]
+00200:     test_month = months[i]
+00201: 
+00202:     train_mask = (
+00203:         rso["year_month"]
+00204:         .isin(train_months)
+00205:         &
+00206:         rso["log_freight"].notna()
+00207:     )
+00208: 
+00209:     test_mask = (
+00210:         rso["year_month"]
+00211:         .eq(test_month)
+00212:     )
+00213: 
+00214:     if not train_mask.any() or not test_mask.any():
+00215:         continue
+00216: 
+00217:     X_train = rso.loc[
+00218:         train_mask,
+00219:         features_f,
+00220:     ]
+00221: 
+00222:     y_train = rso.loc[
+00223:         train_mask,
+00224:         "log_freight",
+00225:     ]
+00226: 
+00227:     X_test = rso.loc[
+00228:         test_mask,
+00229:         features_f,
+00230:     ]
+00231: 
+00232: 
+00233:     # F0 — historical median
+00234:     baseline = float(
+00235:         y_train.median()
+00236:     )
+00237: 
+00238:     rso.loc[
+00239:         test_mask,
+00240:         "pred_log_f0",
+00241:     ] = baseline
+00242: 
+00243: 
+00244:     # F1 — linear complete-case only.
+00245:     train_complete = (
+00246:         X_train.notna().all(axis=1)
+00247:     )
+00248: 
+00249:     test_complete = (
+00250:         X_test.notna().all(axis=1)
+00251:     )
+00252: 
+00253:     if train_complete.sum() >= 100:
+00254: 
+00255:         f1 = LinearRegression()
+00256: 
+00257:         f1.fit(
+00258:             X_train.loc[train_complete],
+00259:             y_train.loc[train_complete],
+00260:         )
+00261: 
+00262:         test_indices = (
+00263:             X_test.index[
+00264:                 test_complete
+00265:             ]
+00266:         )
+00267: 
+00268:         if len(test_indices):
+00269: 
+00270:             rso.loc[
+00271:                 test_indices,
+00272:                 "pred_log_f1",
+00273:             ] = f1.predict(
+00274:                 X_test.loc[
+00275:                     test_complete
+00276:                 ]
+00277:             )
+00278: 
+00279: 
+00280:     # F2 — HistGradientBoosting with native NaN handling.
+00281:     f2 = HistGradientBoostingRegressor(
+00282:         max_iter=100,
+00283:         random_state=42,
+00284:     )
+00285: 
+00286:     f2.fit(
+00287:         X_train,
+00288:         y_train,
+00289:     )
+00290: 
+00291:     rso.loc[
+00292:         test_mask,
+00293:         "pred_log_f2",
+00294:     ] = f2.predict(
+00295:         X_test
+00296:     )
+00297: 
+00298:     folds.append(
+00299:         {
+00300:             "test_month": test_month,
+00301:             "train_start": train_months[0],
+00302:             "train_end": train_months[-1],
+00303:             "n_train": int(train_mask.sum()),
+00304:             "n_test": int(test_mask.sum()),
+00305:         }
+00306:     )
+00307: 
+00308: pd.DataFrame(folds).to_csv(
+00309:     REP / "08_freight_oot_folds.csv",
+00310:     index=False,
+00311: )
+00312: 
+00313: for name in ["f0", "f1", "f2"]:
+00314: 
+00315:     rso[f"pred_freight_{name}"] = np.maximum(
+00316:         0.0,
+00317:         np.expm1(
+00318:             rso[f"pred_log_{name}"]
+00319:         ),
+00320:     )
+00321: 
+00322: metrics_f = []
+00323: 
+00324: for name in ["f0", "f1", "f2"]:
+00325: 
+00326:     pred_col = f"pred_freight_{name}"
+00327: 
+00328:     valid = (
+00329:         rso[pred_col].notna()
+00330:         &
+00331:         rso["seller_freight"].notna()
+00332:     )
+00333: 
+00334:     y = rso.loc[
+00335:         valid,
+00336:         "seller_freight",
+00337:     ]
+00338: 
+00339:     p = rso.loc[
+00340:         valid,
+00341:         pred_col,
+00342:     ]
+00343: 
+00344:     metrics_f.append(
+00345:         {
+00346:             "model": name.upper(),
+00347:             "n_predictions": int(valid.sum()),
+00348:             "coverage_pct":
+00349:                 100.0 * valid.mean(),
+00350:             "mae":
+00351:                 mean_absolute_error(y, p),
+00352:             "median_ae":
+00353:                 median_absolute_error(y, p),
+00354:             "rmse":
+00355:                 root_mean_squared_error(y, p),
+00356:             "r2":
+00357:                 r2_score(y, p),
+00358:         }
+00359:     )
+00360: 
+00361: pd.DataFrame(
+00362:     metrics_f
+00363: ).to_csv(
+00364:     REP / "09_freight_model_comparison.csv",
+00365:     index=False,
+00366: )
+00367: 
+00368: # F2 = primary structural model for downstream.
+00369: rso["pred_freight_oot"] = (
+00370:     rso["pred_freight_f2"]
+00371: )
+00372: 
+00373: rso["freight_residual_oot"] = (
+00374:     rso["seller_freight"]
+00375:     -
+00376:     rso["pred_freight_oot"]
+00377: )
+00378: 
+00379: g = rso.groupby(
+00380:     "order_id",
+00381:     sort=False,
+00382: )
+00383: 
+00384: expected = (
+00385:     g["pred_freight_oot"]
+00386:     .sum(min_count=1)
+00387:     .rename("expected_freight_oot")
+00388: )
+00389: 
+00390: residual = (
+00391:     g["freight_residual_oot"]
+00392:     .sum(min_count=1)
+00393:     .rename("freight_residual_OOT")
+00394: )
+00395: 
+00396: order_resid = pd.concat(
+00397:     [
+00398:         expected,
+00399:         residual,
+00400:     ],
+00401:     axis=1,
+00402: ).reset_index()
+00403: 
+00404: master = master.merge(
+00405:     order_resid,
+00406:     on="order_id",
+00407:     how="left",
+00408:     validate="1:1",
+00409: )
+00410: 
+00411: master["freight_oot_available"] = (
+00412:     master["freight_residual_OOT"]
+00413:     .notna()
+00414:     .astype("int8")
+00415: )
+00416: 
+00417: master["freight_ratio_to_expected"] = np.where(
+00418:     master["expected_freight_oot"] > 0,
+00419:     (
+00420:         master["total_freight"]
+00421:         /
+00422:         master["expected_freight_oot"]
+00423:     ),
+00424:     np.nan,
+00425: )
+00426: 

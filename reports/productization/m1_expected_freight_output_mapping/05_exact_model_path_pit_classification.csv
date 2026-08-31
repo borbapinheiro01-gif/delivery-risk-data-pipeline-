@@ -1,0 +1,8 @@
+role,model_feature,source_column,classification,future_dependency,reason
+MODEL_FEATURE_SOURCE,log_distance,great_circle_distance_km,STATIC_GEOGRAPHY_DERIVED,NO,seller/customer geography known independently of delivery outcome
+MODEL_FEATURE_SOURCE,log_weight,seller_weight_g,ORDER_PRODUCT_ATTRIBUTE,NO,product weight aggregated for seller-order; no delivery outcome dependency
+MODEL_FEATURE_SOURCE,log_volume,seller_volume_proxy_cm3,ORDER_PRODUCT_ATTRIBUTE,NO,product dimensions aggregated for seller-order; no delivery outcome dependency
+MODEL_FEATURE_SOURCE,log_price,seller_price,ORDER_AT_PURCHASE,NO,order-item price
+MODEL_FEATURE_SOURCE,seller_item_count,seller_item_count,ORDER_AT_PURCHASE,NO,seller-order item count
+TRAIN_TARGET_OR_TIME,,seller_freight,ORDER_AT_PURCHASE_TARGET,NO,freight charge; same purchase-time economic quantity already governed in M0 at order level
+TRAIN_TARGET_OR_TIME,,year_month,PURCHASE_TIME_KEY,NO,derived from order_purchase_timestamp

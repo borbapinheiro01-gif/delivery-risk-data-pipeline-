@@ -1,0 +1,134 @@
+{
+  "manifest": "EXPECTED_FREIGHT_RUNTIME_MANIFEST_V1",
+  "status": "READY_FOR_INDEPENDENT_RUNTIME_REPRODUCTION_V3",
+  "prediction_time": "order_purchase_timestamp",
+  "producer": "src/spatiotemporal_logistics/04_run_four_analyses.py",
+  "producer_sha256": "5bf364db8ab55cc91989c7976c399ba49a191930c4d23eb168496c34d6e187f9",
+  "input_artifact": "artifacts/spatiotemporal_logistics/01_ROUTE_SELLER_ORDER.csv",
+  "minimum_training_months": 3,
+  "feature_vector": [
+    "log_distance",
+    "log_weight",
+    "log_volume",
+    "log_price",
+    "seller_item_count"
+  ],
+  "feature_definitions": {
+    "log_distance": "log1p(great_circle_distance_km)",
+    "log_weight": "log1p(seller_weight_g)",
+    "log_volume": "log1p(seller_volume_proxy_cm3)",
+    "log_price": "log1p(seller_price)",
+    "seller_item_count": "seller_item_count"
+  },
+  "target_definition": "log1p(seller_freight)",
+  "model_constructor": "HistGradientBoostingRegressor(max_iter=100, random_state=42)",
+  "temporal_rule": {
+    "scheme": "expanding_monthly_oot",
+    "training": "all chronological months strictly before test_month",
+    "testing": "next chronological month"
+  },
+  "f2_transform": "pred_freight_f2 = maximum(0, expm1(pred_log_f2))",
+  "production_policy": "pred_freight_oot = pred_freight_f2",
+  "model_selection_policy": {
+    "type": "HARDWIRED_F2",
+    "global_metric_selection": false,
+    "metrics_f_role": "evaluation_only"
+  },
+  "seller_to_order_aggregation": "sum(pred_freight_oot, min_count=1) by order_id",
+  "output_feature": "expected_freight_oot",
+  "output_chain": [
+    {
+      "step": 1,
+      "name": "F2_LOG_PREDICTION",
+      "line": 291,
+      "expression": "rso.loc[test_mask, 'pred_log_f2'] = f2.predict(X_test)",
+      "proof": "direct assignment",
+      "status": "PASS"
+    },
+    {
+      "step": 2,
+      "name": "F2_DYNAMIC_LOG_TO_FREIGHT",
+      "line": 313,
+      "expression": "pred_freight_f2 = max(0, expm1(pred_log_f2))",
+      "proof": "generic f-string transform instantiated at name='f2'",
+      "status": "PASS"
+    },
+    {
+      "step": 3,
+      "name": "F2_PRODUCTION_POLICY_FREEZE",
+      "line": 369,
+      "expression": "rso['pred_freight_oot'] = rso['pred_freight_f2']",
+      "proof": "unique direct assignment pred_freight_oot <- pred_freight_f2",
+      "status": "PASS"
+    },
+    {
+      "step": 4,
+      "name": "SELLER_TO_ORDER_AGGREGATION",
+      "line": 384,
+      "expression": "expected = g['pred_freight_oot'].sum(min_count=1).rename('expected_freight_oot')",
+      "proof": "grouped sum with min_count=1",
+      "status": "PASS"
+    },
+    {
+      "step": 5,
+      "name": "ORDER_LEVEL_INTEGRATION",
+      "line": 417,
+      "expression": "master['freight_ratio_to_expected'] = np.where(master['expected_freight_oot'] > 0, master['total_freight'] / master['expected_freight_oot'], np.nan)",
+      "proof": "order-level integration/use",
+      "status": "PASS"
+    }
+  ],
+  "dynamic_transform_proof": [
+    {
+      "proof_item": "LOOP_DOMAIN",
+      "line": 313,
+      "generic_expression": "['f0', 'f1', 'f2']",
+      "resolved_value": "['f0', 'f1', 'f2']",
+      "status": "PASS"
+    },
+    {
+      "proof_item": "SOURCE_TEMPLATE",
+      "line": 315,
+      "generic_expression": "rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",
+      "resolved_value": "pred_log_{name}",
+      "status": "PASS"
+    },
+    {
+      "proof_item": "TARGET_TEMPLATE",
+      "line": 315,
+      "generic_expression": "rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",
+      "resolved_value": "pred_freight_{name}",
+      "status": "PASS"
+    },
+    {
+      "proof_item": "F2_SOURCE_INSTANCE",
+      "line": 315,
+      "generic_expression": "rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",
+      "resolved_value": "pred_log_f2",
+      "status": "PASS"
+    },
+    {
+      "proof_item": "F2_TARGET_INSTANCE",
+      "line": 315,
+      "generic_expression": "rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",
+      "resolved_value": "pred_freight_f2",
+      "status": "PASS"
+    },
+    {
+      "proof_item": "F2_TRANSFORM",
+      "line": 315,
+      "generic_expression": "rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",
+      "resolved_value": "pred_freight_f2 = max(0, expm1(pred_log_f2))",
+      "status": "PASS"
+    }
+  ],
+  "historical_parity_mode": "EXACT_REPRODUCTION_EXPECTED",
+  "guardrails": {
+    "expected_freight_released": false,
+    "m1_released": false,
+    "runtime_training_performed": false,
+    "independent_prediction_parity_required": true,
+    "same_order_delivery_outcomes_forbidden": true,
+    "267_gold_missing_rows_require_explicit_protocol": true
+  }
+}

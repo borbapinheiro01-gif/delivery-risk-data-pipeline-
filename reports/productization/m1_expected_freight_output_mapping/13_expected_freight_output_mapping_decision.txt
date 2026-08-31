@@ -1,0 +1,14 @@
+================================================================================================
+DELIVERY RISK — BLOCK 07R2 OUTPUT MAPPING DECISION
+================================================================================================
+
+OUTPUT_CHAIN_COMPLETE   : YES
+STEP2_STATUS            : UNRESOLVED_SOURCE
+RESOLVED_STEP2_SOURCE   : None
+DYNAMIC_SELECTION       : NO
+GLOBAL_METRIC_SELECTION : NO
+EXPECTED_FREIGHT_RELEASED: NO
+M1_RELEASED              : NO
+MODEL_TRAINED            : NO
+
+STATUS = OUTPUT_MAPPING_SOURCE_UNRESOLVED

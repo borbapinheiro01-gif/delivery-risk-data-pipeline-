@@ -1,0 +1,18 @@
+================================================================================================
+DELIVERY RISK — BLOCK 07R3 EXPECTED FREIGHT FINAL RUNTIME DECISION
+================================================================================================
+
+MIN_TRAIN_MONTHS          : 3
+FEATURE_VECTOR            : ['log_distance', 'log_weight', 'log_volume', 'log_price', 'seller_item_count']
+MODEL                     : HistGradientBoostingRegressor(max_iter=100, random_state=42)
+DYNAMIC_F2_TRANSFORM       : PROVEN
+F2_HARDWIRED               : YES
+GLOBAL_METRIC_SELECTION    : NO
+OUTPUT_MAPPING_PROVEN      : YES
+EXACT_F2_PIT_PATH_CLEAN    : YES
+HISTORICAL_PARITY_MODE     : EXACT_REPRODUCTION_EXPECTED
+EXPECTED_FREIGHT_RELEASED  : NO
+M1_RELEASED                : NO
+MODEL_TRAINED              : NO
+
+STATUS = READY_FOR_INDEPENDENT_RUNTIME_REPRODUCTION_V3

@@ -1,0 +1,7 @@
+proof_item,line,generic_expression,resolved_value,status
+LOOP_DOMAIN,313,"['f0', 'f1', 'f2']","['f0', 'f1', 'f2']",PASS
+SOURCE_TEMPLATE,315,"rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",pred_log_{name},PASS
+TARGET_TEMPLATE,315,"rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",pred_freight_{name},PASS
+F2_SOURCE_INSTANCE,315,"rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",pred_log_f2,PASS
+F2_TARGET_INSTANCE,315,"rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))",pred_freight_f2,PASS
+F2_TRANSFORM,315,"rso[f'pred_freight_{name}'] = np.maximum(0.0, np.expm1(rso[f'pred_log_{name}']))","pred_freight_f2 = max(0, expm1(pred_log_f2))",PASS

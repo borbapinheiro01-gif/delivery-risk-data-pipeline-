@@ -1,0 +1,104 @@
+00285: 
+00286:     f2.fit(
+00287:         X_train,
+00288:         y_train,
+00289:     )
+00290: 
+00291:     rso.loc[
+00292:         test_mask,
+00293:         "pred_log_f2",
+00294:     ] = f2.predict(
+00295:         X_test
+00296:     )
+00297: 
+00298:     folds.append(
+00299:         {
+00300:             "test_month": test_month,
+00301:             "train_start": train_months[0],
+00302:             "train_end": train_months[-1],
+00303:             "n_train": int(train_mask.sum()),
+
+...
+
+00314: 
+00315:     rso[f"pred_freight_{name}"] = np.maximum(
+00316:         0.0,
+00317:         np.expm1(
+00318:             rso[f"pred_log_{name}"]
+00319:         ),
+00320:     )
+00321: 
+00322: metrics_f = []
+00323: 
+00324: for name in ["f0", "f1", "f2"]:
+00325: 
+00326:     pred_col = f"pred_freight_{name}"
+00327: 
+00328:     valid = (
+00329:         rso[pred_col].notna()
+00330:         &
+00331:         rso["seller_freight"].notna()
+00332:     )
+
+...
+
+00336:         "seller_freight",
+00337:     ]
+00338: 
+00339:     p = rso.loc[
+00340:         valid,
+00341:         pred_col,
+00342:     ]
+00343: 
+00344:     metrics_f.append(
+00345:         {
+00346:             "model": name.upper(),
+00347:             "n_predictions": int(valid.sum()),
+00348:             "coverage_pct":
+00349:                 100.0 * valid.mean(),
+00350:             "mae":
+00351:                 mean_absolute_error(y, p),
+00352:             "median_ae":
+00353:                 median_absolute_error(y, p),
+00354:             "rmse":
+00355:                 root_mean_squared_error(y, p),
+00356:             "r2":
+00357:                 r2_score(y, p),
+00358:         }
+00359:     )
+00360: 
+00361: pd.DataFrame(
+00362:     metrics_f
+00363: ).to_csv(
+00364:     REP / "09_freight_model_comparison.csv",
+00365:     index=False,
+00366: )
+00367: 
+00368: # F2 = primary structural model for downstream.
+00369: rso["pred_freight_oot"] = (
+00370:     rso["pred_freight_f2"]
+00371: )
+00372: 
+00373: rso["freight_residual_oot"] = (
+00374:     rso["seller_freight"]
+00375:     -
+00376:     rso["pred_freight_oot"]
+00377: )
+00378: 
+00379: g = rso.groupby(
+00380:     "order_id",
+00381:     sort=False,
+00382: )
+00383: 
+00384: expected = (
+00385:     g["pred_freight_oot"]
+00386:     .sum(min_count=1)
+00387:     .rename("expected_freight_oot")
+00388: )
+00389: 
+00390: residual = (
+00391:     g["freight_residual_oot"]
+00392:     .sum(min_count=1)
+00393:     .rename("freight_residual_OOT")
+00394: )
+00395: 
