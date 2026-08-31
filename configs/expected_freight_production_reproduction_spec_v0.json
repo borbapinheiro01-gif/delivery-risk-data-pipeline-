@@ -1,0 +1,45 @@
+{
+  "spec": "EXPECTED_FREIGHT_PRODUCTION_REPRODUCTION_SPEC_V0",
+  "prediction_time": "order_purchase_timestamp",
+  "status": "STATIC_EVIDENCE_COLLECTED_RUNTIME_REPRODUCTION_REQUIRED",
+  "candidate_producer_files_ranked": [
+    "src/shipping_friction/27a_block01_core_friction.py",
+    "src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py",
+    "src/shipping_friction/27a_block04_cost_to_service.py",
+    "src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py",
+    "src/spatiotemporal_logistics/23_scientific_evidence_freeze.py",
+    "src/shipping_friction/27a_block02_burden_decomposition.py",
+    "src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py",
+    "src/spatiotemporal_logistics/04_run_four_analyses.py"
+  ],
+  "source_context_rows": 702,
+  "static_feature_containers": 53,
+  "temporal_evidence_rows": 109,
+  "model_evidence_rows": 8,
+  "discovered_forbidden_or_future_strings": [
+    "actual_delivery_days",
+    "freight_residual_OOT",
+    "late_delivery_calendar_day",
+    "promised_delivery_days"
+  ],
+  "guardrails": {
+    "do_not_assume_string_presence_equals_model_input": true,
+    "must_identify_exact_feature_vector": true,
+    "must_identify_exact_temporal_training_rule": true,
+    "must_fit_on_past_only_for_each_prediction_period": true,
+    "must_recompute_predictions_independently": true,
+    "must_compare_reproduced_predictions_to_historical_oot": true,
+    "must_not_use_delivery_outcome_or_future_timestamp_as_predictor": true,
+    "m1_released": false,
+    "model_training_allowed_by_this_block": false
+  },
+  "next_block_required_outputs": [
+    "exact_expected_freight_feature_vector",
+    "exact_model_family_and_hyperparameters",
+    "exact_temporal_split_rule",
+    "independent_expected_freight_reproduction",
+    "prediction_parity_metrics",
+    "coverage_protocol_for_missing_expected_freight",
+    "final_PIT_release_or_block_decision"
+  ]
+}

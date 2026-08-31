@@ -1,0 +1,118 @@
+path,line,temporal_patterns,model_patterns,text
+src/shipping_friction/27a_block01_core_friction.py,76,year_month,,"    ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,198,year_month,,# Preserve supplied year_month.
+src/shipping_friction/27a_block01_core_friction.py,199,year_month,,"df[""year_month""] = df[""year_month""].astype(""string"")"
+src/shipping_friction/27a_block01_core_friction.py,227,year_month,,"df[""valid_year_month""] = ("
+src/shipping_friction/27a_block01_core_friction.py,228,year_month,,"    df[""year_month""].notna()"
+src/shipping_friction/27a_block01_core_friction.py,262,<\s*,,"        (df[""freight_burden""] < 0)"
+src/shipping_friction/27a_block01_core_friction.py,381,year_month,,"        ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,403,year_month,,"            ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,410,year_month,,"    on=""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,494,year_month,,"        ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,611,year_month,,"    ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,635,year_month,,"    ""valid_year_month"","
+src/shipping_friction/27a_block01_core_friction.py,687,<\s*,,            or max_identity_error <= 1e-10
+src/shipping_friction/27a_block01_core_friction.py,691,<\s*,,"        n_log_ratio <= n_expected,"
+src/shipping_friction/27a_block01_core_friction.py,699,<\s*,,            or max_abs_monthly_median_z <= 1e-8
+src/shipping_friction/27a_block01_core_friction.py,780,previous,,"            ""Cost anomaly relative to the previously """
+src/shipping_friction/27a_block01_core_friction.py,781,\boot\b,,"            ""estimated OOT expected freight model."","
+src/shipping_friction/27a_block01_core_friction.py,892,\boot\b|previous,,the previously estimated OOT expected-freight benchmark.
+src/shipping_friction/27a_block01_core_friction.py,900,<\s*,,Z < 0:
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,18,\boot\b,,# 2. Avaliação de Métricas Globais OOT de F2
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,36,,GradientBoost|HistGradientBoost,"    global_metrics = pd.DataFrame([{'model': 'F2_HistGradientBoosting_OOT', 'MAE': mae_f2, 'RMSE': rmse_f2, 'R2': r2_f2, 'nobs': len(valid_res)}])"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,39,\boot\b,,# 3. Métricas Mensais OOT e Block Bootstrap sobre Meses
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,41,year_month,,"for ym, grp in valid_res.groupby('year_month'):"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,43,year_month,,"        'year_month': ym,"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,86,year_month,,drift = valid_res.groupby('year_month').agg(
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,95,<\s*,,is_valid_downstream = bool(r2_f2 > 0.25 and max_spearman < 0.45)
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,107,\boot\b,,"print(f""[PASS 07] MODELO DE FRETE OOT AUDITADO. DECISÃO: {decision['residual_status']}"")"
+src/shipping_friction/27a_block04_cost_to_service.py,146,year_month,,"    ""year_month"","
+src/shipping_friction/27a_block04_cost_to_service.py,359,year_month,,"df[""year_month""] = ("
+src/shipping_friction/27a_block04_cost_to_service.py,360,year_month,,"    df[""year_month""]"
+src/shipping_friction/27a_block04_cost_to_service.py,416,year_month,,"    ""year_month"","
+src/shipping_friction/27a_block04_cost_to_service.py,472,<\s*,,if len(continuous) < 1000:
+src/shipping_friction/27a_block04_cost_to_service.py,477,<\s*,,if len(binary) < 1000:
+src/shipping_friction/27a_block04_cost_to_service.py,512,year_month,,"    ""C(year_month)"""
+src/shipping_friction/27a_block04_cost_to_service.py,532,year_month,,"    ""C(year_month)"""
+src/shipping_friction/27a_block04_cost_to_service.py,943,<\s*,,    <= cost_q25
+src/shipping_friction/27a_block04_cost_to_service.py,1211,year_month,,"    ""year_month"","
+src/shipping_friction/27a_block04_cost_to_service.py,1355,<\s*,,            <=
+src/shipping_friction/27a_block04_cost_to_service.py,1360,<\s*,,            <=
+src/shipping_friction/27a_block04_cost_to_service.py,1419,<\s*,,    cost_gap_p < 0.05
+src/shipping_friction/27a_block04_cost_to_service.py,1420,<\s*,,    and cost_late_p < 0.05
+src/shipping_friction/27a_block04_cost_to_service.py,1421,<\s*,,    and cost_gap_coef < 0
+src/shipping_friction/27a_block04_cost_to_service.py,1422,<\s*,,    and cost_late_or < 1
+src/shipping_friction/27a_block04_cost_to_service.py,1430,<\s*,,    cost_gap_p < 0.05
+src/shipping_friction/27a_block04_cost_to_service.py,1431,<\s*,,    and cost_late_p < 0.05
+src/shipping_friction/27a_block04_cost_to_service.py,1584,<\s*,,"            ""cost anomaly <= Q25 and official on-time"","
+src/shipping_friction/27a_block04_cost_to_service.py,1587,<\s*,,"            ""cost anomaly <= Q25 and official late"","
+src/shipping_friction/27a_block04_cost_to_service.py,1733,<\s*,,OR < 1:
+src/shipping_friction/27a_block04_cost_to_service.py,1785,\boot\b,,1. Cost anomaly is relative to the OOT expected-freight model.
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,29,year_month,,"    ""year_month"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,47,year_month,,"            'any_interstate_route', 'promised_delivery_days', 'year_month']"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,56,<\s*,,df_sample['cat_LOW'] = (df_sample['Q_freight_ratio'] <= q10).astype(int)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,94,\btest\b,,# Likelihood Ratio Test N1_B vs N2_B
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,98,\boot\b,,# 3. Avaliação Preditiva Temporal Expansiva OOT
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,99,year_month,,months_sorted = sorted(df_sample['year_month'].unique())
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,107,year_month,,    tr_df = df_sample[df_sample['year_month'].isin(train_m)]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,108,year_month,,    te_df = df_sample[df_sample['year_month'] == test_m]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,110,<\s*,,    if te_df.empty or tr_df['late_delivery_calendar_day'].nunique() < 2:
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,284,<\s*,,        var_mean < 0
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,367,<\s*,,"shape_class = ""CONVEX_U_LIKE"" if (b2 > 0 and p_lr_quad < 0.01 and ""Spline"" in best_model_aic) else (""QUADRATIC_CURVED"" if p_lr_quad < 0.05 else ""LINEAR_OR_INCONCLUSIVE"")"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,101,\boot\b,,# 2. NONLINEAR OOT AUDIT
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,111,\boot\b,,"    ""Nonlinear OOT table unavailable."""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,167,<\s*,,            best_br_flex < br_lin
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,178,\boot\b,,"            f""Linear OOT AP={ap_lin:.6f}, """
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,530,\boot\b,,"            ""spatiotemporal integration and OOT expected freight."""
+src/shipping_friction/27a_block02_burden_decomposition.py,107,year_month,,"    ""year_month"","
+src/shipping_friction/27a_block02_burden_decomposition.py,458,year_month,,"    df[""year_month""].notna()"
+src/shipping_friction/27a_block02_burden_decomposition.py,480,<\s*,,if n_analysis < 1000:
+src/shipping_friction/27a_block02_burden_decomposition.py,733,,Ridge,# Papke-Wooldridge style conditional mean:
+src/shipping_friction/27a_block02_burden_decomposition.py,774,year_month,,"    ""C(year_month)"""
+src/shipping_friction/27a_block02_burden_decomposition.py,1055,year_month,,"    ""year_month"":"
+src/shipping_friction/27a_block02_burden_decomposition.py,1056,year_month,,"        df[""year_month""],"
+src/shipping_friction/27a_block02_burden_decomposition.py,1161,<\s*,,            q75 <= q80 <= q90
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,27,year_month,,"    ""year_month"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,54,year_month,,"speed_std = speed_df.dropna(subset=predictors + ['customer_state', 'year_month', 'log_speed']).copy()"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,60,year_month,,fml_SL = 'log_speed ~ Z_freight_log_ratio_std + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,61,year_month,,fml_SQ = 'log_speed ~ Z_freight_log_ratio_std + I(Z_freight_log_ratio_std**2) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,62,year_month,,"fml_SS = 'log_speed ~ cr(Z_freight_log_ratio_std, df=4) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,130,<\s*,,"    ""practical_magnitude"": ""NEGLIGIBLE"" if abs(pct_impact) < 0.5 else (""SMALL"" if abs(pct_impact) < 2.0 else ""MODERATE"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,11,,GradientBoost|HistGradientBoost|GradientBoostingRegressor,from sklearn.ensemble import HistGradientBoostingRegressor
+src/spatiotemporal_logistics/04_run_four_analyses.py,12,,LinearRegression,"from sklearn.linear_model import LinearRegression, LogisticRegression"
+src/spatiotemporal_logistics/04_run_four_analyses.py,124,\boot\b,,# A2 — EXPECTED / TYPICAL FREIGHT — OOT
+src/spatiotemporal_logistics/04_run_four_analyses.py,183,year_month,,"    rso[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,203,year_month,,"        rso[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,210,year_month,,"        rso[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,255,,LinearRegression,        f1 = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,280,,GradientBoost|HistGradientBoost,    # F2 — HistGradientBoosting with native NaN handling.
+src/spatiotemporal_logistics/04_run_four_analyses.py,281,,GradientBoost|HistGradientBoost|GradientBoostingRegressor,    f2 = HistGradientBoostingRegressor(
+src/spatiotemporal_logistics/04_run_four_analyses.py,432,\boot\b,,"print(""[PASS A2] EXPECTED FREIGHT OOT"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,617,\boot\b,,# OOT speed evaluation
+src/spatiotemporal_logistics/04_run_four_analyses.py,619,year_month,,"    master[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,640,year_month,,"            ""year_month"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,652,\btrain\b,,        train = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,653,year_month,,"            master[""year_month""].isin(train_months)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,658,\btest\b,,        test = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,659,year_month,,"            master[""year_month""].eq(test_month)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,665,\btrain\b|<\s*,,            len(train) < 100
+src/spatiotemporal_logistics/04_run_four_analyses.py,667,\btest\b,,            test.empty
+src/spatiotemporal_logistics/04_run_four_analyses.py,671,,LinearRegression,        model = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,674,\btrain\b,,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,675,\btrain\b,,"            train[""actual_delivery_days""],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,678,\btest\b,,        pred.loc[test.index] = model.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,679,\btest\b,,            test[features]
+src/spatiotemporal_logistics/04_run_four_analyses.py,808,expanding|\boot\b,,# Expanding-window OOT classification metrics.
+src/spatiotemporal_logistics/04_run_four_analyses.py,824,year_month,,"            ""year_month"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,836,\btrain\b,,        train = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,837,year_month,,"            master[""year_month""].isin(train_months)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,842,\btest\b,,        test = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,843,year_month,,"            master[""year_month""].eq(test_month)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,849,\btrain\b|<\s*,,            len(train) < 200
+src/spatiotemporal_logistics/04_run_four_analyses.py,851,\btest\b,,            test.empty
+src/spatiotemporal_logistics/04_run_four_analyses.py,853,\btrain\b,,            train[
+src/spatiotemporal_logistics/04_run_four_analyses.py,855,<\s*,,            ].nunique() < 2
+src/spatiotemporal_logistics/04_run_four_analyses.py,868,\btrain\b,,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,869,\btrain\b,,            train[
+src/spatiotemporal_logistics/04_run_four_analyses.py,874,\btest\b,,        pred.loc[test.index] = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,876,\btest\b,,                test[features]

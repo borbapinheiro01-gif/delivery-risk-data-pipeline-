@@ -1,0 +1,16 @@
+============================================================================================
+DELIVERY RISK — BLOCK 05 EXPECTED FREIGHT REPRODUCTION AUDIT
+============================================================================================
+
+PRODUCER_FILES_RANKED      : 26
+PRIMARY_FILES_REVIEWED     : 8
+SOURCE_CONTEXT_ROWS        : 702
+STATIC_FEATURE_CONTAINERS  : 53
+TEMPORAL_EVIDENCE_ROWS     : 109
+MODEL_EVIDENCE_ROWS        : 8
+FORBIDDEN_STRINGS_DISCOVERED: 4
+EXPECTED_FREIGHT_RELEASED  : NO
+M1_RELEASED                : NO
+MODEL_TRAINED              : NO
+
+STATUS = EXPECTED_FREIGHT_STATIC_LINEAGE_AUDITED_RUNTIME_REPRODUCTION_REQUIRED

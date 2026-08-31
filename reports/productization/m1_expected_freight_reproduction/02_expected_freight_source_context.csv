@@ -1,0 +1,703 @@
+path,line,text
+src/shipping_friction/27a_block01_core_friction.py,25,
+src/shipping_friction/27a_block01_core_friction.py,26,Entrada principal:
+src/shipping_friction/27a_block01_core_friction.py,27,artifacts/spatiotemporal_logistics/06_EXPECTED_FREIGHT_OOT.csv
+src/shipping_friction/27a_block01_core_friction.py,28,""""""""
+src/shipping_friction/27a_block01_core_friction.py,29,
+src/shipping_friction/27a_block01_core_friction.py,46,"    / ""artifacts"""
+src/shipping_friction/27a_block01_core_friction.py,47,"    / ""spatiotemporal_logistics"""
+src/shipping_friction/27a_block01_core_friction.py,48,"    / ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block01_core_friction.py,49,)
+src/shipping_friction/27a_block01_core_friction.py,50,
+src/shipping_friction/27a_block01_core_friction.py,74,"    ""order_id"","
+src/shipping_friction/27a_block01_core_friction.py,75,"    ""order_purchase_timestamp"","
+src/shipping_friction/27a_block01_core_friction.py,76,"    ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,77,"    ""total_price"","
+src/shipping_friction/27a_block01_core_friction.py,78,"    ""total_freight"","
+src/shipping_friction/27a_block01_core_friction.py,79,"    ""expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,80,]
+src/shipping_friction/27a_block01_core_friction.py,81,
+src/shipping_friction/27a_block01_core_friction.py,150,    raise RuntimeError(
+src/shipping_friction/27a_block01_core_friction.py,151,"        ""Colunas obrigatórias ausentes em """
+src/shipping_friction/27a_block01_core_friction.py,152,"        f""06_EXPECTED_FREIGHT_OOT.csv: {missing}"""
+src/shipping_friction/27a_block01_core_friction.py,153,    )
+src/shipping_friction/27a_block01_core_friction.py,154,
+src/shipping_friction/27a_block01_core_friction.py,196,
+src/shipping_friction/27a_block01_core_friction.py,197,
+src/shipping_friction/27a_block01_core_friction.py,198,# Preserve supplied year_month.
+src/shipping_friction/27a_block01_core_friction.py,199,"df[""year_month""] = df[""year_month""].astype(""string"")"
+src/shipping_friction/27a_block01_core_friction.py,200,
+src/shipping_friction/27a_block01_core_friction.py,201,
+src/shipping_friction/27a_block01_core_friction.py,219,
+src/shipping_friction/27a_block01_core_friction.py,220,"df[""valid_expected_freight""] = ("
+src/shipping_friction/27a_block01_core_friction.py,221,"    df[""expected_freight_oot""].notna()"
+src/shipping_friction/27a_block01_core_friction.py,222,"    & np.isfinite(df[""expected_freight_oot""])"
+src/shipping_friction/27a_block01_core_friction.py,223,"    & (df[""expected_freight_oot""] > 0)"
+src/shipping_friction/27a_block01_core_friction.py,224,").astype(""int8"")"
+src/shipping_friction/27a_block01_core_friction.py,225,
+src/shipping_friction/27a_block01_core_friction.py,226,
+src/shipping_friction/27a_block01_core_friction.py,227,"df[""valid_year_month""] = ("
+src/shipping_friction/27a_block01_core_friction.py,228,"    df[""year_month""].notna()"
+src/shipping_friction/27a_block01_core_friction.py,229,").astype(""int8"")"
+src/shipping_friction/27a_block01_core_friction.py,230,
+src/shipping_friction/27a_block01_core_friction.py,316,"        df[""total_freight""]"
+src/shipping_friction/27a_block01_core_friction.py,317,        -
+src/shipping_friction/27a_block01_core_friction.py,318,"        df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,319,"    ),"
+src/shipping_friction/27a_block01_core_friction.py,320,"    np.nan,"
+src/shipping_friction/27a_block01_core_friction.py,335,"        df[""total_freight""]"
+src/shipping_friction/27a_block01_core_friction.py,336,        /
+src/shipping_friction/27a_block01_core_friction.py,337,"        df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,338,"    ),"
+src/shipping_friction/27a_block01_core_friction.py,339,"    np.nan,"
+src/shipping_friction/27a_block01_core_friction.py,347,"            df[""total_freight""]"
+src/shipping_friction/27a_block01_core_friction.py,348,            -
+src/shipping_friction/27a_block01_core_friction.py,349,"            df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,350,        )
+src/shipping_friction/27a_block01_core_friction.py,351,        /
+src/shipping_friction/27a_block01_core_friction.py,352,"        df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,353,"    ),"
+src/shipping_friction/27a_block01_core_friction.py,354,"    np.nan,"
+src/shipping_friction/27a_block01_core_friction.py,361,"        (df[""total_freight""] + EPS)"
+src/shipping_friction/27a_block01_core_friction.py,362,        /
+src/shipping_friction/27a_block01_core_friction.py,363,"        (df[""expected_freight_oot""] + EPS)"
+src/shipping_friction/27a_block01_core_friction.py,364,"    ),"
+src/shipping_friction/27a_block01_core_friction.py,365,"    np.nan,"
+src/shipping_friction/27a_block01_core_friction.py,379,    df
+src/shipping_friction/27a_block01_core_friction.py,380,    .groupby(
+src/shipping_friction/27a_block01_core_friction.py,381,"        ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,382,"        dropna=False,"
+src/shipping_friction/27a_block01_core_friction.py,383,"        observed=True,"
+src/shipping_friction/27a_block01_core_friction.py,401,    month_stats[
+src/shipping_friction/27a_block01_core_friction.py,402,        [
+src/shipping_friction/27a_block01_core_friction.py,403,"            ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,404,"            ""median_log_ratio"","
+src/shipping_friction/27a_block01_core_friction.py,405,"            ""mad_log_ratio"","
+src/shipping_friction/27a_block01_core_friction.py,408,        ]
+src/shipping_friction/27a_block01_core_friction.py,409,"    ],"
+src/shipping_friction/27a_block01_core_friction.py,410,"    on=""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,411,"    how=""left"","
+src/shipping_friction/27a_block01_core_friction.py,412,"    validate=""many_to_one"","
+src/shipping_friction/27a_block01_core_friction.py,492,    ]
+src/shipping_friction/27a_block01_core_friction.py,493,    .groupby(
+src/shipping_friction/27a_block01_core_friction.py,494,"        ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,495,"        observed=True,"
+src/shipping_friction/27a_block01_core_friction.py,496,"    )[""freight_log_ratio_month_z""]"
+src/shipping_friction/27a_block01_core_friction.py,515,"    ""total_price"","
+src/shipping_friction/27a_block01_core_friction.py,516,"    ""total_freight"","
+src/shipping_friction/27a_block01_core_friction.py,517,"    ""expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,518,"    ""freight_burden"","
+src/shipping_friction/27a_block01_core_friction.py,519,"    ""freight_to_price_ratio"","
+src/shipping_friction/27a_block01_core_friction.py,609,"    ""order_id"","
+src/shipping_friction/27a_block01_core_friction.py,610,"    ""order_purchase_timestamp"","
+src/shipping_friction/27a_block01_core_friction.py,611,"    ""year_month"","
+src/shipping_friction/27a_block01_core_friction.py,612,
+src/shipping_friction/27a_block01_core_friction.py,613,"    ""total_price"","
+src/shipping_friction/27a_block01_core_friction.py,614,"    ""total_freight"","
+src/shipping_friction/27a_block01_core_friction.py,615,"    ""expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,616,
+src/shipping_friction/27a_block01_core_friction.py,617,"    ""freight_burden"","
+src/shipping_friction/27a_block01_core_friction.py,633,"    ""valid_freight"","
+src/shipping_friction/27a_block01_core_friction.py,634,"    ""valid_expected_freight"","
+src/shipping_friction/27a_block01_core_friction.py,635,"    ""valid_year_month"","
+src/shipping_friction/27a_block01_core_friction.py,636,"    ""robust_scale_usable"","
+src/shipping_friction/27a_block01_core_friction.py,637,]
+src/shipping_friction/27a_block01_core_friction.py,651,
+src/shipping_friction/27a_block01_core_friction.py,652,n_expected = int(
+src/shipping_friction/27a_block01_core_friction.py,653,"    df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,654,    .notna()
+src/shipping_friction/27a_block01_core_friction.py,655,    .sum()
+src/shipping_friction/27a_block01_core_friction.py,759,
+src/shipping_friction/27a_block01_core_friction.py,760,"        ""freight_residual_abs"":"
+src/shipping_friction/27a_block01_core_friction.py,761,"            ""total_freight - expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,762,
+src/shipping_friction/27a_block01_core_friction.py,763,"        ""freight_expected_ratio"":"
+src/shipping_friction/27a_block01_core_friction.py,764,"            ""total_freight / expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,765,
+src/shipping_friction/27a_block01_core_friction.py,766,"        ""freight_log_ratio"":"
+src/shipping_friction/27a_block01_core_friction.py,767,"            ""log((total_freight + eps) / """
+src/shipping_friction/27a_block01_core_friction.py,768,"            ""(expected_freight_oot + eps))"","
+src/shipping_friction/27a_block01_core_friction.py,769,
+src/shipping_friction/27a_block01_core_friction.py,770,"        ""freight_log_ratio_month_z"":"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,14,# 1. Carregar artefatos
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,15,"rso = pd.read_csv(ARTIFACTS_DIR / ""01_ROUTE_SELLER_ORDER.csv"")"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,16,"oot_master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,17,
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,18,# 2. Avaliação de Métricas Globais OOT de F2
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,21,# Materializar Formalmente as três versões do residual
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,22,valid_res['residual_abs'] = valid_res['freight_residual_OOT']
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,23,"valid_res['residual_rel'] = np.where(valid_res['expected_freight_oot'] > 0, valid_res['residual_abs'] / valid_res['expected_freight_oot'], np.nan)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,24,"valid_res['freight_ratio_Q'] = np.where(valid_res['expected_freight_oot'] > 0, valid_res['total_freight'] / valid_res['expected_freight_oot'], np.nan)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,25,
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,26,"mae_f2 = mean_absolute_error(valid_res['total_freight'], valid_res['expected_freight_oot'])"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,27,"rmse_f2 = root_mean_squared_error(valid_res['total_freight'], valid_res['expected_freight_oot'])"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,28,"r2_f2 = r2_score(valid_res['total_freight'], valid_res['expected_freight_oot'])"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,29,
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,30,# Leitura/preservação da comparação F0 vs F1 vs F2 se disponível do Stage 04
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,34,"    f0_f1_comp.to_csv(REPORTS_DIR / ""07a_freight_model_global_metrics.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,35,else:
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,36,"    global_metrics = pd.DataFrame([{'model': 'F2_HistGradientBoosting_OOT', 'MAE': mae_f2, 'RMSE': rmse_f2, 'R2': r2_f2, 'nobs': len(valid_res)}])"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,37,"    global_metrics.to_csv(REPORTS_DIR / ""07a_freight_model_global_metrics.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,38,
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,39,# 3. Métricas Mensais OOT e Block Bootstrap sobre Meses
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,40,monthly_list = []
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,41,"for ym, grp in valid_res.groupby('year_month'):"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,42,    monthly_list.append({
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,43,"        'year_month': ym,"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,44,"        'MAE_F2': mean_absolute_error(grp['total_freight'], grp['expected_freight_oot']),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,45,"        'RMSE_F2': root_mean_squared_error(grp['total_freight'], grp['expected_freight_oot']),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,46,"        'R2_F2': r2_score(grp['total_freight'], grp['expected_freight_oot']),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,47,        'nobs': len(grp)
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,48,    })
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,63,
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,64,# 4. Calibração por Decis da Previsão
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,65,"valid_res['pred_decile'] = pd.qcut(valid_res['expected_freight_oot'], q=10, labels=False, duplicates='drop')"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,66,calib = valid_res.groupby('pred_decile').agg(
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,67,"    median_observed=('total_freight', 'median'),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,68,"    median_predicted=('expected_freight_oot', 'median'),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,69,"    calibration_ratio=('total_freight', lambda x: x.sum() / valid_res.loc[x.index, 'expected_freight_oot'].sum())"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,70,).reset_index()
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,71,"calib.to_csv(REPORTS_DIR / ""07e_freight_calibration.csv"", index=False)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,72,
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,73,# 5. Correlação Estrutural (Pearson e Spearman) para Testar Desacoplamento do Residual
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,74,assoc_res = []
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,75,"for col in ['distance_freight_weighted_km', 'total_weight_g', 'product_volume_sum_proxy_cm3', 'total_price']:"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,84,
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,85,# 6. Drift Temporal do Residual
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,86,drift = valid_res.groupby('year_month').agg(
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,87,"    residual_mean=('residual_abs', 'mean'),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,88,"    residual_median=('residual_abs', 'median'),"
+src/shipping_friction/27a_block04_cost_to_service.py,61,import statsmodels.formula.api as smf
+src/shipping_friction/27a_block04_cost_to_service.py,62,
+src/shipping_friction/27a_block04_cost_to_service.py,63,from statsmodels.stats.multitest import multipletests
+src/shipping_friction/27a_block04_cost_to_service.py,64,
+src/shipping_friction/27a_block04_cost_to_service.py,65,
+src/shipping_friction/27a_block04_cost_to_service.py,88,"    / ""artifacts"""
+src/shipping_friction/27a_block04_cost_to_service.py,89,"    / ""spatiotemporal_logistics"""
+src/shipping_friction/27a_block04_cost_to_service.py,90,"    / ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block04_cost_to_service.py,91,)
+src/shipping_friction/27a_block04_cost_to_service.py,92,
+src/shipping_friction/27a_block04_cost_to_service.py,144,FRICTION_COLS = [
+src/shipping_friction/27a_block04_cost_to_service.py,145,"    ""order_id"","
+src/shipping_friction/27a_block04_cost_to_service.py,146,"    ""year_month"","
+src/shipping_friction/27a_block04_cost_to_service.py,147,"    ""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,148,"    ""freight_log_ratio"","
+src/shipping_friction/27a_block04_cost_to_service.py,357,
+src/shipping_friction/27a_block04_cost_to_service.py,358,
+src/shipping_friction/27a_block04_cost_to_service.py,359,"df[""year_month""] = ("
+src/shipping_friction/27a_block04_cost_to_service.py,360,"    df[""year_month""]"
+src/shipping_friction/27a_block04_cost_to_service.py,361,"    .astype(""string"")"
+src/shipping_friction/27a_block04_cost_to_service.py,362,)
+src/shipping_friction/27a_block04_cost_to_service.py,414,"    ""any_interstate_route"","
+src/shipping_friction/27a_block04_cost_to_service.py,415,"    ""promised_delivery_days"","
+src/shipping_friction/27a_block04_cost_to_service.py,416,"    ""year_month"","
+src/shipping_friction/27a_block04_cost_to_service.py,417,]
+src/shipping_friction/27a_block04_cost_to_service.py,418,
+src/shipping_friction/27a_block04_cost_to_service.py,510,"    ""any_interstate_route + """
+src/shipping_friction/27a_block04_cost_to_service.py,511,"    ""promised_delivery_days + """
+src/shipping_friction/27a_block04_cost_to_service.py,512,"    ""C(year_month)"""
+src/shipping_friction/27a_block04_cost_to_service.py,513,)
+src/shipping_friction/27a_block04_cost_to_service.py,514,
+src/shipping_friction/27a_block04_cost_to_service.py,530,"    ""any_interstate_route + """
+src/shipping_friction/27a_block04_cost_to_service.py,531,"    ""promised_delivery_days + """
+src/shipping_friction/27a_block04_cost_to_service.py,532,"    ""C(year_month)"""
+src/shipping_friction/27a_block04_cost_to_service.py,533,)
+src/shipping_friction/27a_block04_cost_to_service.py,534,
+src/shipping_friction/27a_block04_cost_to_service.py,689,
+src/shipping_friction/27a_block04_cost_to_service.py,690,# FDR across the small frozen focal family.
+src/shipping_friction/27a_block04_cost_to_service.py,691,"reject, padj, _, _ = multipletests("
+src/shipping_friction/27a_block04_cost_to_service.py,692,"    models_df[""p_value""].to_numpy(),"
+src/shipping_friction/27a_block04_cost_to_service.py,693,"    alpha=0.05,"
+src/shipping_friction/27a_block04_cost_to_service.py,1209,out_cols = [
+src/shipping_friction/27a_block04_cost_to_service.py,1210,"    ""order_id"","
+src/shipping_friction/27a_block04_cost_to_service.py,1211,"    ""year_month"","
+src/shipping_friction/27a_block04_cost_to_service.py,1212,
+src/shipping_friction/27a_block04_cost_to_service.py,1213,"    ""freight_burden"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,19,USECOLS = [
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,20,"    ""total_freight"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,21,"    ""expected_freight_oot"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,22,"    ""late_delivery_calendar_day"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,23,"    ""distance_freight_weighted_km"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,27,"    ""any_interstate_route"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,28,"    ""promised_delivery_days"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,29,"    ""year_month"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,30,]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,31,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,32,master = pd.read_csv(
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,33,"    ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,34,"    usecols=USECOLS,"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,35,)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,36,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,37,valid_mask = (master['total_freight'] >= 0) & (master['expected_freight_oot'] > 0)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,38,df_valid = master[valid_mask].copy()
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,39,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,40,eps = 1e-4
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,41,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,42,df_valid['Q_freight_ratio'] = df_valid['total_freight'] / df_valid['expected_freight_oot']
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,43,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,44,# Congelar Amostra Analítica Única
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,45,"req_cols = ['late_delivery_calendar_day', 'Z_freight_log_ratio', 'distance_freight_weighted_km', "
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,46,"            'total_weight_g', 'product_volume_sum_proxy_cm3', 'route_sellers_total', "
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,47,"            'any_interstate_route', 'promised_delivery_days', 'year_month']"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,48,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,49,df_sample = df_valid.dropna(subset=req_cols).copy()
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,92,z_stat_quad = -b1 / (2 * b2) if b2 != 0 else np.nan
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,93,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,94,# Likelihood Ratio Test N1_B vs N2_B
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,95,lr_stat = 2 * (fits_B['N2_Quadratic'].llf - fits_B['N1_Linear'].llf)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,96,"p_lr_quad = stats.chi2.sf(lr_stat, df=1)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,97,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,98,# 3. Avaliação Preditiva Temporal Expansiva OOT
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,99,months_sorted = sorted(df_sample['year_month'].unique())
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,100,min_train_months = 3
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,101,oot_scores = []
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,102,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,103,"for i in range(min_train_months, len(months_sorted)):"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,104,    train_m = months_sorted[:i]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,105,    test_m = months_sorted[i]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,106,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,107,    tr_df = df_sample[df_sample['year_month'].isin(train_m)]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,108,    te_df = df_sample[df_sample['year_month'] == test_m]
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,109,    
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,110,    if te_df.empty or tr_df['late_delivery_calendar_day'].nunique() < 2:
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,118,"        brier = brier_score_loss(te_df['late_delivery_calendar_day'], preds)"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,119,        
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,120,"        oot_scores.append({'test_month': test_m, 'model': m_name, 'ap_oot': ap, 'brier_oot': brier})"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,121,
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,122,oot_df = pd.DataFrame(oot_scores)
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,60,"    ART / ""04b_ANP_STATE_CONTEXT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,61,"    ART / ""05_SPATIOTEMPORAL_CONTEXT_CORE.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,62,"    ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,63,]
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,64,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,86,if (
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,87,    ART
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,88,"    / ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,89,).exists():
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,90,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,92,        pd.read_csv(
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,93,            ART
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,94,"            / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,95,"            usecols=[""order_id""],"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,96,        )
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,118,"        .groupby(""model"")"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,119,        .agg(
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,120,"            months=(""test_month"", ""nunique""),"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,121,"            mean_AP=(""ap_oot"", ""mean""),"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,122,"            mean_Brier=(""brier_oot"", ""mean""),"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,194,d20 = read_json(
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,195,    GN
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,196,"    / ""20d_CONSTRAINT_ABLATION_DECISION.json"""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,197,)
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,198,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,396,    {
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,397,"        ""hypothesis"":"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,398,"            ""P7_CONSTRAINT_ABLATION_NO_UNIVERSAL_WINNER"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,399,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,400,"        ""status"":"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,468,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,469,    GN
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,470,"    / ""20c_constraint_ablation_summary.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,471,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,472,    GN
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,473,"    / ""20d_CONSTRAINT_ABLATION_DECISION.json"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,474,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,475,    GN
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,549,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,550,        (
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,551,"            ""Constraint ablation and calibration diagnostics favored """
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,552,"            ""different models, so no universal model winner is claimed."""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,553,"        ),"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,554,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,555,        (
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,556,"            ""The imposed nonnegative quadratic constraint is not """
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,557,"            ""evidence of a true U-shaped data-generating relationship."""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,558,"        ),"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,569,
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,570,        (
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,571,"            ""The beta_z2 >= 0 constraint proves a true U-shaped relationship."""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,572,"        ),"
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,573,
+src/shipping_friction/27a_block02_burden_decomposition.py,59,import statsmodels.formula.api as smf
+src/shipping_friction/27a_block02_burden_decomposition.py,60,
+src/shipping_friction/27a_block02_burden_decomposition.py,61,from statsmodels.stats.multitest import multipletests
+src/shipping_friction/27a_block02_burden_decomposition.py,62,
+src/shipping_friction/27a_block02_burden_decomposition.py,63,
+src/shipping_friction/27a_block02_burden_decomposition.py,79,"    / ""artifacts"""
+src/shipping_friction/27a_block02_burden_decomposition.py,80,"    / ""spatiotemporal_logistics"""
+src/shipping_friction/27a_block02_burden_decomposition.py,81,"    / ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block02_burden_decomposition.py,82,)
+src/shipping_friction/27a_block02_burden_decomposition.py,83,
+src/shipping_friction/27a_block02_burden_decomposition.py,105,CORE_COLS = [
+src/shipping_friction/27a_block02_burden_decomposition.py,106,"    ""order_id"","
+src/shipping_friction/27a_block02_burden_decomposition.py,107,"    ""year_month"","
+src/shipping_friction/27a_block02_burden_decomposition.py,108,"    ""total_price"","
+src/shipping_friction/27a_block02_burden_decomposition.py,109,"    ""total_freight"","
+src/shipping_friction/27a_block02_burden_decomposition.py,456,"    df[""any_interstate_route""].isin([0, 1])"
+src/shipping_friction/27a_block02_burden_decomposition.py,457,    &
+src/shipping_friction/27a_block02_burden_decomposition.py,458,"    df[""year_month""].notna()"
+src/shipping_friction/27a_block02_burden_decomposition.py,459,)
+src/shipping_friction/27a_block02_burden_decomposition.py,460,
+src/shipping_friction/27a_block02_burden_decomposition.py,731,# 8. FRACTIONAL LOGIT
+src/shipping_friction/27a_block02_burden_decomposition.py,732,#
+src/shipping_friction/27a_block02_burden_decomposition.py,733,# Papke-Wooldridge style conditional mean:
+src/shipping_friction/27a_block02_burden_decomposition.py,734,#
+src/shipping_friction/27a_block02_burden_decomposition.py,735,# E(B | X) = logistic(X beta)
+src/shipping_friction/27a_block02_burden_decomposition.py,772,"    ""route_sellers_total + """
+src/shipping_friction/27a_block02_burden_decomposition.py,773,"    ""any_interstate_route + """
+src/shipping_friction/27a_block02_burden_decomposition.py,774,"    ""C(year_month)"""
+src/shipping_friction/27a_block02_burden_decomposition.py,775,)
+src/shipping_friction/27a_block02_burden_decomposition.py,776,
+src/shipping_friction/27a_block02_burden_decomposition.py,892,if len(focal_p):
+src/shipping_friction/27a_block02_burden_decomposition.py,893,
+src/shipping_friction/27a_block02_burden_decomposition.py,894,"    reject, p_adj, _, _ = multipletests("
+src/shipping_friction/27a_block02_burden_decomposition.py,895,"        focal_p,"
+src/shipping_friction/27a_block02_burden_decomposition.py,896,"        alpha=0.05,"
+src/shipping_friction/27a_block02_burden_decomposition.py,1053,"        df[""order_id""],"
+src/shipping_friction/27a_block02_burden_decomposition.py,1054,
+src/shipping_friction/27a_block02_burden_decomposition.py,1055,"    ""year_month"":"
+src/shipping_friction/27a_block02_burden_decomposition.py,1056,"        df[""year_month""],"
+src/shipping_friction/27a_block02_burden_decomposition.py,1057,
+src/shipping_friction/27a_block02_burden_decomposition.py,1058,"    ""freight_burden"":"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,16,USECOLS = [
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,17,"    ""total_freight"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,18,"    ""expected_freight_oot"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,19,"    ""actual_delivery_days"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,20,"    ""distance_freight_weighted_km"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,25,"    ""customer_gdp_per_capita"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,26,"    ""customer_state"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,27,"    ""year_month"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,28,]
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,29,
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,30,master = pd.read_csv(
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,31,"    ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,32,"    usecols=USECOLS,"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,33,)
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,34,
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,35,valid_mask = (master['total_freight'] >= 0) & (master['expected_freight_oot'] > 0)
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,36,df_valid = master[valid_mask].copy()
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,37,
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,38,eps = 1e-4
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,39,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,40,
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,41,speed_df = df_valid[df_valid['actual_delivery_days'].notna() & df_valid['distance_freight_weighted_km'].notna()].copy()
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,52,
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,53,"predictors = ['log_distance', 'log_weight', 'log_volume', 'log_freight', 'freight_burden', 'Z_freight_log_ratio', 'log_pop', 'log_gdp']"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,54,"speed_std = speed_df.dropna(subset=predictors + ['customer_state', 'year_month', 'log_speed']).copy()"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,55,
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,56,for col in predictors:
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,58,
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,59,"# Tríade de Especificações: S_L (Linear), S_Q (Quadrático) e S_S (Spline Cúbica)"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,60,fml_SL = 'log_speed ~ Z_freight_log_ratio_std + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,61,fml_SQ = 'log_speed ~ Z_freight_log_ratio_std + I(Z_freight_log_ratio_std**2) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,62,"fml_SS = 'log_speed ~ cr(Z_freight_log_ratio_std, df=4) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,63,
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,64,"specs = {'S_L_Linear': fml_SL, 'S_Q_Quadratic': fml_SQ, 'S_S_Spline': fml_SS}"
+src/spatiotemporal_logistics/04_run_four_analyses.py,9,import pandas as pd
+src/spatiotemporal_logistics/04_run_four_analyses.py,10,
+src/spatiotemporal_logistics/04_run_four_analyses.py,11,from sklearn.ensemble import HistGradientBoostingRegressor
+src/spatiotemporal_logistics/04_run_four_analyses.py,12,"from sklearn.linear_model import LinearRegression, LogisticRegression"
+src/spatiotemporal_logistics/04_run_four_analyses.py,13,from sklearn.metrics import (
+src/spatiotemporal_logistics/04_run_four_analyses.py,14,"    average_precision_score,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,34,"REP = ROOT / ""reports"" / ""spatiotemporal_logistics"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,35,
+src/spatiotemporal_logistics/04_run_four_analyses.py,36,MIN_TRAIN_MONTHS = 3
+src/spatiotemporal_logistics/04_run_four_analyses.py,37,
+src/spatiotemporal_logistics/04_run_four_analyses.py,38,"print(""="" * 110)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,172,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,173,
+src/spatiotemporal_logistics/04_run_four_analyses.py,174,features_f = [
+src/spatiotemporal_logistics/04_run_four_analyses.py,175,"    ""log_distance"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,176,"    ""log_weight"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,181,
+src/spatiotemporal_logistics/04_run_four_analyses.py,182,months = sorted(
+src/spatiotemporal_logistics/04_run_four_analyses.py,183,"    rso[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,184,    .dropna()
+src/spatiotemporal_logistics/04_run_four_analyses.py,185,    .astype(str)
+src/spatiotemporal_logistics/04_run_four_analyses.py,193,
+src/spatiotemporal_logistics/04_run_four_analyses.py,194,for i in range(
+src/spatiotemporal_logistics/04_run_four_analyses.py,195,"    MIN_TRAIN_MONTHS,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,196,"    len(months),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,197,):
+src/spatiotemporal_logistics/04_run_four_analyses.py,198,
+src/spatiotemporal_logistics/04_run_four_analyses.py,199,    train_months = months[:i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,200,    test_month = months[i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,201,
+src/spatiotemporal_logistics/04_run_four_analyses.py,202,    train_mask = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,203,"        rso[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,204,        .isin(train_months)
+src/spatiotemporal_logistics/04_run_four_analyses.py,205,        &
+src/spatiotemporal_logistics/04_run_four_analyses.py,206,"        rso[""log_freight""].notna()"
+src/spatiotemporal_logistics/04_run_four_analyses.py,207,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,208,
+src/spatiotemporal_logistics/04_run_four_analyses.py,209,    test_mask = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,210,"        rso[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,211,        .eq(test_month)
+src/spatiotemporal_logistics/04_run_four_analyses.py,212,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,213,
+src/spatiotemporal_logistics/04_run_four_analyses.py,214,    if not train_mask.any() or not test_mask.any():
+src/spatiotemporal_logistics/04_run_four_analyses.py,215,        continue
+src/spatiotemporal_logistics/04_run_four_analyses.py,216,
+src/spatiotemporal_logistics/04_run_four_analyses.py,217,    X_train = rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,218,"        train_mask,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,219,"        features_f,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,220,    ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,221,
+src/spatiotemporal_logistics/04_run_four_analyses.py,222,    y_train = rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,223,"        train_mask,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,224,"        ""log_freight"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,225,    ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,226,
+src/spatiotemporal_logistics/04_run_four_analyses.py,227,    X_test = rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,228,"        test_mask,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,229,"        features_f,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,230,    ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,231,
+src/spatiotemporal_logistics/04_run_four_analyses.py,233,    # F0 — historical median
+src/spatiotemporal_logistics/04_run_four_analyses.py,234,    baseline = float(
+src/spatiotemporal_logistics/04_run_four_analyses.py,235,        y_train.median()
+src/spatiotemporal_logistics/04_run_four_analyses.py,236,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,237,
+src/spatiotemporal_logistics/04_run_four_analyses.py,238,    rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,239,"        test_mask,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,240,"        ""pred_log_f0"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,241,    ] = baseline
+src/spatiotemporal_logistics/04_run_four_analyses.py,243,
+src/spatiotemporal_logistics/04_run_four_analyses.py,244,    # F1 — linear complete-case only.
+src/spatiotemporal_logistics/04_run_four_analyses.py,245,    train_complete = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,246,        X_train.notna().all(axis=1)
+src/spatiotemporal_logistics/04_run_four_analyses.py,247,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,248,
+src/spatiotemporal_logistics/04_run_four_analyses.py,249,    test_complete = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,250,        X_test.notna().all(axis=1)
+src/spatiotemporal_logistics/04_run_four_analyses.py,251,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,252,
+src/spatiotemporal_logistics/04_run_four_analyses.py,253,    if train_complete.sum() >= 100:
+src/spatiotemporal_logistics/04_run_four_analyses.py,254,
+src/spatiotemporal_logistics/04_run_four_analyses.py,255,        f1 = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,256,
+src/spatiotemporal_logistics/04_run_four_analyses.py,257,        f1.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,258,"            X_train.loc[train_complete],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,259,"            y_train.loc[train_complete],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,260,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,261,
+src/spatiotemporal_logistics/04_run_four_analyses.py,262,        test_indices = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,263,            X_test.index[
+src/spatiotemporal_logistics/04_run_four_analyses.py,264,                test_complete
+src/spatiotemporal_logistics/04_run_four_analyses.py,265,            ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,266,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,267,
+src/spatiotemporal_logistics/04_run_four_analyses.py,268,        if len(test_indices):
+src/spatiotemporal_logistics/04_run_four_analyses.py,269,
+src/spatiotemporal_logistics/04_run_four_analyses.py,270,            rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,271,"                test_indices,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,272,"                ""pred_log_f1"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,273,            ] = f1.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,274,                X_test.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,275,                    test_complete
+src/spatiotemporal_logistics/04_run_four_analyses.py,276,                ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,277,            )
+src/spatiotemporal_logistics/04_run_four_analyses.py,278,
+src/spatiotemporal_logistics/04_run_four_analyses.py,279,
+src/spatiotemporal_logistics/04_run_four_analyses.py,280,    # F2 — HistGradientBoosting with native NaN handling.
+src/spatiotemporal_logistics/04_run_four_analyses.py,281,    f2 = HistGradientBoostingRegressor(
+src/spatiotemporal_logistics/04_run_four_analyses.py,282,"        max_iter=100,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,283,"        random_state=42,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,285,
+src/spatiotemporal_logistics/04_run_four_analyses.py,286,    f2.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,287,"        X_train,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,288,"        y_train,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,289,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,290,
+src/spatiotemporal_logistics/04_run_four_analyses.py,291,    rso.loc[
+src/spatiotemporal_logistics/04_run_four_analyses.py,292,"        test_mask,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,293,"        ""pred_log_f2"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,294,    ] = f2.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,295,        X_test
+src/spatiotemporal_logistics/04_run_four_analyses.py,296,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,297,
+src/spatiotemporal_logistics/04_run_four_analyses.py,298,    folds.append(
+src/spatiotemporal_logistics/04_run_four_analyses.py,299,        {
+src/spatiotemporal_logistics/04_run_four_analyses.py,300,"            ""test_month"": test_month,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,301,"            ""train_start"": train_months[0],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,302,"            ""train_end"": train_months[-1],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,303,"            ""n_train"": int(train_mask.sum()),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,304,"            ""n_test"": int(test_mask.sum()),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,305,        }
+src/spatiotemporal_logistics/04_run_four_analyses.py,306,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,385,"    g[""pred_freight_oot""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,386,    .sum(min_count=1)
+src/spatiotemporal_logistics/04_run_four_analyses.py,387,"    .rename(""expected_freight_oot"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,388,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,389,
+src/spatiotemporal_logistics/04_run_four_analyses.py,416,
+src/spatiotemporal_logistics/04_run_four_analyses.py,417,"master[""freight_ratio_to_expected""] = np.where("
+src/spatiotemporal_logistics/04_run_four_analyses.py,418,"    master[""expected_freight_oot""] > 0,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,419,    (
+src/spatiotemporal_logistics/04_run_four_analyses.py,420,"        master[""total_freight""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,421,        /
+src/spatiotemporal_logistics/04_run_four_analyses.py,422,"        master[""expected_freight_oot""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,423,"    ),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,424,"    np.nan,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,426,
+src/spatiotemporal_logistics/04_run_four_analyses.py,427,master.to_csv(
+src/spatiotemporal_logistics/04_run_four_analyses.py,428,"    ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,429,"    index=False,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,430,)
+src/spatiotemporal_logistics/04_run_four_analyses.py,437,
+src/spatiotemporal_logistics/04_run_four_analyses.py,438,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,439,# SHARED MODEL FEATURES
+src/spatiotemporal_logistics/04_run_four_analyses.py,440,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,441,
+src/spatiotemporal_logistics/04_run_four_analyses.py,507,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,508,
+src/spatiotemporal_logistics/04_run_four_analyses.py,509,speed_features = {
+src/spatiotemporal_logistics/04_run_four_analyses.py,510,"    ""S0_Physical"": ["
+src/spatiotemporal_logistics/04_run_four_analyses.py,511,"        ""log_distance"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,571,"        ""actual_delivery_days ~ """
+src/spatiotemporal_logistics/04_run_four_analyses.py,572,        +
+src/spatiotemporal_logistics/04_run_four_analyses.py,573,"        "" + "".join(features)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,574,"    for name, features"
+src/spatiotemporal_logistics/04_run_four_analyses.py,575,    in speed_features.items()
+src/spatiotemporal_logistics/04_run_four_analyses.py,576,}
+src/spatiotemporal_logistics/04_run_four_analyses.py,577,
+src/spatiotemporal_logistics/04_run_four_analyses.py,617,# OOT speed evaluation
+src/spatiotemporal_logistics/04_run_four_analyses.py,618,speed_months = sorted(
+src/spatiotemporal_logistics/04_run_four_analyses.py,619,"    master[""year_month""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,620,    .dropna()
+src/spatiotemporal_logistics/04_run_four_analyses.py,621,    .astype(str)
+src/spatiotemporal_logistics/04_run_four_analyses.py,625,speed_oot_metrics = []
+src/spatiotemporal_logistics/04_run_four_analyses.py,626,
+src/spatiotemporal_logistics/04_run_four_analyses.py,627,"for model_name, features in speed_features.items():"
+src/spatiotemporal_logistics/04_run_four_analyses.py,628,
+src/spatiotemporal_logistics/04_run_four_analyses.py,629,    pred = pd.Series(
+src/spatiotemporal_logistics/04_run_four_analyses.py,634,
+src/spatiotemporal_logistics/04_run_four_analyses.py,635,    needed = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,636,        features
+src/spatiotemporal_logistics/04_run_four_analyses.py,637,        +
+src/spatiotemporal_logistics/04_run_four_analyses.py,638,        [
+src/spatiotemporal_logistics/04_run_four_analyses.py,639,"            ""actual_delivery_days"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,640,"            ""year_month"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,641,        ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,642,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,643,
+src/spatiotemporal_logistics/04_run_four_analyses.py,644,    for i in range(
+src/spatiotemporal_logistics/04_run_four_analyses.py,645,"        MIN_TRAIN_MONTHS,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,646,"        len(speed_months),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,647,    ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,648,
+src/spatiotemporal_logistics/04_run_four_analyses.py,649,        train_months = speed_months[:i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,650,        test_month = speed_months[i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,651,
+src/spatiotemporal_logistics/04_run_four_analyses.py,652,        train = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,653,"            master[""year_month""].isin(train_months)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,654,        ].dropna(
+src/spatiotemporal_logistics/04_run_four_analyses.py,655,            subset=needed
+src/spatiotemporal_logistics/04_run_four_analyses.py,656,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,657,
+src/spatiotemporal_logistics/04_run_four_analyses.py,658,        test = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,659,"            master[""year_month""].eq(test_month)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,660,        ].dropna(
+src/spatiotemporal_logistics/04_run_four_analyses.py,661,            subset=needed
+src/spatiotemporal_logistics/04_run_four_analyses.py,663,
+src/spatiotemporal_logistics/04_run_four_analyses.py,664,        if (
+src/spatiotemporal_logistics/04_run_four_analyses.py,665,            len(train) < 100
+src/spatiotemporal_logistics/04_run_four_analyses.py,666,            or
+src/spatiotemporal_logistics/04_run_four_analyses.py,667,            test.empty
+src/spatiotemporal_logistics/04_run_four_analyses.py,668,        ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,669,            continue
+src/spatiotemporal_logistics/04_run_four_analyses.py,670,
+src/spatiotemporal_logistics/04_run_four_analyses.py,671,        model = LinearRegression()
+src/spatiotemporal_logistics/04_run_four_analyses.py,672,
+src/spatiotemporal_logistics/04_run_four_analyses.py,673,        model.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,674,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,675,"            train[""actual_delivery_days""],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,676,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,677,
+src/spatiotemporal_logistics/04_run_four_analyses.py,678,        pred.loc[test.index] = model.predict(
+src/spatiotemporal_logistics/04_run_four_analyses.py,679,            test[features]
+src/spatiotemporal_logistics/04_run_four_analyses.py,680,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,681,
+src/spatiotemporal_logistics/04_run_four_analyses.py,732,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,733,
+src/spatiotemporal_logistics/04_run_four_analyses.py,734,rel_features = {
+src/spatiotemporal_logistics/04_run_four_analyses.py,735,"    ""R_A_Observed"": ["
+src/spatiotemporal_logistics/04_run_four_analyses.py,736,"        ""log_distance"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,757,"        ""late_delivery_calendar_day ~ """
+src/spatiotemporal_logistics/04_run_four_analyses.py,758,        +
+src/spatiotemporal_logistics/04_run_four_analyses.py,759,"        "" + "".join(features)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,760,"    for name, features"
+src/spatiotemporal_logistics/04_run_four_analyses.py,761,    in rel_features.items()
+src/spatiotemporal_logistics/04_run_four_analyses.py,762,}
+src/spatiotemporal_logistics/04_run_four_analyses.py,763,
+src/spatiotemporal_logistics/04_run_four_analyses.py,809,rel_oot_metrics = []
+src/spatiotemporal_logistics/04_run_four_analyses.py,810,
+src/spatiotemporal_logistics/04_run_four_analyses.py,811,"for model_name, features in rel_features.items():"
+src/spatiotemporal_logistics/04_run_four_analyses.py,812,
+src/spatiotemporal_logistics/04_run_four_analyses.py,813,    pred = pd.Series(
+src/spatiotemporal_logistics/04_run_four_analyses.py,818,
+src/spatiotemporal_logistics/04_run_four_analyses.py,819,    needed = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,820,        features
+src/spatiotemporal_logistics/04_run_four_analyses.py,821,        +
+src/spatiotemporal_logistics/04_run_four_analyses.py,822,        [
+src/spatiotemporal_logistics/04_run_four_analyses.py,823,"            ""late_delivery_calendar_day"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,824,"            ""year_month"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,825,        ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,826,    )
+src/spatiotemporal_logistics/04_run_four_analyses.py,827,
+src/spatiotemporal_logistics/04_run_four_analyses.py,828,    for i in range(
+src/spatiotemporal_logistics/04_run_four_analyses.py,829,"        MIN_TRAIN_MONTHS,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,830,"        len(speed_months),"
+src/spatiotemporal_logistics/04_run_four_analyses.py,831,    ):
+src/spatiotemporal_logistics/04_run_four_analyses.py,832,
+src/spatiotemporal_logistics/04_run_four_analyses.py,833,        train_months = speed_months[:i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,834,        test_month = speed_months[i]
+src/spatiotemporal_logistics/04_run_four_analyses.py,835,
+src/spatiotemporal_logistics/04_run_four_analyses.py,836,        train = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,837,"            master[""year_month""].isin(train_months)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,838,        ].dropna(
+src/spatiotemporal_logistics/04_run_four_analyses.py,839,            subset=needed
+src/spatiotemporal_logistics/04_run_four_analyses.py,840,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,841,
+src/spatiotemporal_logistics/04_run_four_analyses.py,842,        test = master[
+src/spatiotemporal_logistics/04_run_four_analyses.py,843,"            master[""year_month""].eq(test_month)"
+src/spatiotemporal_logistics/04_run_four_analyses.py,844,        ].dropna(
+src/spatiotemporal_logistics/04_run_four_analyses.py,845,            subset=needed
+src/spatiotemporal_logistics/04_run_four_analyses.py,847,
+src/spatiotemporal_logistics/04_run_four_analyses.py,848,        if (
+src/spatiotemporal_logistics/04_run_four_analyses.py,849,            len(train) < 200
+src/spatiotemporal_logistics/04_run_four_analyses.py,850,            or
+src/spatiotemporal_logistics/04_run_four_analyses.py,851,            test.empty
+src/spatiotemporal_logistics/04_run_four_analyses.py,852,            or
+src/spatiotemporal_logistics/04_run_four_analyses.py,853,            train[
+src/spatiotemporal_logistics/04_run_four_analyses.py,854,"                ""late_delivery_calendar_day"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,855,            ].nunique() < 2
+src/spatiotemporal_logistics/04_run_four_analyses.py,866,
+src/spatiotemporal_logistics/04_run_four_analyses.py,867,        clf.fit(
+src/spatiotemporal_logistics/04_run_four_analyses.py,868,"            train[features],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,869,            train[
+src/spatiotemporal_logistics/04_run_four_analyses.py,870,"                ""late_delivery_calendar_day"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,871,"            ],"
+src/spatiotemporal_logistics/04_run_four_analyses.py,872,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,873,
+src/spatiotemporal_logistics/04_run_four_analyses.py,874,        pred.loc[test.index] = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,875,            clf.predict_proba(
+src/spatiotemporal_logistics/04_run_four_analyses.py,876,                test[features]
+src/spatiotemporal_logistics/04_run_four_analyses.py,877,"            )[:, 1]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,878,        )
+src/spatiotemporal_logistics/04_run_four_analyses.py,930,# ==================================================================================================
+src/spatiotemporal_logistics/04_run_four_analyses.py,931,
+src/spatiotemporal_logistics/04_run_four_analyses.py,932,features_cluster = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,933,    speed_features[
+src/spatiotemporal_logistics/04_run_four_analyses.py,934,"        ""S3A_Context_All"""
+src/spatiotemporal_logistics/04_run_four_analyses.py,935,    ]
+src/spatiotemporal_logistics/04_run_four_analyses.py,937,
+src/spatiotemporal_logistics/04_run_four_analyses.py,938,needed_cluster = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,939,    features_cluster
+src/spatiotemporal_logistics/04_run_four_analyses.py,940,    +
+src/spatiotemporal_logistics/04_run_four_analyses.py,941,    [
+src/spatiotemporal_logistics/04_run_four_analyses.py,982,
+src/spatiotemporal_logistics/04_run_four_analyses.py,983,    needed_ss = (
+src/spatiotemporal_logistics/04_run_four_analyses.py,984,        features_cluster
+src/spatiotemporal_logistics/04_run_four_analyses.py,985,        +
+src/spatiotemporal_logistics/04_run_four_analyses.py,986,        [
