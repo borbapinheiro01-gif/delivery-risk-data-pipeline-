@@ -1,0 +1,5 @@
+feature,artifact_column,overlap_rows,compared_rows,mismatches,max_abs_diff,status,note
+freight_burden,freight_burden,96203,96203,0,1.6653345369377348e-16,PASS,B = total_freight / (total_price + total_freight)
+expected_freight_artifact_consistency,expected_freight_oot|expected_freight_oot,96211,91262,0,5.684341886080802e-14,PASS,Historical artifact-to-artifact consistency only; not production PIT proof.
+freight_ratio_expected,,0,0,0,,NOT_RECOMPUTED,Q column and/or expected freight alias not identified.
+freight_log_ratio_expected,freight_log_ratio,0,0,0,,PENDING_EPSILON_PROVENANCE,Z formula requires the exact historical epsilon before parity can be asserted.

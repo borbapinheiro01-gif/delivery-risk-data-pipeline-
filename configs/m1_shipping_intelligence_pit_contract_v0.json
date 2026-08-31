@@ -1,0 +1,47 @@
+{
+  "contract": "M1_SHIPPING_INTELLIGENCE_PIT_CONTRACT_V0",
+  "prediction_time": "order_purchase_timestamp",
+  "status": "EVIDENCE_COLLECTED_REPRODUCTION_REQUIRED",
+  "gold_supervised_rows": 96470,
+  "expected_freight_coverage": {
+    "covered_rows": 96203,
+    "missing_rows": 267,
+    "coverage": 0.9972323001969524,
+    "complete_case_drop_forbidden_without_protocol": true
+  },
+  "features": {
+    "freight_burden": {
+      "status": "ELIGIBLE_DERIVED_FROM_M0",
+      "depends_on": "total_price|total_freight",
+      "reason": "Uses only M0 fields already governed at order_purchase_timestamp."
+    },
+    "expected_freight_oot": {
+      "status": "PENDING_INDEPENDENT_PRODUCTION_REPRODUCTION",
+      "depends_on": "historical expected-freight model + model inputs",
+      "reason": "Historical OOT artifact consistency is not sufficient proof of production PIT reproducibility."
+    },
+    "freight_ratio_expected": {
+      "status": "BLOCKED_BY_EXPECTED_FREIGHT",
+      "depends_on": "total_freight|expected_freight_oot",
+      "reason": "Q is PIT-safe only if expected_freight is independently PIT-safe."
+    },
+    "freight_log_ratio_expected": {
+      "status": "BLOCKED",
+      "depends_on": "total_freight|expected_freight_oot|epsilon",
+      "reason": "Requires exact epsilon provenance plus PIT-safe expected freight."
+    },
+    "critical_shipping_friction": {
+      "status": "FORBIDDEN_SAME_ORDER_PREDICTOR",
+      "depends_on": "observed late-delivery outcome",
+      "reason": "Contains the observed target."
+    }
+  },
+  "guardrails": {
+    "m1_released": false,
+    "model_training_allowed_by_this_block": false,
+    "critical_shipping_friction_forbidden": true,
+    "expected_freight_must_be_independently_reproduced": true,
+    "missing_expected_freight_requires_explicit_modeling_protocol": true
+  },
+  "lineage_hits": 317
+}

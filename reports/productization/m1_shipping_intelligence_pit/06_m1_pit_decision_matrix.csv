@@ -1,0 +1,6 @@
+candidate_feature,depends_on,t0_dependency_status,formula_parity,production_status,reason
+freight_burden,total_price|total_freight,M0_RELEASED,PASS,ELIGIBLE_DERIVED_FROM_M0,Uses only M0 fields already governed at order_purchase_timestamp.
+expected_freight_oot,historical expected-freight model + model inputs,LINEAGE_EVIDENCE_COLLECTED,PASS,PENDING_INDEPENDENT_PRODUCTION_REPRODUCTION,Historical OOT artifact consistency is not sufficient proof of production PIT reproducibility.
+freight_ratio_expected,total_freight|expected_freight_oot,EXPECTED_FREIGHT_PENDING,NOT_RECOMPUTED,BLOCKED_BY_EXPECTED_FREIGHT,Q is PIT-safe only if expected_freight is independently PIT-safe.
+freight_log_ratio_expected,total_freight|expected_freight_oot|epsilon,EXPECTED_FREIGHT_AND_EPSILON_PENDING,PENDING_EPSILON_PROVENANCE,BLOCKED,Requires exact epsilon provenance plus PIT-safe expected freight.
+critical_shipping_friction,observed late-delivery outcome,EX_POST_OUTCOME,NOT_APPLICABLE,FORBIDDEN_SAME_ORDER_PREDICTOR,Contains the observed target.

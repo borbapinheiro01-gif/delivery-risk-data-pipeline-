@@ -1,0 +1,318 @@
+path,line,term,text
+src/shipping_friction/27a_block01_core_friction.py,19,expected freight,- retreina expected freight;
+src/shipping_friction/27a_block01_core_friction.py,27,06_EXPECTED_FREIGHT_OOT,artifacts/spatiotemporal_logistics/06_EXPECTED_FREIGHT_OOT.csv
+src/shipping_friction/27a_block01_core_friction.py,27,expected_freight_oot,artifacts/spatiotemporal_logistics/06_EXPECTED_FREIGHT_OOT.csv
+src/shipping_friction/27a_block01_core_friction.py,48,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block01_core_friction.py,48,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block01_core_friction.py,57,27a_01_shipping_friction_core,"OUT_CORE = ART / ""27a_01_shipping_friction_core.csv"""
+src/shipping_friction/27a_block01_core_friction.py,79,expected_freight_oot,"""expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,98,freight_log_ratio,"z = group[""freight_log_ratio""].dropna()"
+src/shipping_friction/27a_block01_core_friction.py,152,06_EXPECTED_FREIGHT_OOT,"f""06_EXPECTED_FREIGHT_OOT.csv: {missing}"""
+src/shipping_friction/27a_block01_core_friction.py,152,expected_freight_oot,"f""06_EXPECTED_FREIGHT_OOT.csv: {missing}"""
+src/shipping_friction/27a_block01_core_friction.py,221,expected_freight_oot,"df[""expected_freight_oot""].notna()"
+src/shipping_friction/27a_block01_core_friction.py,222,expected_freight_oot,"& np.isfinite(df[""expected_freight_oot""])"
+src/shipping_friction/27a_block01_core_friction.py,223,expected_freight_oot,"& (df[""expected_freight_oot""] > 0)"
+src/shipping_friction/27a_block01_core_friction.py,251,freight_burden,"df[""freight_burden""] = np.where("
+src/shipping_friction/27a_block01_core_friction.py,260,freight_burden,"df[""freight_burden""].notna()"
+src/shipping_friction/27a_block01_core_friction.py,262,freight_burden,"(df[""freight_burden""] < 0)"
+src/shipping_friction/27a_block01_core_friction.py,263,freight_burden,"| (df[""freight_burden""] > 1)"
+src/shipping_friction/27a_block01_core_friction.py,318,expected_freight_oot,"df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,337,expected_freight_oot,"df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,349,expected_freight_oot,"df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,352,expected_freight_oot,"df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,358,freight_log_ratio,"df[""freight_log_ratio""] = np.where("
+src/shipping_friction/27a_block01_core_friction.py,363,expected_freight_oot,"(df[""expected_freight_oot""] + EPS)"
+src/shipping_friction/27a_block01_core_friction.py,416,freight_log_ratio,"df[""freight_log_ratio_month_z""] = np.where("
+src/shipping_friction/27a_block01_core_friction.py,418,freight_log_ratio,"df[""freight_log_ratio""].notna()"
+src/shipping_friction/27a_block01_core_friction.py,423,freight_log_ratio,"df[""freight_log_ratio""]"
+src/shipping_friction/27a_block01_core_friction.py,443,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block01_core_friction.py,463,freight_burden,"check[""freight_burden""]"
+src/shipping_friction/27a_block01_core_friction.py,491,freight_log_ratio,"df[""freight_log_ratio_month_z""].notna()"
+src/shipping_friction/27a_block01_core_friction.py,496,freight_log_ratio,")[""freight_log_ratio_month_z""]"
+src/shipping_friction/27a_block01_core_friction.py,517,expected_freight_oot,"""expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,518,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block01_core_friction.py,521,freight_log_ratio,"""freight_log_ratio"","
+src/shipping_friction/27a_block01_core_friction.py,522,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block01_core_friction.py,559,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block01_core_friction.py,563,freight_log_ratio,"""freight_log_ratio"","
+src/shipping_friction/27a_block01_core_friction.py,564,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block01_core_friction.py,615,expected_freight_oot,"""expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,617,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block01_core_friction.py,625,freight_log_ratio,"""freight_log_ratio"","
+src/shipping_friction/27a_block01_core_friction.py,626,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block01_core_friction.py,653,expected_freight_oot,"df[""expected_freight_oot""]"
+src/shipping_friction/27a_block01_core_friction.py,659,freight_log_ratio,"df[""freight_log_ratio""]"
+src/shipping_friction/27a_block01_core_friction.py,665,freight_log_ratio,"df[""freight_log_ratio_month_z""]"
+src/shipping_friction/27a_block01_core_friction.py,681,freight_burden,"""B01_G04_freight_burden_bounded"":"
+src/shipping_friction/27a_block01_core_friction.py,754,freight_burden,"""freight_burden"":"
+src/shipping_friction/27a_block01_core_friction.py,761,expected_freight_oot,"""total_freight - expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,764,expected_freight_oot,"""total_freight / expected_freight_oot"","
+src/shipping_friction/27a_block01_core_friction.py,766,freight_log_ratio,"""freight_log_ratio"":"
+src/shipping_friction/27a_block01_core_friction.py,768,expected_freight_oot,"""(expected_freight_oot + eps))"","
+src/shipping_friction/27a_block01_core_friction.py,770,freight_log_ratio,"""freight_log_ratio_month_z"":"
+src/shipping_friction/27a_block01_core_friction.py,771,freight_log_ratio,"""(freight_log_ratio - monthly_median) / """
+src/shipping_friction/27a_block01_core_friction.py,776,freight_burden,"""freight_burden"":"
+src/shipping_friction/27a_block01_core_friction.py,779,freight_log_ratio,"""freight_log_ratio"":"
+src/shipping_friction/27a_block01_core_friction.py,781,expected freight,"""estimated OOT expected freight model."","
+src/shipping_friction/27a_block01_core_friction.py,783,freight_log_ratio,"""freight_log_ratio_month_z"":"
+src/shipping_friction/27a_block01_core_friction.py,863,expected freight,"Expected freight available     : {n_expected:,}"
+src/shipping_friction/27a_block01_core_friction.py,876,expected freight,e = Freight - Expected Freight
+src/shipping_friction/27a_block01_core_friction.py,879,expected freight,Q = Freight / Expected Freight
+src/shipping_friction/27a_block01_core_friction.py,882,expected freight,Z = log((Freight + eps) / (Expected Freight + eps))
+src/shipping_friction/27a_block02_burden_decomposition.py,37,expected freight,- retreina expected freight;
+src/shipping_friction/27a_block02_burden_decomposition.py,74,27a_01_shipping_friction_core,"/ ""27a_01_shipping_friction_core.csv"""
+src/shipping_friction/27a_block02_burden_decomposition.py,81,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block02_burden_decomposition.py,81,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block02_burden_decomposition.py,110,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block02_burden_decomposition.py,193,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block02_burden_decomposition.py,223,freight_burden,"grp[""freight_burden""].mean()"
+src/shipping_friction/27a_block02_burden_decomposition.py,226,freight_burden,"grp[""freight_burden""].median()"
+src/shipping_friction/27a_block02_burden_decomposition.py,417,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block02_burden_decomposition.py,434,freight_burden,"df[""freight_burden""].notna()"
+src/shipping_friction/27a_block02_burden_decomposition.py,492,freight_burden,"df[""freight_burden""].quantile(0.10)"
+src/shipping_friction/27a_block02_burden_decomposition.py,495,freight_burden,"df[""freight_burden""].quantile(0.25)"
+src/shipping_friction/27a_block02_burden_decomposition.py,498,freight_burden,"df[""freight_burden""].quantile(0.50)"
+src/shipping_friction/27a_block02_burden_decomposition.py,501,freight_burden,"df[""freight_burden""].quantile(0.75)"
+src/shipping_friction/27a_block02_burden_decomposition.py,504,freight_burden,"df[""freight_burden""].quantile(0.80)"
+src/shipping_friction/27a_block02_burden_decomposition.py,507,freight_burden,"df[""freight_burden""].quantile(0.90)"
+src/shipping_friction/27a_block02_burden_decomposition.py,510,freight_burden,"df[""freight_burden""].quantile(0.95)"
+src/shipping_friction/27a_block02_burden_decomposition.py,519,freight_burden,"""freight_burden"": value,"
+src/shipping_friction/27a_block02_burden_decomposition.py,537,freight_burden,"df[""freight_burden""]"
+src/shipping_friction/27a_block02_burden_decomposition.py,568,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block02_burden_decomposition.py,574,freight_burden,"""freight_burden"""
+src/shipping_friction/27a_block02_burden_decomposition.py,581,freight_burden,"""freight_burden"""
+src/shipping_friction/27a_block02_burden_decomposition.py,693,freight_burden,"grp[""freight_burden""].mean()"
+src/shipping_friction/27a_block02_burden_decomposition.py,698,freight_burden,"grp[""freight_burden""].median()"
+src/shipping_friction/27a_block02_burden_decomposition.py,752,freight_burden,"""freight_burden ~ """
+src/shipping_friction/27a_block02_burden_decomposition.py,757,freight_burden,"""freight_burden ~ """
+src/shipping_friction/27a_block02_burden_decomposition.py,767,freight_burden,"""freight_burden ~ """
+src/shipping_friction/27a_block02_burden_decomposition.py,1058,freight_burden,"""freight_burden"":"
+src/shipping_friction/27a_block02_burden_decomposition.py,1059,freight_burden,"df[""freight_burden""],"
+src/shipping_friction/27a_block02_burden_decomposition.py,1153,freight_burden,"df[""freight_burden""]"
+src/shipping_friction/27a_block03_service_performance.py,43,expected freight,- altera expected freight;
+src/shipping_friction/27a_block03_service_performance.py,66,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block03_service_performance.py,66,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block04_cost_to_service.py,44,expected freight,- retreina expected freight;
+src/shipping_friction/27a_block04_cost_to_service.py,76,27a_01_shipping_friction_core,"/ ""27a_01_shipping_friction_core.csv"""
+src/shipping_friction/27a_block04_cost_to_service.py,90,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block04_cost_to_service.py,90,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/shipping_friction/27a_block04_cost_to_service.py,147,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,148,freight_log_ratio,"""freight_log_ratio"","
+src/shipping_friction/27a_block04_cost_to_service.py,149,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,332,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,333,freight_log_ratio,"""freight_log_ratio"","
+src/shipping_friction/27a_block04_cost_to_service.py,334,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,396,freight_burden,"df[""freight_burden""]"
+src/shipping_friction/27a_block04_cost_to_service.py,407,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,498,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,503,freight_log_ratio,"""freight_log_ratio_month_z + """
+src/shipping_friction/27a_block04_cost_to_service.py,518,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,523,freight_log_ratio,"""freight_log_ratio_month_z + """
+src/shipping_friction/27a_block04_cost_to_service.py,591,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,716,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,717,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,725,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,760,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,764,freight_log_ratio,"""freight_log_ratio_median"":"
+src/shipping_friction/27a_block04_cost_to_service.py,767,freight_log_ratio,"""freight_log_ratio"""
+src/shipping_friction/27a_block04_cost_to_service.py,771,freight_burden,"""freight_burden_median"":"
+src/shipping_friction/27a_block04_cost_to_service.py,774,freight_burden,"""freight_burden"""
+src/shipping_friction/27a_block04_cost_to_service.py,830,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,834,freight_burden,"""freight_burden"""
+src/shipping_friction/27a_block04_cost_to_service.py,861,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,913,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,930,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,941,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,949,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,1028,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,1032,freight_log_ratio,"""freight_log_ratio_median"":"
+src/shipping_friction/27a_block04_cost_to_service.py,1035,freight_log_ratio,"""freight_log_ratio"""
+src/shipping_friction/27a_block04_cost_to_service.py,1039,freight_burden,"""freight_burden_median"":"
+src/shipping_friction/27a_block04_cost_to_service.py,1042,freight_burden,"""freight_burden"""
+src/shipping_friction/27a_block04_cost_to_service.py,1102,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,1108,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,1109,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,1120,freight_log_ratio,"""freight_log_ratio_month_z"""
+src/shipping_friction/27a_block04_cost_to_service.py,1127,freight_burden,"""freight_burden"""
+src/shipping_friction/27a_block04_cost_to_service.py,1162,freight_burden,"""freight_burden_threshold"":"
+src/shipping_friction/27a_block04_cost_to_service.py,1213,freight_burden,"""freight_burden"","
+src/shipping_friction/27a_block04_cost_to_service.py,1214,freight_log_ratio,"""freight_log_ratio"","
+src/shipping_friction/27a_block04_cost_to_service.py,1215,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,1272,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,1282,freight_log_ratio,"""freight_log_ratio_month_z"","
+src/shipping_friction/27a_block04_cost_to_service.py,1573,freight_burden,"""freight_burden_threshold"""
+src/shipping_friction/27a_block04_cost_to_service.py,1618,freight_burden,"""freight_burden_is_conversion_probability"":"
+src/spatiotemporal_logistics/04_run_four_analyses.py,60,freight_burden,"master[""freight_burden""] = np.where("
+src/spatiotemporal_logistics/04_run_four_analyses.py,68,freight_burden,"""freight_burden"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,387,expected_freight_oot,".rename(""expected_freight_oot"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,418,expected_freight_oot,"master[""expected_freight_oot""] > 0,"
+src/spatiotemporal_logistics/04_run_four_analyses.py,422,expected_freight_oot,"master[""expected_freight_oot""]"
+src/spatiotemporal_logistics/04_run_four_analyses.py,428,06_EXPECTED_FREIGHT_OOT,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,428,expected_freight_oot,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,432,expected freight,"print(""[PASS A2] EXPECTED FREIGHT OOT"")"
+src/spatiotemporal_logistics/04_run_four_analyses.py,525,freight_burden,"""freight_burden"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,535,freight_burden,"""freight_burden"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,546,freight_burden,"""freight_burden"","
+src/spatiotemporal_logistics/04_run_four_analyses.py,560,freight_burden,"""freight_burden"","
+src/spatiotemporal_logistics/05_integrated_validation_report.py,17,06_EXPECTED_FREIGHT_OOT,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/05_integrated_validation_report.py,17,expected_freight_oot,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,42,freight_burden,"df['freight_burden'] = np.where(den > 0, df['total_freight'] / den, np.nan)"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,53,freight_burden,"vars_to_audit = ['total_freight', 'freight_burden', 'total_price', 'distance_freight_weighted_km', 'total_weight_g', 'product_volume_sum_proxy_cm3', 'customer_population', 'customer_gdp_per_capita']"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,88,freight_burden,"sub = df.dropna(subset=[col, 'total_freight', 'freight_burden']).copy()"
+src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py,100,freight_burden,'freight_burden_median': grp['freight_burden'].median()
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,16,06_EXPECTED_FREIGHT_OOT,"oot_master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,16,expected_freight_oot,"oot_master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,23,expected_freight_oot,"valid_res['residual_rel'] = np.where(valid_res['expected_freight_oot'] > 0, valid_res['residual_abs'] / valid_res['expected_freight_oot'], np.nan)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,24,expected_freight_oot,"valid_res['freight_ratio_Q'] = np.where(valid_res['expected_freight_oot'] > 0, valid_res['total_freight'] / valid_res['expected_freight_oot'], np.nan)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,24,freight_ratio_Q,"valid_res['freight_ratio_Q'] = np.where(valid_res['expected_freight_oot'] > 0, valid_res['total_freight'] / valid_res['expected_freight_oot'], np.nan)"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,26,expected_freight_oot,"mae_f2 = mean_absolute_error(valid_res['total_freight'], valid_res['expected_freight_oot'])"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,27,expected_freight_oot,"rmse_f2 = root_mean_squared_error(valid_res['total_freight'], valid_res['expected_freight_oot'])"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,28,expected_freight_oot,"r2_f2 = r2_score(valid_res['total_freight'], valid_res['expected_freight_oot'])"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,44,expected_freight_oot,"'MAE_F2': mean_absolute_error(grp['total_freight'], grp['expected_freight_oot']),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,45,expected_freight_oot,"'RMSE_F2': root_mean_squared_error(grp['total_freight'], grp['expected_freight_oot']),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,46,expected_freight_oot,"'R2_F2': r2_score(grp['total_freight'], grp['expected_freight_oot']),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,65,expected_freight_oot,"valid_res['pred_decile'] = pd.qcut(valid_res['expected_freight_oot'], q=10, labels=False, duplicates='drop')"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,68,expected_freight_oot,"median_predicted=('expected_freight_oot', 'median'),"
+src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py,69,expected_freight_oot,"calibration_ratio=('total_freight', lambda x: x.sum() / valid_res.loc[x.index, 'expected_freight_oot'].sum())"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,24,06_EXPECTED_FREIGHT_OOT,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,24,expected_freight_oot,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,34,freight_burden,"speed_df['freight_burden'] = np.where(den > 0, speed_df['total_freight'] / den, np.nan)"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,39,freight_burden,"predictors = ['log_distance', 'log_weight', 'log_volume', 'log_freight', 'freight_burden', 'freight_residual_OOT', 'log_pop', 'log_gdp']"
+src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py,45,freight_burden,fml_mixed = 'log_speed ~ log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + freight_residual_OOT_std + log_pop_std + log_gdp_std + truck_strike_2018'
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,16,06_EXPECTED_FREIGHT_OOT,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,16,expected_freight_oot,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,23,expected_freight_oot,"rel_df['freight_ratio_Q'] = np.where(rel_df['expected_freight_oot'] > 0, rel_df['total_freight'] / rel_df['expected_freight_oot'], np.nan)"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,23,freight_ratio_Q,"rel_df['freight_ratio_Q'] = np.where(rel_df['expected_freight_oot'] > 0, rel_df['total_freight'] / rel_df['expected_freight_oot'], np.nan)"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,26,freight_ratio_Q,q10 = rel_df['freight_ratio_Q'].quantile(0.10)
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,27,freight_ratio_Q,q90 = rel_df['freight_ratio_Q'].quantile(0.90)
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,30,freight_ratio_Q,"rel_df['freight_ratio_Q'] <= q10, 'LOW_FREIGHT',"
+src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py,31,freight_ratio_Q,"np.where(rel_df['freight_ratio_Q'] >= q90, 'HIGH_FREIGHT', 'NORMAL_FREIGHT')"
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,72,expected freight,"print(""2. MODULE 07 — EXPECTED FREIGHT / RESIDUAL"")"
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,236,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,236,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,286,freight_burden,"speed[""freight_burden""] = np.where("
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,311,freight_burden,"""freight_burden"","
+src/spatiotemporal_logistics/10_validate_scientific_06_09.py,353,freight_burden,"""freight_burden_std + """
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,21,expected_freight_oot,"""expected_freight_oot"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,33,06_EXPECTED_FREIGHT_OOT,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,33,expected_freight_oot,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,37,expected_freight_oot,valid_mask = (master['total_freight'] >= 0) & (master['expected_freight_oot'] > 0)
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,41,expected_freight_oot,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,41,freight_log_ratio,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,42,expected_freight_oot,df_valid['Q_freight_ratio'] = df_valid['total_freight'] / df_valid['expected_freight_oot']
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,45,freight_log_ratio,"req_cols = ['late_delivery_calendar_day', 'Z_freight_log_ratio', 'distance_freight_weighted_km',"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,64,freight_log_ratio,"'N1_Linear': 'Z_freight_log_ratio',"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,65,freight_log_ratio,"'N2_Quadratic': 'Z_freight_log_ratio + I(Z_freight_log_ratio**2)',"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,66,freight_log_ratio,"'N3_Natural_Spline_df4': 'cr(Z_freight_log_ratio, df=4)',"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,90,freight_log_ratio,b1 = fits_B['N2_Quadratic'].params['Z_freight_log_ratio']
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,91,freight_log_ratio,b2 = fits_B['N2_Quadratic'].params['I(Z_freight_log_ratio ** 2)']
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,145,freight_log_ratio,"df_sample['Z_freight_log_ratio'].quantile(0.01),"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,146,freight_log_ratio,"df_sample['Z_freight_log_ratio'].quantile(0.99),"
+src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py,217,freight_log_ratio,'Z_freight_log_ratio'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,18,expected_freight_oot,"""expected_freight_oot"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,31,06_EXPECTED_FREIGHT_OOT,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,31,expected_freight_oot,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,35,expected_freight_oot,valid_mask = (master['total_freight'] >= 0) & (master['expected_freight_oot'] > 0)
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,39,expected_freight_oot,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,39,freight_log_ratio,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,49,freight_burden,"speed_df['freight_burden'] = np.where(den > 0, speed_df['total_freight'] / den, np.nan)"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,53,freight_burden,"predictors = ['log_distance', 'log_weight', 'log_volume', 'log_freight', 'freight_burden', 'Z_freight_log_ratio', 'log_pop', 'log_gdp']"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,53,freight_log_ratio,"predictors = ['log_distance', 'log_weight', 'log_volume', 'log_freight', 'freight_burden', 'Z_freight_log_ratio', 'log_pop', 'log_gdp']"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,60,freight_burden,fml_SL = 'log_speed ~ Z_freight_log_ratio_std + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,60,freight_log_ratio,fml_SL = 'log_speed ~ Z_freight_log_ratio_std + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,61,freight_burden,fml_SQ = 'log_speed ~ Z_freight_log_ratio_std + I(Z_freight_log_ratio_std**2) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,61,freight_log_ratio,fml_SQ = 'log_speed ~ Z_freight_log_ratio_std + I(Z_freight_log_ratio_std**2) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,62,freight_burden,"fml_SS = 'log_speed ~ cr(Z_freight_log_ratio_std, df=4) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,62,freight_log_ratio,"fml_SS = 'log_speed ~ cr(Z_freight_log_ratio_std, df=4) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'"
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,119,freight_log_ratio,coef_z = float(best_sl.params['Z_freight_log_ratio_std'])
+src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py,120,freight_log_ratio,se_z = float(best_sl.bse['Z_freight_log_ratio_std'])
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,22,freight_log_ratio,"z_expr = ""Z_freight_log_ratio + I(Z_freight_log_ratio**2)"""
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,24,freight_log_ratio,"z_expr = ""Z_freight_log_ratio"""
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,29,expected_freight_oot,"""expected_freight_oot"","
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,45,06_EXPECTED_FREIGHT_OOT,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,45,expected_freight_oot,"ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,49,expected_freight_oot,valid_mask = (master['total_freight'] >= 0) & (master['expected_freight_oot'] > 0)
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,53,expected_freight_oot,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,53,freight_log_ratio,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,54,expected_freight_oot,df_valid['Q_freight_ratio'] = df_valid['total_freight'] / df_valid['expected_freight_oot']
+src/spatiotemporal_logistics/13_context_and_mechanism_audit.py,85,freight_log_ratio,"df_sub_A = df_valid.dropna(subset=['late_delivery_calendar_day', 'Z_freight_log_ratio', 'distance_freight_weighted_km', 'total_weight_g', 'product_volume_sum_proxy_cm3', 'route_sellers_total', 'promised_delivery_days', 'customer_population', 'customer_gdp_per_capita']).copy()"
+src/spatiotemporal_logistics/14_integrated_scientific_freeze.py,41,expected_freight_oot,"""hypothesis"": ""H2_Expected_Freight_OOT_Gain"","
+src/spatiotemporal_logistics/15_gnadmm_delivery_operator_jacobian_audit.py,16,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/15_gnadmm_delivery_operator_jacobian_audit.py,16,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/15_gnadmm_delivery_operator_jacobian_audit.py,40,expected_freight_oot,"""expected_freight_oot"","
+src/spatiotemporal_logistics/15_gnadmm_delivery_operator_jacobian_audit.py,93,expected_freight_oot,"& df[""expected_freight_oot""].gt(0)"
+src/spatiotemporal_logistics/15_gnadmm_delivery_operator_jacobian_audit.py,103,expected_freight_oot,"(df[""expected_freight_oot""] + EPS)"
+src/spatiotemporal_logistics/22_gnadmm_scientific_freeze.py,824,expected freight,"""Expected freight is an OOT model-derived quantity and inherits uncertainty from that upstream model."","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,62,06_EXPECTED_FREIGHT_OOT,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,62,expected_freight_oot,"ART / ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,88,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,88,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"""
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,94,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,94,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/23_scientific_evidence_freeze.py,530,expected freight,"""spatiotemporal integration and OOT expected freight."""
+src/spatiotemporal_logistics/25_governance_reproducibility_audit.py,183,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/25_governance_reproducibility_audit.py,183,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/25_governance_reproducibility_audit.py,233,06_EXPECTED_FREIGHT_OOT,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/25_governance_reproducibility_audit.py,233,expected_freight_oot,"/ ""06_EXPECTED_FREIGHT_OOT.csv"","
+src/spatiotemporal_logistics/25p_update_final_documentation.py,183,expected freight,"""# 8. Expected Freight"","
+src/spatiotemporal_logistics/26_project_closeout.py,248,expected freight,"""# 8. Expected Freight"","
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,19,06_EXPECTED_FREIGHT_OOT,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,19,expected_freight_oot,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,21,expected_freight_oot,valid_mask = (master['total_freight'] >= 0) & (master['expected_freight_oot'] > 0)
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,25,expected_freight_oot,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,25,freight_log_ratio,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,26,expected_freight_oot,df_valid['Q_freight_ratio'] = df_valid['total_freight'] / df_valid['expected_freight_oot']
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,29,freight_log_ratio,"req_cols = ['late_delivery_calendar_day', 'Z_freight_log_ratio', 'distance_freight_weighted_km',"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,48,freight_log_ratio,"'N1_Linear': 'Z_freight_log_ratio',"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,49,freight_log_ratio,"'N2_Quadratic': 'Z_freight_log_ratio + I(Z_freight_log_ratio**2)',"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,50,freight_log_ratio,"'N3_Natural_Spline_df4': 'cr(Z_freight_log_ratio, df=4)',"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,74,freight_log_ratio,b1 = fits_B['N2_Quadratic'].params['Z_freight_log_ratio']
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,75,freight_log_ratio,b2 = fits_B['N2_Quadratic'].params['I(Z_freight_log_ratio ** 2)']
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,110,freight_log_ratio,"z_grid = np.linspace(df_sample['Z_freight_log_ratio'].quantile(0.01), df_sample['Z_freight_log_ratio'].quantile(0.99), 50)"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py,117,freight_log_ratio,df_temp['Z_freight_log_ratio'] = z_val
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,16,06_EXPECTED_FREIGHT_OOT,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,16,expected_freight_oot,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,18,expected_freight_oot,valid_mask = (master['total_freight'] >= 0) & (master['expected_freight_oot'] > 0)
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,22,expected_freight_oot,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,22,freight_log_ratio,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,32,freight_burden,"speed_df['freight_burden'] = np.where(den > 0, speed_df['total_freight'] / den, np.nan)"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,36,freight_burden,"predictors = ['log_distance', 'log_weight', 'log_volume', 'log_freight', 'freight_burden', 'Z_freight_log_ratio', 'log_pop', 'log_gdp']"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,36,freight_log_ratio,"predictors = ['log_distance', 'log_weight', 'log_volume', 'log_freight', 'freight_burden', 'Z_freight_log_ratio', 'log_pop', 'log_gdp']"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,43,freight_burden,fml_SL = 'log_speed ~ Z_freight_log_ratio_std + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,43,freight_log_ratio,fml_SL = 'log_speed ~ Z_freight_log_ratio_std + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,44,freight_burden,fml_SQ = 'log_speed ~ Z_freight_log_ratio_std + I(Z_freight_log_ratio_std**2) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,44,freight_log_ratio,fml_SQ = 'log_speed ~ Z_freight_log_ratio_std + I(Z_freight_log_ratio_std**2) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,45,freight_burden,"fml_SS = 'log_speed ~ cr(Z_freight_log_ratio_std, df=4) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,45,freight_log_ratio,"fml_SS = 'log_speed ~ cr(Z_freight_log_ratio_std, df=4) + log_distance_std + log_weight_std + log_volume_std + log_freight_std + freight_burden_std + log_pop_std + log_gdp_std + C(year_month)'"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,99,freight_log_ratio,coef_z = float(best_sl.params['Z_freight_log_ratio_std'])
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py,100,freight_log_ratio,se_z = float(best_sl.bse['Z_freight_log_ratio_std'])
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,22,freight_log_ratio,"z_expr = ""Z_freight_log_ratio + I(Z_freight_log_ratio**2)"""
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,24,freight_log_ratio,"z_expr = ""Z_freight_log_ratio"""
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,27,06_EXPECTED_FREIGHT_OOT,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,27,expected_freight_oot,"master = pd.read_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"")"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,29,expected_freight_oot,valid_mask = (master['total_freight'] >= 0) & (master['expected_freight_oot'] > 0)
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,33,expected_freight_oot,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,33,freight_log_ratio,df_valid['Z_freight_log_ratio'] = np.log((df_valid['total_freight'] + eps) / (df_valid['expected_freight_oot'] + eps))
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,34,expected_freight_oot,df_valid['Q_freight_ratio'] = df_valid['total_freight'] / df_valid['expected_freight_oot']
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py,65,freight_log_ratio,"df_sub_A = df_valid.dropna(subset=['late_delivery_calendar_day', 'Z_freight_log_ratio', 'distance_freight_weighted_km', 'total_weight_g', 'product_volume_sum_proxy_cm3', 'route_sellers_total', 'promised_delivery_days', 'customer_population', 'customer_gdp_per_capita']).copy()"
+src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/14_integrated_scientific_freeze.py,41,expected_freight_oot,"""hypothesis"": ""H2_Expected_Freight_OOT_Gain"","
+src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py,78,expected_freight_oot,"expected_freight_oot=('pred_freight_oot', lambda x: x.sum(min_count=1)),"
+src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py,85,06_EXPECTED_FREIGHT_OOT,"master.to_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"", index=False)"
+src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py,85,expected_freight_oot,"master.to_csv(ARTIFACTS_DIR / ""06_EXPECTED_FREIGHT_OOT.csv"", index=False)"
+src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py,93,freight_burden,speed_df['freight_burden'] = speed_df['total_freight'] / (speed_df['total_price'] + speed_df['total_freight'])
+src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py,100,freight_burden,"'S1_Cost': 'actual_delivery_days ~ log_distance + log_weight + log_volume + route_sellers_total + any_interstate_route + log_freight + freight_burden',"
+src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py,101,freight_burden,"'S2_Anomalies': 'actual_delivery_days ~ log_distance + log_weight + log_volume + route_sellers_total + any_interstate_route + log_freight + freight_burden + freight_residual_OOT',"
+src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py,102,freight_burden,"'S3A_Context_All': 'actual_delivery_days ~ log_distance + log_weight + log_volume + route_sellers_total + any_interstate_route + log_freight + freight_burden + freight_residual_OOT + log_pop + log_gdp + truck_strike_2018',"
+src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py,103,freight_burden,'S3B_ANP_Subset': 'actual_delivery_days ~ log_distance + log_weight + log_volume + route_sellers_total + any_interstate_route + log_freight + freight_burden + freight_residual_OOT + log_pop + log_gdp + log_diesel + truck_strike_2018'
+configs/sql_medallion_contract_v1.json,62,expected freight,"""Expected Freight may enter only if generated Point-in-Time safely."","
+configs/production_feature_contract_v1.json,35,expected_freight_oot,"""expected_freight_oot"","
+configs/production_feature_contract_v1.json,36,freight_burden,"""freight_burden"","
+configs/production_feature_contract_v1.json,38,freight_log_ratio,"""freight_log_ratio_expected"""
+docs/GITHUB_SOURCE_PROVENANCE.md,40,06_EXPECTED_FREIGHT_OOT,- `06_EXPECTED_FREIGHT_OOT.csv`
+docs/GITHUB_SOURCE_PROVENANCE.md,40,expected_freight_oot,- `06_EXPECTED_FREIGHT_OOT.csv`
+docs/architecture/FINAL_PRODUCT_ARCHITECTURE.md,18,expected freight,→ Expected Freight OOT
+docs/architecture/SCIENTIFIC_TO_PRODUCT_MAP.md,8,expected freight,→ Expected Freight
+docs/architecture/DELIVERY_REPOSITORY_ORGANIZATION_MASTER.md,384,expected freight,→ Expected Freight OOT
+docs/architecture/DELIVERY_REPOSITORY_ORGANIZATION_MASTER.md,466,expected freight,→ Expected Freight
+docs/architecture/DELIVERY_REPOSITORY_ORGANIZATION_MASTER.md,512,expected freight,"LOGISTICS_INTELLIGENCE,Expected Freight OOT,COMPLETE,Scientific Core"
+docs/architecture/PRODUCTION_FEATURE_CONTRACT_V1.md,45,expected freight,"No Expected Freight, burden, ratio or anomaly variable is released into the"

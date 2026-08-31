@@ -1,0 +1,34 @@
+============================================================================================
+M1 SHIPPING INTELLIGENCE — SOURCE LINEAGE SEARCH
+============================================================================================
+
+TOTAL_HITS       : 317
+PYTHON_FILES_HIT : 26
+
+PYTHON SOURCE FILES:
+- src/shipping_friction/27a_block01_core_friction.py
+- src/shipping_friction/27a_block02_burden_decomposition.py
+- src/shipping_friction/27a_block03_service_performance.py
+- src/shipping_friction/27a_block04_cost_to_service.py
+- src/spatiotemporal_logistics/04_run_four_analyses.py
+- src/spatiotemporal_logistics/05_integrated_validation_report.py
+- src/spatiotemporal_logistics/06_cost_structure_scientific_audit.py
+- src/spatiotemporal_logistics/07_expected_freight_residual_scientific_audit.py
+- src/spatiotemporal_logistics/08_delivery_speed_hierarchical_audit.py
+- src/spatiotemporal_logistics/09_delivery_reliability_hierarchical_audit.py
+- src/spatiotemporal_logistics/10_validate_scientific_06_09.py
+- src/spatiotemporal_logistics/11_nonlinear_freight_reliability_audit.py
+- src/spatiotemporal_logistics/12_delivery_speed_corrected_nonlinear_audit.py
+- src/spatiotemporal_logistics/13_context_and_mechanism_audit.py
+- src/spatiotemporal_logistics/14_integrated_scientific_freeze.py
+- src/spatiotemporal_logistics/15_gnadmm_delivery_operator_jacobian_audit.py
+- src/spatiotemporal_logistics/22_gnadmm_scientific_freeze.py
+- src/spatiotemporal_logistics/23_scientific_evidence_freeze.py
+- src/spatiotemporal_logistics/25_governance_reproducibility_audit.py
+- src/spatiotemporal_logistics/25p_update_final_documentation.py
+- src/spatiotemporal_logistics/26_project_closeout.py
+- src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/11_nonlinear_freight_reliability_audit.py
+- src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/12_delivery_speed_corrected_nonlinear_audit.py
+- src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/13_context_and_mechanism_audit.py
+- src/spatiotemporal_logistics/backup_nonlinear_before_lowmem_20260831T032343Z/14_integrated_scientific_freeze.py
+- src/spatiotemporal_logistics/v2_before_v21_20260831T024209Z/04_run_four_analyses.py
