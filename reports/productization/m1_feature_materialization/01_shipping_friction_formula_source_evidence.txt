@@ -1,0 +1,24 @@
+====================================================================================================
+SHIPPING FRICTION — EXACT EPS + FORMULA SOURCE EVIDENCE
+====================================================================================================
+
+EPS_LINE = 70
+EPS_VALUE = 1e-08
+EPS_EXPRESSION = EPS = 1e-08
+
+VALID_EXPECTED_PAIR:
+LINE 308 :: valid_expected_pair = (df['valid_freight'] == 1) & (df['valid_expected_freight'] == 1)
+
+FORMULAS:
+LINE 251 | freight_burden
+df['freight_burden'] = np.where(valid_burden, df['total_freight'] / den, np.nan)
+
+LINE 332 | freight_expected_ratio
+df['freight_expected_ratio'] = np.where(valid_expected_pair, df['total_freight'] / df['expected_freight_oot'], np.nan)
+
+LINE 358 | freight_log_ratio
+df['freight_log_ratio'] = np.where(valid_expected_pair, np.log((df['total_freight'] + EPS) / (df['expected_freight_oot'] + EPS)), np.nan)
+
+LINE 416 | freight_log_ratio
+df['freight_log_ratio_month_z'] = np.where(df['freight_log_ratio'].notna() & (df['robust_scale_usable'] == 1), (df['freight_log_ratio'] - df['median_log_ratio']) / df['scaled_mad'], np.nan)
+

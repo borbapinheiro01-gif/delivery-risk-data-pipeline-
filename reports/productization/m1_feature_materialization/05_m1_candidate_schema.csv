@@ -1,0 +1,11 @@
+column,dtype,nulls,unique
+order_id,object,0,96470
+year_month,object,267,20
+expected_freight_oot,float64,5216,80699
+freight_burden,float64,0,43682
+freight_expected_ratio,float64,5216,85189
+freight_log_ratio,float64,5216,85398
+m1_feature_vector_available,bool,0,2
+availability_reason,object,0,3
+benchmark_population,object,0,2
+serving_model,object,0,2

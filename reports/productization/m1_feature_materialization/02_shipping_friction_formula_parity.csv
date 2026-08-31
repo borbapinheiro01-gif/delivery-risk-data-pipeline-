@@ -1,0 +1,4 @@
+feature,historical_column,compared_rows,null_pattern_mismatch,numeric_mismatch,max_abs_diff,status,formula_note
+freight_burden_B,freight_burden,96211,0,0,1.1102230246251565e-16,PASS,F/(P+F) under validated burden mask
+freight_expected_ratio_Q,freight_expected_ratio,91262,0,0,8.881784197001252e-16,PASS,F/E under source-equivalent valid_expected_pair mask
+freight_log_ratio_Z,freight_log_ratio,91262,0,0,3.552713678800501e-15,PASS,"log((F+EPS)/(E+EPS)), EPS=1e-08, same valid_expected_pair as Q"

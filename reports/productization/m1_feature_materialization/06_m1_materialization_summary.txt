@@ -1,0 +1,20 @@
+================================================================================================
+DELIVERY RISK — BLOCK 09R M1 FEATURE MATERIALIZATION
+================================================================================================
+
+EPS_VALUE              : 1e-08
+FROZEN_GOLD_ROWS       : 96470
+M1_ELIGIBLE_ROWS       : 91254
+M0_FALLBACK_ROWS       : 5216
+M1_ELIGIBLE_SHARE      : 0.9459313776
+B_FORMULA_PARITY       : PASS
+Q_FORMULA_PARITY       : PASS
+Z_FORMULA_PARITY       : PASS
+SILENT_ROW_DROP        : FORBIDDEN
+MISSING_IMPUTATION     : NONE
+PAIRED_BENCHMARK_ROWS  : M1_ELIGIBLE_ONLY
+SERVING_FALLBACK       : M0
+M1_RELEASED            : NO
+LATE_RISK_MODEL_TRAINED: NO
+
+STATUS = M1_FEATURE_LAYER_READY_FOR_PAIRED_M0_VS_M1_BENCHMARK

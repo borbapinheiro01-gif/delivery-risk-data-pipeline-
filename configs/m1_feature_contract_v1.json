@@ -1,0 +1,61 @@
+{
+  "contract": "M1_FEATURE_CONTRACT_V1",
+  "status": "READY_FOR_PAIRED_M0_VS_M1_BENCHMARK",
+  "prediction_time": "order_purchase_timestamp",
+  "frozen_gold_rows": 96470,
+  "m0_feature_source": "gold.ml_delivery_supervised_core_v1",
+  "m1_incremental_features": [
+    "expected_freight_oot",
+    "freight_burden",
+    "freight_expected_ratio",
+    "freight_log_ratio"
+  ],
+  "canonical_aliases": {
+    "B": "freight_burden",
+    "Q": "freight_expected_ratio",
+    "Z": "freight_log_ratio"
+  },
+  "formula_contract": {
+    "EPS": 1e-08,
+    "freight_burden": "total_freight / (total_price + total_freight)",
+    "freight_expected_ratio": "total_freight / expected_freight_oot",
+    "freight_log_ratio": "log((total_freight + EPS) / (expected_freight_oot + EPS))",
+    "expected_pair_guard": "source-equivalent mask validated by exact Q null-pattern parity",
+    "historical_formula_parity": "PASS"
+  },
+  "availability": {
+    "m1_eligible_rows": 91254,
+    "m0_fallback_rows": 5216,
+    "m1_eligible_share": 0.9459313776303514,
+    "silent_row_drop_forbidden": true,
+    "missing_expected_freight_imputation": "NONE"
+  },
+  "paired_benchmark_estimand": {
+    "purpose": "incremental utility of Shipping Intelligence",
+    "population": "M1_ELIGIBLE rows only",
+    "m0_and_m1_use_identical_train_test_rows": true,
+    "m0": "ORDER_CORE_V1",
+    "m1": "ORDER_CORE_V1 + expected_freight_oot + freight_burden + freight_expected_ratio + freight_log_ratio",
+    "primary_metric": "average_precision",
+    "secondary_metrics": [
+      "roc_auc",
+      "brier",
+      "log_loss",
+      "recall_at_top_k"
+    ],
+    "temporal_protocol": "reuse frozen label-availability-aware temporal contract"
+  },
+  "serving_estimand": {
+    "purpose": "operational full-cohort routing",
+    "if_m1_features_available": "serve M1 candidate after benchmark approval",
+    "otherwise": "serve M0",
+    "coverage_rows": 96470
+  },
+  "guardrails": {
+    "critical_shipping_friction_same_order_predictor": "FORBIDDEN",
+    "future_delivery_outcomes": "FORBIDDEN",
+    "m1_released": false,
+    "late_risk_model_trained": false,
+    "algorithm_benchmark_started": false
+  }
+}
