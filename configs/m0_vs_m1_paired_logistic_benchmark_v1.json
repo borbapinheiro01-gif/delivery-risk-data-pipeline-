@@ -1,0 +1,90 @@
+{
+  "contract": "M0_VS_M1_PAIRED_LOGISTIC_BENCHMARK_V1",
+  "status": "LOGISTIC_M1_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+  "prediction_time": "order_purchase_timestamp",
+  "population": "M1_ELIGIBLE",
+  "population_rows": 91254,
+  "m0_fallback_rows_outside_paired_estimand": 5216,
+  "minimum_prior_eligible_months": 3,
+  "valid_temporal_folds": 14,
+  "temporal_rule": {
+    "test": "one purchase month",
+    "training_purchase_time": "strictly before test-month cutoff",
+    "training_label_available_time": "order_delivered_customer_date strictly before test-month cutoff",
+    "future_label_use": "FORBIDDEN"
+  },
+  "estimator": {
+    "pipeline": [
+      "StandardScaler",
+      "LogisticRegression"
+    ],
+    "logistic_kwargs": {
+      "C": 1.0,
+      "l1_ratio": 0.0,
+      "solver": "lbfgs",
+      "max_iter": 2000,
+      "random_state": 42
+    }
+  },
+  "m0_features": [
+    "item_count",
+    "unique_product_count",
+    "unique_seller_count",
+    "total_price",
+    "mean_price",
+    "max_price",
+    "min_price",
+    "price_range",
+    "total_freight",
+    "mean_freight",
+    "max_freight",
+    "merchandise_plus_freight",
+    "freight_price_ratio"
+  ],
+  "m1_incremental_features": [
+    "expected_freight_oot",
+    "freight_burden",
+    "freight_expected_ratio",
+    "freight_log_ratio"
+  ],
+  "primary_metric": "average_precision",
+  "secondary_metrics": [
+    "roc_auc",
+    "brier",
+    "log_loss",
+    "recall_at_top_fraction"
+  ],
+  "top_fractions": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "paired_bootstrap": {
+    "n_valid_folds": 14,
+    "bootstrap_iterations": 20000,
+    "seed": 20260831,
+    "mean_delta_average_precision": -0.0006675217228487072,
+    "median_delta_average_precision": -0.001320838555051971,
+    "ci95_mean_delta_average_precision": [
+      -0.0018523905856984593,
+      0.0006721686107728761
+    ],
+    "m1_fold_wins": 5,
+    "ties": 0,
+    "m0_fold_wins": 9,
+    "pooled_oof_m0_average_precision": 0.07093275214871608,
+    "pooled_oof_m1_average_precision": 0.07133273566603483,
+    "pooled_oof_delta_average_precision": 0.0003999835173187499,
+    "classification": "LOGISTIC_M1_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+  },
+  "decision": {
+    "classification": "LOGISTIC_M1_INCREMENTAL_UTILITY_NOT_SUPPORTED",
+    "m1_released": false,
+    "algorithm_benchmark_authorized": true,
+    "threshold_selected": false
+  },
+  "provenance": {
+    "m1_feature_contract_sha256": "a846105f99852cf8f8a50f4f525a4111095b793f339765c84acc33e0dcf12c97",
+    "frozen_temporal_contract_sha256": "c417cdb43a336033a2ffd6a409e93a55f48376fa0da644051c44afdcce91706b"
+  }
+}

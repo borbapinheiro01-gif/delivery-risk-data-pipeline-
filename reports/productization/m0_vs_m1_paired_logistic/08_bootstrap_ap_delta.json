@@ -1,0 +1,18 @@
+{
+  "n_valid_folds": 14,
+  "bootstrap_iterations": 20000,
+  "seed": 20260831,
+  "mean_delta_average_precision": -0.0006675217228487072,
+  "median_delta_average_precision": -0.001320838555051971,
+  "ci95_mean_delta_average_precision": [
+    -0.0018523905856984593,
+    0.0006721686107728761
+  ],
+  "m1_fold_wins": 5,
+  "ties": 0,
+  "m0_fold_wins": 9,
+  "pooled_oof_m0_average_precision": 0.07093275214871608,
+  "pooled_oof_m1_average_precision": 0.07133273566603483,
+  "pooled_oof_delta_average_precision": 0.0003999835173187499,
+  "classification": "LOGISTIC_M1_INCREMENTAL_UTILITY_NOT_SUPPORTED"
+}

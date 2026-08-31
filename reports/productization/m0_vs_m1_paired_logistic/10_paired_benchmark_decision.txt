@@ -1,0 +1,25 @@
+================================================================================================
+DELIVERY RISK — BLOCK 10 PAIRED M0 VS M1 LOGISTIC BENCHMARK
+================================================================================================
+
+PAIRED_POPULATION_ROWS       : 91254
+M0_FALLBACK_OUTSIDE_ESTIMAND : 5216
+VALID_TEMPORAL_FOLDS         : 14
+PURCHASE_TIME_VIOLATIONS     : 0
+LABEL_AVAILABILITY_VIOLATIONS: 0
+M0_MEAN_AP                   : 0.087683030016
+M1_MEAN_AP                   : 0.087015508293
+MEAN_DELTA_AP                : -0.000667521723
+MEDIAN_DELTA_AP              : -0.001320838555
+BOOTSTRAP_95CI_DELTA_AP      : [-0.001852390586, 0.000672168611]
+M1_FOLD_WINS                 : 5
+M0_FOLD_WINS                 : 9
+TIES                         : 0
+POOLED_OOF_M0_AP             : 0.070932752149
+POOLED_OOF_M1_AP             : 0.071332735666
+POOLED_OOF_DELTA_AP          : 0.000399983517
+THRESHOLD_SELECTED           : NO
+M1_RELEASED                  : NO
+ALGORITHM_BENCHMARK_AUTHORIZED: YES
+
+STATUS = LOGISTIC_M1_INCREMENTAL_UTILITY_NOT_SUPPORTED
