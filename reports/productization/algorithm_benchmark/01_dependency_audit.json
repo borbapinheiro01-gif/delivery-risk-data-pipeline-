@@ -1,0 +1,53 @@
+{
+  "python": "3.12.12",
+  "packages": {
+    "numpy": {
+      "required": true,
+      "installed": true,
+      "version": "2.5.0",
+      "status": "AVAILABLE"
+    },
+    "pandas": {
+      "required": true,
+      "installed": true,
+      "version": "2.3.3",
+      "status": "AVAILABLE"
+    },
+    "scipy": {
+      "required": true,
+      "installed": true,
+      "version": "1.18.0",
+      "status": "AVAILABLE"
+    },
+    "sklearn": {
+      "required": true,
+      "installed": true,
+      "version": "1.9.0",
+      "status": "AVAILABLE"
+    },
+    "duckdb": {
+      "required": true,
+      "installed": true,
+      "version": "1.5.5",
+      "status": "AVAILABLE"
+    },
+    "xgboost": {
+      "required": false,
+      "installed": true,
+      "version": "3.3.0",
+      "status": "AVAILABLE"
+    },
+    "lightgbm": {
+      "required": false,
+      "installed": false,
+      "version": null,
+      "status": "SKIPPED_NOT_INSTALLED"
+    },
+    "catboost": {
+      "required": false,
+      "installed": false,
+      "version": null,
+      "status": "SKIPPED_NOT_INSTALLED"
+    }
+  }
+}

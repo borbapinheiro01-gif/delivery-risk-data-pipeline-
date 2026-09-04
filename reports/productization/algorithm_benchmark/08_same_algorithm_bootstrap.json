@@ -1,0 +1,54 @@
+{
+  "HIST_GRADIENT_BOOSTING": {
+    "n_folds": 14,
+    "mean_delta_ap": 0.0029153690849295566,
+    "median_delta_ap": 0.0016568047284801907,
+    "ci95_mean_delta_ap": [
+      5.7381814703004256e-05,
+      0.006105297596153073
+    ],
+    "m1_wins": 10,
+    "ties": 0,
+    "m0_wins": 4,
+    "feature_status": "M1_SUPPORTED"
+  },
+  "LOGISTIC": {
+    "n_folds": 14,
+    "mean_delta_ap": -0.0006675217228487072,
+    "median_delta_ap": -0.001320838555051971,
+    "ci95_mean_delta_ap": [
+      -0.0018790752174532583,
+      0.0006838107139249356
+    ],
+    "m1_wins": 5,
+    "ties": 0,
+    "m0_wins": 9,
+    "feature_status": "M1_NOT_SUPPORTED"
+  },
+  "RANDOM_FOREST": {
+    "n_folds": 14,
+    "mean_delta_ap": 0.0012712586939521936,
+    "median_delta_ap": 0.0011361867093402991,
+    "ci95_mean_delta_ap": [
+      -0.0006979810476144057,
+      0.003179428161184542
+    ],
+    "m1_wins": 10,
+    "ties": 0,
+    "m0_wins": 4,
+    "feature_status": "M1_FAVORABLE_NOT_DECISIVE"
+  },
+  "XGBOOST": {
+    "n_folds": 14,
+    "mean_delta_ap": 0.0015818003824006573,
+    "median_delta_ap": 0.0019487252107830422,
+    "ci95_mean_delta_ap": [
+      -0.0002769397191889261,
+      0.0034102372850387513
+    ],
+    "m1_wins": 9,
+    "ties": 0,
+    "m0_wins": 5,
+    "feature_status": "M1_FAVORABLE_NOT_DECISIVE"
+  }
+}

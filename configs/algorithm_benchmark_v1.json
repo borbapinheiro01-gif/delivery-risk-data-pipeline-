@@ -1,0 +1,95 @@
+{
+  "contract": "ALGORITHM_BENCHMARK_V1",
+  "status": "ALGORITHM_BENCHMARK_COMPLETE_CANDIDATE_IDENTIFIED",
+  "prediction_time": "order_purchase_timestamp",
+  "paired_population_rows": 91254,
+  "m0_fallback_rows": 5216,
+  "folds": 14,
+  "selection_metric": "mean_average_precision_across_temporal_folds",
+  "tiebreakers": [
+    "median_average_precision",
+    "pooled_oof_average_precision"
+  ],
+  "algorithms_benchmarked": [
+    "HIST_GRADIENT_BOOSTING",
+    "LOGISTIC",
+    "RANDOM_FOREST",
+    "XGBOOST"
+  ],
+  "optional_runtime_failures": [],
+  "winner": {
+    "algorithm": "LOGISTIC",
+    "arm": "M0",
+    "mean_average_precision": 0.0876830300155891,
+    "median_average_precision": 0.06705943047460497,
+    "pooled_oof_average_precision": 0.07093275214871608
+  },
+  "m1_feature_evidence": {
+    "classification": "NONLINEAR_OR_LINEAR_M1_INCREMENTAL_UTILITY_SUPPORTED",
+    "same_algorithm_bootstrap": {
+      "HIST_GRADIENT_BOOSTING": {
+        "n_folds": 14,
+        "mean_delta_ap": 0.0029153690849295566,
+        "median_delta_ap": 0.0016568047284801907,
+        "ci95_mean_delta_ap": [
+          5.7381814703004256e-05,
+          0.006105297596153073
+        ],
+        "m1_wins": 10,
+        "ties": 0,
+        "m0_wins": 4,
+        "feature_status": "M1_SUPPORTED"
+      },
+      "LOGISTIC": {
+        "n_folds": 14,
+        "mean_delta_ap": -0.0006675217228487072,
+        "median_delta_ap": -0.001320838555051971,
+        "ci95_mean_delta_ap": [
+          -0.0018790752174532583,
+          0.0006838107139249356
+        ],
+        "m1_wins": 5,
+        "ties": 0,
+        "m0_wins": 9,
+        "feature_status": "M1_NOT_SUPPORTED"
+      },
+      "RANDOM_FOREST": {
+        "n_folds": 14,
+        "mean_delta_ap": 0.0012712586939521936,
+        "median_delta_ap": 0.0011361867093402991,
+        "ci95_mean_delta_ap": [
+          -0.0006979810476144057,
+          0.003179428161184542
+        ],
+        "m1_wins": 10,
+        "ties": 0,
+        "m0_wins": 4,
+        "feature_status": "M1_FAVORABLE_NOT_DECISIVE"
+      },
+      "XGBOOST": {
+        "n_folds": 14,
+        "mean_delta_ap": 0.0015818003824006573,
+        "median_delta_ap": 0.0019487252107830422,
+        "ci95_mean_delta_ap": [
+          -0.0002769397191889261,
+          0.0034102372850387513
+        ],
+        "m1_wins": 9,
+        "ties": 0,
+        "m0_wins": 5,
+        "feature_status": "M1_FAVORABLE_NOT_DECISIVE"
+      }
+    }
+  },
+  "governance": {
+    "same_block10_population": true,
+    "same_block10_folds": true,
+    "purchase_time_leakage": 0,
+    "label_availability_leakage": 0,
+    "hyperparameter_tuning": false,
+    "threshold_selected": false,
+    "m1_released": false,
+    "production_model_released": false,
+    "next_gate": "candidate robustness + Recall@Top-K operational review"
+  }
+}
