@@ -1,0 +1,99 @@
+{
+  "contract": "CANDIDATE_EXPLAINABILITY_CALIBRATION_V1",
+  "status": "CANDIDATE_EXPLAINABILITY_CALIBRATION_AUDIT_COMPLETE",
+  "candidate": {
+    "algorithm": "LOGISTIC",
+    "arm": "M0",
+    "paired_population_rows": 91254,
+    "folds": 14
+  },
+  "prediction_parity": {
+    "block11_oof_parity": "PASS",
+    "total_mismatches": 0,
+    "max_abs_prediction_diff": 9.898765834792655e-17
+  },
+  "explainability": {
+    "standardized_coefficients": true,
+    "odds_ratio_per_1sd": true,
+    "heldout_permutation_ap_sensitivity": true,
+    "permutation_repeats": 5,
+    "exact_logit_contribution_identity": "PASS",
+    "top_features": [
+      {
+        "importance_rank": 1,
+        "feature": "mean_freight",
+        "mean_ap_drop": 0.007082550866066148,
+        "mean_abs_logit_contribution": 0.04164367569846711,
+        "mean_standardized_coefficient": 0.060079879487476666
+      },
+      {
+        "importance_rank": 2,
+        "feature": "max_freight",
+        "mean_ap_drop": 0.004776980677109719,
+        "mean_abs_logit_contribution": 0.0313445308641472,
+        "mean_standardized_coefficient": 0.052179514301279505
+      },
+      {
+        "importance_rank": 3,
+        "feature": "min_price",
+        "mean_ap_drop": 0.00390344011296422,
+        "mean_abs_logit_contribution": 0.028578712333907918,
+        "mean_standardized_coefficient": 0.06372882103629014
+      },
+      {
+        "importance_rank": 4,
+        "feature": "mean_price",
+        "mean_ap_drop": 0.003723679347025949,
+        "mean_abs_logit_contribution": 0.027410238578083664,
+        "mean_standardized_coefficient": 0.060759727506041174
+      },
+      {
+        "importance_rank": 5,
+        "feature": "max_price",
+        "mean_ap_drop": 0.0031152559317923693,
+        "mean_abs_logit_contribution": 0.025459971464734818,
+        "mean_standardized_coefficient": 0.05629462249735912
+      }
+    ],
+    "causal_interpretation": false,
+    "collinearity_warning": "ORDER_CORE_V1 contains known algebraic dependencies; coefficient and one-feature permutation rankings are model sensitivity diagnostics, not causal effects.",
+    "shap_required_for_linear_candidate": false
+  },
+  "calibration": {
+    "oof_rows": 82271,
+    "oof_positives": 5992,
+    "oof_prevalence": 0.07283246830596443,
+    "pooled_average_precision": 0.07093275214871608,
+    "pooled_roc_auc": 0.5083630781252387,
+    "pooled_brier": 0.06858908071318194,
+    "pooled_log_loss": 0.2707914449048768,
+    "mean_predicted_probability": 0.051387217910740884,
+    "calibration_intercept_ideal_0": -2.164144837600455,
+    "calibration_slope_ideal_1": 0.12648156773955813,
+    "ece_quantile_10": 0.0384812444408116,
+    "mce_quantile_10": 0.1195744255747043,
+    "score_quantiles": {
+      "0.0": 1.4802646441322172e-08,
+      "0.01": 0.01313472227983641,
+      "0.05": 0.02574952567470325,
+      "0.1": 0.027521396276251,
+      "0.25": 0.03115245210602275,
+      "0.5": 0.0490726017492862,
+      "0.75": 0.0669015219644103,
+      "0.9": 0.075693533985577,
+      "0.95": 0.08324768109346875,
+      "0.99": 0.12022682715205857,
+      "1.0": 0.8502502361534748
+    },
+    "classification": "CALIBRATION_REVIEW_REQUIRED_BEFORE_PRODUCTION",
+    "calibrator_applied": false
+  },
+  "governance": {
+    "threshold_selected": false,
+    "topk_budget_selected": false,
+    "calibration_transform_selected": false,
+    "production_model_released": false,
+    "full_frozen_cohort_backtest_completed": false
+  },
+  "next_gate": "FULL_FROZEN_COHORT_M0_BACKTEST_AND_CALIBRATION_DECISION"
+}
