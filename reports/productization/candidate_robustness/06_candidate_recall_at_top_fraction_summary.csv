@@ -1,0 +1,4 @@
+top_fraction,folds,candidate_mean_recall,baseline_mean_recall,mean_delta_recall,median_delta_recall,candidate_wins,ties,baseline_wins
+0.05,14,0.07404638849434711,0.07404638849434711,0.0,0.0,0,14,0
+0.1,14,0.14209486848038394,0.14209486848038394,0.0,0.0,0,14,0
+0.2,14,0.266947966257118,0.266947966257118,0.0,0.0,0,14,0

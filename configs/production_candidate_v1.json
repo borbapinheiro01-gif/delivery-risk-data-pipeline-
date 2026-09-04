@@ -1,0 +1,110 @@
+{
+  "contract": "PRODUCTION_CANDIDATE_V1",
+  "status": "CANDIDATE_ROBUSTNESS_AND_RECALL_REVIEW_COMPLETE",
+  "paired_population_rows": 91254,
+  "folds": 14,
+  "raw_benchmark_winner": {
+    "algorithm": "LOGISTIC",
+    "arm": "M0"
+  },
+  "governed_candidate": {
+    "algorithm": "LOGISTIC",
+    "arm": "M0",
+    "ranking_rank": 1,
+    "feature_arm_governance_reason": "RAW_WINNER_ALREADY_M0"
+  },
+  "m1_incremental_evidence_for_winner_algorithm": "M1_NOT_SUPPORTED",
+  "candidate_vs_logistic_m0": {
+    "raw_benchmark_winner": {
+      "algorithm": "LOGISTIC",
+      "arm": "M0"
+    },
+    "raw_winner_same_algorithm_m1_status": "M1_NOT_SUPPORTED",
+    "governed_candidate": {
+      "algorithm": "LOGISTIC",
+      "arm": "M0",
+      "ranking_rank": 1,
+      "reason": "RAW_WINNER_ALREADY_M0"
+    },
+    "baseline": {
+      "algorithm": "LOGISTIC",
+      "arm": "M0"
+    },
+    "paired_folds": 14,
+    "mean_delta_ap": 0.0,
+    "median_delta_ap": 0.0,
+    "bootstrap_iterations": 30000,
+    "bootstrap_95ci_mean_delta_ap": [
+      0.0,
+      0.0
+    ],
+    "candidate_fold_wins": 0,
+    "ties": 14,
+    "baseline_fold_wins": 0,
+    "lomo_min_mean_delta_ap": 0.0,
+    "lomo_max_mean_delta_ap": 0.0,
+    "wilcoxon_statistic": 0.0,
+    "wilcoxon_pvalue": 1.0,
+    "sign_test_pvalue": 1.0,
+    "classification": "LOGISTIC_M0_REMAINS_GOVERNED_CANDIDATE"
+  },
+  "recall_at_top_fraction": {
+    "policy": {
+      "reported_top_fractions": [
+        0.05,
+        0.1,
+        0.2
+      ],
+      "budget_selected": false,
+      "reason": "Recall increases mechanically with a larger review budget; capacity/cost constraints are required before selecting operational K."
+    },
+    "summary": [
+      {
+        "top_fraction": 0.05,
+        "folds": 14,
+        "candidate_mean_recall": 0.07404638849434711,
+        "baseline_mean_recall": 0.07404638849434711,
+        "mean_delta_recall": 0.0,
+        "median_delta_recall": 0.0,
+        "candidate_wins": 0,
+        "ties": 14,
+        "baseline_wins": 0
+      },
+      {
+        "top_fraction": 0.1,
+        "folds": 14,
+        "candidate_mean_recall": 0.14209486848038394,
+        "baseline_mean_recall": 0.14209486848038394,
+        "mean_delta_recall": 0.0,
+        "median_delta_recall": 0.0,
+        "candidate_wins": 0,
+        "ties": 14,
+        "baseline_wins": 0
+      },
+      {
+        "top_fraction": 0.2,
+        "folds": 14,
+        "candidate_mean_recall": 0.266947966257118,
+        "baseline_mean_recall": 0.266947966257118,
+        "mean_delta_recall": 0.0,
+        "median_delta_recall": 0.0,
+        "candidate_wins": 0,
+        "ties": 14,
+        "baseline_wins": 0
+      }
+    ]
+  },
+  "next_gate": {
+    "explainability_authorized": true,
+    "calibration_review_authorized": true,
+    "hyperparameter_tuning_authorized": false
+  },
+  "governance": {
+    "purchase_time_leakage": 0,
+    "label_availability_leakage": 0,
+    "threshold_selected": false,
+    "topk_budget_selected": false,
+    "m1_released": false,
+    "production_model_released": false
+  }
+}
