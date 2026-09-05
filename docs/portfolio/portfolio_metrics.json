@@ -1,0 +1,18 @@
+{
+  "gold_supervised_rows": 96470,
+  "late_orders": 6534,
+  "on_time_orders": 89936,
+  "late_prevalence": 0.06773090079817559,
+  "m0_feature_count": 13,
+  "expected_freight_artifact_rows": 96211,
+  "expected_freight_available_rows": 91262,
+  "shipping_friction_core_rows": 96211,
+  "prediction_time": "order_purchase_timestamp",
+  "target": "late_delivery_calendar_day",
+  "data_architecture": [
+    "RAW",
+    "Bronze",
+    "Silver",
+    "Gold"
+  ]
+}
